@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Huquq Kutubxonasi — O'zbekiston qonunchiligi va AI konsultant</title>
+  <meta name="description" content="O'zbekiston qonunlari oddiy va amaliy tilda: hayotiy vaziyatlar, arizalar generatori va AI huquqshunos." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- NAVIGATION -->
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a href="#" class="brand" data-view="home">
+        <div class="brand-logo">§</div>
+        <span>Huquq<b>Kutubxonasi</b></span>
+      </a>
+      <nav class="nav">
+        <a href="#" data-view="home">Bosh sahifa</a>
+        <a href="#vaziyatlar" data-view="home" data-scroll="vaziyatlar">Vaziyatlar</a>
+        <a href="#hujjatlar" data-view="home" data-scroll="hujjatlar">Hujjatlar <span class="badge-new">Konstruktor</span></a>
+        <a href="#kodekslar" data-view="home" data-scroll="kodekslar">Kodekslar</a>
+        <button type="button" class="nav-link" id="btn-open-settings">⚙️ API</button>
+        <a href="#ai" data-view="chat" class="nav-cta">
+          <span>AI Konsultant</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HOME VIEW -->
+    <section id="view-home" class="view active">
+      <!-- HERO -->
+      <div class="hero">
+        <div class="wrap hero-inner">
+          <div class="hero-pill">
+            <span class="dot"></span>
+            <span>O'zbekiston Qonunchiligi • 2026 Yangi tahrir</span>
+          </div>
+          <h1>Huquqingizni biling.<br /><em>Muammongizga aniq yechim oling.</em></h1>
+          <p class="lead">Fuqarolar, tadbirkorlar va talabalar uchun qonunlar kutubxonasi, rasmiy arizalar konstruktori va AI yuridik tahlilchi.</p>
+          
+          <form class="ask-box-main" id="hero-ask">
+            <input id="hero-input" type="text" placeholder="Savolingizni yozing (masalan: Ish beruvchi maoshimni bermayapti)..." autocomplete="off" />
+            <button type="submit">So'rash</button>
+          </form>
+
+          <div class="chips" id="hero-chips">
+            <button type="button">Ishdan noqonuniy bo'shatishsa nima qilaman?</button>
+            <button type="button">Aliment qanday hisoblanadi?</button>
+            <button type="button">Radar jarimasiga e'tiroz bildirish</button>
+            <button type="button">Meros qabul qilish muddati</button>
+            <button type="button">Sifatsiz tovarni qaytarish</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- VAZIYATLAR (BENTO GRID) -->
+      <section class="wrap section" id="vaziyatlar">
+        <div class="section-head-flex">
+          <div>
+            <h2>Hayotiy vaziyatlar</h2>
+            <p>Murakkab moddalarsiz — muammoni tanlang va 1-2-3 qadamda yechim oling.</p>
+          </div>
+          <div class="search-filter">
+            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            <input type="text" id="sit-search" placeholder="Vaziyatlarni filtrlash (mehnat, jarima, aliment...)" />
+          </div>
+        </div>
+
+        <div class="grid situations" id="situations"></div>
+      </section>
+
+      <!-- HUJJATLAR KONSTRUKTORI -->
+      <section class="wrap section" id="hujjatlar">
+        <div class="section-head">
+          <h2>Tayyor huquqiy arizalar konstruktori</h2>
+          <p>Yuristga pul to'lamasdan, rasmiy andoza bo'yicha da'vo xati yoki shartnomani to'ldiring va yuklab oling.</p>
+        </div>
+
+        <div class="doc-box">
+          <div class="doc-nav-tabs" id="doc-tabs">
+            <button class="doc-tab-btn active" data-doc="ish_haqi">Ish haqini talab qilish</button>
+            <button class="doc-tab-btn" data-doc="istemol_da_vo">Sifatsiz tovar pretenziyasi</button>
+            <button class="doc-tab-btn" data-doc="ijara_shartnoma">Ijara shartnomasi</button>
+            <button class="doc-tab-btn" data-doc="aliment_sud">Aliment undirish arizasi</button>
+            <button class="doc-tab-btn" data-doc="mehnat_boshash">O'z xohishi bilan bo'shash</button>
+          </div>
+
+          <div class="doc-grid">
+            <form class="doc-form-fields" id="doc-form">
+              <!-- Dynamically rendered fields -->
+            </form>
+
+            <div class="doc-paper-wrap">
+              <div class="doc-paper-header">
+                <span>Hujjat namunasi (jonli o'zgaradi):</span>
+                <div class="doc-action-btns">
+                  <button type="button" class="action-btn" id="btn-copy-doc">📋 Nusxa olish</button>
+                  <button type="button" class="action-btn" id="btn-download-doc">💾 Yuklab olish</button>
+                  <button type="button" class="action-btn primary" id="btn-print-doc">🖨️ Chop etish / PDF</button>
+                </div>
+              </div>
+              <div class="paper-sheet" id="doc-paper"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- KODEKSLAR -->
+      <section class="wrap section" id="kodekslar">
+        <div class="section-head">
+          <h2>Asosiy kodekslar</h2>
+          <p>Rasmiy manba — lex.uz. Har bir kodeks bo'yicha sun'iy intellektdan tushuntirish so'rashingiz mumkin.</p>
+        </div>
+        <div class="official-search-card">
+          <form id="official-law-search" class="official-law-search" role="search">
+            <label for="official-law-query">Huquq Kutubxonasi ichidan qidirish</label>
+            <div class="official-law-search-row">
+              <input id="official-law-query" name="q" type="search" maxlength="160"
+                placeholder="Masalan: Mehnat kodeksi, aliment, ijara, jarima..." autocomplete="off" required />
+              <button type="submit" class="btn-solid">Saytdan qidirish</button>
+            </div>
+            <p>Qidiruv hozircha saytdagi kodekslar katalogi va hayotiy vaziyatlar bo‘yicha ishlaydi. To‘liq rasmiy qonunlar bazasi va amaldagi tahrirlar hali ulanmagan.</p>
+          </form>
+          <div id="law-search-results" class="law-search-results" aria-live="polite" hidden></div>
+        </div>
+        <div class="grid codes" id="codes"></div>
+      </section>
+
+      <!-- AUDIENCE SECTION -->
+      <section class="wrap section">
+        <div class="audience-grid">
+          <div class="aud-card">
+            <h3>👤 Oddiy fuqarolar uchun</h3>
+            <ul>
+              <li>Murakkab atamalarsiz, xalqchil va sodda tushuntirish</li>
+              <li>Qayerga borish va qanday hujjat kerakligi bo'yicha ko'rsatma</li>
+              <li>Tayyor arizalarni avtomatik tuzib berish</li>
+            </ul>
+            <button class="btn-solid" data-mode-start="citizen">Fuqaro rejimida so'rash →</button>
+          </div>
+          <div class="aud-card dark">
+            <h3>🎓 Huquqshunos talabalar uchun</h3>
+            <ul>
+              <li>Normaning tuzilishi (gipoteza, dispozitsiya, sanksiya) tahlili</li>
+              <li>Sud amaliyoti va kazuslarni yechish metodikasi</li>
+              <li>Davlat imtihonlariga tayyorgarlik savollari</li>
+            </ul>
+            <button class="btn-solid light" data-mode-start="student">Talaba rejimida so'rash →</button>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- SITUATION DETAIL VIEW -->
+    <section id="view-situation" class="view">
+      <div class="wrap narrow section">
+        <button class="back-btn" data-view="home">← Barcha vaziyatlarga qaytish</button>
+        <div id="situation-detail"></div>
+      </div>
+    </section>
+
+    <!-- AI CHAT VIEW -->
+    <section id="view-chat" class="view">
+      <div class="wrap chat-wrapper">
+        <aside class="chat-sidebar">
+          <span class="sidebar-title">Rejimni tanlang</span>
+          <div class="mode-segmented" id="mode-toggle">
+            <button data-mode="citizen" class="on">👤 Fuqaro</button>
+            <button data-mode="student">🎓 Talaba</button>
+          </div>
+          <p style="font-size: 0.84rem; color: var(--text-muted);" id="mode-note">Sodda tilda, amaliy qadamlar bilan javob.</p>
+
+          <span class="sidebar-title" style="margin-top: 10px;">Sun'iy intellekt</span>
+          <div class="api-pill">
+            <span>✨ AI: <b id="api-model-name">Server orqali</b></span>
+            <button type="button" id="btn-config-api">Ma'lumot</button>
+          </div>
+
+          <button class="btn-solid light" style="border: 1px solid var(--border-subtle); margin-top: 6px;" id="new-chat">+ Yangi suhbat</button>
+
+          <div class="chat-disclaimer">
+            <b>Eslatma:</b> AI javoblari ma'lumot xarakterida bo'lib, rasmiy advokatlik maslahati o'rnini bosmaydi. Qonun tahririni <a href="https://lex.uz" target="_blank" rel="noopener" style="text-decoration: underline;">lex.uz</a> da tekshiring.
+          </div>
+        </aside>
+
+        <div class="chat-main-window">
+          <div class="chat-messages" id="messages">
+            <div class="chat-empty-state" id="chat-empty">
+              <div class="empty-icon">§</div>
+              <h3>Huquqiy savolingiz bormi?</h3>
+              <p>O'zbekiston qonunchiligi bo'yicha istalgan savolingizni yozing. Biz aniq qonun moddalari va amaliy qadamlar bilan javob beramiz.</p>
+            </div>
+          </div>
+          <form class="chat-composer" id="composer">
+            <textarea id="chat-input" rows="1" placeholder="Savolingizni yozing..."></textarea>
+            <button type="submit" id="send-btn">Yuborish</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL: AI SERVICE INFO -->
+  <div class="modal-overlay hidden" id="modal-settings">
+    <div class="modal-card">
+      <h3>AI xizmati haqida</h3>
+      <p>AI so'rovlari xavfsiz server funksiyasi orqali yuboriladi. API kaliti brauzerda saqlanmaydi va foydalanuvchidan so'ralmaydi.</p>
+      <p>Sayt egasi server sozlamalarida <code>GEMINI_API_KEY</code> muhit o'zgaruvchisini kiritishi kerak. AI xizmati sozlanmagan bo'lsa, administrator server konfiguratsiyasini tekshirishi lozim.</p>
+      <div class="modal-btns">
+        <button class="action-btn primary" id="btn-close-settings" type="button">Tushunarli</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="wrap" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;">
+      <div>
+        <p><b>Huquq Kutubxonasi</b> — O'zbekiston qonunchiligi sodda va amaliy tilda.</p>
+      </div>
+      <p>Manba: <a href="https://lex.uz" target="_blank" rel="noopener">lex.uz</a> milliy qonunchilik bazasi.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
