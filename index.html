@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="kazus.css" />
 </head>
 <body>
   <!-- NAVIGATION -->
@@ -23,6 +24,7 @@
         <a href="#vaziyatlar" data-view="home" data-scroll="vaziyatlar">Vaziyatlar</a>
         <a href="#hujjatlar" data-view="home" data-scroll="hujjatlar">Hujjatlar <span class="badge-new">Konstruktor</span></a>
         <a href="#kodekslar" data-view="home" data-scroll="kodekslar">Kodekslar</a>
+        <a href="#kazus" data-view="kazus">Kazus <span class="badge-new">Talabalar</span></a>
         <button type="button" class="nav-link" id="btn-open-settings">⚙️ API</button>
         <a href="#ai" data-view="chat" class="nav-cta">
           <span>AI Konsultant</span>
@@ -80,7 +82,7 @@
       <section class="wrap section" id="hujjatlar">
         <div class="section-head">
           <h2>Tayyor huquqiy arizalar konstruktori</h2>
-          <p>Yuristga pul to'lamasdan, rasmiy andoza bo'yicha da'vo xati yoki shartnomani to'ldiring va yuklab oling.</p>
+          <p>Tayyor andoza asosida da'vo xati yoki shartnoma loyihasini tuzing va yuklab oling. Yuborishdan oldin matnni amaldagi qonun bilan tekshiring.</p>
         </div>
 
         <div class="doc-box">
@@ -152,7 +154,10 @@
               <li>Sud amaliyoti va kazuslarni yechish metodikasi</li>
               <li>Davlat imtihonlariga tayyorgarlik savollari</li>
             </ul>
-            <button class="btn-solid light" data-mode-start="student">Talaba rejimida so'rash →</button>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+              <button class="btn-solid light" data-mode-start="student">Talaba rejimida so'rash →</button>
+              <button class="btn-solid light" data-view="kazus">Kazus ustaxonasi →</button>
+            </div>
           </div>
         </div>
       </section>
@@ -163,6 +168,63 @@
       <div class="wrap narrow section">
         <button class="back-btn" data-view="home">← Barcha vaziyatlarga qaytish</button>
         <div id="situation-detail"></div>
+      </div>
+    </section>
+
+    <!-- KAZUS USTAXONASI VIEW -->
+    <section id="view-kazus" class="view">
+      <div class="wrap kz-wrap section">
+        <button class="back-btn" data-view="home">← Bosh sahifa</button>
+        <header class="kz-head">
+          <span class="kz-pill">Talabalar uchun</span>
+          <h1>Kazus ustaxonasi</h1>
+          <p>Masala → norma → faktlarga qo‘llash → asoslangan xulosa.</p>
+        </header>
+
+        <div class="kz-card">
+          <div class="kz-field">
+            <div class="kz-label-row">
+              <label class="kz-label" for="kz-case">1. Kazus sharti</label>
+              <span class="kz-count" data-kz-count="kase">0 / 2200</span>
+            </div>
+            <textarea id="kz-case" placeholder="Kazus shartini shu yerga yozing yoki joylang..."></textarea>
+            <div class="kz-tools">
+              <button type="button" class="action-btn" id="kz-sample-btn">Namunaviy kazusni qo‘yish ↗</button>
+            </div>
+          </div>
+
+          <div class="kz-field">
+            <div class="kz-label-row">
+              <label class="kz-label" for="kz-answer">2. O‘z javobingiz (ixtiyoriy)</label>
+              <span class="kz-count" data-kz-count="answer">0 / 3000</span>
+            </div>
+            <textarea id="kz-answer" placeholder="Tahlilingizni yozing. Demo uni tekshirish ro‘yxati bilan yonma-yon ko‘rsatadi."></textarea>
+          </div>
+
+          <div class="kz-field">
+            <div class="kz-label-row">
+              <label class="kz-label" for="kz-sample">3. Yuqori ball olgan javob namunasi (ixtiyoriy)</label>
+              <span class="kz-count" data-kz-count="sample">0 / 2400</span>
+            </div>
+            <p class="kz-help">O‘z namunangizni joylang yoki TXT faylni oching. Fayl faqat shu sahifada o‘qiladi.</p>
+            <textarea id="kz-sample" placeholder="Bu yerga o‘z namunaviy javobingizni joylang..."></textarea>
+            <div class="kz-tools">
+              <input type="file" id="kz-file" class="kz-file" accept=".txt,text/plain" />
+              <label for="kz-file" class="action-btn">TXT fayl ochish</label>
+              <span class="kz-note" id="kz-file-note"></span>
+            </div>
+          </div>
+
+          <div class="kz-actions">
+            <button type="button" class="btn-solid light" style="border: 1px solid var(--border-subtle);" id="kz-map-btn">Demo tahlil xaritasi →</button>
+            <button type="button" class="btn-solid" id="kz-ai-btn">AI bilan manbali tahlil</button>
+          </div>
+          <p class="kz-status" id="kz-status" role="status" aria-live="polite"></p>
+          <p class="kz-privacy">AI tahlili tanlanganda kazus, javob va namuna matni Google Gemini xizmatiga yuboriladi. Maxfiy shaxsiy ma’lumotlarni (ism, telefon, passport, manzil) kiritmang. Demo xaritasi hech narsani serverga yubormaydi.</p>
+        </div>
+
+        <section class="kz-out" id="kz-map" hidden></section>
+        <section class="kz-out" id="kz-ai" hidden></section>
       </div>
     </section>
 
@@ -195,7 +257,7 @@
             <div class="chat-empty-state" id="chat-empty">
               <div class="empty-icon">§</div>
               <h3>Huquqiy savolingiz bormi?</h3>
-              <p>O'zbekiston qonunchiligi bo'yicha istalgan savolingizni yozing. Biz aniq qonun moddalari va amaliy qadamlar bilan javob beramiz.</p>
+              <p>O'zbekiston qonunchiligi bo'yicha istalgan savolingizni yozing. Umumiy tushuntirish va amaliy qadamlar beramiz. Modda va muddatlarni Lex.uz da tekshiring.</p>
             </div>
           </div>
           <form class="chat-composer" id="composer">
@@ -230,5 +292,6 @@
   </footer>
 
   <script src="app.js"></script>
+  <script src="kazus.js"></script>
 </body>
 </html>
