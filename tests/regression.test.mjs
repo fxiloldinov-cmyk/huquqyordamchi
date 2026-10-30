@@ -272,3 +272,41 @@ test('chat on a non-labour topic gets no labour passages; search marks official 
  assert.equal(out.natijalar[0].rasmiyMatn, 'berilgan'); assert.match(out.natijalar[0].moddaNomi, /taqiqlash/);
  assert.equal(out.natijalar[1].rasmiyMatn, 'yoq'); assert.ok(out.rasmiyParchalar.moddalar.some(m => m.art === '163'));
 }));
+
+// ---- v10.7: /api/status diagnostikasi va kalit xatolari ----
+const status = (await import('../netlify/functions/status.mjs')).default;
+const gErr = (code, statusText, reason, message) => new Response(JSON.stringify({error: {code, status: statusText, message, details: reason ? [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', reason}] : []}}), {status: code});
+const getStatus = async () => (await status(new Request('https://example.test/api/status'), {ip: 'test-' + sequence++})).json();
+
+test('status explains a missing key, a leaked key and a referrer-restricted key without exposing it', async () => withKey(async () => {
+ delete process.env.GEMINI_API_KEY;
+ let s = await getStatus(); assert.equal(s.ok, false); assert.equal(s.sabab, 'kalit_yoq'); assert.match(s.xabar, /qayta deploy/);
+ process.env.GEMINI_API_KEY = 'AIzaSyLEAKEDLEAKEDLEAKEDLEAKEDLEAKED12';
+ let calls = 0;
+ globalThis.fetch = async () => { calls++; return gErr(403, 'PERMISSION_DENIED', null, 'Your API key was reported as leaked. Please use another API key.'); };
+ s = await getStatus(); assert.equal(s.sabab, 'kalit_oshkor'); assert.equal(calls, 1, 'kalit xatosida boshqa modellar sinalmaydi');
+ assert.ok(!JSON.stringify(s).includes('LEAKEDLEAKED'));
+ globalThis.fetch = async () => gErr(403, 'PERMISSION_DENIED', 'API_KEY_HTTP_REFERRER_BLOCKED', 'Requests from referer <empty> are blocked.');
+ s = await getStatus(); assert.equal(s.sabab, 'kalit_cheklovi');
+ globalThis.fetch = async () => gErr(400, 'INVALID_ARGUMENT', 'API_KEY_INVALID', 'API key not valid. Please pass a valid API key.');
+ s = await getStatus(); assert.equal(s.sabab, 'kalit_notogri');
+ globalThis.fetch = async () => gErr(403, 'PERMISSION_DENIED', 'SERVICE_DISABLED', 'Generative Language API has not been used in project 123 before or it is disabled.');
+ s = await getStatus(); assert.equal(s.sabab, 'api_yoqilmagan');
+}));
+
+test('status cleans a quoted key with spaces, falls back past an unavailable model and reports the working one', async () => withKey(async () => {
+ process.env.GEMINI_API_KEY = '  "AIzaSyCLEANCLEANCLEANCLEANCLEANCLEAN123"\n';
+ const keys = [];
+ globalThis.fetch = async (url, options) => { keys.push(options.headers['x-goog-api-key']); if (String(url).includes('gemini-3.8-flash')) return gErr(404, 'NOT_FOUND', null, 'models/gemini-3.8-flash is not found'); return new Response(JSON.stringify(packet('ok', 'STOP')), {status: 200}); };
+ const s = await getStatus();
+ assert.equal(s.ok, true); assert.equal(s.ishlaganModel, 'gemini-flash-latest'); assert.equal(s.kalit.tozalangan, true); assert.equal(s.kalit.odatiyFormat, true);
+ assert.ok(keys.every(k => k === 'AIzaSyCLEANCLEANCLEANCLEANCLEANCLEAN123'));
+ assert.ok(!JSON.stringify(s).includes('CLEANCLEAN'));
+}));
+
+test('chat shows the specific admin reason for a leaked key instead of a generic error', async () => withKey(async () => {
+ let calls = 0;
+ globalThis.fetch = async () => { calls++; return gErr(403, 'PERMISSION_DENIED', null, 'Your API key was reported as leaked.'); };
+ const res = await chat(req({messages: [{role: 'user', content: 'Savol matni'}]}), {ip: 'test-' + sequence++});
+ assert.equal(res.status, 503); assert.match((await res.json()).error, /oshkor/); assert.equal(calls, 1);
+}));

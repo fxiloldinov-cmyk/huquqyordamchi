@@ -64,7 +64,7 @@ Vaziyat sanasiga mos kuchga kirgan tahrirni tanlang. Katalog to‘liq normativ b
 
 ## Tuzilma va tekshiruv
 
-`public/` — brauzer interfeysi; `netlify/functions/` — API; `netlify/shared/` — umumiy himoya va AI oqimi; `data/` — yagona katalog; `scripts/` — build va lokal server; `tests/` — 32 ta regressiya testi; `telegram_bot/` — alohida bot.
+`public/` — brauzer interfeysi; `netlify/functions/` — API; `netlify/shared/` — umumiy himoya va AI oqimi; `data/` — yagona katalog; `scripts/` — build va lokal server; `tests/` — 35 ta regressiya testi; `telegram_bot/` — alohida bot.
 
 ## TSUL kitoblari
 
@@ -95,3 +95,7 @@ Chat, aqlli qidiruv, "Sodda tilda tushuntirish" va kazus AI'ga so‘rov yuborish
 - **Tekshiruv:** javob oxirida "Manba tekshiruvi" chiqadi: ✅ berilgan rasmiy matndagi modda/band, ⚠️ kodeksda bor lekin berilmagan, ❌ mavjud emas. Aqlli qidiruvda MK natijalari rasmiy sarlavha bilan almashtiriladi va belgilanadi.
 - **Yangilash:** lex.uz’dan hujjatni Word shaklida yuklab, `npm run import:law -- <fayl.doc> data/laws/mk.json --doc mk --lex-id -6257288` (bandli hujjat uchun `--lex-id` ixtiyoriy). `pip install beautifulsoup4` kerak. So‘ng `npm test`.
 - **Cheklov:** baza amaldagi tahrirni saqlaydi; voqea sanasidagi eski tahrir alohida saqlanmaydi — buning o‘rniga tahrir izohlari beriladi va tekshiruvda ogohlantiriladi. Telegram botga RAG hali ulanmagan.
+
+## AI ishlamasa: /api/status (v10.7)
+
+Brauzerda `https://<sayt>/api/status` ni oching. Sahifa Google'ga kichik sinov so‘rovi yuboradi va sababni o‘zbekcha yozadi: kalit yo‘q / noto‘g‘ri / oshkor bo‘lgani uchun o‘chirilgan / referer cheklovi / API yoqilmagan / kvota / model. Kalit hech qachon ko‘rsatilmaydi. `?search=1` Google qidiruvini ham sinaydi (bepul limitdan 1 so‘rov). Kalitdagi bo‘sh joy, qo‘shtirnoq yoki `GEMINI_API_KEY=` prefiksi avtomatik tozalanadi.

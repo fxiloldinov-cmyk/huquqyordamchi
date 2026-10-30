@@ -35,10 +35,25 @@ export function redactPII(text){let out=String(text??'');for(const [re,to] of PI
 // yangi loyihalar uchun 3.8 Flash tavsiya etiladi. GEMINI_MODEL vergul bilan bir nechta model qabul qiladi —
 // birinchisi ishlamasa (model topilmadi/ruxsat yo'q), keyingisiga avtomatik o'tiladi.
 export const DEFAULT_MODELS=['gemini-3.8-flash','gemini-flash-latest','gemini-3.6-flash','gemini-2.5-flash'];
-export const geminiConfig=()=>{const own=(process.env.GEMINI_MODEL||'').split(',').map(x=>x.trim()).filter(Boolean);const models=[...new Set([...own,...DEFAULT_MODELS])];return {apiKey:process.env.GEMINI_API_KEY||process.env.API_KEY,model:models[0],models,thinkingLevel:(process.env.GEMINI_THINKING_LEVEL||'low').trim()};};
+// Kalitni tozalash: Netlify'ga nusxalashda ko'p uchraydigan xatolar — bo'sh joy/yangi qator, qo'shtirnoq, "GEMINI_API_KEY=" bilan birga qo'yish.
+export const cleanKey=k=>String(k||'').trim().replace(/^(?:GEMINI_API_KEY|API_KEY)\s*=\s*/i,'').replace(/^["'`]+|["'`]+$/g,'').trim();
+export const geminiConfig=()=>{const own=(process.env.GEMINI_MODEL||'').split(',').map(x=>x.trim()).filter(Boolean);const models=[...new Set([...own,...DEFAULT_MODELS])];return {apiKey:cleanKey(process.env.GEMINI_API_KEY||process.env.API_KEY),model:models[0],models,thinkingLevel:(process.env.GEMINI_THINKING_LEVEL||'low').trim()};};
 export function geminiUrl(model,stream){return `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:${stream?'streamGenerateContent?alt=sse':'generateContent'}`;}
 export function callGemini({apiKey,model,body,stream=false,signal,timeoutMs=50000}){return fetch(geminiUrl(model,stream),{method:'POST',headers:{'Content-Type':'application/json','x-goog-api-key':apiKey},body:JSON.stringify(body),signal:AbortSignal.any([AbortSignal.timeout(timeoutMs),...(signal?[signal]:[])])});}
-async function providerInfo(res){try{const j=await res.clone().json();return String(j?.error?.message||j?.error?.status||'').slice(0,500)}catch{return ''}}
+async function providerInfo(res){try{const j=await res.clone().json();const e=j?.error||{};const reason=(e.details||[]).map(d=>d?.reason).find(Boolean)||'';return [reason,e.status,e.message].filter(Boolean).join(': ').slice(0,500)}catch{return ''}}
+// Google xatosini administrator uchun tushunarli sababga aylantiradi (kalit hech qachon ko'rsatilmaydi).
+export function diagnoseProvider(status,info=''){const t=String(info);
+ if(/leaked/i.test(t))return {sabab:'kalit_oshkor',xabar:'Google bu kalitni oshkor bo‘lgan (masalan, ochiq GitHub’ga tushgan) deb o‘chirib qo‘ygan. AI Studio’da yangi kalit yarating, uni faqat Netlify’ga kiriting va repozitoriydagi .env fayllarini o‘chiring.'};
+ if(/API_KEY_INVALID|api key not valid|api[ _-]?key.*(invalid|expired)/i.test(t))return {sabab:'kalit_notogri',xabar:'Kalit noto‘g‘ri yoki muddati o‘tgan. AI Studio’dan kalitni qayta nusxalang (bo‘sh joy va qo‘shtirnoqsiz), Netlify’da GEMINI_API_KEY ga qo‘ying va saytni qayta deploy qiling.'};
+ if(/REFERRER|referer|referrer/i.test(t))return {sabab:'kalit_cheklovi',xabar:'Kalitga "Website restrictions" (referer) cheklovi qo‘yilgan, server so‘rovlari bloklanyapti. Google Cloud → Credentials’da kalit cheklovini "None" qiling yoki faqat "Generative Language API" bilan cheklang.'};
+ if(/IP_ADDRESS|ip address/i.test(t))return {sabab:'kalit_ip',xabar:'Kalit IP manzil bo‘yicha cheklangan. Netlify IP manzillari o‘zgaruvchan — IP cheklovini olib tashlang.'};
+ if(/SERVICE_DISABLED|has not been used|is disabled|API_DISABLED/i.test(t))return {sabab:'api_yoqilmagan',xabar:'Kalit tegishli Google Cloud loyihasida "Generative Language API" yoqilmagan. Uni yoqing yoki kalitni to‘g‘ridan-to‘g‘ri AI Studio’da (aistudio.google.com) yarating.'};
+ if(/billing|BILLING/i.test(t))return {sabab:'billing',xabar:'Google hisobida to‘lov (billing) sozlanmagan yoki o‘chirilgan. AI Studio → Billing bo‘limini tekshiring.'};
+ if(/location is not supported|FAILED_PRECONDITION.*location/i.test(t))return {sabab:'hudud',xabar:'Gemini API bu hududdan ishlamaydi. Netlify funksiyasi mintaqasini tekshiring.'};
+ if(status===429||/RESOURCE_EXHAUSTED|quota/i.test(t))return {sabab:'kvota',xabar:'Kvota (so‘rovlar limiti) tugagan yoki bepul tarifda bu model/qidiruv uchun limit yo‘q. AI Studio’da Usage/Rate limit bo‘limini tekshiring; kerak bo‘lsa billing yoqing.'};
+ if(status===404||/not found|not supported for|no longer available|limiting access/i.test(t))return {sabab:'model',xabar:'Model bu kalit uchun mavjud emas. GEMINI_MODEL ni bo‘sh qoldiring (standart gemini-3.8-flash) yoki AI Studio’dagi model nomini kiriting.'};
+ if(status===403||/PERMISSION_DENIED/i.test(t))return {sabab:'ruxsat',xabar:'Google so‘rovni rad etdi (ruxsat yo‘q). Kalit qaysi loyihaga tegishli ekanini va API yoqilganini tekshiring.'};
+ return null;}
 // Ishonchli chaqiruv: model topilmasa keyingi modelga o'tadi; "thinking" sozlamasi qabul qilinmasa usiz qayta yuboradi;
 // allowNoSearch=true bo'lsa va xato aynan Google qidiruvi bilan bog'liq bo'lsa, qidiruvsiz yuboradi (javobda ochiq ogohlantirish beriladi).
 // Sababi aniq bo'lmagan xatoda (masalan, bo'sh 400) qayta urinmaydi — yashirin fallback yo'q.
@@ -52,7 +67,7 @@ export async function callGeminiResilient({apiKey,models,body,stream=false,signa
    if(res.ok)return {ok:true,upstream:res,model,searchDropped};
    const info=await providerInfo(res);last={status:res.status,info,model};
    console.error('AI provider',res.status,model,info.slice(0,200));
-   if(/api[ _-]?key/i.test(info))return {ok:false,...last};
+   if(/api[ _-]?key|leaked|referr?er|IP_ADDRESS|SERVICE_DISABLED|has not been used|billing|RESOURCE_EXHAUSTED/i.test(info)||res.status===429)return {ok:false,...last};
    if(res.status===400&&/thinking/i.test(info)&&b.generationConfig?.thinkingConfig){delete b.generationConfig.thinkingConfig;continue;}
    if(allowNoSearch&&b.tools&&[400,403].includes(res.status)&&/search|grounding|tool/i.test(info)){delete b.tools;searchDropped=true;continue;}
    if(res.status===404||([400,403].includes(res.status)&&/model|not found|not supported|not available|no longer|access/i.test(info)))break;
@@ -61,7 +76,7 @@ export async function callGeminiResilient({apiKey,models,body,stream=false,signa
  }
  return {ok:false,...last};
 }
-export async function providerError(res){const status=res.status||502,info=res.info||'';if(!('info' in res))console.error('AI provider status',status);if(/api[ _-]?key/i.test(info))return jsonError('AI kaliti noto‘g‘ri yoki faol emas. Administrator Netlify’dagi GEMINI_API_KEY ni tekshirishi kerak.',503);if(status===404)return jsonError('AI modeli topilmadi. Administrator GEMINI_MODEL sozlamasini tekshirishi kerak.',502);return jsonError(status===429?'AI so‘rovlar limiti vaqtincha tugadi. Keyinroq urinib ko‘ring.':status===400?'AI qidiruvi hozir ishlamayapti. Administrator model va qidiruv sozlamalarini tekshirishi kerak.':'AI xizmatiga ulanishda xatolik. Keyinroq qayta urinib ko‘ring.',status===429?429:502);}
+export async function providerError(res){const status=res.status||502,info=res.info||'';if(!('info' in res))console.error('AI provider status',status);const d=diagnoseProvider(status,info);if(d&&d.sabab!=='model')return jsonError('AI ishlamayapti: '+d.xabar,d.sabab==='kvota'?429:503);if(status===404||d?.sabab==='model')return jsonError('AI modeli topilmadi. Administrator GEMINI_MODEL sozlamasini tekshirishi kerak.',502);return jsonError(status===400?'AI qidiruvi hozir ishlamayapti. Administrator model va qidiruv sozlamalarini tekshirishi kerak.':'AI xizmatiga ulanishda xatolik. Keyinroq qayta urinib ko‘ring.',502);}
 export function safeSources(list){return (list||[]).map(s=>({title:String(s.title||'Manba').slice(0,200),uri:HKCore.safeUrl(s.uri)})).filter(s=>s.uri);}
 export function dedupeSources(list){const seen=new Set();return safeSources(list).filter(s=>{if(seen.has(s.uri))return false;seen.add(s.uri);return true;});}
 export function extractCandidate(parsed){const c=parsed?.candidates?.[0];return {text:(c?.content?.parts||[]).filter(p=>!p.thought).map(p=>p.text||'').join(''),sources:safeSources((c?.groundingMetadata?.groundingChunks||[]).map(x=>x.web).filter(Boolean)),finishReason:c?.finishReason,blocked:parsed?.promptFeedback?.blockReason};}

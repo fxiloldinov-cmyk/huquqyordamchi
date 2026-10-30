@@ -20,7 +20,7 @@ Sana: 2026-10-29. Bu fayl v9 dagi eski texnik ko‘rik o‘rniga joriy holatni q
 ## Bajarilgan tekshiruv
 
 - `npm run build` — muvaffaqiyatli.
-- `npm test` — 32/32 test. Qidiruv, kodekslar chalkashishi, aliment ulushi, andoza cheklovlari, uzun suhbat, JSON/Origin, SSE, RSS va AI so‘rov shakli tekshirildi. AI integratsiyasi tashqi haqiqiy xizmat o‘rniga nazorat qilinadigan javoblar bilan sinaldi.
+- `npm test` — 35/35 test. Qidiruv, kodekslar chalkashishi, aliment ulushi, andoza cheklovlari, uzun suhbat, JSON/Origin, SSE, RSS va AI so‘rov shakli tekshirildi. AI integratsiyasi tashqi haqiqiy xizmat o‘rniga nazorat qilinadigan javoblar bilan sinaldi.
 - JavaScript/ESM sintaksisi va Python kompilyatsiyasi tekshirildi.
 - Brauzerda bosh sahifa, `JK 168` qidiruvi, AI kaliti yo‘q holati, aliment generatori, kodeks tushuntirish oynasi va kazus rejimlari ko‘rildi. Desktop ko‘rinishi vizual tekshirildi; mobil ekran uchun CSS qo‘shilgan, alohida haqiqiy telefon sinovi bajarilmadi.
 
@@ -58,3 +58,9 @@ Asosiy qayta tekshirish navbati: hostingda AI/RSS sinovi, qolgan katalogning huq
 - Rasmiy matn bilan tasdiqlandi: 161 — ish beruvchi tashabbusi, 163 — taqiqlar (kasallik davri 1-qism 3-band), 165 — ogohlantirish (qisqarishda kamida 2 oy), 173 — ishdan bo‘shatish nafaqasi, 560 — sudga murojaat muddatlari (ishga tiklash — 3 oy), 562 — sud xarajatlaridan ozod qilish. Katalogdagi MK raqamlari to‘g‘ri edi; 333, 560 va 163 sarlavhalari rasmiy shaklga keltirildi, barcha MK yozuvlari `reviewedAt: 2026-10-30`.
 - Kazus, chat, qidiruv va tushuntirishga parchalar beriladi; javobdagi MK modda va Plenum band raqamlari avtomatik tekshiriladi (kazusda — barcha qismlar bo‘yicha).
 - Tekshiruv: 32/32 test; brauzerda soxta Gemini bilan 3 qismli kazus — har qismda parchalar berildi, 163 ✅, uydirma 999 ❌ deb belgilandi.
+
+## v10.7 — kalit diagnostikasi
+
+- `/api/status`: kalit borligi va formati, modellar bo‘yicha sinov, Google xatosining sababi (ErrorInfo reason + xabar) o‘zbekcha izoh bilan. Kalit javobda yashiriladi.
+- Foydalanuvchiga umumiy "ulanishda xatolik" o‘rniga aniq sabab ko‘rsatiladi; kalit/kvota xatolarida keraksiz model almashtirish qilinmaydi.
+- Kalit avtomatik tozalanadi (bo‘sh joy, qo‘shtirnoq, `GEMINI_API_KEY=` prefiksi).
