@@ -142,11 +142,14 @@ test('search returns detailed steps and verified source metadata',async()=>{
  finally{globalThis.fetch=oldFetch;if(oldKey===undefined)delete process.env.GEMINI_API_KEY;else process.env.GEMINI_API_KEY=oldKey;}
 });
 
-test('redactPII hides phone, card, JSHSHIR and passport but keeps articles and amounts', async () => {
+test('redactPII hides personal identifiers but keeps amounts, articles and dates', async () => {
  const {redactPII}=await import('../netlify/shared/common.mjs');
- const out=redactPII('Tel: +998 90 123-45-67, 901234567. Karta 8600 1234 5678 9012. JSHSHIR 31234567890123. Pasport AA1234567. JK 278-2, MK 560-modda, 8 500 000 so‘m, 2026-10-29.');
- for (const leak of ['123-45-67','901234567','8600 1234','31234567890123','AA1234567']) assert.ok(!out.includes(leak), leak);
- for (const keep of ['278-2','560-modda','8 500 000','2026-10-29']) assert.ok(out.includes(keep), keep);
+ const hide=['Tel: +998 90 123-45-67','telefonim 901234567','aloqa uchun: 93 555 12 34','(90) 123-45-67','Karta 8600 1234 5678 9012','9860123456789012','JSHSHIR 31234567890123','Pasport AA1234567','pasport aa1234567','ID AD 1234567','email: aziza.k@mail.uz'];
+ const leaks=['123-45-67','901234567','555 12 34','8600 1234','9860123456789012','31234567890123','AA1234567','aa1234567','AD 1234567','aziza.k@mail.uz'];
+ const out=redactPII(hide.join('. '));
+ for (const leak of leaks) assert.ok(!out.includes(leak), 'leak: '+leak);
+ const keepText='Da’vo summasi 901234567 so‘m. Jarima 3 800 000 so‘m, 1234567890123456 so‘m, 45 000 000 sum, $901234567. Qaror 2026-10-29, JK 278-2, MK 560-modda, 8 500 000 so‘m, 12.10.2026. Aziza Karimova, Chilonzor tumani.';
+ assert.equal(redactPII(keepText), keepText);
 });
 
 test('SEO build creates a static page, sitemap entry and canonical for every situation', async () => {
@@ -164,3 +167,108 @@ test('SEO build creates a static page, sitemap entry and canonical for every sit
   for (const m of html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/g)) JSON.parse(m[1]);
  }
 });
+
+// ---- v10.5: model zaxirasi, xato xabarlari, kazus davomi ----
+const withKey=async(fn)=>{const oldFetch=globalThis.fetch,oldKey=process.env.GEMINI_API_KEY,oldModel=process.env.GEMINI_MODEL;process.env.GEMINI_API_KEY='test-only-not-a-real-key';delete process.env.GEMINI_MODEL;try{await fn()}finally{globalThis.fetch=oldFetch;if(oldKey===undefined)delete process.env.GEMINI_API_KEY;else process.env.GEMINI_API_KEY=oldKey;if(oldModel!==undefined)process.env.GEMINI_MODEL=oldModel;delete process.env.HK_DEADLINE_MS;}};
+const kazusText='Aziza 2024-yildan MChJda o‘qituvchi. Kasallik davrida shtat qisqarishi sababli bo‘shatildi. Huquqiy baho bering.';
+
+test('default model is a current one and an unavailable model falls back to the next', async () => withKey(async () => {
+ const urls=[];
+ globalThis.fetch=async(url,options)=>{urls.push(String(url));const body=JSON.parse(options.body);
+  if(urls.length===1)return new Response(JSON.stringify({error:{status:'NOT_FOUND',message:'models/gemini-3.8-flash is not found for API version v1beta'}}),{status:404});
+  assert.equal(body.generationConfig.thinkingConfig.thinkingLevel,'low');
+  return sse(['data: '+JSON.stringify(packet('Javob','STOP'))]);};
+ const res=await chat(req({messages:[{role:'user',content:'Aliment qancha?'}]}),{ip:'test-'+sequence++});
+ assert.equal(res.status,200);assert.match(await res.text(),/^Javob/);
+ assert.match(urls[0],/models\/gemini-3\.8-flash:/);assert.match(urls[1],/models\/gemini-flash-latest:/);
+}));
+
+test('rejected thinking setting is retried without it; invalid API key gives a clear admin message', async () => withKey(async () => {
+ let calls=0;
+ globalThis.fetch=async(url,options)=>{calls++;const body=JSON.parse(options.body);
+  if(body.generationConfig.thinkingConfig)return new Response(JSON.stringify({error:{message:'Invalid JSON payload received. Unknown name "thinkingLevel" at generation_config.thinking_config'}}),{status:400});
+  return sse(['data: '+JSON.stringify(packet('OK','STOP'))]);};
+ let res=await chat(req({messages:[{role:'user',content:'Savol matni'}]}),{ip:'test-'+sequence++});
+ assert.equal(res.status,200);assert.equal(calls,2);
+ globalThis.fetch=async()=>new Response(JSON.stringify({error:{message:'API key not valid. Please pass a valid API key.'}}),{status:400});
+ res=await chat(req({messages:[{role:'user',content:'Savol matni'}]}),{ip:'test-'+sequence++});
+ assert.equal(res.status,503);assert.match((await res.json()).error,/GEMINI_API_KEY/);
+}));
+
+test('kazus stops safely before the platform limit and asks the browser to continue, keeping sources', async () => withKey(async () => {
+ process.env.HK_DEADLINE_MS='300';
+ globalThis.fetch=async()=>new Response(new ReadableStream({start(c){c.enqueue(new TextEncoder().encode('data: '+JSON.stringify(packet('Birinchi qism matni ','',[{web:{title:'MK',uri:'https://lex.uz/docs/-6257288'}}]))+'\n'));/* oqim ochiq qoladi */}}));
+ const res=await kazus(req({kazus:kazusText,fan:'mehnat'}),{ip:'test-'+sequence++});
+ assert.equal(res.status,200);const out=await res.text();
+ assert.ok(out.startsWith('Birinchi qism matni'));
+ const m=out.match(/⁣HK:CONT:([^⁣]*)⁣/);assert.ok(m,'continuation marker');
+ assert.equal(JSON.parse(decodeURIComponent(m[1]))[0].uri,'https://lex.uz/docs/-6257288');
+ assert.ok(!out.includes('HK:END'));
+}));
+
+test('kazus continuation sends the partial answer back as model text, skips search and ends with sources', async () => withKey(async () => {
+ globalThis.fetch=async(url,options)=>{const body=JSON.parse(options.body);
+  assert.equal(body.tools,undefined);
+  const last=body.contents.at(-1),prev=body.contents.at(-2);
+  assert.equal(prev.role,'model');assert.equal(prev.parts[0].text,'Birinchi qism matni ');
+  assert.equal(last.role,'user');assert.match(last.parts[0].text,/to‘xtagan joydan davom/);
+  return sse(['data: '+JSON.stringify(packet('ikkinchi qism.','STOP'))]);};
+ const res=await kazus(req({kazus:kazusText,fan:'mehnat',continuation:{round:1,partial:'Birinchi qism matni ',sources:[{title:'MK',uri:'https://lex.uz/docs/-6257288'},{title:'bad',uri:'javascript:alert(1)'}]}}),{ip:'test-'+sequence++});
+ assert.equal(res.status,200);const out=await res.text();
+ assert.ok(out.startsWith('ikkinchi qism.'));assert.ok(out.includes('https://lex.uz/docs/-6257288'));assert.ok(!out.includes('javascript:'));
+ assert.ok(out.endsWith('⁣HK:END⁣'));
+ const bad=await kazus(req({kazus:kazusText,continuation:{round:9,partial:'x'.repeat(50)}}),{ip:'test-'+sequence++});assert.equal(bad.status,400);
+}));
+
+// ---- v10.6: RAG (Mehnat kodeksi + Plenum 26-son) ----
+const rag = await import('../netlify/shared/rag.mjs');
+const AZIZA = 'Aziza 2024-yil 15-maydan MChJda ingliz tili o‘qituvchisi sifatida nomuayyan muddatli mehnat shartnomasi asosida ishlaydi. 2026-yil 5-oktabrda ish beruvchi undan o‘z xohishiga ko‘ra ishdan bo‘shash haqida ariza yozishni talab qiladi. 8–16-oktabr kunlari Aziza vaqtincha mehnatga layoqatsiz bo‘lib, elektron kasallik varaqasi rasmiylashtiriladi. Direktor 12-oktabr kuni uning mehnat shartnomasini shtat qisqarishi sababli bekor qiladi. Aziza oldindan yozma ogohlantirilmagan va unga boshqa ish taklif qilinmagan. 20-oktabrda Aziza buyruq nusxasini oladi. Azizaga oxirgi ish haqi va foydalanilmagan ta’til uchun kompensatsiya to‘lanmagan. Qanday talablar bilan, qayerga va qanday muddatda murojaat qilishi mumkin?';
+
+test('law base is complete and matches verified article numbers', () => {
+ const {mk, plenum26} = rag.LAWS;
+ assert.equal(mk.articles.length, 593); assert.deepEqual(mk.articles.map(a => a.art), Array.from({length: 593}, (_, i) => String(i + 1)));
+ assert.ok(mk.asOf >= '2026-10-15');
+ const t = n => mk.articles[n - 1].title;
+ assert.match(t(161), /ish beruvchining tashabbusiga/); assert.match(t(163), /taqiqlash/); assert.match(t(165), /ogohlantirish/);
+ assert.match(t(560), /sudga murojaat qilish muddatlari/); assert.match(t(562), /sud xarajatlaridan ozod/);
+ assert.equal(plenum26.kind, 'band'); assert.equal(plenum26.articles.filter(a => a.art !== '0').length, 74); assert.equal(plenum26.asOf, '2023-11-20');
+ // Katalogdagi MK sarlavhalari rasmiy matn bilan bir xil
+ const n = s => HKCore.norm(s);
+ for (const a of legal.articles.filter(a => a.doc === 'mk')) assert.equal(n(a.title), n(t(+a.art)), 'MK ' + a.art);
+});
+
+test('retrieval finds the key provisions for a multi-issue labour kazus and stays out of other topics', () => {
+ const r = rag.retrieve(AZIZA, {k: 12, budget: 18000, force: true});
+ for (const n of ['161', '163', '165', '172', '173', '560']) assert.ok(r.provided.has(n), 'MK ' + n);
+ assert.ok(r.bands.size >= 2); assert.match(r.block, /\[MK 163-modda\./); assert.match(r.block, /\[Plenum 26-son, \d+-band\]/);
+ assert.deepEqual([...rag.retrieve('MK 560 nima deydi?', {k: 3}).provided][0], '560');
+ assert.deepEqual([...rag.retrieve('Kasal bo‘lib yotganimda ishdan bo‘shatishdi', {k: 5}).provided][0], '163');
+ assert.equal(rag.retrieve('Aliment miqdori qancha?').block, '');
+});
+
+test('citation report confirms given articles and flags unknown or unsupplied ones', () => {
+ const rep = rag.citationReport('MK 163-modda 1-qism 3-band; MK 165 va 173-moddalari; MK 562; MK 999. Plenumning 26-son qarori 22-bandi va 80-bandi.', new Set(['163', '165', '173']), {bands: new Set(['22']), eventDate: '2026-10-12'});
+ assert.match(rep, /✅ Mehnat kodeksi[^\n]*MK 163, MK 165, MK 173/);
+ assert.match(rep, /⚠️ Kodeksda bor[^\n]*MK 562/); assert.match(rep, /❌ Mehnat kodeksida bunday modda yo‘q: MK 999/);
+ assert.match(rep, /✅ Plenum[^\n]*22-band/); assert.match(rep, /❌ Plenum 26-son qarorida bunday band yo‘q: 80-band/);
+ assert.match(rep, /Voqea sanasi \(2026-10-12\)/);
+});
+
+test('kazus sends official passages to the AI and appends the citation check', async () => withKey(async () => {
+ let sys = '';
+ globalThis.fetch = async (url, options) => { sys = JSON.parse(options.body).system_instruction.parts[0].text; return sse(['data: ' + JSON.stringify(packet('Bo‘shatish MK 163-modda 1-qism 3-bandiga zid. MK 999 ham bor.', 'STOP'))]); };
+ const res = await kazus(req({kazus: AZIZA, fan: 'mehnat', eventDate: '2026-10-12'}), {ip: 'test-' + sequence++});
+ assert.equal(res.status, 200); const out = await res.text();
+ assert.match(sys, /TASDIQLANGAN MANBA PARCHALARI/); assert.match(sys, /\[MK 163-modda\. Mehnat shartnomasini ish beruvchining tashabbusiga ko/);
+ assert.match(out, /Manba tekshiruvi[\s\S]*✅[^\n]*MK 163[\s\S]*❌[^\n]*MK 999/);
+}));
+
+test('chat on a non-labour topic gets no labour passages; search marks official MK titles and fake articles', async () => withKey(async () => {
+ let sys = '';
+ globalThis.fetch = async (url, options) => { sys = JSON.parse(options.body).system_instruction.parts[0].text; return sse(['data: ' + JSON.stringify(packet('Aliment haqida javob', 'STOP'))]); };
+ const res = await chat(req({messages: [{role: 'user', content: 'Aliment miqdori qancha bo‘ladi?'}]}), {ip: 'test-' + sequence++});
+ await res.text(); assert.ok(!sys.includes('TASDIQLANGAN MANBA PARCHALARI'));
+ const out = normalizeResult({natijalar: [{hujjat: 'Mehnat kodeksi', modda: '163', modda_nomi: 'noto‘g‘ri nom'}, {hujjat: 'Mehnat kodeksi', modda: '999'}]}, [], rag.retrieve('Kasallik davrida bo‘shatish', {k: 4}));
+ assert.equal(out.natijalar[0].rasmiyMatn, 'berilgan'); assert.match(out.natijalar[0].moddaNomi, /taqiqlash/);
+ assert.equal(out.natijalar[1].rasmiyMatn, 'yoq'); assert.ok(out.rasmiyParchalar.moddalar.some(m => m.art === '163'));
+}));

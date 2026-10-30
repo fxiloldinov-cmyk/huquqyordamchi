@@ -5,16 +5,23 @@
 import {
   guardJsonPost, jsonError, jsonResponse, geminiConfig, callGemini,
   providerError, pipeGeminiStream, isAllowedOrigin, LEGAL_RULES, sourceTail, redactPII,
+  callGeminiResilient, safeSources, dedupeSources, SEARCH_OFF_NOTE,
 } from "../shared/common.mjs";
 import { KAZUS_NAMUNALAR, STANDART_FORMAT, FANLAR } from "../shared/kazus-namunalar.mjs";
+import { retrieve, citationReport } from "../shared/rag.mjs";
 
 export const config = {
   path: "/api/kazus",
-  rateLimit: { windowLimit: 5, windowSize: 60, aggregateBy: ["ip", "domain"] },
+  rateLimit: { windowLimit: 12, windowSize: 60, aggregateBy: ["ip", "domain"] },
 };
 
 const MAX_KAZUS = 6000;
 const MAX_FORMAT = 6000;
+// Netlify sinxron funksiyasi 60 soniyada to'xtatiladi: 48 soniyada oqimni xavfsiz yopamiz va brauzer davomini so'raydi.
+const deadlineMs = () => Number(process.env.HK_DEADLINE_MS) || 48000; // testlarda qisqartiriladi
+const MAX_ROUNDS = 4;            // birinchi so'rov + 3 ta davom
+const MAX_PARTIAL = 90000;       // davom uchun qaytarilgan oldingi matn chegarasi (belgi)
+const CONTINUE_PROMPT = "Javobingiz texnik vaqt chegarasi sababli uzildi. Aynan to‘xtagan joydan davom ettiring: oldingi matnni takrorlamang, sarlavha yoki bo‘limlarni qaytadan boshlamang, yarim qolgan so‘z yoki gapni to‘g‘ri ulang. Tuzilma, qoidalar va manba talablari avvalgidek. Agar javob tugagan bo‘lsa, faqat yakuniy bo‘lim(lar)ni yozing.";
 // Brauzerdagi shaxsiy sessiya server ulanishi degani emas. Ruxsatli retriever
 // ishga tushmaguncha kitob matni olinganini hech qayerda da'vo qilmaymiz.
 const TSUL_STATUS = Object.freeze({
@@ -70,8 +77,17 @@ export default async (req, context) => {
     return listResponse();
   }
 
-  const { body, error } = await guardJsonPost(req, context, { scope: "kazus", perMinute: 5, perHour: 30 });
+  const startedAt = Date.now();
+  const { body, error } = await guardJsonPost(req, context, { scope: "kazus", perMinute: 12, perHour: 80, maxBytes: 320000 });
   if (error) return error;
+
+  // Davom so'rovi: brauzer oldingi qism matnini va to'plangan manbalarni qaytaradi.
+  const cont = body?.continuation && typeof body.continuation === "object" ? body.continuation : null;
+  const round = cont ? Number(cont.round) : 0;
+  if (cont && (!Number.isInteger(round) || round < 1 || round >= MAX_ROUNDS)) return jsonError("Davom so‘rovi noto‘g‘ri.", 400);
+  const partial = cont && typeof cont.partial === "string" ? cont.partial.slice(0, MAX_PARTIAL + 1) : "";
+  if (cont && (!partial.trim() || partial.length > MAX_PARTIAL)) return jsonError("Davom uchun oldingi matn noto‘g‘ri yoki juda uzun.", 400);
+  const priorSources = cont && Array.isArray(cont.sources) ? safeSources(cont.sources.slice(0, 20)) : [];
 
   const kazus = sanitize(body?.kazus, MAX_KAZUS + 1);
   const studentAnswer = sanitize(body?.studentAnswer, 8001);
@@ -105,35 +121,41 @@ export default async (req, context) => {
     formatBlock = `JAVOB SHAKLI (standart tuzilma):\n${STANDART_FORMAT}`;
   }
 
-  const { apiKey, model } = geminiConfig();
+  const { apiKey, models, thinkingLevel } = geminiConfig();
   if (!apiKey) return jsonError("AI xizmati sozlanmagan. Serverda GEMINI_API_KEY kiritilishi kerak.", 503);
 
   const contents = [
     ...fewShot,
     { role: "user", parts: [{ text: `Fan: ${FANLAR[fan]}\nVoqea sanasi: ${eventDate}\nVazifa: ${review ? "Talaba javobini baholang: to‘g‘ri jihatlar, xato normalar, yetishmagan dalillar, asoslangan yaxshilangan yechim. Ball yoki bahoni o‘qituvchi bahosi deb bermang. Talaba javobi: " + studentAnswer : "Kazusni asoslantirib tahlil qiling"}\n\n${formatBlock}\n\nYechilishi kerak bo'lgan kazus:\n"""\n${kazus}\n"""` }] },
   ];
+  if (cont) contents.push(
+    { role: "model", parts: [{ text: partial }] },
+    { role: "user", parts: [{ text: CONTINUE_PROMPT }] },
+  );
 
-  const request = (withSearch) => callGemini({
-    apiKey, model, stream: true, signal: req.signal,
-    body: {
-      system_instruction: { parts: [{ text: SYSTEM + BOOK_SOURCE_RULES }] },
-      contents,
-      ...(withSearch ? { tools: [{ google_search: {} }] } : {}),
-      generationConfig: { temperature: 0.2, maxOutputTokens: 12000 },
-    },
-  });
+  // RAG: Mehnat kodeksi va Plenum 26-son qaroridan mos parchalar (mehnat sohasi yoki mehnatga oid kazusda).
+  const rag = retrieve(kazus + (review ? "\n" + studentAnswer : ""), { k: 12, budget: 18000, force: fan === "mehnat" });
+  const body0 = {
+    system_instruction: { parts: [{ text: SYSTEM + BOOK_SOURCE_RULES + rag.block }] },
+    contents,
+    // Davom so'rovida qidiruv o'chiriladi: tezroq ishlaydi, manbalar birinchi qismdan olib boriladi.
+    ...(cont ? {} : { tools: [{ google_search: {} }] }),
+    generationConfig: { temperature: 0.2, maxOutputTokens: 12000 },
+  };
 
   try {
-    let upstream = await request(true);
-
-    if (!upstream.ok) return await providerError(upstream);
-    if (!upstream.body) return jsonError("AI xizmatidan javob oqimi kelmadi.", 502);
-
-    return pipeGeminiStream(upstream, {
-      onEnd: (sources) => sourceTail(sources) + `\n\n**TSUL manbasi:** ${TSUL_STATUS.message}` + "\n\n*O‘quv tahlili. Topshirishdan oldin manbalar va topshiriq talablarini tekshiring.*",
+    const r = await callGeminiResilient({ apiKey, models, body: body0, stream: true, signal: req.signal, thinkingLevel, allowNoSearch: true, timeoutMs: 58000 });
+    if (!r.ok) return await providerError(r);
+    if (!r.upstream.body) return jsonError("AI xizmatidan javob oqimi kelmadi.", 502);
+    return pipeGeminiStream(r.upstream, {
+      continuable: true,
+      canContinue: round < MAX_ROUNDS - 1,
+      deadlineAt: startedAt + deadlineMs(),
+      prefix: r.searchDropped ? SEARCH_OFF_NOTE : "",
+      onEnd: (sources, text) => sourceTail(dedupeSources([...priorSources, ...sources])) + citationReport(partial + text, rag.provided, { bands: rag.bands, eventDate }) + `\n\n**TSUL manbasi:** ${TSUL_STATUS.message}` + "\n\n*O‘quv tahlili. Topshirishdan oldin manbalar va topshiriq talablarini tekshiring.*",
     });
   } catch (e) {
     console.error("Kazus backend error:", e?.name || "unknown");
-    return jsonError("Server bilan bog'lanishda xatolik yuz berdi.", 502);
+    return jsonError(e?.name === "TimeoutError" ? "AI javobini kutish vaqti tugadi. Qayta urinib ko‘ring." : "Server bilan bog'lanishda xatolik yuz berdi.", 502);
   }
 };

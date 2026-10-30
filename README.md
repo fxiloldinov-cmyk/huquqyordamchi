@@ -24,7 +24,7 @@ Loyihaning **butun papkasini** repozitoriyga joylang va Netlify orqali build qil
 - Publish directory: `public`
 - Functions directory: `netlify/functions`
 - Node.js: 22 yoki yangiroq
-- Server muhiti: `GEMINI_API_KEY`; ixtiyoriy `GEMINI_MODEL`
+- Server muhiti: `GEMINI_API_KEY`; ixtiyoriy `GEMINI_MODEL` (standart `gemini-3.8-flash`, vergul bilan zaxira modellar) va `GEMINI_THINKING_LEVEL` (`low` standart)
 - `ALLOWED_ORIGINS`: bo‘sh bo‘lsa saytning o‘z origin’i; aks holda vergul bilan ajratilgan to‘liq origin’lar, masalan `https://your-site.netlify.app`. Protokol va port ham hisobga olinadi.
 
 Kalitni frontendga, ZIPga yoki ochiq repozitoriyga qo‘ymang. AI so‘rovlari tashqi provayderga ketadi; kvota va billing sozlamalarini hisobingizda tekshiring. Mahalliy dev server internetga chiqarish uchun mo‘ljallanmagan.
@@ -64,7 +64,7 @@ Vaziyat sanasiga mos kuchga kirgan tahrirni tanlang. Katalog to‘liq normativ b
 
 ## Tuzilma va tekshiruv
 
-`public/` — brauzer interfeysi; `netlify/functions/` — API; `netlify/shared/` — umumiy himoya va AI oqimi; `data/` — yagona katalog; `scripts/` — build va lokal server; `tests/` — 23 ta regressiya testi; `telegram_bot/` — alohida bot.
+`public/` — brauzer interfeysi; `netlify/functions/` — API; `netlify/shared/` — umumiy himoya va AI oqimi; `data/` — yagona katalog; `scripts/` — build va lokal server; `tests/` — 32 ta regressiya testi; `telegram_bot/` — alohida bot.
 
 ## TSUL kitoblari
 
@@ -77,3 +77,21 @@ TSUL Digital orqali brauzerda kirish va kitob matnini o'qish tekshirildi. Server
 `npm run build` har bir vaziyat uchun `public/vaziyat/<slug>/index.html` statik sahifasini, `public/vaziyat/index.html` ro‘yxatini, `public/sitemap.xml` va `public/robots.txt` ni yaratadi. Sayt manzili Netlify'dagi `URL` o‘zgaruvchisidan olinadi (yoki `SITE_URL`). Yangi vaziyat qo‘shganda `legal.json` da unga lotincha `slug` bering.
 
 Google Search Console: saytni "URL prefix" sifatida qo‘shing, tasdiqlash faylini `public/` ga joylang, so‘ng `sitemap.xml` ni yuboring. Yandex Webmaster uchun ham xuddi shunday qiling. Shaxsiy domen ulansa, `public/index.html` dagi canonical va og:url manzillarini yangilang.
+
+## AI ishlashi (v10.5)
+
+- Standart model `gemini-3.8-flash`. Google 2.5 modellarini faqat ularni avval ishlatgan hisoblarga qoldirgan, shuning uchun yangi kalit bilan `gemini-2.5-flash` rad etilardi. Model topilmasa yoki ruxsat bo‘lmasa, keyingi modelga avtomatik o‘tiladi.
+- Noto‘g‘ri kalitda foydalanuvchiga "GEMINI_API_KEY ni tekshiring" degan aniq xabar chiqadi; batafsil sabab Netlify → Functions loglarida (`AI provider ...`).
+- Netlify sinxron funksiyasi 60 soniyada to‘xtatiladi. Kazus javobi 48 soniyada xavfsiz to‘xtatiladi va brauzer davomini avtomatik so‘raydi (ko‘pi bilan 4 qism). Manbalar birinchi qismdan oxirigacha saqlanadi.
+- Chat va kazusda Google qidiruvi aynan qidiruv sababli rad etilsa, javob qidiruvsiz beriladi va boshida ochiq ogohlantirish turadi. Aqlli qidiruvda bunday almashtirish yo‘q.
+
+## RAG: rasmiy matnga tayangan javoblar (v10.6)
+
+Chat, aqlli qidiruv, "Sodda tilda tushuntirish" va kazus AI'ga so‘rov yuborishdan oldin `netlify/shared/rag.mjs` orqali mos parchalarni topadi va ularni "TASDIQLANGAN MANBA PARCHALARI" sifatida beradi.
+
+- **Baza:** `data/laws/mk.json` — Mehnat kodeksi, 593 modda, lex.uz eksporti, 2026-10-15 holatidagi tahrir (o‘zgartish izohlari bilan). `data/laws/plenum-26-2023.json` — Oliy sud Plenumining 2023-yil 20-noyabrdagi 26-son qarori, 74 band; bandlar ular tilga olgan MK moddalariga bog‘langan.
+- **Qidiruv:** "MK 163" kabi aniq havola; BM25 (o‘zbekcha qo‘shimchalar olib tashlanadi, kirill→lotin); uzun kazusda har bir gap alohida izlanadi; kundalik so‘zlar mavzu jadvali orqali kerakli moddalarga yo‘naltiriladi ("kasal" → MK 163, 165).
+- **Faqat mehnatga oid** savollarda yoki kazusda soha "Mehnat huquqi" bo‘lsa ishlaydi; boshqa mavzularga parcha qo‘shilmaydi.
+- **Tekshiruv:** javob oxirida "Manba tekshiruvi" chiqadi: ✅ berilgan rasmiy matndagi modda/band, ⚠️ kodeksda bor lekin berilmagan, ❌ mavjud emas. Aqlli qidiruvda MK natijalari rasmiy sarlavha bilan almashtiriladi va belgilanadi.
+- **Yangilash:** lex.uz’dan hujjatni Word shaklida yuklab, `npm run import:law -- <fayl.doc> data/laws/mk.json --doc mk --lex-id -6257288` (bandli hujjat uchun `--lex-id` ixtiyoriy). `pip install beautifulsoup4` kerak. So‘ng `npm test`.
+- **Cheklov:** baza amaldagi tahrirni saqlaydi; voqea sanasidagi eski tahrir alohida saqlanmaydi — buning o‘rniga tahrir izohlari beriladi va tekshiruvda ogohlantiriladi. Telegram botga RAG hali ulanmagan.

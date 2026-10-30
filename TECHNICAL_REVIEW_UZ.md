@@ -20,7 +20,7 @@ Sana: 2026-10-29. Bu fayl v9 dagi eski texnik ko‘rik o‘rniga joriy holatni q
 ## Bajarilgan tekshiruv
 
 - `npm run build` — muvaffaqiyatli.
-- `npm test` — 23/23 test. Qidiruv, kodekslar chalkashishi, aliment ulushi, andoza cheklovlari, uzun suhbat, JSON/Origin, SSE, RSS va AI so‘rov shakli tekshirildi. AI integratsiyasi tashqi haqiqiy xizmat o‘rniga nazorat qilinadigan javoblar bilan sinaldi.
+- `npm test` — 32/32 test. Qidiruv, kodekslar chalkashishi, aliment ulushi, andoza cheklovlari, uzun suhbat, JSON/Origin, SSE, RSS va AI so‘rov shakli tekshirildi. AI integratsiyasi tashqi haqiqiy xizmat o‘rniga nazorat qilinadigan javoblar bilan sinaldi.
 - JavaScript/ESM sintaksisi va Python kompilyatsiyasi tekshirildi.
 - Brauzerda bosh sahifa, `JK 168` qidiruvi, AI kaliti yo‘q holati, aliment generatori, kodeks tushuntirish oynasi va kazus rejimlari ko‘rildi. Desktop ko‘rinishi vizual tekshirildi; mobil ekran uchun CSS qo‘shilgan, alohida haqiqiy telefon sinovi bajarilmadi.
 
@@ -35,3 +35,26 @@ Sana: 2026-10-29. Bu fayl v9 dagi eski texnik ko‘rik o‘rniga joriy holatni q
 - Hujjat eksporti: TXT va brauzer orqali chop etish/PDF. DOCX, administrator paneli, login va foydalanuvchi hujjatlarini serverda saqlash bu versiyada yo‘q.
 
 Asosiy qayta tekshirish navbati: hostingda AI/RSS sinovi, qolgan katalogning huquqiy auditi, haqiqiy telefon sinovi, tarqatilgan API xarajat nazorati.
+
+## v10.4 — shaxsiy ma’lumot filtri tuzatildi
+
+- Formatlanmagan 9 xonali son (masalan, `901234567 so‘m`) endi telefon deb yashirilmaydi. Telefon faqat +998 prefiksi, `90 123 45 67` / `(90) 123-45-67` shakli yoki yonida "tel/telefon/aloqa" so‘zi bo‘lsa yashiriladi.
+- Orqasidan so‘m, sum, mln, ming, $ kabi so‘z kelgan sonlar (karta va JSHSHIRga o‘xshasa ham) yashirilmaydi.
+- Kichik harfli pasport (`aa1234567`) va email manzillari yashiriladi.
+- Telegram bot ham Gemini'ga yuborishdan oldin xuddi shu qoidalarni qo‘llaydi.
+- Cheklov: ism, familiya va manzil ataylab yashirilmaydi (kazus tahlili uchun kerak). Bu to‘liq anonimlashtirish emas; interfeysdagi ogohlantirish shuni aytadi.
+- Tekshiruv: `npm test` — 23/23; filtr katalog, shablonlar, kazus namunasi va yangiliklar matnidagi birorta raqamni o‘zgartirmaydi.
+
+## v10.5 — AI ishga tushirish
+
+- Sabab: standart `gemini-2.5-flash` yangi API kalitlar uchun yopilgan (Google, 2025-09-18). Yangi standart — `gemini-3.8-flash`, zaxira zanjiri bilan.
+- Sabab: kazus tahlili Netlify’ning 60 soniyalik chegarasidan uzun bo‘lishi mumkin edi. Endi 48 soniyada xavfsiz to‘xtab, brauzer davomini so‘raydi; matn uzilishsiz ulanadi.
+- "thinking" sozlamasi qabul qilinmasa, usiz qayta yuboriladi. Sababi noma’lum xatoda qayta urinish yo‘q.
+- Tekshiruv: 27/27 test; brauzerda soxta (sekin) Gemini bilan 3 qismli kazus javobi to‘liq ulanib, manba va TSUL qatori bilan tugashi tekshirildi. Haqiqiy Gemini kaliti bilan sinov hosting muhitida qilinishi kerak.
+
+## v10.6 — RAG: Mehnat kodeksi va Plenum 26-son
+
+- Mehnat kodeksining lex.uz rasmiy matni (593 modda, 2026-10-15 tahriri) va Oliy sud Plenumining 26-son qarori (74 band) bazaga kiritildi.
+- Rasmiy matn bilan tasdiqlandi: 161 — ish beruvchi tashabbusi, 163 — taqiqlar (kasallik davri 1-qism 3-band), 165 — ogohlantirish (qisqarishda kamida 2 oy), 173 — ishdan bo‘shatish nafaqasi, 560 — sudga murojaat muddatlari (ishga tiklash — 3 oy), 562 — sud xarajatlaridan ozod qilish. Katalogdagi MK raqamlari to‘g‘ri edi; 333, 560 va 163 sarlavhalari rasmiy shaklga keltirildi, barcha MK yozuvlari `reviewedAt: 2026-10-30`.
+- Kazus, chat, qidiruv va tushuntirishga parchalar beriladi; javobdagi MK modda va Plenum band raqamlari avtomatik tekshiriladi (kazusda — barcha qismlar bo‘yicha).
+- Tekshiruv: 32/32 test; brauzerda soxta Gemini bilan 3 qismli kazus — har qismda parchalar berildi, 163 ✅, uydirma 999 ❌ deb belgilandi.

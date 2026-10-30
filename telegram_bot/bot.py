@@ -56,6 +56,27 @@ VERIFY_NOTE = "\n\n_⚠️ Umumiy ma'lumot. Modda, muddat va raqamlarni lex.uz d
 _gemini_client = None
 
 
+# Shaxsiy ma'lumotlarni Gemini'ga yuborishdan oldin yashirish (sayt bilan bir xil qoidalar:
+# netlify/shared/common.mjs → redactPII). Summalar va formatlanmagan 9 xonali sonlar yashirilmaydi.
+_NOT_MONEY = r"(?!\d|[.,]\d|\s*(?:so['‘’ʻʼ]?m|sum|сўм|сум|mln|million|mlrd|milliard|ming|dollar|usd|evro|euro|rubl|руб|tenge|\$|€))"
+_OPS = r"(?:20|33|50|55|61|62|65|66|67|69|70|71|72|73|74|75|76|77|78|79|88|90|91|93|94|95|97|98|99)"
+_PII_RULES = [
+    (re.compile(r"[\w.+-]+@[\w-]+(?:\.[\w-]+)+"), "[email yashirildi]"),
+    (re.compile(r"(?:\+\s?998|\b998)[\s\-()]*\d{2}[\s\-()]*\d{3}[\s\-]*\d{2}[\s\-]*\d{2}\b"), "[telefon yashirildi]"),
+    (re.compile(r"\b(?:\d{4}[ -]?){3}\d{4}(?:[ -]?\d{1,3})?\b" + _NOT_MONEY, re.I), "[karta raqami yashirildi]"),
+    (re.compile(r"\b[3-6]\d{13}\b" + _NOT_MONEY, re.I), "[JSHSHIR yashirildi]"),
+    (re.compile(r"\(?\b" + _OPS + r"\)?[\s\-]\d{3}[\s\-]\d{2}[\s\-]\d{2}\b" + _NOT_MONEY, re.I), "[telefon yashirildi]"),
+    (re.compile(r"((?:tel(?:efon)?|mobil|aloqa|phone|тел(?:ефон)?|номер)[^\d\n]{0,20})" + _OPS + r"\d{7}\b" + _NOT_MONEY, re.I), r"\1[telefon yashirildi]"),
+    (re.compile(r"\b[A-Za-z]{2}[\s-]?\d{7}\b"), "[pasport raqami yashirildi]"),
+]
+
+
+def redact_pii(text: str) -> str:
+    for pattern, repl in _PII_RULES:
+        text = pattern.sub(repl, text)
+    return text
+
+
 def get_gemini_client():
     """Gemini klientini bir marta yaratib, qayta ishlatadi."""
     global _gemini_client
@@ -273,7 +294,7 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
         # Asinxron chaqiruv: bitta javob kutilayotganda bot boshqa foydalanuvchilarga ham javob beradi.
         async with _ai_slots:
             response = await asyncio.wait_for(client.aio.models.generate_content(
-                model=GEMINI_MODEL, contents=user_text,
+                model=GEMINI_MODEL, contents=redact_pii(user_text),
                 config=types.GenerateContentConfig(system_instruction=SYSTEM_INSTRUCTION,
                     temperature=0.1, max_output_tokens=3000,
                     tools=[types.Tool(google_search=types.GoogleSearch())]),

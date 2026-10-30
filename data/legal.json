@@ -573,7 +573,7 @@
       "title": "Ushbu Kodeksda nazarda tutilgan muddatlarni hisoblash",
       "kw": "muddat hisoblash kun oy",
       "approx": false,
-      "reviewedAt": null
+      "reviewedAt": "2026-10-30"
     },
     {
       "doc": "mk",
@@ -581,7 +581,7 @@
       "title": "Xodimning huquqlari",
       "kw": "xodim huquq ishchi",
       "approx": false,
-      "reviewedAt": null
+      "reviewedAt": "2026-10-30"
     },
     {
       "doc": "mk",
@@ -589,7 +589,7 @@
       "title": "Xodimning majburiyatlari",
       "kw": "xodim majburiyat ishchi",
       "approx": false,
-      "reviewedAt": null
+      "reviewedAt": "2026-10-30"
     },
     {
       "doc": "mk",
@@ -597,7 +597,7 @@
       "title": "Ish beruvchining huquqlari",
       "kw": "ish beruvchi rahbar direktor huquq",
       "approx": false,
-      "reviewedAt": null
+      "reviewedAt": "2026-10-30"
     },
     {
       "doc": "mk",
@@ -605,7 +605,7 @@
       "title": "Ish beruvchining majburiyatlari",
       "kw": "ish beruvchi rahbar direktor majburiyat",
       "approx": false,
-      "reviewedAt": null
+      "reviewedAt": "2026-10-30"
     },
     {
       "doc": "mk",
@@ -613,7 +613,7 @@
       "title": "Ishga joylashish huquqi",
       "kw": "ishga kirish joylashish ish topish",
       "approx": false,
-      "reviewedAt": null
+      "reviewedAt": "2026-10-30"
     },
     {
       "doc": "mk",
@@ -621,7 +621,7 @@
       "title": "Xodimlarni ommaviy ravishda ishdan bo‘shatish chog‘idagi kafolatlar",
       "kw": "ommaviy bo‘shatish qisqartirish shtat",
       "approx": false,
-      "reviewedAt": null
+      "reviewedAt": "2026-10-30"
     },
     {
       "doc": "mk",
@@ -629,7 +629,7 @@
       "title": "Mehnat shartnomasini xodimning tashabbusiga ko‘ra bekor qilish",
       "kw": "o‘z xohishi bilan bo‘shash ariza ketish ishdan ketmoqchi",
       "approx": false,
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-30"
     },
     {
       "doc": "mk",
@@ -637,7 +637,7 @@
       "title": "Mehnat shartnomasini ish beruvchining tashabbusiga ko‘ra bekor qilish",
       "kw": "ishdan bo‘shatish haydash bo‘shatdi bo‘shatmoqchi qisqartirish",
       "approx": false,
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-30"
     },
     {
       "doc": "mk",
@@ -645,7 +645,7 @@
       "title": "Mehnat shartnomasi bekor qilinganda xodim bilan hisob-kitob qilish",
       "kw": "hisob-kitob oxirgi maosh kompensatsiya ta’til puli bo‘shaganda",
       "approx": false,
-      "reviewedAt": null
+      "reviewedAt": "2026-10-30"
     },
     {
       "doc": "mk",
@@ -653,7 +653,7 @@
       "title": "Mehnat shartnomasini qonunga xilof ravishda bekor qilishning huquqiy oqibatlari",
       "kw": "noqonuniy bo‘shatish ishga tiklash majburiy progul sud",
       "approx": false,
-      "reviewedAt": null
+      "reviewedAt": "2026-10-30"
     },
     {
       "doc": "mk",
@@ -661,7 +661,7 @@
       "title": "Ish haqini to‘lash muddatlari",
       "kw": "maosh ish haqi oylik to‘lanmayapti kechikish berilmayapti",
       "approx": false,
-      "reviewedAt": null
+      "reviewedAt": "2026-10-30"
     },
     {
       "doc": "mk",
@@ -669,15 +669,15 @@
       "title": "Mehnat shartnomasi bekor qilinganda hisob-kitob qilish muddatlari",
       "kw": "hisob-kitob muddati oxirgi kun maosh bo‘shaganda",
       "approx": false,
-      "reviewedAt": null
+      "reviewedAt": "2026-10-30"
     },
     {
       "doc": "mk",
       "art": "333",
-      "title": "Ish haqi va boshqa to‘lovlarni kechiktirganlik uchun ish beruvchining moddiy javobgarligi",
+      "title": "Xodimga ish haqi to‘lashni va unga to‘lanishi lozim bo‘lgan boshqa to‘lovlarni kechiktirganlik uchun ish beruvchining moddiy javobgarligi",
       "kw": "maosh kechikish kompensatsiya foiz javobgarlik berilmayapti",
-      "approx": true,
-      "reviewedAt": "2026-10-29"
+      "approx": false,
+      "reviewedAt": "2026-10-30"
     },
     {
       "doc": "ok",
@@ -906,18 +906,18 @@
     {
       "doc": "mk",
       "art": "560",
-      "title": "Mehnat nizolari bo‘yicha sudga murojaat qilish muddatlari",
+      "title": "Yakka tartibdagi mehnat nizosining ko‘rib chiqilishi uchun sudga murojaat qilish muddatlari",
       "kw": "ishga tiklash muddat uch oy olti oy sud",
-      "approx": true,
-      "reviewedAt": "2026-10-29"
+      "approx": false,
+      "reviewedAt": "2026-10-30"
     },
     {
       "doc": "mk",
       "art": "163",
-      "title": "Ish beruvchi tashabbusi bilan bekor qilishni taqiqlash",
+      "title": "Mehnat shartnomasini ish beruvchining tashabbusiga ko‘ra bekor qilishni taqiqlash",
       "kw": "kasallik ta’til vaqtida bo‘shatish",
-      "approx": true,
-      "reviewedAt": null
+      "approx": false,
+      "reviewedAt": "2026-10-30"
     },
     {
       "doc": "ok",

@@ -116,7 +116,7 @@ function renderAiBlock(data) {
       <div class="article-top">
         ${r.modda ? `<span class="article-badge">${escapeHtml(r.modda)}-modda</span>` : ""}
         <span class="article-doc">${escapeHtml(r.hujjat)}</span>
-        ${verified ? `<span class="chip ok">Hujjat va modda raqami katalogga mos</span>` : `<span class="chip mid">AI taklifi — norma tekshirilsin</span>`}
+        ${r.rasmiyMatn === 'berilgan' ? `<span class="chip ok">Rasmiy matn bilan tekshirildi (MK)</span>` : r.rasmiyMatn === 'kodeksda' ? `<span class="chip mid">MKda bor — matnini tekshiring</span>` : r.rasmiyMatn === 'yoq' ? `<span class="chip low">MKda bunday modda yo‘q</span>` : verified ? `<span class="chip ok">Hujjat va modda raqami katalogga mos</span>` : `<span class="chip mid">AI taklifi — norma tekshirilsin</span>`}
       </div>
       ${r.moddaNomi ? `<div class="article-title">${escapeHtml(r.moddaNomi)}</div>` : ""}
       ${r.nimaUchun ? `<p class="article-why">${escapeHtml(r.nimaUchun)}</p>` : ""}
@@ -259,6 +259,10 @@ async function loadNamunalar() {
   autoPickMode();
 }
 
+// Server yuborgan yashirin boshqaruv belgilarini matndan olib tashlaydi.
+function cleanKazus(text) {
+  return String(text).replace(/\u2063HK:(?:CONT:[^\u2063]*|END)\u2063/g, "").replace(/\u2063HK:[^\u2063]*$/, "");
+}
 kazusForm?.addEventListener("submit", async (e) => {
   e.preventDefault();
   if (kazusBusy) return;
@@ -271,38 +275,59 @@ kazusForm?.addEventListener("submit", async (e) => {
   if (mode === "ozim" && format.length < 20) return showError("O'zingiz xohlagan javob shaklini kiriting.");
 
   kazusBusy = true;
-  kazusController=new AbortController();const timer=setTimeout(()=>kazusController?.abort(),65000);$("#kazus-stop").hidden=false;
+  kazusController = new AbortController();
+  $("#kazus-stop").hidden = false;
   kazusBtn.disabled = true;
   kazusBtn.textContent = "Yechilmoqda...";
   kazusCopy.disabled = true;
   $("#kazus-download").disabled = true;
   kazusAnswer = "";
-  kazusOut.innerHTML = `<p class="kazus-empty">Kazus tahlil qilinmoqda...</p>`;
+  kazusOut.innerHTML = `<p class="kazus-empty">Kazus tahlil qilinmoqda... Uzun tahlil 1–3 daqiqa davom etishi mumkin.</p>`;
 
+  // Server har ~50 soniyada (Netlify chegarasi) javobni xavfsiz to'xtatib, yashirin belgi yuboradi:
+  // HK:CONT — davomi bor (manbalar bilan), HK:END — tugadi. Davomi avtomatik so'raladi va matn ulanadi.
+  const base = {
+    kazus, mode, task: $("#kazus-task").value, studentAnswer: $("#kazus-student-answer").value, eventDate: $("#kazus-date").value, fan: $("#kazus-fan").value,
+    namunaId: mode === "namuna" ? namunaSelect.value : undefined,
+    format: mode === "ozim" ? format : undefined,
+  };
+  const MAX_ROUNDS = 4;
+  let sources = [];
+  let timer = null;
   try {
-    const res = await fetch("/api/kazus", {
-      method: "POST", signal:kazusController.signal,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        kazus, mode, task:$("#kazus-task").value, studentAnswer:$("#kazus-student-answer").value, eventDate:$("#kazus-date").value, fan: $("#kazus-fan").value,
-        namunaId: mode === "namuna" ? namunaSelect.value : undefined,
-        format: mode === "ozim" ? format : undefined,
-      }),
-    });
-    if (!res.ok || !res.body) {
-      let detail = "";
-      try { detail = (await res.json()).error || ""; } catch {}
-      throw new Error(detail || `Server xatosi (${res.status})`);
+    for (let round = 0; round < MAX_ROUNDS; round++) {
+      clearTimeout(timer);
+      timer = setTimeout(() => kazusController?.abort(), 75000);
+      const payload = round === 0 ? base : { ...base, continuation: { round, partial: kazusAnswer, sources } };
+      const res = await fetch("/api/kazus", {
+        method: "POST", signal: kazusController.signal,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok || !res.body) {
+        let detail = "";
+        try { detail = (await res.json()).error || ""; } catch {}
+        throw new Error(detail || `Server xatosi (${res.status})`);
+      }
+      const reader = res.body.getReader();
+      const dec = new TextDecoder();
+      let chunk = "";
+      for (;;) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        chunk += dec.decode(value, { stream: true });
+        kazusOut.innerHTML = md(cleanKazus(kazusAnswer + chunk));
+      }
+      chunk += dec.decode();
+      const cont = chunk.match(/\u2063HK:CONT:([^\u2063]*)\u2063/);
+      const ended = /\u2063HK:END\u2063/.test(chunk);
+      kazusAnswer += cleanKazus(chunk);
+      if (ended) break;
+      if (!cont && !chunk.trim()) break;
+      if (cont) { try { const extra = JSON.parse(decodeURIComponent(cont[1])); if (Array.isArray(extra)) sources = [...sources, ...extra].slice(0, 20); } catch {} }
+      if (round === MAX_ROUNDS - 1) { kazusAnswer += "\n\n⚠️ Tahlil juda uzun bo‘ldi va oxirigacha yetmadi. Savollarni qisqartirib qayta yuboring."; break; }
+      kazusOut.innerHTML = md(kazusAnswer) + `<p class="kazus-empty">Davomi yuklanmoqda (${round + 2}/${MAX_ROUNDS})…</p>`;
     }
-    const reader = res.body.getReader();
-    const dec = new TextDecoder();
-    for (;;) {
-      const { done, value } = await reader.read();
-      if (done) break;
-      kazusAnswer += dec.decode(value, { stream: true });
-      kazusOut.innerHTML = md(kazusAnswer);
-    }
-    kazusAnswer += dec.decode();
     if (!kazusAnswer.trim()) throw new Error("AI bo'sh javob qaytardi.");
     kazusOut.innerHTML = md(kazusAnswer);
     kazusCopy.disabled = false;
