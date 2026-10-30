@@ -1,0 +1,939 @@
+{
+  "situations": [
+    {
+      "id": "ish",
+      "slug": "ishdan-boshatish",
+      "icon": "briefcase",
+      "title": "Ishdan noqonuniy bo‘shatish",
+      "desc": "Asossiz bo‘shatish, hisob-kitob va kompensatsiya olish",
+      "tag": "Mehnat kodeksi",
+      "intro": "Ish beruvchi xodimni faqat Mehnat kodeksida aniq belgilangan asoslar bo‘yicha va qat’iy tartibda ishdan bo‘shatishga haqli. Noqonuniy bo‘shatilgan taqdirda ishga tiklanish va majburiy bekor yurilgan vaqt uchun ish haqi undirish mumkin.",
+      "steps": [
+        [
+          "Buyruq nusxasini oling",
+          "Ishdan bo‘shatish haqidagi buyruq va uning asosini yozma ravishda talab qilib oling."
+        ],
+        [
+          "Yakuniy hisob-kitobni tekshiring",
+          "Oxirgi ish kuni barcha ish haqi, foydalanilmagan mehnat ta’tillari uchun kompensatsiya to‘liq berilishi shart."
+        ],
+        [
+          "Davlat mehnat inspeksiyasiga yozing",
+          "Ish joyingiz joylashgan hududdagi Davlat mehnat inspeksiyasiga shikoyat qiling (amaldagi manzilni gov.uz dan tekshiring)."
+        ],
+        [
+          "Sudga da’vo bilan chiqing",
+          "MK 560-moddasiga ko‘ra ishga tiklash bo‘yicha muddat — buyruq ko‘chirma nusxasi topshirilgan kundan 3 oy; boshqa mehnat nizolari bo‘yicha umumiy muddat — huquq buzilganini bilgan yoki bilishi kerak bo‘lgan kundan 6 oy. Maxsus muddatlar va muddatni tiklash asoslarini alohida tekshiring. MK 562-moddasi xodimlarni sud xarajatlaridan ozod etishni belgilaydi."
+        ]
+      ],
+      "laws": [
+        "O‘zbekiston Respublikasining Mehnat kodeksi (161-modda — ish beruvchi tashabbusi bilan bekor qilish; 172-modda — hisob-kitob; 174-modda — qonunga xilof bekor qilish oqibatlari)",
+        "O‘zbekiston Respublikasi Fuqarolik protsessual kodeksi"
+      ],
+      "qs": [
+        "Meni ogohlantirishsiz ishdan bo‘shatishdi, bu qonuniymi?",
+        "Bo‘shatilganda ish beruvchi qanday to‘lovlarni to‘lashi shart?",
+        "Ishga tiklash uchun sudga qanday ariza yoziladi?"
+      ],
+      "sourceUrls": [
+        "https://lex.uz/docs/-6257288"
+      ]
+    },
+    {
+      "id": "ish_haqi",
+      "slug": "ish-haqi-kechikishi",
+      "icon": "cash",
+      "title": "Maosh va ta’til puli kechikishi",
+      "desc": "Kechiktirilgan ish haqi, jarimalar va foizli kompensatsiya",
+      "tag": "Mehnat kodeksi",
+      "intro": "Mehnat kodeksining 253-moddasi ish haqini to‘lash muddatlarini, 333-moddasi esa ish haqini kechiktirganlik uchun ish beruvchining moddiy javobgarligini belgilaydi. Kompensatsiya miqdori va hisoblash tartibini amaldagi matndan tekshiring.",
+      "steps": [
+        [
+          "Ish beruvchiga yozma ariza bering",
+          "Maosh kechikkani haqida yozma ariza yozing va qabul qilinganlik belgisi (kiruvchi raqam) qo‘yilgan nusxasini o‘zingizda saqlang."
+        ],
+        [
+          "Mehnat inspeksiyasi va prokuraturaga murojaat",
+          "Natija bo‘lmasa, Davlat mehnat inspeksiyasi yoki tegishli prokuraturaga hujjatlar bilan murojaat qiling. Amaldagi aloqa ma’lumotlarini organning rasmiy saytidan oling."
+        ],
+        [
+          "Sud buyrug‘i oling",
+          "Hisoblangan, ammo to‘lanmagan ish haqi bo‘yicha fuqarolik sudiga 'sud buyrug‘i' chiqarish uchun ariza bering (oddiy da’vodan ancha tez hal bo‘ladi)."
+        ]
+      ],
+      "laws": [
+        "Mehnat kodeksi (253-modda — ish haqini to‘lash muddatlari; 333-modda — kechiktirganlik uchun javobgarlik)",
+        "Fuqarolik protsessual kodeksi (sud buyrug‘i tartibi)"
+      ],
+      "qs": [
+        "Maosh 2 oy kechiksa qayerga shikoyat qilaman?",
+        "Ish beruvchidan kechiktirilgan foizni qanday talab qilsa bo‘ladi?"
+      ],
+      "sourceUrls": [
+        "https://lex.uz/docs/-6257288"
+      ]
+    },
+    {
+      "id": "oila",
+      "slug": "ajrashish-va-aliment",
+      "icon": "users",
+      "title": "Ajrashish va aliment",
+      "desc": "Nikohdan ajralish tartibi, bolalar taqdiri va aliment miqdori",
+      "tag": "Oila kodeksi",
+      "intro": "Oila kodeksining 99-moddasi bo‘yicha umumiy qoida: bir bola uchun daromadning 1/4 qismi, ikki bola uchun 1/3 qismi, uch va undan ortiq bola uchun 1/2 qismi. Sud taraflarning holatiga ko‘ra miqdorni o‘zgartirishi mumkin. Har bir bola uchun eng kam miqdor amaldagi MHTEKMning 26,5 foiziga bog‘liq; qat’iy summani holat sanasida tekshiring.",
+      "steps": [
+        [
+          "Tegishli tartibni tanlang",
+          "Voyaga yetmagan bolalar, nizo va qonundagi istisnolarga qarab FHDYo yoki sud tartibi tanlanadi. Faqat taraflarning roziligi har doim FHDYo tartibi uchun yetarli emas."
+        ],
+        [
+          "Aliment talabi shaklini tanlang",
+          "Otalik nizosi yoki uchinchi shaxslarni jalb qilish zarurati bo‘lmasa, voyaga yetmagan bolaga aliment bo‘yicha sud buyrug‘i so‘ralishi mumkin. Nizoli talablar da’vo tartibida ko‘riladi."
+        ],
+        [
+          "MIB orqali ijro",
+          "Sud qarori chiqqach, ijro varaqasi Majburiy ijro byurosiga (MIB) topshiriladi va to‘lov nazoratga olinadi."
+        ]
+      ],
+      "laws": [
+        "O‘zbekiston Respublikasi Oila kodeksi (96-modda — ta’minot berish majburiyati; 99-modda — aliment miqdori; 105-modda — miqdorni kamaytirish)",
+        "Sud hujjatlari va boshqa organlar hujjatlarini ijro etish to‘g‘risida Qonun"
+      ],
+      "qs": [
+        "Aliment qanday hisoblanadi va eng kam miqdori qancha?",
+        "Turmush o‘rtog‘im aliment to‘lamasa qanday jazo bor?",
+        "Ajrashganda uy va mol-mulk qanday bo‘linadi?"
+      ],
+      "sourceUrls": [
+        "https://lex.uz/docs/-104720",
+        "https://lex.uz/docs/-3517337"
+      ]
+    },
+    {
+      "id": "jarima",
+      "slug": "yhxx-jarimasiga-shikoyat",
+      "icon": "car",
+      "title": "YHXX ma’muriy jarimalari",
+      "desc": "Radar, kamera va nohaq jarimaga shikoyat qilish",
+      "tag": "Ma’muriy javobgarlik",
+      "intro": "YHXX yoki boshqa vakolatli organ chiqargan ma’muriy jarima qaroriga e’tiroz bo‘lsa, MJtKning 315–316-moddalari asosida yuqori turuvchi organga yoki jinoyat ishlari bo‘yicha tuman (shahar) sudiga shikoyat qilish mumkin. Sud qaroriga shikoyat uchun boshqa tartib qo‘llanadi.",
+      "steps": [
+        [
+          "Qaror va fotosuratni tekshiring",
+          "my.gov.uz yoki YHXXning rasmiy xizmatlari orqali fotosurat va vaqtni aniq tekshirib oling."
+        ],
+        [
+          "Muddat va qaror turini tekshiring",
+          "Organ qarori nusxasi olingan kundan odatda 10 kun ichida shikoyat beriladi. Uzrli sabab bo‘lsa, dalillar bilan muddatni tiklash so‘raladi. Sud chiqargan qarorning tartibini alohida aniqlashtiring."
+        ],
+        [
+          "E’tirozni dalillar bilan asoslang",
+          "Qaror nusxasi, foto/video, joy va vaqt, transportga aloqador hujjatlarni yig‘ing. Imtiyozli to‘lov masalasi va istisnolarini MJtK 332-1-moddasining amaldagi matnidan alohida tekshiring."
+        ]
+      ],
+      "laws": [
+        "Ma’muriy javobgarlik to‘g‘risidagi kodeks: 315–316-moddalar — organ qaroriga shikoyat; 332-1-modda — imtiyozli to‘lov."
+      ],
+      "qs": [
+        "Radar jarimasiga qanday e’tiroz bildirsa bo‘ladi?",
+        "Jarimalarni 50 foiz chegirma bilan to‘lash tartibi qanday?",
+        "Mening mashinam emas, boshqa odam haydagan bo‘lsa nima qilaman?"
+      ],
+      "sourceUrls": [
+        "https://lex.uz/docs/-97664"
+      ]
+    },
+    {
+      "id": "meros",
+      "slug": "meros-va-vasiyatnoma",
+      "icon": "doc",
+      "title": "Meros va vasiyatnoma",
+      "desc": "Meros guvohnomasi, vorislar navbati va notariusga murojaat",
+      "tag": "Fuqarolik kodeksi",
+      "intro": "Meros fuqaro vafot etganidan keyin ochiladi. FK 1146-moddasidagi 6 oy — odatda meros guvohnomasini berishdan oldingi davr. Uni merosni qabul qilish uchun mutlaq oxirgi muddat deb talqin qilish noto‘g‘ri. Muayyan holatni notarius bilan aniqlashtiring.",
+      "steps": [
+        [
+          "Notariusga ariza bering",
+          "Meros qoldiruvchi oxirgi yashagan joydagi notarial idoraga murojaat qiling."
+        ],
+        [
+          "Muddatning mazmunini aniqlang",
+          "Meros guvohnomasi odatda meros ochilganidan 6 oy o‘tgach beriladi. Boshqa vorislar yo‘qligi to‘g‘risida ma’lumot bo‘lsa, qonundagi shartlar asosida oldinroq berilishi mumkin."
+        ],
+        [
+          "Qarindoshlik va mulk hujjatlarini taqdim eting",
+          "FHDYo guvohnomalari va marhumning mulkiga tegishli kadastr, texpasport kabilar yig‘iladi."
+        ],
+        [
+          "Meros guvohnomasini oling",
+          "FK 1146-moddasi shartlari va hujjatlar tekshirilgach, notarius merosga bo‘lgan huquq to‘g‘risida guvohnoma berish masalasini hal qiladi."
+        ]
+      ],
+      "laws": [
+        "Fuqarolik kodeksi, 2-qism (V bo‘lim — vorislik huquqi, 1112-moddadan; 1135-modda — birinchi navbatdagi vorislar; 69-bob — merosni egallash, 1145-moddadan; 1146-modda — meros huquqi guvohnomasi)",
+        "Notariat to‘g‘risida Qonun"
+      ],
+      "qs": [
+        "Meros ochilganiga 6 oydan oshgan bo‘lsa notariusga qanday murojaat qilaman?",
+        "Vasiyatnoma bo‘lmasa qonun bo‘yicha kimlar birinchi navbatda merosxo‘r hisoblanadi?",
+        "Merosdan voz kechish mumkinmi?"
+      ],
+      "sourceUrls": [
+        "https://lex.uz/docs/-180552"
+      ]
+    },
+    {
+      "id": "istemol",
+      "slug": "sifatsiz-tovar-qaytarish",
+      "icon": "cart",
+      "title": "Sifatsiz tovar va xizmat",
+      "desc": "Tovarni qaytarish, almashtirish va pulni qaytarib olish",
+      "tag": "Iste’molchilar huquqlari",
+      "intro": "Iste’molchi maqbul sifatli nooziq-ovqat tovarini sotib olgan kundan boshlab 10 kun ichida almashtirishga, bir xil tovar bo‘lmasa pulni qaytarishga haqli (tovar ishlatilmagan, qadog‘i va tovar ko‘rinishi saqlangan bo‘lishi kerak — 18-modda). Nuqsonli tovar uchun almashtirish, bepul ta’mirlash, narxni kamaytirish yoki shartnomani bekor qilib pulni qaytarishni talab qilish mumkin (13-modda).",
+      "steps": [
+        [
+          "Chek yoki to‘lov tasdig‘ini oling",
+          "Kvitansiya, bank ilovasi kvitansiyasi yoki guvohlar dalil bo‘ladi."
+        ],
+        [
+          "Sotuvchiga yozma da’vo (pretenziya) bering",
+          "Talabingizni 2 nusxada yozing, bitta nusxasiga qabul qilib olganlik haqida imzo qo‘ydiring."
+        ],
+        [
+          "Raqobat qo‘mitasiga murojaat qiling",
+          "Sotuvchi rad etsa, Raqobatni rivojlantirish va iste’molchilar huquqlarini himoya qilish qo‘mitasiga murojaat qiling (amaldagi aloqa ma’lumotlarini qo‘mitaning rasmiy saytidan oling)."
+        ],
+        [
+          "Sudga ariza bering",
+          "Qonunning 29-moddasi sud orqali himoya va iste’molchi huquqi buzilishi bilan bog‘liq da’volar bo‘yicha davlat bojidan ozod etishni belgilaydi. Talab va tegishli sudni holatingizga moslang."
+        ]
+      ],
+      "laws": [
+        "\"Iste’molchilarning huquqlarini himoya qilish to‘g‘risida\"gi Qonun, 26.04.1996, 221-I (13-modda — nuqsonli tovar; 14-modda — almashtirish muddati; 15-modda — bepul ta’mirlash; 18-modda — maqbul sifatli tovarni almashtirish)"
+      ],
+      "qs": [
+        "Kiyim yoki telefonni 10 kun ichida qaytarib berish mumkinmi?",
+        "Cheki yo‘q tovarni qaytarsa bo‘ladimi?",
+        "Kafolat muddati davomida ta’mirlanmasa nima qilish kerak?"
+      ],
+      "sourceUrls": [
+        "https://lex.uz/docs/-4704"
+      ]
+    },
+    {
+      "id": "uy",
+      "slug": "uy-ijarasi",
+      "icon": "home",
+      "title": "Turar joy ijarasi va mulk",
+      "desc": "Ijara shartnomasi, depozitni qaytarish va ijarachi huquqlari",
+      "tag": "Fuqarolik kodeksi",
+      "intro": "Jismoniy shaxslar o‘rtasidagi ko‘chmas mulk ijara shartnomasi soliq organlarida (ijara.soliq.uz) hisobga qo‘yilishi kerak (PQ-3741, 25.05.2018). Uy-joy ijarasi Fuqarolik kodeksining 35-bobida (600–616-moddalar) tartibga solinadi; yozma shartnoma va topshirish dalolatnomasi nizoda asosiy dalil bo‘ladi.",
+      "steps": [
+        [
+          "Rasmiy shartnoma tuzing",
+          "ijara.soliq.uz portali orqali shartnomani ro‘yxatdan o‘tkazing."
+        ],
+        [
+          "Dalolatnoma (Akt) imzolang",
+          "Uyga kirishda mavjud jihozlar va kamchiliklarni akt orqali rasmiylashtiring va rasmga oling."
+        ],
+        [
+          "To‘lovlarni bank orqali qiling",
+          "Naqd bermasdan, kartadan kartaga o‘tkazib, izohida 'falon oy ijarasi' deb yozib boring."
+        ]
+      ],
+      "laws": [
+        "Fuqarolik kodeksi, 2-qism, 35-bob (600–616-moddalar — uy-joyni ijaraga berish)",
+        "Uy-joy kodeksi",
+        "Prezidentning PQ-3741-son qarori (25.05.2018)"
+      ],
+      "qs": [
+        "Uy egasi depozitni qaytarmayapti, nima qilsam bo‘ladi?",
+        "Shartnomasiz yashaganda qanday xavf bor?",
+        "Ijarachini to‘satdan chiqarib yuborish mumkinmi?"
+      ],
+      "sourceUrls": []
+    },
+    {
+      "id": "kredit",
+      "slug": "bank-krediti-va-foizlar",
+      "icon": "credit",
+      "title": "Bank kreditlari va foizlar",
+      "desc": "Muddati o‘tgan qarz, garov mulki va bank nizolari",
+      "tag": "Bank qonunchiligi",
+      "intro": "Bank qarzdorlikni undirishda qonun doirasidan chiqa olmaydi. Qisman to‘lovda avval muddati o‘tgan asosiy qarz va foiz, keyin joriy foiz va qarz, so‘ngra neustoyka uziladi (O‘RQ-914). Moliyaviy qiyinchilikda bankdan to‘lov grafigini qayta ko‘rib chiqishni (restrukturizatsiya) so‘rash mumkin.",
+      "steps": [
+        [
+          "Shartnoma shartlarini o‘rganing",
+          "Foiz, penya va jarima miqdorlarini diqqat bilan o‘qing. Sud kredit qarzini undirish to‘g‘risida qaror chiqargach, undirilgan summaga foiz va neustoyka hisoblash to‘xtatiladi (FK, O‘RQ-914, 27.02.2024)."
+        ],
+        [
+          "Bankka yozma ariza bering",
+          "Muammoli holat haqida ma’lum qilib, kredit to‘lov grafigini uzaytirishni (kredit ta’tili) so‘rang."
+        ],
+        [
+          "Markaziy bankka murojaat qiling",
+          "Bank huquqlaringizni buzsa, Markaziy bankning iste’molchilar huquqlarini himoya qilish xizmatiga shikoyat bering."
+        ]
+      ],
+      "laws": [
+        "\"Banklar va bank faoliyati to‘g‘risida\"gi Qonun",
+        "Fuqarolik kodeksi (garov, qarz va kredit shartnomalari)",
+        "O‘RQ-914-son Qonun (27.02.2024)"
+      ],
+      "qs": [
+        "Kreditni to‘lay olmasam garovdagi uyimni tortib olishadimi?",
+        "Kredit bo‘yicha penya qancha bo‘lishi mumkin?",
+        "Kafillikdan voz kechish mumkinmi?"
+      ],
+      "sourceUrls": []
+    },
+    {
+      "id": "biznes",
+      "slug": "biznes-ochish-yatt-mchj",
+      "icon": "building",
+      "title": "Biznes ochish: YaTT yoki MChJ",
+      "desc": "Ro‘yxatdan o‘tish, soliq rejimini tanlash va qonuniy faoliyat",
+      "tag": "Tadbirkorlik",
+      "intro": "Yakka tartibdagi tadbirkor (YaTT) sifatida ro‘yxatdan o‘tish yoki MChJ ta’sis etish onlayn (my.gov.uz / birdarcha) amalga oshirilishi mumkin. Faoliyat turiga qarab to‘g‘ri soliq rejimini tanlash biznes xavfsizligining garovidir.",
+      "steps": [
+        [
+          "Tashkiliy-huquqiy shaklni tanlang",
+          "Ruxsat etilgan faoliyat turi, sheriklar, javobgarlik, xodimlar va soliq shartlariga qarab YaTT, MChJ yoki boshqa shaklni tanlang."
+        ],
+        [
+          "Onlayn ro‘yxatdan o‘ting",
+          "Birdarcha (my.gov.uz) orqali ariza topshiring va davlat ro‘yxatidan o‘tganlik guvohnomasini oling."
+        ],
+        [
+          "Soliq rejimini belgilang",
+          "Aylanmadan olinadigan soliq yoki umumiy soliq tizimini tanlang (stavka va muddatlarni Soliq kodeksidan yoki soliq.uz dan tekshiring)."
+        ]
+      ],
+      "laws": [
+        "O‘zbekiston Respublikasi Soliq kodeksi",
+        "\"Tadbirkorlik faoliyati erkinligining kafolatlari to‘g‘risida\"gi Qonun"
+      ],
+      "qs": [
+        "YaTT va MChJ ning farqi nima?",
+        "O‘zini o‘zi band qilgan shaxslar qanday soliq to‘laydi?",
+        "Biznes hisob raqami qanday ochiladi?"
+      ],
+      "sourceUrls": []
+    },
+    {
+      "id": "talim",
+      "slug": "talim-krediti-va-kontrakt",
+      "icon": "school",
+      "title": "Ta’lim krediti va kontrakt",
+      "desc": "Talabalar uchun imtiyozli ta’lim krediti va talabalik huquqlari",
+      "tag": "Ta’lim huquqi",
+      "intro": "Ta’lim krediti shartlari ta’lim shakli, talabaning toifasi, o‘quv yili va amaldagi hujjatlarga bog‘liq. Imtiyoz, foizni qoplash, kredit miqdori va ta’minot talablarini ariza berish sanasidagi rasmiy tartib hamda bank shartlaridan tekshiring.",
+      "steps": [
+        [
+          "OTM bilan shartnoma oling",
+          "To‘lov-kontrakt shartnomasini ta’lim muassasasidan oling."
+        ],
+        [
+          "Bankka ariza bering",
+          "Ta’lim krediti beruvchi bankka murojaat qiling; amaldagi ariza tartibini bank yoki my.gov.uz orqali aniqlang."
+        ],
+        [
+          "Kafillik va hujjatlar",
+          "Pasport, kontrakt va oila daromadi to‘g‘risidagi ma’lumotlarni ilova qiling."
+        ]
+      ],
+      "laws": [
+        "Vazirlar Mahkamasining ta’lim kreditlarini ajratish tartibi to‘g‘risidagi Qarorlari"
+      ],
+      "qs": [
+        "Qizlar uchun foizsiz ta’lim krediti qanday olinadi?",
+        "Kontrakt to‘lovini bo‘lib to‘lash mumkinmi?",
+        "Akademik ta’tildan qaytish qoidalari qanday?"
+      ],
+      "sourceUrls": []
+    },
+    {
+      "id": "pasport",
+      "slug": "pasport-va-propiska",
+      "icon": "shield",
+      "title": "Pasport, propiska va xorij",
+      "desc": "ID-karta olish, erkin propiska va xorijga chiqish pasporti",
+      "tag": "Davlat xizmatlari",
+      "intro": "ID-karta, yashash joyi bo‘yicha ro‘yxat va xorijga chiqish pasporti turli davlat xizmatlaridir. Amal qilish muddati, davlat boji va xizmat muddati yosh hamda murojaat turiga bog‘liq. Ariza berishdan oldin my.gov.uz dagi tegishli xizmat kartochkasini tekshiring.",
+      "steps": [
+        [
+          "Davlat xizmatlari markaziga boring",
+          "Yoki my.gov.uz orqali navbatga yoziling."
+        ],
+        [
+          "Davlat bojini to‘lang",
+          "Tegishli xizmat kartochkasidagi amaldagi to‘lov, imtiyoz va portal chegirmalarini tekshiring."
+        ],
+        [
+          "Pasportni qabul qilib oling",
+          "Ariza holati va tayyor bo‘lish muddatini tegishli xizmat orqali kuzating; biometrik ma’lumot topshirish zaruratini aniqlashtiring."
+        ]
+      ],
+      "laws": [
+        "\"O‘zbekiston Respublikasida fuqarolarni ro‘yxatga olish tartibi to‘g‘risida\"gi Qonun"
+      ],
+      "qs": [
+        "Toshkentdan uy olmasdan ham doimiy propiskaga o‘tsa bo‘ladimi?",
+        "Qizil pasport yo‘qolsa nima qilish kerak?"
+      ],
+      "sourceUrls": []
+    },
+    {
+      "id": "kiber",
+      "slug": "kiberfiribgarlik-karta",
+      "icon": "lock",
+      "title": "Kiberfiribgarlik va karta o‘g‘irligi",
+      "desc": "Bank kartasidan noqonuniy pul yechilganda nima qilish kerak?",
+      "tag": "Jinoyat qonunchiligi",
+      "intro": "Bank kartasidan ruxsatsiz pul yechib olinganda, zudlik bilan kartani bloklash va 102 raqamiga yoki ichki ishlar organlariga xabar berish kerak — kechiksangiz pul tezda chet elga o‘tkazib yuborilishi mumkin. Shubhali havolalarga (fishing) kirmaslik eng asosiy xavfsizlik chorasidir.",
+      "steps": [
+        [
+          "Kartani darhol bloklang",
+          "Bank mobil ilovasi orqali yoki bank call-markaziga qo‘ng‘iroq qilib bloklang."
+        ],
+        [
+          "Pul o‘tkazmasi chekini saqlang",
+          "Qaysi hisobga yoki kartaga pul o‘tganini aniqlab, PDF chekini yuklab oling."
+        ],
+        [
+          "Kiberxavfsizlik bo‘limiga ariza bering",
+          "Yashash joyingizdagi IIBga yoki elektron shaklda ariza yuboring."
+        ]
+      ],
+      "laws": [
+        "O‘zbekiston Respublikasi Jinoyat kodeksi (168-modda — firibgarlik, 169-modda — o‘g‘rilik, 278-2-modda — kompyuter axborotidan ruxsatsiz foydalanish)"
+      ],
+      "qs": [
+        "Karta raqamimni aytib pulimni oldirib qo‘ydim, qaytarsa bo‘ladimi?",
+        "Bank kiberhujum vaqtida pulni qaytarishga majburmi?"
+      ],
+      "sourceUrls": []
+    }
+  ],
+  "codes": [
+    [
+      "K",
+      "Konstitutsiya",
+      "Davlatning bosh qonuni: inson qadri, huquq va erkinliklar.",
+      "-6445145"
+    ],
+    [
+      "MK",
+      "Mehnat kodeksi",
+      "Ishga qabul, maosh, mehnat ta’tili, bo‘shatish va xodim kafolatlari.",
+      "-6257288"
+    ],
+    [
+      "OK",
+      "Oila kodeksi",
+      "Nikoh, ajrashish, aliment, bolalar tarbiyasi va ota-onalik huquqi.",
+      "-104720"
+    ],
+    [
+      "FK",
+      "Fuqarolik kodeksi (1-qism)",
+      "Umumiy qoidalar, mulk huquqi, majburiyatlar va shartnomalar.",
+      "-111189"
+    ],
+    [
+      "FK-2",
+      "Fuqarolik kodeksi (2-qism)",
+      "Oldi-sotdi, ijara, uy-joy ijarasi, kredit va vorislik (meros).",
+      "-180552"
+    ],
+    [
+      "MJ",
+      "Ma’muriy javobgarlik kodeksi",
+      "Yo‘l harakati, jarimalar va ma’muriy huquqbuzarliklar.",
+      "-97664"
+    ],
+    [
+      "JK",
+      "Jinoyat kodeksi",
+      "Jinoiy javobgarlik, jazolar va jinoyat turlari.",
+      "-111453"
+    ],
+    [
+      "SK",
+      "Soliq kodeksi",
+      "Jismoniy va yuridik shaxslar soliqlari, imtiyozlar va hisobotlar.",
+      "-4674902"
+    ],
+    [
+      "UK",
+      "Uy-joy kodeksi",
+      "Ko‘chmas mulk, xonadondan foydalanish va kommunal munosabatlar.",
+      "-106134"
+    ],
+    [
+      "FPK",
+      "Fuqarolik protsessual kodeksi",
+      "Sudga da’vo berish, dalillar, sud majlislari va qarorlar.",
+      "-3517337"
+    ],
+    [
+      "IPK",
+      "Iqtisodiy protsessual kodeksi",
+      "Tadbirkorlar va korxonalar o‘rtasidagi iqtisodiy nizolar.",
+      "-3523891"
+    ],
+    [
+      "JPK",
+      "Jinoyat-protsessual kodeksi",
+      "Ariza, tekshiruv, tergov, dalillar va himoya huquqi.",
+      "-111460"
+    ]
+  ],
+  "docs": {
+    "mk": {
+      "name": "Mehnat kodeksi",
+      "id": "-6257288",
+      "aliases": [
+        "mk",
+        "MK"
+      ]
+    },
+    "ok": {
+      "name": "Oila kodeksi",
+      "id": "-104720",
+      "aliases": [
+        "ok",
+        "OK"
+      ]
+    },
+    "fk2": {
+      "name": "Fuqarolik kodeksi (2-qism)",
+      "id": "-180552",
+      "aliases": [
+        "fk2",
+        "FK-2",
+        "FK 2",
+        "Fuqarolik kodeksi ikkinchi qism"
+      ]
+    },
+    "jk": {
+      "name": "Jinoyat kodeksi",
+      "id": "-111453",
+      "aliases": [
+        "jk"
+      ]
+    },
+    "mjtk": {
+      "name": "Ma’muriy javobgarlik to‘g‘risidagi kodeks",
+      "id": "-97664",
+      "aliases": [
+        "mjtk",
+        "MJ",
+        "MJTK",
+        "Ma'muriy javobgarlik kodeksi"
+      ]
+    },
+    "ist": {
+      "name": "Iste’molchilarning huquqlarini himoya qilish to‘g‘risidagi Qonun",
+      "id": "-4704",
+      "aliases": [
+        "ist"
+      ]
+    },
+    "fk1": {
+      "name": "Fuqarolik kodeksi (1-qism)",
+      "id": "-111189",
+      "aliases": [
+        "FK-1",
+        "FK 1",
+        "Fuqarolik kodeksi birinchi qism"
+      ]
+    },
+    "fpk": {
+      "name": "Fuqarolik protsessual kodeksi",
+      "id": "-3517337",
+      "aliases": [
+        "FPK"
+      ]
+    },
+    "jpk": {
+      "name": "Jinoyat-protsessual kodeksi",
+      "id": "-111460",
+      "aliases": [
+        "JPK",
+        "Jinoyat protsessual kodeksi"
+      ]
+    }
+  },
+  "articles": [
+    {
+      "doc": "mk",
+      "art": "9",
+      "title": "Ushbu Kodeksda nazarda tutilgan muddatlarni hisoblash",
+      "kw": "muddat hisoblash kun oy",
+      "approx": false,
+      "reviewedAt": null
+    },
+    {
+      "doc": "mk",
+      "art": "21",
+      "title": "Xodimning huquqlari",
+      "kw": "xodim huquq ishchi",
+      "approx": false,
+      "reviewedAt": null
+    },
+    {
+      "doc": "mk",
+      "art": "22",
+      "title": "Xodimning majburiyatlari",
+      "kw": "xodim majburiyat ishchi",
+      "approx": false,
+      "reviewedAt": null
+    },
+    {
+      "doc": "mk",
+      "art": "24",
+      "title": "Ish beruvchining huquqlari",
+      "kw": "ish beruvchi rahbar direktor huquq",
+      "approx": false,
+      "reviewedAt": null
+    },
+    {
+      "doc": "mk",
+      "art": "25",
+      "title": "Ish beruvchining majburiyatlari",
+      "kw": "ish beruvchi rahbar direktor majburiyat",
+      "approx": false,
+      "reviewedAt": null
+    },
+    {
+      "doc": "mk",
+      "art": "94",
+      "title": "Ishga joylashish huquqi",
+      "kw": "ishga kirish joylashish ish topish",
+      "approx": false,
+      "reviewedAt": null
+    },
+    {
+      "doc": "mk",
+      "art": "98",
+      "title": "Xodimlarni ommaviy ravishda ishdan bo‘shatish chog‘idagi kafolatlar",
+      "kw": "ommaviy bo‘shatish qisqartirish shtat",
+      "approx": false,
+      "reviewedAt": null
+    },
+    {
+      "doc": "mk",
+      "art": "160",
+      "title": "Mehnat shartnomasini xodimning tashabbusiga ko‘ra bekor qilish",
+      "kw": "o‘z xohishi bilan bo‘shash ariza ketish ishdan ketmoqchi",
+      "approx": false,
+      "reviewedAt": "2026-10-29"
+    },
+    {
+      "doc": "mk",
+      "art": "161",
+      "title": "Mehnat shartnomasini ish beruvchining tashabbusiga ko‘ra bekor qilish",
+      "kw": "ishdan bo‘shatish haydash bo‘shatdi bo‘shatmoqchi qisqartirish",
+      "approx": false,
+      "reviewedAt": "2026-10-29"
+    },
+    {
+      "doc": "mk",
+      "art": "172",
+      "title": "Mehnat shartnomasi bekor qilinganda xodim bilan hisob-kitob qilish",
+      "kw": "hisob-kitob oxirgi maosh kompensatsiya ta’til puli bo‘shaganda",
+      "approx": false,
+      "reviewedAt": null
+    },
+    {
+      "doc": "mk",
+      "art": "174",
+      "title": "Mehnat shartnomasini qonunga xilof ravishda bekor qilishning huquqiy oqibatlari",
+      "kw": "noqonuniy bo‘shatish ishga tiklash majburiy progul sud",
+      "approx": false,
+      "reviewedAt": null
+    },
+    {
+      "doc": "mk",
+      "art": "253",
+      "title": "Ish haqini to‘lash muddatlari",
+      "kw": "maosh ish haqi oylik to‘lanmayapti kechikish berilmayapti",
+      "approx": false,
+      "reviewedAt": null
+    },
+    {
+      "doc": "mk",
+      "art": "254",
+      "title": "Mehnat shartnomasi bekor qilinganda hisob-kitob qilish muddatlari",
+      "kw": "hisob-kitob muddati oxirgi kun maosh bo‘shaganda",
+      "approx": false,
+      "reviewedAt": null
+    },
+    {
+      "doc": "mk",
+      "art": "333",
+      "title": "Ish haqi va boshqa to‘lovlarni kechiktirganlik uchun ish beruvchining moddiy javobgarligi",
+      "kw": "maosh kechikish kompensatsiya foiz javobgarlik berilmayapti",
+      "approx": true,
+      "reviewedAt": "2026-10-29"
+    },
+    {
+      "doc": "ok",
+      "art": "96",
+      "title": "Ota-onaning voyaga yetmagan bolalariga ta’minot berish majburiyati",
+      "kw": "aliment bola ta’minot ota ona ajrashish",
+      "approx": false,
+      "reviewedAt": null
+    },
+    {
+      "doc": "ok",
+      "art": "98",
+      "title": "Ota-onaning voyaga yetmagan bolalariga aliment to‘lash tartibi",
+      "kw": "aliment to‘lash tartibi",
+      "approx": false,
+      "reviewedAt": null
+    },
+    {
+      "doc": "ok",
+      "art": "99",
+      "title": "Ota-onaning voyaga yetmagan bolalariga to‘laydigan aliment miqdori",
+      "kw": "aliment miqdori qancha chorak foiz bola",
+      "approx": false,
+      "reviewedAt": "2026-10-29"
+    },
+    {
+      "doc": "ok",
+      "art": "102",
+      "title": "Ota-onadan bolalarga undiriladigan aliment miqdorini aniqlash tartibi",
+      "kw": "aliment qat’iy summa miqdor aniqlash",
+      "approx": false,
+      "reviewedAt": null
+    },
+    {
+      "doc": "ok",
+      "art": "103",
+      "title": "Bolalarning ta’minoti uchun qilinadigan qo‘shimcha xarajatlar",
+      "kw": "davolanish qo‘shimcha xarajat bola kasal",
+      "approx": false,
+      "reviewedAt": null
+    },
+    {
+      "doc": "ok",
+      "art": "104",
+      "title": "Aliment undirishda hisobga olinadigan daromadlar",
+      "kw": "daromad aliment hisob",
+      "approx": false,
+      "reviewedAt": null
+    },
+    {
+      "doc": "ok",
+      "art": "105",
+      "title": "Aliment miqdorini kamaytirish",
+      "kw": "aliment kamaytirish",
+      "approx": false,
+      "reviewedAt": null
+    },
+    {
+      "doc": "ok",
+      "art": "112",
+      "title": "Nizo sudda hal etilgunga qadar aliment undirish",
+      "kw": "aliment sud jarayoni vaqtincha",
+      "approx": false,
+      "reviewedAt": null
+    },
+    {
+      "doc": "ok",
+      "art": "114",
+      "title": "Aliment undirish to‘g‘risidagi sud qarorini ijro etish",
+      "kw": "aliment ijro mib to‘lamayapti",
+      "approx": false,
+      "reviewedAt": null
+    },
+    {
+      "doc": "ok",
+      "art": "116",
+      "title": "Aliment to‘lashdan bosh tortganlik uchun javobgarlik",
+      "kw": "aliment to‘lamayapti bosh tortish qarz javobgarlik",
+      "approx": false,
+      "reviewedAt": null
+    },
+    {
+      "doc": "fk2",
+      "art": "600",
+      "title": "Uy-joyni ijaraga berish shartnomasi",
+      "kw": "ijara kvartira uy ijarachi uy egasi",
+      "approx": false,
+      "reviewedAt": null
+    },
+    {
+      "doc": "fk2",
+      "art": "616",
+      "title": "Uy-joyni ijaraga berish shartnomasini bekor qilishning oqibatlari",
+      "kw": "ijara bekor chiqarib yuborish depozit ko‘chirish",
+      "approx": false,
+      "reviewedAt": null
+    },
+    {
+      "doc": "fk2",
+      "art": "1112",
+      "title": "Vorislik to‘g‘risidagi umumiy qoidalar",
+      "kw": "meros vorislik vafot",
+      "approx": false,
+      "reviewedAt": null
+    },
+    {
+      "doc": "fk2",
+      "art": "1135",
+      "title": "Qonun bo‘yicha birinchi navbatdagi vorislar",
+      "kw": "meros birinchi navbat farzand turmush o‘rtoq ota ona aka uka",
+      "approx": false,
+      "reviewedAt": "2026-10-29"
+    },
+    {
+      "doc": "fk2",
+      "art": "1145",
+      "title": "Merosni egallash (umumiy qoidalar)",
+      "kw": "merosni qabul qilish egallash notarius olti oy",
+      "approx": true,
+      "reviewedAt": null
+    },
+    {
+      "doc": "fk2",
+      "art": "1146",
+      "title": "Meros huquqi to‘g‘risidagi guvohnoma",
+      "kw": "meros guvohnoma notarius",
+      "approx": true,
+      "reviewedAt": "2026-10-29"
+    },
+    {
+      "doc": "jk",
+      "art": "168",
+      "title": "Firibgarlik",
+      "kw": "aldash firibgarlik pul aldab olish karta",
+      "approx": false,
+      "reviewedAt": null
+    },
+    {
+      "doc": "jk",
+      "art": "169",
+      "title": "O‘g‘rilik",
+      "kw": "o‘g‘irlik o‘g‘irlash yashirin talon",
+      "approx": false,
+      "reviewedAt": null
+    },
+    {
+      "doc": "jk",
+      "art": "278-2",
+      "title": "Kompyuter axborotidan qonunga xilof (ruxsatsiz) foydalanish",
+      "kw": "kiber karta xakerlik akkaunt buzish",
+      "approx": false,
+      "reviewedAt": null
+    },
+    {
+      "doc": "jk",
+      "art": "278-7",
+      "title": "Telekommunikatsiya tarmog‘idan qonunga xilof (ruxsatsiz) foydalanish",
+      "kw": "telefon raqam tarmoq kiber",
+      "approx": false,
+      "reviewedAt": null
+    },
+    {
+      "doc": "mjtk",
+      "art": "17-1",
+      "title": "Maxsus avtomatlashtirilgan foto va video qayd etish vositalari qayd etgan yo‘l harakati qoidalari buzilishi uchun javobgarlik",
+      "kw": "radar kamera jarima tezlik yhxbb yo‘l harakati yhxx",
+      "approx": true,
+      "reviewedAt": null
+    },
+    {
+      "doc": "mjtk",
+      "art": "332-1",
+      "title": "Jarimani imtiyozli (50% yoki 70%) to‘lash",
+      "kw": "jarima chegirma 50 foiz 70 foiz to‘lash",
+      "approx": true,
+      "reviewedAt": null
+    },
+    {
+      "doc": "ist",
+      "art": "29",
+      "title": "Iste’molchilar huquqlarini sud orqali himoya qilish",
+      "kw": "iste’molchi sud himoya",
+      "approx": true,
+      "reviewedAt": "2026-10-29"
+    },
+    {
+      "doc": "ist",
+      "art": "13",
+      "title": "Iste’molchiga nuqsonli tovar sotilganda uning huquqlari",
+      "kw": "sifatsiz brak buzilgan tovar pulni qaytarish telefon do‘kon",
+      "approx": false,
+      "reviewedAt": null
+    },
+    {
+      "doc": "ist",
+      "art": "14",
+      "title": "Nuqsonli tovarni almashtirib berish tartibi",
+      "kw": "almashtirish 7 kun 20 kun sifatsiz",
+      "approx": false,
+      "reviewedAt": null
+    },
+    {
+      "doc": "ist",
+      "art": "15",
+      "title": "Tovar nuqsonlarini bepul bartaraf etish tartibi",
+      "kw": "ta’mirlash kafolat bepul tuzatish",
+      "approx": false,
+      "reviewedAt": null
+    },
+    {
+      "doc": "ist",
+      "art": "18",
+      "title": "Iste’molchining maqbul sifatli tovarni almashtirib olish huquqi",
+      "kw": "qaytarish almashtirish 10 kun yoqmadi o‘lcham",
+      "approx": false,
+      "reviewedAt": null
+    },
+    {
+      "doc": "ist",
+      "art": "19",
+      "title": "Bajarilgan ish yoki xizmatdagi nuqsonlar",
+      "kw": "xizmat ish sifatsiz usta",
+      "approx": true,
+      "reviewedAt": null
+    },
+    {
+      "doc": "mk",
+      "art": "560",
+      "title": "Mehnat nizolari bo‘yicha sudga murojaat qilish muddatlari",
+      "kw": "ishga tiklash muddat uch oy olti oy sud",
+      "approx": true,
+      "reviewedAt": "2026-10-29"
+    },
+    {
+      "doc": "mk",
+      "art": "163",
+      "title": "Ish beruvchi tashabbusi bilan bekor qilishni taqiqlash",
+      "kw": "kasallik ta’til vaqtida bo‘shatish",
+      "approx": true,
+      "reviewedAt": null
+    },
+    {
+      "doc": "ok",
+      "art": "40",
+      "title": "Nikohdan sud tartibida ajratish",
+      "kw": "nikoh ajrashish yarashish sud",
+      "approx": true,
+      "reviewedAt": null
+    },
+    {
+      "doc": "ist",
+      "art": "4",
+      "title": "Iste’molchilarning asosiy huquqlari",
+      "kw": "iste’molchi asosiy huquq",
+      "approx": true,
+      "reviewedAt": "2026-10-29"
+    }
+  ]
+}
