@@ -89,3 +89,60 @@
 .oferta-req dl{display:grid;grid-template-columns:max-content 1fr;gap:8px 18px;margin:0;padding:18px 20px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
 .oferta-req dt{color:var(--muted)}.oferta-req dd{margin:0;font-weight:600}
 @media(max-width:700px){.oferta-req dl{grid-template-columns:1fr}.oferta-req dd{margin-bottom:6px}}
+
+/* ================= v11.1: hisob, cookie banner ================= */
+.account-btn.signed-in{border-color:var(--blue);color:var(--blue)}
+.account-btn.signed-in::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#1a9b5c;margin-right:7px;vertical-align:middle}
+.empty-state>.empty-mark{width:46px;height:46px;margin:0 auto 22px}.empty-mark .hidoya{width:100%;height:100%}
+/* oynalar */
+.auth-dialog,.item-dialog{border:0;border-radius:14px;padding:28px 28px 22px;width:min(440px,calc(100vw - 32px));background:var(--card);color:var(--text);box-shadow:0 30px 90px #0b1d3366}
+.item-dialog{width:min(760px,calc(100vw - 32px));max-height:calc(100vh - 48px)}
+.auth-dialog::backdrop,.item-dialog::backdrop{background:#0b1d3373;backdrop-filter:blur(2px)}
+.auth-dialog[open],.item-dialog[open]{animation:hk-up .28s var(--ease,ease) both}
+.dlg-close{position:absolute;top:12px;right:12px;margin:0}
+.auth-dialog h2,.item-dialog h2{font-size:22px;margin:0 36px 12px 0}
+.auth-reason{background:var(--soft);border-radius:8px;padding:10px 12px;font-size:13px;margin:0 0 14px}
+.auth-tabs{display:flex;gap:4px;padding:4px;background:var(--soft);border-radius:9px;margin-bottom:6px}
+.auth-tabs button{flex:1;border:0;background:transparent;border-radius:7px;padding:9px;font-weight:600;font-size:13px;color:var(--muted);cursor:pointer;min-height:40px}
+.auth-tabs button[aria-selected=true]{background:var(--card);color:var(--blue);box-shadow:0 1px 4px #0b1d331a}
+.auth-dialog label,.acc-card label{display:block;font-size:13px;font-weight:600;letter-spacing:0;color:var(--text);margin:14px 0 0;padding:0;border:0;white-space:normal}
+.auth-dialog input:not([type=checkbox]),.acc-card input{display:block;width:100%;max-width:none;margin-top:6px;padding:11px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--text);font-size:15px;min-height:44px}
+.auth-dialog input:focus,.acc-card input:focus{outline:2px solid var(--accent);outline-offset:1px}
+.pw-wrap{position:relative;display:block}.pw-wrap input{padding-right:96px!important}
+.pw-toggle{position:absolute;right:6px;top:50%;transform:translateY(-50%);margin-top:3px;border:0;background:transparent;color:var(--blue);font-size:12px;font-weight:600;padding:8px;cursor:pointer}
+.auth-hint{font-size:12px;color:var(--muted);margin:6px 0 0}
+.auth-check{display:flex!important;gap:10px;align-items:flex-start;font-weight:500!important}.auth-check input{margin-top:3px;width:18px;height:18px;flex:none}
+.form-msg{min-height:1.2em;font-size:13px;color:#b42318;margin:12px 0 10px}
+.auth-note{font-size:12px;color:var(--muted);margin:14px 0 0;line-height:1.5}
+.item-body{max-height:60vh;overflow:auto;border:1px solid var(--line);border-radius:10px;padding:16px 18px;background:var(--bg)}
+.item-actions{display:flex;justify-content:flex-end;margin-top:14px}
+/* Mening hisobim */
+.account-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start;margin-top:22px}
+.acc-main h2{font-size:20px;margin-bottom:14px}
+.acc-items{display:grid;gap:12px}
+.acc-item{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;transition:box-shadow .25s,border-color .25s}
+.acc-item:hover{border-color:#b8c9dc;box-shadow:var(--shadow)}
+.acc-item h3{font-size:16px;margin:6px 0}.acc-item p{font-size:13px;color:var(--muted);margin:0 0 12px}
+.acc-type{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.acc-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.acc-actions time{font-size:12px;color:var(--muted);margin-right:auto}
+.acc-empty,.acc-loading,.acc-error{background:var(--card);border:1px dashed var(--line);border-radius:10px;padding:22px;color:var(--muted);font-size:14px}
+.acc-side{display:grid;gap:12px}
+.acc-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px}
+.acc-card h3{font-size:15px;margin:0 0 8px}.acc-card p{font-size:13px;color:var(--muted)}
+.acc-email{font-weight:600;color:var(--text)!important;word-break:break-all}
+.acc-danger h3{color:#b42318}
+@media(max-width:860px){.account-grid{grid-template-columns:1fr}}
+/* kichik xabar */
+.hk-toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#10284a;color:#fff;padding:11px 18px;border-radius:999px;font-size:14px;box-shadow:0 12px 32px #0004;transition:opacity .25s,transform .25s;z-index:120;max-width:calc(100vw - 32px)}
+.hk-toast.on{opacity:1;transform:translate(-50%,0)}
+/* cookie banner */
+.cookie-banner{position:fixed;left:16px;right:16px;bottom:16px;z-index:110;display:flex;justify-content:center;pointer-events:none;animation:hk-up .45s var(--ease,ease) both}
+.cookie-inner{pointer-events:auto;width:min(980px,100%);background:var(--card);color:var(--text);border:1px solid var(--line);border-radius:14px;box-shadow:0 24px 70px #0b1d3340;padding:18px 20px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px 24px;align-items:center}
+.cookie-text h2{font-size:15px;margin:0 0 4px}.cookie-text p{font-size:13px;color:var(--muted);margin:0 0 4px;line-height:1.55}.cookie-text a{font-size:13px;color:var(--blue)}
+.cookie-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.cookie-settings{grid-column:1/-1;display:grid;gap:8px}
+.cookie-settings[hidden]{display:none}
+.cookie-opt{display:flex!important;gap:12px;align-items:flex-start;margin:0!important;padding:12px 14px!important;border:1px solid var(--line)!important;border-radius:10px!important;font-size:13px!important;letter-spacing:0!important;color:var(--text)!important;white-space:normal!important;cursor:pointer}
+.cookie-opt input{width:18px;height:18px;margin-top:2px;flex:none}.cookie-opt b{display:block}.cookie-opt small{display:block;color:var(--muted);font-weight:400}
+@media(max-width:760px){.cookie-inner{grid-template-columns:1fr}.cookie-actions{justify-content:stretch}.cookie-actions .btn{flex:1 1 auto}}
+@media(prefers-reduced-motion:reduce){.cookie-banner,.auth-dialog[open],.item-dialog[open]{animation:none}}

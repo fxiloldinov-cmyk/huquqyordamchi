@@ -592,5 +592,5 @@ function escapeHtml(value) {
 }
 
 $('#chat-stop').addEventListener('click',()=>chatController?.abort());
-function routeHash(){const key=location.hash.slice(1);if(['chat','kazus','explain'].includes(key))show(key,false);else {show('home',false);if(key)document.getElementById(key)?.scrollIntoView();}}
+function routeHash(){const key=location.hash.slice(1);if(['chat','kazus','explain','account'].includes(key))show(key,false);else {show('home',false);if(key)document.getElementById(key)?.scrollIntoView();}}
 window.addEventListener('hashchange',routeHash);routeHash();

@@ -65,8 +65,10 @@
       "h": "Shaxsga doir ma’lumotlar va maxfiylik",
       "p": [
         "Ijrochi shaxsga doir ma’lumotlarga “Shaxsga doir ma’lumotlar to‘g‘risida”gi O‘zbekiston Respublikasi Qonuniga muvofiq ishlov beradi.",
-        "Xizmat Foydalanuvchi savollari va hujjatlarini o‘z ma’lumotlar bazasida saqlamaydi. AI yordamchiga yuborilgan savollar Google Gemini xizmatiga uzatiladi va ushbu provayderning shartlari qo‘llaniladi. Yuborishdan oldin telefon, elektron pochta, pasport, karta va JSHSHIR raqamlari imkon qadar avtomatik yashiriladi; ism va manzil avtomatik yashirilmaydi.",
-        "Suiiste’moldan himoya qilish maqsadida so‘rovlar soni IP-manzil bo‘yicha cheklanadi. Tanlangan til va mavzu (yorug‘/tungi rejim) faqat Foydalanuvchi brauzerida saqlanadi."
+        "Hisobsiz foydalanilganda Xizmat Foydalanuvchi savollari va hujjatlarini saqlamaydi. Hisob ochilganda faqat email manzil, ism (ko‘rsatilgan bo‘lsa), parolning xeshi (parolning o‘zi emas), ofertani qabul qilgan sana va Foydalanuvchi “Saqlash” tugmasi bilan o‘zi saqlagan materiallar saqlanadi. Ushbu ma’lumotlar Xizmat joylashgan xosting provayderi (Netlify) serverlarida saqlanadi.",
+        "Foydalanuvchi o‘z hisobini istalgan vaqtda “Mening hisobim” bo‘limida o‘chirishi mumkin; bunda hisob va saqlangan materiallar butunlay o‘chiriladi.",
+        "AI yordamchiga yuborilgan savollar Google Gemini xizmatiga uzatiladi va ushbu provayderning shartlari qo‘llaniladi. Yuborishdan oldin telefon, elektron pochta, pasport, karta va JSHSHIR raqamlari imkon qadar avtomatik yashiriladi; ism va manzil avtomatik yashirilmaydi.",
+        "Sayt hisobga kirish uchun zarur cookie’dan foydalanadi. Tanlangan til va tungi rejim faqat Foydalanuvchi roziligi bilan uning brauzerida saqlanadi. Reklama va kuzatuv cookie’lari ishlatilmaydi. Suiiste’moldan himoya qilish maqsadida so‘rovlar soni IP-manzil bo‘yicha cheklanadi."
       ]
     },
     {

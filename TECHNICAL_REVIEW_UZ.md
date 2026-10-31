@@ -88,3 +88,11 @@ Asosiy qayta tekshirish navbati: hostingda AI/RSS sinovi, qolgan katalogning huq
 - `public/i18n.js` (yangi): lotin→kirill transliteratsiyasi (o‘/g‘, sh/ch, yo/ya/yu/ye, so‘z boshida e→э, tutuq→ъ, o‘zlashma ts→ц: -tsiya/-tsess/-tsent; URL, email, AI/PDF kabi tokenlar o‘zgarmaydi); ru/en lug‘ati (~300 satr, normallashtirilgan kalit). MutationObserver dinamik matnni ham o‘giradi; asl matn WeakMap’da saqlanadi, til qaytarilganda tiklanadi. `HK_I18N.lang` → `/api/chat`, `/api/search`, `/api/kazus` so‘rovlariga `lang`; serverda `langNote()` system prompt’ga qo‘shiladi.
 - Oferta: FK 360, 367, 369, 370 (lex.uz mundarijasi), “Shaxsga doir ma’lumotlar to‘g‘risida”gi Qonun (O‘RQ-547), “Mualliflik huquqi…” Qonuni 8-modda (lex.uz matni). Rekvizitlar bo‘sh — to‘ldirilishi kerak.
 - Testlar: 40/40 (logotip, menyu, til tugmalari, oferta va sitemap, transliteratsiya, lug‘at to‘liqligi, AI tiliga ko‘rsatma).
+
+## v11.1 — hisoblar va cookie roziligi
+
+- Yangi fayllar: `netlify/shared/store.mjs` (Blobs / xotira), `netlify/shared/auth.mjs`, `netlify/functions/auth.mjs`, `netlify/functions/account.mjs`, `public/consent.js`, `public/accounts.js`; `package.json` → `dependencies: @netlify/blobs`.
+- Production'da `HK_DEV_MEMORY_STORE` o'rnatilmaydi; Blobs import bo'lmasa 503 ("Hisob xizmati hozircha ulanmagan"), xotiraga hech qachon tushmaydi.
+- `i18n.js` va `ui.js` til/mavzuni faqat `HK_CONSENT.allowed("prefs")` bo'lsa saqlaydi.
+- FAQ va oferta maxfiylik bo'limi hisoblarga moslandi; ru/en lug'atiga ~70 satr qo'shildi.
+- Testlar: 42/42 (ro'yxat, cookie atributlari, scrypt xesh, saqlash, chiqish, bloklash, begona origin, rozilik).

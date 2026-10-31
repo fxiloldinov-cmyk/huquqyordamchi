@@ -18,7 +18,7 @@
   btn?.addEventListener("click", () => {
     const next = isDark() ? "light" : "dark";
     root.dataset.theme = next;
-    try { localStorage.setItem("hk-theme", next); } catch {}
+    try { if (globalThis.HK_CONSENT ? HK_CONSENT.allowed("prefs") : true) localStorage.setItem("hk-theme", next); } catch {}
   });
 })();
 

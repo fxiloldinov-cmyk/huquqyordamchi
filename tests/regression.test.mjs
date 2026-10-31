@@ -345,7 +345,7 @@ test('v11: Hidoya logo, Kazus ustaxonasi menu, language switcher, motion and pub
  assert.match(html, /class="hidoya"/); assert.match(read('public/assets/favicon.svg'), /M17 59V33C17 22 25 15 32 11/);
  assert.match(html, /data-view="kazus">Kazus ustaxonasi<\/a><\/nav>/);
  for (const l of ['uz', 'cy', 'ru', 'en']) assert.match(html, new RegExp(`data-lang="${l}"`));
- assert.match(html, /<script src="motion\.js"><\/script><script src="i18n\.js"><\/script>/);
+ assert.match(html, /<script src="motion\.js"><\/script><script src="consent\.js"><\/script><script src="accounts\.js"><\/script><script src="i18n\.js"><\/script>/);
  assert.match(html, /href="\/oferta\/">Ommaviy oferta<\/a>/);
  const oferta = read('public/oferta/index.html');
  assert.match(oferta, /369-modda/); assert.match(oferta, /370-modda/); assert.match(oferta, /Ijrochi rekvizitlari/);
@@ -376,4 +376,44 @@ test('v11: chosen interface language reaches the AI system prompt', async () => 
   await (await chat(req({messages: [{role: 'user', content: 'Aliment qanday undiriladi?'}]}), {ip: 'test-' + sequence++})).text();
   assert.ok(!sys.includes('JAVOB TILI'));
  } finally { globalThis.fetch = oldFetch; if (oldKey === undefined) delete process.env.GEMINI_API_KEY; else process.env.GEMINI_API_KEY = oldKey; }
+});
+
+test('v11.1: accounts — register, session cookie, saved items, logout, lockout; password stored only as scrypt hash', async () => {
+ process.env.HK_DEV_MEMORY_STORE = '1';
+ const {default: auth} = await import('../netlify/functions/auth.mjs');
+ const {default: account} = await import('../netlify/functions/account.mjs');
+ const {resetMemoryStore, openStore} = await import('../netlify/shared/store.mjs');
+ const {userKey} = await import('../netlify/shared/auth.mjs');
+ resetMemoryStore();
+ const O = 'https://example.test';
+ const R = (path, method = 'GET', body, cookie) => new Request(O + path, {method, headers: {origin: O, 'content-type': 'application/json', ...(cookie ? {cookie} : {})}, ...(body ? {body: JSON.stringify(body)} : {})});
+ const call = async (fn, path, method, body, cookie) => { const r = await fn(R(path, method, body, cookie), {ip: 'acc-' + sequence++}); return {s: r.status, c: r.headers.get('set-cookie'), j: await r.json()}; };
+ let r = await call(auth, '/api/auth/register', 'POST', {email: 'Talaba@Mail.uz', password: 'parol1234', name: 'Talaba', acceptOferta: true});
+ assert.equal(r.s, 201); assert.match(r.c, /^hk_session=[\w-]{40,}; Path=\/; HttpOnly; SameSite=Lax; Max-Age=\d+; Secure$/);
+ const stored = await (await openStore('users')).get(userKey('talaba@mail.uz'));
+ assert.match(stored.pass, /^scrypt\$16384\$8\$1\$/); assert.ok(!JSON.stringify(stored).includes('parol1234'));
+ assert.equal((await call(auth, '/api/auth/register', 'POST', {email: 'x@mail.uz', password: 'parol1234'})).s, 400, 'ofertasiz ro‘yxat yo‘q');
+ const ck = r.c.split(';')[0];
+ assert.equal((await call(auth, '/api/auth/me', 'GET', null, ck)).j.user.email, 'talaba@mail.uz');
+ assert.equal((await call(account, '/api/account/items', 'POST', {op: 'add', type: 'kazus', title: 'Aziza', text: 'Tahlil '.repeat(10)}, ck)).s, 201);
+ const list = (await call(account, '/api/account/items', 'GET', null, ck)).j.items; assert.equal(list.length, 1);
+ assert.equal((await call(account, '/api/account/items', 'GET', null, 'hk_session=soxta')).s, 401);
+ await call(auth, '/api/auth/logout', 'POST', {}, ck);
+ assert.equal((await call(auth, '/api/auth/me', 'GET', null, ck)).j.user, null, 'chiqqandan keyin sessiya ishlamaydi');
+ assert.equal((await call(auth, '/api/auth/login', 'POST', {email: 'talaba@mail.uz', password: 'xato1234'})).j.error, 'Email yoki parol noto‘g‘ri.');
+ for (let i = 0; i < 8; i++) await call(auth, '/api/auth/login', 'POST', {email: 'talaba@mail.uz', password: 'xato' + i + 'abcd'});
+ assert.equal((await call(auth, '/api/auth/login', 'POST', {email: 'talaba@mail.uz', password: 'parol1234'})).s, 429, 'ko‘p xatodan keyin vaqtincha bloklanadi');
+ const cross = await auth(new Request(O + '/api/auth/login', {method: 'POST', headers: {origin: 'https://yomon.example', 'content-type': 'application/json'}, body: '{}'}), {ip: 'acc-x'});
+ assert.equal(cross.status, 403, 'begona saytdan so‘rov rad etiladi');
+});
+
+test('v11.1: cookie consent gates remembered language and theme; banner and account UI are wired', () => {
+ const html = read('public/index.html');
+ assert.match(html, /id="account-btn"/); assert.match(html, /id="auth-dialog"/); assert.match(html, /id="view-account"/);
+ assert.match(html, /id="kazus-save"/); assert.match(html, /id="chat-save"/); assert.match(html, /data-cookie-settings>Cookie sozlamalari/);
+ assert.match(read('public/consent.js'), /Hammasini qabul qilish/);
+ assert.match(read('public/i18n.js'), /HK_CONSENT\.allowed\("prefs"\)[^\n]*localStorage\.setItem\("hk-lang"/);
+ assert.match(read('public/ui.js'), /HK_CONSENT\.allowed\("prefs"\)[^\n]*localStorage\.setItem\("hk-theme"/);
+ assert.match(read('public/app.js'), /\['chat','kazus','explain','account'\]/);
+ assert.match(read('public/vaziyat/otalikni-belgilash/index.html'), /consent\.js/);
 });

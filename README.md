@@ -122,3 +122,15 @@ Bosh sahifada guruh filtri va dastlab 12 ta kartochka ("Barcha 32 ta vaziyatni k
 - **Kazus ustaxonasi:** menyu va bo‘lim nomi.
 - **Ommaviy oferta:** `/oferta/` (`data/oferta.json` dan yaratiladi). ⚠️ E’lon qilishdan oldin `data/oferta.json` → `requisites` dagi ijrochi nomi, STIR, manzil, email va telefonni to‘ldiring va `npm run build` qiling. Yurist ko‘rib chiqishi tavsiya etiladi.
 - **Raqamlar:** interfeysdagi bezak raqamlar olib tashlandi (namuna misollari, hisoblagichlar, xabarlar).
+
+## v11.1: hisoblar va cookie roziligi
+
+- **Cookie banneri** (`public/consent.js`): "Hammasini qabul qilish" / "Faqat zarurlari" / "Sozlash". Zarur — hisobga kirish cookie'si; Sozlamalar — til va tungi rejimni eslab qolish (rozilik bo'lmasa saqlanmaydi). Reklama/kuzatuv cookie'lari yo'q. Footer'da "Cookie sozlamalari" — tanlovni qayta ochadi.
+- **Hisoblar** (`netlify/functions/auth.mjs`, `account.mjs`, `netlify/shared/auth.mjs`, `store.mjs`):
+  - `POST /api/auth/register|login|logout|password|delete`, `GET /api/auth/me`, `GET/POST /api/account/items`.
+  - Parol — scrypt xeshi (ochiq parol saqlanmaydi); sessiya — tasodifiy token, `HttpOnly; Secure; SameSite=Lax` cookie, omborda faqat token xeshi; 8 ta xato urinishdan keyin 15 daqiqa bloklash; IP bo'yicha limitlar; begona origin rad etiladi.
+  - Ro'yxatdan o'tishda ommaviy oferta qabul qilinadi (tahrir sanasi hisobda saqlanadi).
+  - Saqlash: kazus tahlili va AI suhbat — foydalanuvchi "Saqlash"ni bosganda (eng ko'pi 50 ta). "Mening hisobim" (`#account`): ro'yxat, ochish, o'chirish, parolni almashtirish, hisobni o'chirish.
+  - Ombor: **Netlify Blobs** (`@netlify/blobs` — build paytida o'rnatiladi; qo'shimcha sozlash kerak emas). Lokal `npm run dev` va testlarda xotiradagi ombor.
+- **Qilinmagan:** parolni email orqali tiklash (email yuborish xizmati kerak).
+- **Huquqiy eslatma:** hisob ma'lumotlari Netlify serverlarida (xorijda). 2026-yilgi o'zgarishlardan keyin oddiy shaxsga doir ma'lumotlarni xorijda saqlash shartlar bilan ruxsat etilgan; shartlar va shaxsga doir ma'lumotlar bazasini ro'yxatdan o'tkazish talabini yurist bilan tekshiring.
