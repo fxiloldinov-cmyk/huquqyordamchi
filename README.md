@@ -1,4 +1,4 @@
-# HuquqYordamchi v10
+# HuquqYordamchi v11.4
 
 O‘zbekiston qonunchiligi bo‘yicha mustaqil axborot loyihasi. Ko‘k-oq portal dizayni, huquqiy mavzudagi rasm, aqlli qidiruv, ariza generatori, kodekslarning sodda izohi va kazus ustaxonasi.
 
@@ -134,3 +134,91 @@ Bosh sahifada guruh filtri va dastlab 12 ta kartochka ("Barcha 32 ta vaziyatni k
   - Ombor: **Netlify Blobs** (`@netlify/blobs` — build paytida o'rnatiladi; qo'shimcha sozlash kerak emas). Lokal `npm run dev` va testlarda xotiradagi ombor.
 - **Qilinmagan:** parolni email orqali tiklash (email yuborish xizmati kerak).
 - **Huquqiy eslatma:** hisob ma'lumotlari Netlify serverlarida (xorijda). 2026-yilgi o'zgarishlardan keyin oddiy shaxsga doir ma'lumotlarni xorijda saqlash shartlar bilan ruxsat etilgan; shartlar va shaxsga doir ma'lumotlar bazasini ro'yxatdan o'tkazish talabini yurist bilan tekshiring.
+
+## v11.2: Oila va Fuqarolik kodekslari bazada, haftalik yangilash
+
+- **Yangi rasmiy matnlar** (`data/laws/`): `ok.json` (Oila kodeksi, 12.09.2026 tahriri), `fk1.json` (FK 1-qism, 12.09.2026), `fk2.json` (FK 2-qism, 23.06.2026). Har birida kuchini yo‘qotgan moddalar ro‘yxati (`repealed`) bor.
+- **RAG endi uch kodeks bo‘yicha** (`netlify/shared/rag.mjs`):
+  - Savol mavzusi bo‘yicha MK, OK yoki FK tanlanadi; ko‘p sohali kazusda har bir soha kamida 2 ta modda oladi.
+  - Kazusda tanlangan fan (mehnat/oila/fuqarolik) va chatda tanlangan kodeks har doim qidiriladi.
+  - Havolalar: `MK 163`, `OK 27-moddaning 9-qismi`, `Fuqarolik kodeksining 1135-moddasi`, `FK 26¹`.
+  - Manba tekshiruvi: ✅ berilgan, ⚠️ kodeksda bor, 🚫 kuchini yo‘qotgan, ❌ bunday modda yo‘q.
+  - Aqlli qidiruvda FK qismi adashsa, havola to‘g‘ri qismga to‘g‘rilanadi.
+- **Kodekslar bo‘limida** bazadagi rasmiy matn holati (tahrir sanasi) ko‘rsatiladi.
+- **Yo‘riqnomalar rasmiy matn bilan qayta tekshirildi**: uy sotish (FK 480, 481, 488), mulk bo‘lish (OK 12, 26, 27), otalik (OK 61, 62), bola kim bilan qoladi (OK 68, 75, 76), qarz (FK 109, 150, 735). Testlar har bir yo‘riqnomadagi OK/FK havolasini bazadan tekshiradi.
+
+### Qonunlarni yangilash
+
+- **Avtomatik tekshiruv** — `.github/workflows/law-update.yml`, har dushanba 08:37 (Toshkent):
+  1. lex.uz sahifasidagi eng so‘nggi tahrir sanasini bazadagi bilan solishtiradi.
+  2. Yangi tahrir bo‘lsa: Word faylni yuklaydi, import qiladi, `npm run build` va testlarni ishga tushiradi, **PR ochadi**.
+  3. O‘zgargan moddalar ro‘yxati PR tavsifida bo‘ladi.
+- **Yoqish uchun (bir marta):**
+  - GitHub → Settings → Actions → General → *Workflow permissions*: **Read and write permissions** va **Allow GitHub Actions to create and approve pull requests**.
+  - Settings → Secrets and variables → Actions → *Variables*: `LEX_WORD_URL_TEMPLATE` — lex.uz’dagi Word yuklash havolasi, hujjat ID o‘rniga `{id}` (masalan, `-104720`) yoki `{num}` (`104720`). Bu o‘zgaruvchi bo‘lmasa, workflow yangi tahrirni topganda faqat **issue ochadi** — Word faylni qo‘lda yuklab, quyidagi buyruq bilan import qilasiz.
+  - Ixtiyoriy: Secrets’ga `TELEGRAM_BOT_TOKEN` va `TELEGRAM_CHAT_ID` — natija Telegram’ga keladi.
+- **Qo‘lda yangilash:** lex.uz’dan Word faylni yuklab oling va:
+  ```
+  pip install beautifulsoup4
+  npm run law:update -- --file ok=~/Downloads/30.04.1998.doc --file fk2=~/Downloads/29.08.1996.doc
+  npm run build && npm test
+  ```
+  Kalitlar: `kon`, `mk`, `ok`, `fk1`, `fk2`, `fpk`, `jk`, `jpk`, `mjtk`, `sk`, `ujk`, `ipk`, `ist`. Skript moddalar soni keskin kamaysa yoki fayl eski tahrir bo‘lsa, bazani o‘zgartirmaydi.
+- Yangi kodeks qo‘shish: Word faylni yuboring — import, RAG yo‘naltirish va testlar shu tartibda qo‘shiladi.
+
+## v11.3: Jinoyat, protsessual va ma’muriy kodekslar
+
+- **Bazaga qo‘shildi** (`data/laws/`):
+
+  | Fayl | Kodeks | Tahrir |
+  |---|---|---|
+  | `jk.json` | Jinoyat kodeksi | 15.10.2026 |
+  | `jpk.json` | Jinoyat-protsessual kodeksi | 15.10.2026 |
+  | `mjtk.json` | Ma’muriy javobgarlik to‘g‘risidagi kodeks | 15.10.2026 |
+  | `fpk.json` | Fuqarolik protsessual kodeksi | 12.09.2026 |
+
+  Endi 7 ta kodeks bazada — taxminan 4 400 modda.
+- **JPK kirill yozuvida** (lex.uz eksporti shunday). Rasmiy matn o‘zgartirilmagan. Sarlavhaning lotincha nusxasi (`titleLatn`) qidiruv natijasida ko‘rsatiladi; qidiruv lotin so‘rov bilan ham ishlaydi.
+- **RAG yo‘naltirish:**
+  - o‘g‘irlik, firibgarlik, tan jarohati, haqorat → JK (va kerak bo‘lsa MJtK);
+  - ushlab turish, advokat, ariza berish → JPK;
+  - svetofor, kamera, mastlik, jarima va unga shikoyat → MJtK;
+  - da’vo arizasi, davlat boji, sudlov, apellyatsiya → FPK.
+  - Kazusda "Jinoyat huquqi", "Ma’muriy huquq", "Jinoyat-protsessual", "Fuqarolik protsessual" tanlansa, tegishli kodeks majburiy qidiriladi.
+- **Havolalar:** `JK 169`, `JPK 221`, `MJtK 128³` / `MJtK 128-3`, `FPK 188`, to‘liq nomlari bilan ham.
+- **Yo‘riqnomalar:**
+  - "YHXX jarimalari": kamera qayd etganda mulkdorning javobgarlikdan ozod bo‘lishi (MJtK 17-1(5)), shikoyatda davlat bojidan ozodlik (315), imtiyozli to‘lov va uning istisnolari (332-1).
+  - "Kiberfiribgarlik": ariza ko‘rib chiqish muddati (JPK 322, 329, 330).
+- **Importer:**
+  - kirill eksportini o‘qiydi;
+  - "BIRINCHI BOʻLIM", "I bob", "12 1 -bob" sarlavhalarini taniydi;
+  - butun bob kuchini yo‘qotganini va yuqori indeksli chiqarilgan moddalarni aniqlaydi.
+- **Haftalik yangilash** endi 8 ta hujjatni tekshiradi (kirill sahifadagi "15.10.2026 й." sanasi ham o‘qiladi).
+
+## v11.4: Konstitutsiya, Soliq, Uy-joy, IPK va Iste’molchilar qonuni
+
+- **Bazaga qo‘shildi:**
+
+  | Fayl | Hujjat | Tahrir |
+  |---|---|---|
+  | `kon.json` | Konstitutsiya (2023-yil 30-apreldagi) | 14.07.2026 |
+  | `sk.json` | Soliq kodeksi | 21.10.2026 |
+  | `ujk.json` | Uy-joy kodeksi | 12.09.2026 |
+  | `ipk.json` | Iqtisodiy protsessual kodeksi | 21.10.2026 |
+  | `ist.json` | Iste’molchilarning huquqlarini himoya qilish to‘g‘risidagi qonun | 18.10.2025 |
+
+  Endi saytdagi 12 ta kodeks kartochkasining hammasi rasmiy matn bilan ishlaydi; jami 13 ta hujjat, 6 000 ga yaqin modda.
+- **Yo‘naltirish:**
+  - sifatsiz tovar, onlayn xarid, pulni qaytarish → Iste’molchilar qonuni (va FK);
+  - mol-mulk, yer, daromad solig‘i, QQS, soliq tekshiruvi, jarima va shikoyat → SK;
+  - kommunal to‘lov, ko‘chirish, ro‘yxatdan chiqarish, ko‘p kvartirali uy → UJK;
+  - korxonalar o‘rtasidagi nizo, iqtisodiy sud → IPK (bunday holatda FPK qo‘shilmaydi);
+  - ushlab turish, so‘z erkinligi, shaxsiy hayot kabi asosiy huquqlar → Konstitutsiya.
+- **Konstitutsiya moddalari sarlavhasiz:**
+  - natijada birinchi gapning boshi ko‘rsatiladi;
+  - tekshiruv hisobotida raqamlar 2023-yilgi tahrir bo‘yicha ekani eslatiladi.
+- **Kazus:** "Konstitutsiyaviy huquq" tanlansa, Konstitutsiya majburiy qidiriladi.
+- **"Onlayn xarid" yo‘riqnomasi** (Iste’molchilar qonuni 18 va 28¹-moddalar) quyidagilar bilan to‘ldirildi:
+  - qaytarish xarajatlari sotuvchi zimmasida;
+  - pul kechiktirilsa, har kun uchun 1 % penya;
+  - sifatli tovarni 10 kunda almashtirish shartlari.

@@ -1,5 +1,7 @@
 import {redactPII,guardJsonPost,jsonError,geminiConfig,callGeminiResilient,providerError,pipeGeminiStream,LEGAL_RULES,langNote,SEARCH_OFF_NOTE,sourceTail,legal} from '../shared/common.mjs';
 import {retrieve,citationReport} from '../shared/rag.mjs';
+// Katalogda tanlangan kodeks → RAG bazasi (bazada bor kodekslar)
+const CODE_FOR_CATALOG={K:'kon',MK:'mk',OK:'ok',FK:'fk','FK-2':'fk',FPK:'fpk',JK:'jk',JPK:'jpk',MJ:'mjtk',SK:'sk',UK:'ujk',IPK:'ipk'};
 export const config={path:'/api/chat',rateLimit:{windowLimit:10,windowSize:60,aggregateBy:['ip','domain']}};
 export default async(req,ctx)=>{
  const startedAt=Date.now();
@@ -11,7 +13,7 @@ export default async(req,ctx)=>{
  const {apiKey,models,thinkingLevel}=geminiConfig();if(!apiKey)return jsonError('AI xizmati hozir ulanmagan. Katalog va hujjat namunalari ishlaydi.',503);
  const selected=legal.codes.find(c=>c[3]===body.codeId);
  const explain=body.task==='explain'&&selected?`\nQONUNNI SODDA TILDA TUSHUNTIRISH. Faqat ${selected[1]} (https://lex.uz/docs/${selected[3]}) doirasida ishlang. Tuzilma: 1)Oddiy ma’nosi; 2)Kimga tegishli; 3)Aniq modda/qism va manba; 4)Kundalik misol; 5)Amaliy qadamlar; 6)Istisno va aniqlashtirish. Foydalanuvchi qo‘ygan matnni rasmiy matn deb tekshirmasdan tasdiqlamang.`:'';
- const rag=retrieve(contents.at(-1).parts[0].text,{k:6,budget:10000,force:selected?.[0]==='MK'});
+ const rag=retrieve(contents.at(-1).parts[0].text,{k:6,budget:10000,force:CODE_FOR_CATALOG[selected?.[0]]});
  const prompt=LEGAL_RULES+rag.block+explain+(body.mode==='student'?'\nTalaba uchun masala, norma, tahlil, xulosa tartibida yozing.':'\nSodda tilda vaziyat, qonuniy asos, amaliy qadamlar, kerakli hujjatlar va ochiq savollarni tushuntiring.');
  try{const r=await callGeminiResilient({apiKey,models,thinkingLevel,allowNoSearch:true,stream:true,signal:req.signal,timeoutMs:58000,body:{system_instruction:{parts:[{text:prompt+langNote(body.lang)}]},contents,tools:[{google_search:{}}],generationConfig:{temperature:0.1,maxOutputTokens:6000}}});if(!r.ok)return providerError(r);if(!r.upstream.body)return jsonError('AI javobi kelmadi.',502);return pipeGeminiStream(r.upstream,{deadlineAt:startedAt+50000,prefix:r.searchDropped?SEARCH_OFF_NOTE:'',onEnd:(src,text)=>sourceTail(src)+citationReport(text,rag.provided,{bands:rag.bands})});}catch(e){return jsonError(e.name==='TimeoutError'?'AI javobini kutish vaqti tugadi. Qayta urinib ko‘ring.':'AI bilan ulanish uzildi.',502);}
 };

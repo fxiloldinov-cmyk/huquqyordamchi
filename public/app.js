@@ -276,12 +276,14 @@ $("#sit-more")?.addEventListener("click", () => {
   renderSituations($("#sit-search").value.trim());
 });
 
-// RENDER CODES
+// RENDER CODES — AI tekshiruvi uchun rasmiy matni bazaga kiritilgan kodekslarda tahrir sanasi ko'rsatiladi.
+const LAWBASE = globalThis.HK_LAWBASE || {};
 $("#codes").innerHTML = CODES.map(([n, t, d, id]) => `
   <article class="code-card">
     <div class="code-info">
       <h3>${escapeHtml(t)}</h3>
       <p>${escapeHtml(d)}</p>
+      ${LAWBASE[id] ? `<p class="code-base"><span>Rasmiy matn bazada, holati:</span> <time datetime="${LAWBASE[id]}">${LAWBASE[id].split("-").reverse().join(".")}</time></p>` : ""}
     </div>
     <div class="code-links">
       <a href="${lexUrl(id, t)}" target="_blank" rel="noopener">Rasmiy matn <span aria-hidden="true">↗</span></a>

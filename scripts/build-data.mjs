@@ -1,6 +1,9 @@
 import {readFile,writeFile,mkdir,rm} from 'node:fs/promises';
 const data=JSON.parse(await readFile(new URL('../data/legal.json',import.meta.url),'utf8'));
-await writeFile(new URL('../public/legal-data.js',import.meta.url),'// Generated from data/legal.json — run npm run build after edits.\nglobalThis.HK_LEGAL = '+JSON.stringify(data)+';\n');
+// Bazadagi rasmiy matn holati (lex.uz ID → tahrir sanasi): kodeks kartochkalarida ko'rsatiladi.
+const lawBase={};
+for(const f of ['kon','mk','ok','fk1','fk2','fpk','jk','jpk','mjtk','sk','ujk','ipk','ist']){try{const l=JSON.parse(await readFile(new URL(`../data/laws/${f}.json`,import.meta.url),'utf8'));if(l.lexId&&l.asOf)lawBase[l.lexId]=l.asOf;}catch{}}
+await writeFile(new URL('../public/legal-data.js',import.meta.url),'// Generated from data/legal.json — run npm run build after edits.\nglobalThis.HK_LEGAL = '+JSON.stringify(data)+';\nglobalThis.HK_LAWBASE = '+JSON.stringify(lawBase)+';\n');
 
 // ---- SEO: har bir vaziyat uchun statik sahifa, ro'yxat sahifasi, sitemap.xml va robots.txt ----
 // Netlify build paytida URL ni o'zi beradi; lokal buildda asosiy manzil ishlatiladi.

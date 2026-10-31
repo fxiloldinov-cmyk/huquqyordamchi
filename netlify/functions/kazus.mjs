@@ -10,6 +10,8 @@ import {
 import { KAZUS_NAMUNALAR, STANDART_FORMAT, FANLAR } from "../shared/kazus-namunalar.mjs";
 import { retrieve, citationReport } from "../shared/rag.mjs";
 
+const FAN_CODE = { mehnat: "mk", oila: "ok", fuqarolik: "fk", jinoyat: "jk", mamuriy: "mjtk", "jinoyat-protsessual": "jpk", "fuqarolik-protsessual": "fpk", konstitutsiyaviy: "kon" };
+
 export const config = {
   path: "/api/kazus",
   rateLimit: { windowLimit: 12, windowSize: 60, aggregateBy: ["ip", "domain"] },
@@ -133,8 +135,9 @@ export default async (req, context) => {
     { role: "user", parts: [{ text: CONTINUE_PROMPT }] },
   );
 
-  // RAG: Mehnat kodeksi va Plenum 26-son qaroridan mos parchalar (mehnat sohasi yoki mehnatga oid kazusda).
-  const rag = retrieve(kazus + (review ? "\n" + studentAnswer : ""), { k: 12, budget: 18000, force: fan === "mehnat" });
+  // RAG: Konstitutsiya, 10 ta kodeks va Isteʼmolchilar qonuni (+ MK bo'yicha Plenum 26-son) rasmiy matnidan mos parchalar.
+  // Tanlangan fan kodeksi har doim qidiriladi; kazus matnidagi mavzu so'zlari boshqa kodekslarni ham qo'shadi.
+  const rag = retrieve(kazus + (review ? "\n" + studentAnswer : ""), { k: 12, budget: 18000, force: FAN_CODE[fan] });
   const body0 = {
     system_instruction: { parts: [{ text: SYSTEM + BOOK_SOURCE_RULES + rag.block + langNote(body.lang) }] },
     contents,

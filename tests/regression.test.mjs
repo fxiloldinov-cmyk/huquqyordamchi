@@ -237,19 +237,50 @@ test('law base is complete and matches verified article numbers', () => {
  for (const a of legal.articles.filter(a => a.doc === 'mk')) assert.equal(n(a.title), n(t(+a.art)), 'MK ' + a.art);
 });
 
+test('v11.2–11.4: barcha kodekslar, Konstitutsiya va Isteʼmolchilar qonuni bazada to‘liq; bo‘shliqlar faqat kuchini yo‘qotgan moddalar', () => {
+ const {ok, fk1, fk2, fpk, jk, jpk, mjtk, kon, sk, ujk, ipk, ist} = rag.LAWS;
+ const whole = law => law.articles.map(a => a.art).filter(x => /^\d+$/.test(x)).map(Number);
+ for (const [law, lo, hi, minCount] of [[ok, 1, 238, 215], [fk1, 1, 385, 380], [fk2, 386, 1199, 800], [fpk, 1, 462, 500], [jk, 1, 302, 400], [jpk, 1, 623, 760], [mjtk, 1, 348, 660],
+   [kon, 1, 155, 155], [sk, 1, 483, 490], [ujk, 1, 141, 138], [ipk, 1, 347, 380], [ist, 1, 30, 33]]) {
+  const nums = whole(law), have = new Set(nums.map(String));
+  assert.equal(Math.min(...nums), lo); assert.equal(Math.max(...nums), hi); assert.ok(law.articles.length >= minCount, law.doc);
+  for (let x = lo; x <= hi; x++) assert.ok(have.has(String(x)) || law.repealed.includes(String(x)), `${law.doc} ${x}: na matn, na "kuchini yo‘qotgan" izohi`);
+  assert.match(law.asOf || '', /^20(2[5-9]|[3-9]\d)-\d\d-\d\d$/, law.doc + ' tahrir sanasi'); assert.match(law.url, /^https:\/\/lex\.uz\/docs\/-\d+$/);
+  // Konstitutsiya moddalari sarlavhasiz — bu rasmiy matnning o'zi
+  assert.ok(law.articles.every(a => a.parts.length && (a.title || law.doc === 'kon')), law.doc + ': matnsiz modda');
+ }
+ assert.ok(fk1.articles.some(a => a.art === '26-1') && ok.articles.some(a => a.art === '4-1'), 'yuqori indeksli moddalar');
+ const title = (law, n) => law.articles.find(a => a.art === n).title;
+ assert.match(title(ok, '99'), /aliment miqdori/i); assert.match(title(ok, '27'), /boʻlish/); assert.match(title(fk1, '150'), /Umumiy daʼvo muddati/);
+ assert.match(title(fk2, '735'), /qaytarish majburiyati/); assert.match(title(fk2, '1135'), /birinchi navbatdagi/); assert.match(title(fk2, '488'), /Uy-joy/);
+ // Katalogdagi OK/FK sarlavhalari rasmiy matn bilan bir xil (yoki rasmiy sarlavha + qavsdagi izoh)
+ const n = s => HKCore.norm(s).replace(/\s*\([^)]*\)\s*$/, '');
+ const byDoc = {ok, fk1, fk2, fpk, jk, jpk, mjtk, kon, sk, ujk, ipk, ist};
+ for (const a of legal.articles.filter(a => byDoc[a.doc])) {
+  const official = byDoc[a.doc].articles.find(x => x.art === a.art);
+  assert.ok(official, `${a.doc} ${a.art} rasmiy matnda yo‘q`); assert.equal(n(a.title), HKCore.norm(official.titleLatn || official.title), `${a.doc} ${a.art}`);
+ }
+ // Kirill yozuvidagi JPK: rasmiy matn o'zgarmagan, lotincha sarlavha faqat ko'rsatish uchun
+ assert.equal(jpk.script, 'cyrl'); const j221 = jpk.articles.find(a => a.art === '221');
+ assert.match(j221.title, /^Ушлаб туриш асослари$/); assert.equal(j221.titleLatn, 'Ushlab turish asoslari');
+});
+
 test('retrieval finds the key provisions for a multi-issue labour kazus and stays out of other topics', () => {
  const r = rag.retrieve(AZIZA, {k: 12, budget: 18000, force: true});
- for (const n of ['161', '163', '165', '172', '173', '560']) assert.ok(r.provided.has(n), 'MK ' + n);
+ for (const n of ['161', '163', '165', '172', '173', '560']) assert.ok(r.provided.mk.has(n), 'MK ' + n);
+ assert.deepEqual(r.codes, ['mk'], 'mehnat kazusiga boshqa kodeks aralashmaydi');
  assert.ok(r.bands.size >= 2); assert.match(r.block, /\[MK 163-modda\./); assert.match(r.block, /\[Plenum 26-son, \d+-band\]/);
- assert.deepEqual([...rag.retrieve('MK 560 nima deydi?', {k: 3}).provided][0], '560');
- assert.deepEqual([...rag.retrieve('Kasal bo‘lib yotganimda ishdan bo‘shatishdi', {k: 5}).provided][0], '163');
- assert.equal(rag.retrieve('Aliment miqdori qancha?').block, '');
+ assert.deepEqual([...rag.retrieve('MK 560 nima deydi?', {k: 3}).provided.mk][0], '560');
+ assert.deepEqual([...rag.retrieve('Kasal bo‘lib yotganimda ishdan bo‘shatishdi', {k: 5}).provided.mk][0], '163');
+ const al = rag.retrieve('Aliment miqdori qancha?');
+ assert.deepEqual(al.codes, ['ok']); assert.ok(al.provided.ok.has('99')); assert.ok(!al.block.includes('[MK '));
+ assert.equal(rag.retrieve('Ob-havo bugun qanday?').block, '');
 });
 
 test('citation report confirms given articles and flags unknown or unsupplied ones', () => {
  const rep = rag.citationReport('MK 163-modda 1-qism 3-band; MK 165 va 173-moddalari; MK 562; MK 999. Plenumning 26-son qarori 22-bandi va 80-bandi.', new Set(['163', '165', '173']), {bands: new Set(['22']), eventDate: '2026-10-12'});
  assert.match(rep, /✅ Mehnat kodeksi[^\n]*MK 163, MK 165, MK 173/);
- assert.match(rep, /⚠️ Kodeksda bor[^\n]*MK 562/); assert.match(rep, /❌ Mehnat kodeksida bunday modda yo‘q: MK 999/);
+ assert.match(rep, /⚠️ Mehnat kodeksida bor[^\n]*MK 562/); assert.match(rep, /❌ Mehnat kodeksida bunday modda yo‘q: MK 999/);
  assert.match(rep, /✅ Plenum[^\n]*22-band/); assert.match(rep, /❌ Plenum 26-son qarorida bunday band yo‘q: 80-band/);
  assert.match(rep, /Voqea sanasi \(2026-10-12\)/);
 });
@@ -263,11 +294,13 @@ test('kazus sends official passages to the AI and appends the citation check', a
  assert.match(out, /Manba tekshiruvi[\s\S]*✅[^\n]*MK 163[\s\S]*❌[^\n]*MK 999/);
 }));
 
-test('chat on a non-labour topic gets no labour passages; search marks official MK titles and fake articles', async () => withKey(async () => {
+test('chat on a family topic gets Oila kodeksi passages, not labour ones; search marks official MK titles and fake articles', async () => withKey(async () => {
  let sys = '';
- globalThis.fetch = async (url, options) => { sys = JSON.parse(options.body).system_instruction.parts[0].text; return sse(['data: ' + JSON.stringify(packet('Aliment haqida javob', 'STOP'))]); };
+ globalThis.fetch = async (url, options) => { sys = JSON.parse(options.body).system_instruction.parts[0].text; return sse(['data: ' + JSON.stringify(packet('Aliment OK 99-modda bo‘yicha belgilanadi. OK 176 ham bor.', 'STOP'))]); };
  const res = await chat(req({messages: [{role: 'user', content: 'Aliment miqdori qancha bo‘ladi?'}]}), {ip: 'test-' + sequence++});
- await res.text(); assert.ok(!sys.includes('TASDIQLANGAN MANBA PARCHALARI'));
+ const text = await res.text();
+ assert.match(sys, /TASDIQLANGAN MANBA PARCHALARI/); assert.match(sys, /\[OK 99-modda\. Ota-onaning voyaga yetmagan bolalariga toʻlaydigan aliment miqdori\]/); assert.ok(!sys.includes('[MK '));
+ assert.match(text, /✅ Oila kodeksi[^\n]*OK 99/); assert.match(text, /🚫 Oila kodeksida kuchini yo‘qotgan[^\n]*OK 176/);
  const out = normalizeResult({natijalar: [{hujjat: 'Mehnat kodeksi', modda: '163', modda_nomi: 'noto‘g‘ri nom'}, {hujjat: 'Mehnat kodeksi', modda: '999'}]}, [], rag.retrieve('Kasallik davrida bo‘shatish', {k: 4}));
  assert.equal(out.natijalar[0].rasmiyMatn, 'berilgan'); assert.match(out.natijalar[0].moddaNomi, /taqiqlash/);
  assert.equal(out.natijalar[1].rasmiyMatn, 'yoq'); assert.ok(out.rasmiyParchalar.moddalar.some(m => m.art === '163'));
@@ -313,7 +346,7 @@ test('chat shows the specific admin reason for a leaked key instead of a generic
  assert.equal(res.status, 503); assert.match((await res.json()).error, /oshkor/); assert.equal(calls, 1);
 }));
 
-test('Situations: unique ids/slugs, known group and icon, every cited MK article exists in the official text', () => {
+test('Situations: unique ids/slugs, known group and icon, every cited MK, OK and FK article exists in the official text', () => {
  const appJs = read('public/app.js');
  const icons = new Set([...appJs.split('function getSvgIcon')[1].split('return icons')[0].matchAll(/^\s+([a-z]+):\s*`/gm)].map(m => m[1]));
  const mk = new Set(JSON.parse(read('data/laws/mk.json')).articles.map(a => a.art));
@@ -328,8 +361,91 @@ test('Situations: unique ids/slugs, known group and icon, every cited MK article
   const text = JSON.stringify(s);
   for (const m of text.matchAll(/MK (\d+)(?:, (\d+))?(?:, (\d+))?-modda/g))
    for (const n of m.slice(1).filter(Boolean)) assert.ok(mk.has(n), `${s.id}: MK ${n} rasmiy matnda yo'q`);
+  // Matndagi "OK 62-modda", "Oila kodeksi 61-modda", "FK 735-moddaning" — rasmiy bazada bor va kuchini yo'qotmagan
+  const refs = rag.lawRefs(text);
+  for (const n of refs.ok) assert.ok(rag.articleInfo(n, 'ok')?.title, `${s.id}: OK ${n} rasmiy matnda yo'q`);
+  for (const n of refs.fk) assert.ok(rag.articleInfo(n, 'fk')?.title, `${s.id}: FK ${n} rasmiy matnda yo'q`);
+  // "Qonunlar" ro'yxati: "Oila kodeksi: 23-modda — ...; 25–26-moddalar", "Fuqarolik kodeksi (2-qism): 735-modda",
+  // "O‘zbekiston Respublikasi Jinoyat kodeksi (168-modda ..., 278-2-modda ...)" — har bir raqam shu kodeksda bor.
+  const HEADS = [[/^(?:O‘zbekiston Respublikasi(?:ning)?\s+)?Mehnat kodeksi/, 'mk'], [/^Oila kodeksi/, 'ok'], [/^Fuqarolik kodeksi \(([12])-qism\)/, 'fk'],
+   [/^(?:O‘zbekiston Respublikasi(?:ning)?\s+)?Fuqarolik protsessual kodeksi/, 'fpk'], [/^(?:O‘zbekiston Respublikasi(?:ning)?\s+)?Jinoyat kodeksi/, 'jk'],
+   [/^Jinoyat-protsessual kodeksi/, 'jpk'], [/^Ma’muriy javobgarlik to‘g‘risidagi kodeks/, 'mjtk'],
+   [/^“?Iste’molchilarning huquqlarini himoya qilish to‘g‘risida”gi Qonun/, 'ist'], [/^(?:O‘zbekiston Respublikasi(?:ning)?\s+)?Uy-joy kodeksi/, 'ujk'],
+   [/^(?:O‘zbekiston Respublikasi(?:ning)?\s+)?Soliq kodeksi/, 'sk'], [/^(?:O‘zbekiston Respublikasi\s+)?Konstitutsiya/, 'kon']];
+  for (const law of s.laws) {
+   const hit = HEADS.map(([re, code]) => [law.match(re), code]).find(([m]) => m); if (!hit) continue;
+   const [head, code] = hit;
+   for (const m of law.replace(/[¹²³⁴⁵⁶⁷⁸⁹]/g, c => '-' + ('¹²³⁴⁵⁶⁷⁸⁹'.indexOf(c) + 1)).matchAll(/(\d{1,4})(?:([–-])(\d{1,4}))?-moddal?a?r?/g)) {
+    const nums = !m[3] ? [m[1]] : m[2] === '–' || +m[3] > +m[1] ? [m[1], m[3]] : [`${m[1]}-${m[3]}`];
+    for (const n of nums) {
+     const info = rag.articleInfo(n, code);
+     assert.ok(info?.title, `${s.id}: ${head[0]} ${n}-modda rasmiy matnda yo'q`);
+     if (head[1]) assert.equal(String(info.qism), head[1], `${s.id}: FK ${n} ${info.qism}-qismda, ro'yxatda ${head[1]}-qism deyilgan`);
+    }
+   }
+  }
  }
 });
+
+test('v11.2: guides corrected against the official text keep the verified wording', () => {
+ const S = Object.fromEntries(legal.situations.map(s => [s.id, JSON.stringify(s)]));
+ assert.match(S.uy_sotish, /FK 488-moddaning ikkinchi qismi/); assert.match(S.uy_sotish, /FK 481-moddaning uchinchi qismi/);
+ assert.doesNotMatch(S.uy_sotish, /notarial tasdiqlanadi \(FK 480-modda\)/);
+ assert.match(S.mulk, /OK 27-moddaning to‘qqizinchi qismi/); assert.doesNotMatch(S.mulk, /3 yillik da’vo muddati qo‘llaniladi \(OK 12-modda\)/);
+ assert.doesNotMatch(S.bola, /o‘n yosh/); assert.match(S.bola, /yoshidan qat’i nazar[^"]*OK 68-modda/);
+ assert.match(S.otalik, /bola voyaga yetgach esa uning o‘zi/); assert.match(S.qarz, /o‘ttiz kun ichida[^"]*FK 735-moddaning ikkinchi qismi/);
+ // Tekshirilgan qoidalarning rasmiy matni bazada ham shunday
+ const part = (code, n, i) => rag.LAWS[code].articles.find(a => a.art === n).parts[i];
+ assert.match(part('fk2', '488', 1), /notarial tartibda tasdiqlanishi va davlat roʻyxatidan oʻtkazilishi lozim/);
+ assert.match(part('ok', '27', 8), /uch yillik daʼvo muddati/); assert.match(part('ok', '68', 0), /yoshidan qatʼi nazar/);
+ assert.match(part('fk2', '735', 1), /oʻttiz kun/); assert.match(part('ok', '62', 1), /bola voyaga yetganidan keyin/);
+});
+
+test('v11.2: references in MK/OK/FK forms are parsed, including superscript articles and ranges', () => {
+ const r = rag.lawRefs('MK 163-modda 1-qism; OK 27-moddaning 9-qismi; Fuqarolik kodeksining 1135-moddasi, FK 26¹-modda, FK 173-1-moddasi; OK 25–26-moddalar; Oila kodeksi 96 va 99-moddalari; Fuqarolik protsessual kodeksi 12-modda; Fuqarolik kodeksi (2-qism) 735-modda');
+ assert.deepEqual(r.mk, ['163']); assert.deepEqual(r.ok.sort(), ['25', '26', '27', '96', '99'].sort());
+ assert.deepEqual(r.fk.sort(), ['1135', '173-1', '26-1', '735'].sort());
+ assert.deepEqual(rag.explicitRefs('Mehnat kodeksining 160, 161 va 163-moddalari'), ['160', '161', '163']);
+ const fk150 = rag.articleInfo('150', 'fk');
+ assert.equal(fk150.qism, 1); assert.equal(fk150.url, 'https://lex.uz/docs/-111189'); assert.equal(rag.articleInfo('735', 'fk').qism, 2);
+ assert.ok(rag.articleInfo('63', 'fk').repealed); assert.equal(rag.articleInfo('5000', 'fk'), null);
+});
+
+test('v11.2: retrieval routes family, civil and mixed questions to the right code', () => {
+ const ids = r => r.passages.filter(p => p.doc !== 'plenum26').map(p => p.doc + ':' + p.art);
+ const q = rag.retrieve('Qo‘shnimga 20 million so‘m qarz berdim, tilxat bor, qaytarmayapti');
+ assert.deepEqual(q.codes, ['fk']); for (const n of ['732', '733', '735']) assert.ok(q.provided.fk.has(n), 'FK ' + n);
+ assert.match(q.block, /\[FK 735-modda\. Qarz oluvchining qarz summasini qaytarish majburiyati\] \(2-qism;/);
+ const m = rag.retrieve('Otam vafot etdi, meros qanday taqsimlanadi, birinchi navbat vorislar kim?');
+ assert.ok(m.provided.fk.has('1135') && m.provided.fk.has('1112'));
+ const d = rag.retrieve('Erim bilan ajrashdik, nikohda olingan kvartira uning nomida. Qanday bo‘linadi?');
+ for (const n of ['23', '27']) assert.ok(d.provided.ok.has(n), 'OK ' + n);
+ const b = rag.retrieve('Bola ajrashgandan keyin kim bilan qoladi?');
+ for (const n of ['75', '76']) assert.ok(b.provided.ok.has(n), 'OK ' + n);
+ assert.deepEqual(ids(rag.retrieve('FK 735 nima deydi?', {k: 3})).slice(0, 1), ['fk:735']);
+ // Ko'p sohali kazus: kuchsizroq soha ham kamida 2 ta modda oladi
+ const mix = rag.retrieve('Ish beruvchi meni shtat qisqarishi sababli bo‘shatdi va oxirgi oylikni bermadi. Bundan tashqari, otam vafot etib, uyni meros qilib qoldirdi, merosxo‘rlar kimlar?', {k: 8});
+ assert.ok(mix.provided.mk.size >= 2 && mix.provided.fk.size >= 2, ids(mix).join(' '));
+ // Aliment qarzi — Oila kodeksi masalasi, qarz shartnomasi emas
+ assert.deepEqual(rag.retrieve('Erim aliment to‘lamayapti, 2 yildan beri qarzi bor.').codes, ['ok']);
+ // Majburiy kodeks (kazusdagi fan yoki katalogda tanlangan kodeks)
+ assert.ok(rag.retrieve('Shartlar bo‘yicha huquqiy baho bering', {force: 'ok'}).codes.includes('ok'));
+});
+
+test('v11.2: kazus in family law forces Oila kodeksi passages; search checks OK/FK articles and fixes the FK part link', async () => withKey(async () => {
+ let sys = '';
+ globalThis.fetch = async (url, options) => { sys = JSON.parse(options.body).system_instruction.parts[0].text; return sse(['data: ' + JSON.stringify(packet('Yechim: OK 75-modda, OK 76-modda.', 'STOP'))]); };
+ const res = await kazus(req({kazus: 'Karim va Dilnoza 2019-yilda turmush qurgan. 2025-yilda ular alohida yashay boshlagan. Ikki farzandi bor. Ular kelisha olmayapti.', fan: 'oila', eventDate: '2026-10-01'}), {ip: 'test-' + sequence++});
+ const out = await res.text();
+ assert.match(sys, /\[OK \d+-modda\./); assert.match(out, /Oila kodeksi/);
+ const fake = {natijalar: [{hujjat: 'Fuqarolik kodeksi (2-qism)', modda: '150'}, {hujjat: 'Oila kodeksi', modda: '176'}, {hujjat: 'Fuqarolik kodeksi', modda: '735'}]};
+ const r = normalizeResult(fake, [], rag.retrieve('qarz tilxat qaytarmayapti'));
+ assert.equal(r.natijalar[0].kodeks, 'FK'); assert.equal(r.natijalar[0].rasmiyMatn, 'kodeksda'); assert.equal(r.natijalar[0].url, 'https://lex.uz/docs/-111189');
+ assert.match(r.natijalar[0].moddaNomi, /Umumiy daʼvo muddati/);
+ assert.equal(r.natijalar[1].rasmiyMatn, 'bekor');
+ assert.equal(r.natijalar[2].rasmiyMatn, 'berilgan'); assert.equal(r.natijalar[2].url, 'https://lex.uz/docs/-180552');
+ assert.ok(r.rasmiyParchalar.moddalar.some(m => m.code === 'FK' && m.art === '735'));
+}));
 
 test('Homepage shows 12 situations first, group chips filter the list', () => {
  const html = read('public/index.html');
@@ -416,4 +532,83 @@ test('v11.1: cookie consent gates remembered language and theme; banner and acco
  assert.match(read('public/ui.js'), /HK_CONSENT\.allowed\("prefs"\)[^\n]*localStorage\.setItem\("hk-theme"/);
  assert.match(read('public/app.js'), /\['chat','kazus','explain','account'\]/);
  assert.match(read('public/vaziyat/otalikni-belgilash/index.html'), /consent\.js/);
+});
+
+test('v11.2: law-update check reads the newest edition date from a lex.uz page and the workflow is wired', async () => {
+ const {latestEdition} = await import('../scripts/check-law-updates.mjs');
+ assert.equal(latestEdition('... Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son ... milliy bazasi, 12.09.2026-y., 03/26/1174/0801-son; 01.01.2099-y. kelajak'), '2026-09-12');
+ assert.equal(latestEdition('<html>sana yo‘q</html>'), null);
+ const wf = read('.github/workflows/law-update.yml');
+ assert.match(wf, /schedule:[\s\S]*cron:/); assert.match(wf, /workflow_dispatch/); assert.match(wf, /check-law-updates\.mjs/);
+ assert.match(wf, /create-pull-request/); assert.match(wf, /npm test/); assert.ok(!/GEMINI_API_KEY:\s*\$\{\{/.test(wf), 'workflow AI kalitini ishlatmaydi');
+ assert.match(read('scripts/import_lexuz.py'), /repealed/);
+});
+
+test('v11.3: criminal, procedural and administrative questions reach JK, JPK, MJtK and FPK', () => {
+ const has = (r, code, arts) => { for (const n of arts) assert.ok(r.provided[code].has(n), `${code.toUpperCase()} ${n}: ${r.passages.map(p => p.doc + ':' + p.art).join(' ')}`); };
+ has(rag.retrieve('Telefonimni o‘g‘irlab ketishdi, qanday jazo beriladi?'), 'jk', ['169']);
+ has(rag.retrieve('Meni militsiya ushlab oldi, advokat chaqirishga haqqim bormi? Necha soat ushlab turishadi?'), 'jpk', ['221', '226', '49']);
+ has(rag.retrieve('Svetoforning qizil chirog‘ida o‘tib ketdim, kamera jarima yozdi. Qanday shikoyat qilsam bo‘ladi?'), 'mjtk', ['128-4', '17-1', '315', '316']);
+ has(rag.retrieve('Qarzni undirish uchun sudga da’vo arizasi qanday yoziladi, davlat boji qancha?'), 'fpk', ['188', '189', '128']);
+ const h = rag.retrieve('Qo‘shnim meni haqorat qildi va kaltakladi');
+ has(h, 'jk', ['140']); has(h, 'mjtk', ['41']);
+ // Mavjud sohalar o'zgarmadi
+ assert.deepEqual(rag.retrieve('Aliment miqdori qancha?').codes, ['ok']);
+ assert.deepEqual(rag.retrieve('Qo‘shnimga 20 million so‘m qarz berdim, tilxat bor, qaytarmayapti').codes, ['fk']);
+ // Kirill matnli JPK parchasi: rasmiy sarlavha + lotincha nusxa
+ assert.match(rag.retrieve('JPK 221-modda', {k: 1}).block, /\[JPK 221-modda\. Ушлаб туриш асослари \/ Ushlab turish asoslari\]/);
+ const r = rag.lawRefs('JK 169-modda; Jinoyat-protsessual kodeksining 242-moddasi; MJtK 128³-modda va MJtK 128-3; Maʼmuriy javobgarlik toʻgʻrisidagi kodeksning 41-moddasi; FPK 188; Fuqarolik protsessual kodeksining 34-moddasi; Fuqarolik kodeksi 1135-modda');
+ assert.deepEqual(r.jk, ['169']); assert.deepEqual(r.jpk, ['242']); assert.deepEqual(r.mjtk.sort(), ['128-3', '41']); assert.deepEqual(r.fpk.sort(), ['188', '34']); assert.deepEqual(r.fk, ['1135']);
+ const rep = rag.citationReport('JK 169, JK 187, JPK 246, FPK 9999', rag.retrieve('o‘g‘irlik uchun jazo').provided);
+ assert.match(rep, /✅ Jinoyat kodeksi[^\n]*JK 169/); assert.match(rep, /🚫 Jinoyat kodeksida kuchini yo‘qotgan[^\n]*JK 187/);
+ assert.match(rep, /🚫 Jinoyat-protsessual kodeksida[^\n]*JPK 246/); assert.match(rep, /❌ Fuqarolik protsessual kodeksida bunday modda yo‘q: FPK 9999/);
+ assert.equal(rag.articleInfo('221', 'jpk').title, 'Ushlab turish asoslari');
+});
+
+test('v11.3: kazus in criminal law forces Jinoyat kodeksi; search verifies JPK/MJtK results by name', async () => withKey(async () => {
+ let sys = '';
+ globalThis.fetch = async (url, options) => { sys = JSON.parse(options.body).system_instruction.parts[0].text; return sse(['data: ' + JSON.stringify(packet('Qilmish JK 169-modda bilan kvalifikatsiya qilinadi.', 'STOP'))]); };
+ const res = await kazus(req({kazus: 'A. B. ning uyidan uning roziligisiz qimmatbaho buyumlarni olib chiqib ketdi va sotdi. Qilmishga huquqiy baho bering.', fan: 'jinoyat'}), {ip: 'test-' + sequence++});
+ const out = await res.text();
+ assert.match(sys, /\[JK \d+(-\d+)?-modda\./); assert.match(out, /✅ Jinoyat kodeksi[^\n]*JK 169/);
+ const r = normalizeResult({natijalar: [{hujjat: 'Jinoyat-protsessual kodeksi', modda: '221'}, {hujjat: 'Ma’muriy javobgarlik to‘g‘risidagi kodeks', modda: '184'}]}, [], rag.retrieve('ushlab turish'));
+ assert.equal(r.natijalar[0].kodeks, 'JPK'); assert.equal(r.natijalar[0].moddaNomi, 'Ushlab turish asoslari'); assert.equal(r.natijalar[0].rasmiyMatn, 'berilgan');
+ assert.equal(r.natijalar[1].rasmiyMatn, 'bekor');
+}));
+
+test('v11.3: every article in the RAG routing table exists in the official text and is not repealed', () => {
+ for (const [code, arts] of Object.entries(rag.ROUTE_TABLE)) for (const n of arts) {
+  const info = rag.articleInfo(n, code);
+  assert.ok(info && !info.repealed, `${code.toUpperCase()} ${n}: yo'naltirishda bor, bazada yo'q yoki kuchini yo'qotgan`);
+ }
+});
+
+test('v11.4: Constitution, Tax, Housing, IPK and consumer law are retrieved and checked', () => {
+ const has = (r, code, arts) => { for (const n of arts) assert.ok(r.provided[code].has(n), `${code} ${n}: ${r.passages.map(p => p.doc + ':' + p.art).join(' ')}`); };
+ has(rag.retrieve('Do‘kondan olgan telefonim 3 kunda buzildi, sotuvchi almashtirib bermayapti'), 'ist', ['13', '14']);
+ has(rag.retrieve('Onlayn do‘kondan buyurtma qildim, tavsifga mos kelmadi, pulini qaytarmayapti'), 'ist', ['28-1', '18']);
+ has(rag.retrieve('Kvartira uchun mol-mulk solig‘i qancha to‘lanadi?'), 'sk', ['410', '411', '415']);
+ has(rag.retrieve('Oylikdan daromad solig‘i necha foiz ushlanadi?'), 'sk', ['364', '381']);
+ has(rag.retrieve('Kommunal to‘lovlarni to‘lamasa uydan chiqarib yuborishadimi?'), 'ujk', ['133', '70']);
+ const e = rag.retrieve('MChJ kontragentdan qarzni iqtisodiy sudga da’vo arizasi bilan undirmoqchi');
+ has(e, 'ipk', ['149', '25']); assert.equal(e.provided.fpk.size, 0, 'iqtisodiy nizoda FPK emas, IPK');
+ has(rag.retrieve('Militsiya meni sudsiz 3 kun ushlab turdi, Konstitutsiyaga zidmi?'), 'kon', ['27']);
+ // Buzilgan telefon — uy buzish (UJK) emas
+ assert.ok(!rag.retrieve('Telefonim buzildi, sotuvchi almashtirmayapti').codes.includes('ujk'));
+ // Konstitutsiya: sarlavhasiz modda, havola shakllari va tahrir eslatmasi
+ const r = rag.lawRefs('Konstitutsiyaning 28-moddasi; O‘zbekiston Respublikasi Konstitutsiyasining 27-moddasi; SK 381-modda; Uy-joy kodeksining 133-moddasi; IPK 149; “Iste’molchilarning huquqlarini himoya qilish to‘g‘risida”gi Qonunning 13-moddasi; Iste’molchilar qonuni 28¹-modda');
+ assert.deepEqual(r.kon.sort(), ['27', '28']); assert.deepEqual(r.sk, ['381']); assert.deepEqual(r.ujk, ['133']); assert.deepEqual(r.ipk, ['149']); assert.deepEqual(r.ist.sort(), ['13', '28-1']);
+ assert.match(rag.articleInfo('28', 'kon').title, /aybsiz|ayblanayotgan shaxs/);
+ assert.match(rag.retrieve('Konstitutsiya 28-modda', {k: 1}).block, /\[Konstitutsiya 28-modda\] \(VII bob/);
+ const rep = rag.citationReport('Konstitutsiya 28-modda, Konstitutsiya 200, SK 324, Iste’molchilar qonuni 13-modda', rag.retrieve('nuqsonli tovar').provided);
+ assert.match(rep, /❌ Konstitutsiyada bunday modda yo‘q: Konstitutsiya 200/); assert.match(rep, /ℹ️ Konstitutsiya moddalari 2023-yil 30-apreldagi tahrir/);
+ assert.match(rep, /🚫 Soliq kodeksida kuchini yo‘qotgan[^\n]*SK 324/); assert.match(rep, /✅ Isteʼmolchilarning[^\n]*Isteʼmolchilar qonuni 13/);
+});
+
+test('v11.4: onlayn xarid guide matches article 28-1 and 18 of the consumer law', () => {
+ const S = JSON.stringify(legal.situations.find(s => s.id === 'onlayn'));
+ assert.match(S, /1 foizi miqdorida penya/); assert.match(S, /nooziq-ovqat tovarini xarid kunidan 10 kun ichida/);
+ const part = (n, i) => rag.LAWS.ist.articles.find(a => a.art === n).parts[i];
+ assert.match(part('28-1', 14), /qaytarib berish bilan bogʻliq barcha xarajatlar sotuvchining/); assert.match(part('28-1', 16), /bir foizi miqdorida neustoyka/);
+ assert.match(part('18', 0), /nooziq-ovqat tovarini xarid qilgan kunidan eʼtiboran oʻn kun ichida/);
 });

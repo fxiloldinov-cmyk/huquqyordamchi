@@ -122,7 +122,7 @@ function renderAiBlock(data) {
       <div class="article-top">
         ${r.modda ? `<span class="article-badge">${escapeHtml(r.modda)}-modda</span>` : ""}
         <span class="article-doc">${escapeHtml(r.hujjat)}</span>
-        ${r.rasmiyMatn === 'berilgan' ? `<span class="chip ok">Rasmiy matn bilan tekshirildi (MK)</span>` : r.rasmiyMatn === 'kodeksda' ? `<span class="chip mid">MKda bor — matnini tekshiring</span>` : r.rasmiyMatn === 'yoq' ? `<span class="chip low">MKda bunday modda yo‘q</span>` : verified ? `<span class="chip ok">Hujjat va modda raqami katalogga mos</span>` : `<span class="chip mid">AI taklifi — norma tekshirilsin</span>`}
+        ${r.rasmiyMatn === 'berilgan' ? `<span class="chip ok">Rasmiy matn bilan tekshirildi</span>` : r.rasmiyMatn === 'kodeksda' ? `<span class="chip mid">Kodeksda bor — matnini tekshiring</span>` : r.rasmiyMatn === 'bekor' ? `<span class="chip low">Modda kuchini yo‘qotgan</span>` : r.rasmiyMatn === 'yoq' ? `<span class="chip low">Kodeksda bunday modda yo‘q</span>` : verified ? `<span class="chip ok">Hujjat va modda raqami katalogga mos</span>` : `<span class="chip mid">AI taklifi — norma tekshirilsin</span>`}
       </div>
       ${r.moddaNomi ? `<div class="article-title">${escapeHtml(r.moddaNomi)}</div>` : ""}
       ${r.nimaUchun ? `<p class="article-why">${escapeHtml(r.nimaUchun)}</p>` : ""}

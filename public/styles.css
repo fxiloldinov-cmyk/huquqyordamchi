@@ -146,3 +146,6 @@
 .cookie-opt input{width:18px;height:18px;margin-top:2px;flex:none}.cookie-opt b{display:block}.cookie-opt small{display:block;color:var(--muted);font-weight:400}
 @media(max-width:760px){.cookie-inner{grid-template-columns:1fr}.cookie-actions{justify-content:stretch}.cookie-actions .btn{flex:1 1 auto}}
 @media(prefers-reduced-motion:reduce){.cookie-banner,.auth-dialog[open],.item-dialog[open]{animation:none}}
+
+/* v11.2: bazadagi rasmiy matn holati */
+.code-info .code-base{min-height:0;margin:-4px 0 12px;font-size:11px;color:var(--muted);display:flex;gap:6px;align-items:center;flex-wrap:wrap}.code-base::before{content:"";width:7px;height:7px;border-radius:50%;background:#3f8f6b;flex-shrink:0}.code-base time{font-variant-numeric:tabular-nums;color:var(--text)}

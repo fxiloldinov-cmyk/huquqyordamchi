@@ -517,15 +517,15 @@
       "steps": [
         [
           "Ixtiyoriy tan olish",
-          "Ota bolani o‘ziniki deb tan olsa, ota va ona FHDYo organiga birgalikda ariza beradi (Oila kodeksi 61-modda). Bu bola tug‘ilishini qayd etish chog‘ida ham qilinishi mumkin (OK 208-modda)."
+          "Ota bolani o‘ziniki deb tan olsa, ota va ona FHDYo organiga birgalikda ariza beradi (Oila kodeksi 61-modda). Ariza bola tug‘ilishini qayd etish chog‘ida ham, undan keyin ham berilishi mumkin; keyinchalik birga ariza berish qiyin bo‘lishi mumkinligiga asos bo‘lsa — hatto homiladorlik davrida ham (OK 61-moddaning to‘rtinchi qismi, 208-modda)."
         ],
         [
           "Sudga da’vo",
-          "Birgalikdagi ariza berilmasa, otalikni belgilash haqida sudga da’vo beriladi (OK 62-modda). Da’voni odatda bolaning onasi yoki vasiysi beradi; da’vo arizasiga bolaning tug‘ilganlik haqidagi guvohnomasini ilova qiling."
+          "Birgalikdagi ariza berilmasa, otalik sud tartibida belgilanadi (OK 62-modda). Da’voni ota-onadan biri, bolaning vasiysi (homiysi), bola kimning qaramog‘ida bo‘lsa shu shaxs, bola voyaga yetgach esa uning o‘zi berishi mumkin. Da’vo arizasiga bolaning tug‘ilganlik haqidagi guvohnomasini ilova qiling."
         ],
         [
           "Dalillarni tayyorlang",
-          "Birga yashaganlik, bolani birga tarbiyalaganlik, yozishmalar, suratlar, guvohlar ko‘rsatuvi. Sud zarur hollarda genetik (DNK) ekspertiza tayinlashi mumkin."
+          "Sud bola tug‘ilgunga qadar ona va javobgar birga yashab, umumiy ro‘zg‘or yuritganini, bolani birga tarbiyalagani yoki ta’minlaganini yoxud javobgar otalikni tan olganini tasdiqlovchi dalillarni e’tiborga oladi (OK 62-moddaning uchinchi qismi): yozishmalar, suratlar, guvohlar ko‘rsatuvi. Sud zarur hollarda genetik (DNK) ekspertiza tayinlashi mumkin."
         ],
         [
           "Aliment talabi",
@@ -533,7 +533,7 @@
         ],
         [
           "Natija",
-          "Sud qarori qonuniy kuchga kirgach, FHDYo organi tug‘ilganlik haqidagi yozuvga ota to‘g‘risidagi ma’lumotni kiritadi. Otalikka keyinchalik e’tiroz bildirish tartibi OK 63-moddasida belgilangan."
+          "Sud qarori qonuniy kuchga kirgach, sud uning nusxasini bola tug‘ilganligi ro‘yxatga olingan joydagi FHDYo organiga yuboradi (OK 62-moddaning beshinchi qismi) va yozuvga ota to‘g‘risidagi ma’lumot kiritiladi. Otalikka keyinchalik e’tiroz bildirish tartibi OK 63-moddasida belgilangan."
         ]
       ],
       "laws": [
@@ -563,11 +563,11 @@
       "steps": [
         [
           "Kelishuvga harakat qiling",
-          "Bola kim bilan yashashi, ko‘rishish kunlari va tartibi, aliment — barchasini yozma kelishuvda belgilash nizoning oldini oladi. Nikohdan ajratish jarayonida sud bu masalalarni ham hal qilishi mumkin."
+          "Bola kim bilan yashashi, ko‘rishish kunlari va tartibi, aliment — barchasini yozma kelishuvda belgilash nizoning oldini oladi (OK 76-moddaning uchinchi qismi). Nizoni sudga borishdan oldin mediatsiya orqali hal qilish ham mumkin."
         ],
         [
           "Sud nimaga qaraydi",
-          "Kelishuv bo‘lmasa, sud bolaning manfaatini birinchi o‘ringa qo‘yadi: bolaning yoshi, har bir ota-onaga bog‘liqligi, ota-onaning shaxsiy sifatlari va yashash sharoiti hisobga olinadi; bola o‘n yoshga to‘lgan bo‘lsa, uning fikri ham so‘raladi."
+          "Kelishuv bo‘lmasa, sud bolaning eng ustun manfaatlaridan kelib chiqib va uning fikrini hisobga olib hal qiladi: bolaning ota-ona va aka-uka, opa-singillaridan qaysi biriga bog‘langani, yoshi, ota-onaning shaxsiy fazilatlari, har biri bilan munosabati va tarbiya uchun sharoiti e’tiborga olinadi (OK 75-modda). Bolaning fikri uning yoshidan qat’i nazar ko‘rib chiqiladi (OK 68-modda)."
         ],
         [
           "Vasiylik va homiylik organi",
@@ -575,15 +575,15 @@
         ],
         [
           "Ko‘rishish huquqi",
-          "Alohida yashayotgan ota yoki ona bola bilan ko‘rishish va uning tarbiyasida qatnashish huquqiga ega; bola bilan yashayotgan ota-ona bunga to‘sqinlik qilmasligi kerak (OK 76-modda). Kelisha olinmasa, ko‘rishish tartibini sud belgilaydi. Buvi-buva va boshqa qarindoshlarning ham bola bilan ko‘rishish huquqi bor (OK 77-modda)."
+          "Alohida yashayotgan ota yoki ona bola bilan ko‘rishish va uning tarbiyasida qatnashish huquqiga ega; bola bilan yashayotgan ota-ona, agar ko‘rishish bolaga zarar keltirmasa, bunga qarshilik qilmasligi kerak (OK 76-modda). Kelisha olinmasa, nizoni sud vasiylik va homiylik organi ishtirokida hal qiladi. Buvi-buva va boshqa yaqin qarindoshlarning ham bola bilan ko‘rishish huquqi bor (OK 77-modda)."
         ],
         [
           "Qaror bajarilmasa",
-          "Sud qarori ixtiyoriy bajarilmasa, ijro varaqasini olib, Majburiy ijro byurosiga murojaat qiling."
+          "Sud qarori ixtiyoriy bajarilmasa, ijro varaqasini olib, Majburiy ijro byurosiga murojaat qiling. Qaror qasddan bajarilmasa, sud alohida yashayotgan ota yoki onaning talabi bilan, bolaning manfaati va fikrini hisobga olib, bolani unga berish haqida qaror chiqarishi mumkin (OK 76-moddaning to‘rtinchi qismi)."
         ]
       ],
       "laws": [
-        "Oila kodeksi: 65-modda — bolaning oilada yashash va tarbiyalanish huquqi; 66-modda — ota-ona va qarindoshlar bilan muloqot huquqi; 76-modda — bola bilan alohida yashovchi ota-onaning huquqlari; 77-modda — buvi-buva va qarindoshlar; 88-modda — vasiylik va homiylik organining ishtiroki"
+        "Oila kodeksi: 65-modda — bolaning oilada yashash va tarbiyalanish huquqi; 66-modda — ota-ona va qarindoshlar bilan ko‘rishish huquqi; 68-modda — bolaning o‘z fikrini ifoda etish huquqi; 75-modda — ota-onalik huquqini amalga oshirish va bolaning yashash joyi; 76-modda — boladan alohida yashovchi ota-onaning huquqlari; 77-modda — buvi-buva va qarindoshlar; 88-modda — vasiylik va homiylik organining ishtiroki"
       ],
       "qs": [
         "Bolani ko‘rsatmayapti, ko‘rishish tartibini qanday belgilatsam bo‘ladi?",
@@ -607,11 +607,11 @@
       "steps": [
         [
           "Umumiy va shaxsiy mulkni ajrating",
-          "Nikohda orttirilgan daromad, uy, avtomobil, omonatlar — umumiy mulk (Oila kodeksi 23-modda). Nikohgacha bo‘lgan, nikoh davrida hadya yoki meros sifatida olingan mulk har birining o‘z mulki hisoblanadi (OK 25-modda); shaxsiy foydalanishdagi buyumlar haqida alohida qoida bor (OK 26-modda)."
+          "Nikohda orttirilgan daromad, uy, avtomobil, omonatlar — umumiy mulk (Oila kodeksi 23-modda). Nikohgacha bo‘lgan, nikoh davrida hadya yoki meros sifatida olingan mulk har birining o‘z mulki hisoblanadi (OK 25-modda). Kiyim-bosh, poyabzal kabi shaxsiy foydalanishdagi buyumlar umumiy mablag‘ga olingan bo‘lsa ham, ulardan foydalangan er yoki xotinning mulki hisoblanadi; qimmatbaho buyumlar va zeb-ziynatlar bundan mustasno (OK 26-modda)."
         ],
         [
           "Kelishib bo‘lish",
-          "Er-xotin mulkni o‘zaro kelishuv bilan bo‘lishi va kelishuvni notarial tasdiqlatishi mumkin."
+          "Er-xotin mulkni o‘zaro kelishuv bilan bo‘lishi mumkin; xohishiga ko‘ra kelishuvni notarial tasdiqlatishi mumkin (OK 27-modda)."
         ],
         [
           "Sud orqali bo‘lish",
@@ -623,11 +623,11 @@
         ],
         [
           "Muddatni o‘tkazib yubormang",
-          "Nikohi bekor qilingan er-xotinning umumiy mulkni bo‘lish haqidagi talabiga 3 yillik da’vo muddati qo‘llaniladi (OK 12-modda)."
+          "Oilaviy talablarga odatda da’vo muddati qo‘llanilmaydi (OK 12-modda), lekin nikohdan ajralgan er-xotinning umumiy mulkni bo‘lish haqidagi talabiga uch yillik da’vo muddati qo‘llaniladi (OK 27-moddaning to‘qqizinchi qismi)."
         ]
       ],
       "laws": [
-        "Oila kodeksi: 23-modda — umumiy birgalikdagi mulk; 25–26-moddalar — har birining o‘z mulki; 27-modda — umumiy mulkni bo‘lish; 28-modda — ulushlarni aniqlash; 12-modda — da’vo muddati"
+        "Oila kodeksi: 23-modda — umumiy birgalikdagi mulk; 25–26-moddalar — har birining o‘z mulki va shaxsiy foydalanishdagi buyumlar; 27-modda — umumiy mulkni bo‘lish va uch yillik da’vo muddati; 28-modda — ulushlarni aniqlash; 12-modda — oilaviy munosabatlarda da’vo muddati"
       ],
       "qs": [
         "Er nomidagi uyni ajrashganda bo‘lish mumkinmi?",
@@ -718,7 +718,7 @@
       "title": "Bergan qarzim qaytarilmayapti",
       "desc": "Tilxat, yozma shakl, talabnoma va sudga murojaat",
       "tag": "Fuqarolik kodeksi",
-      "intro": "Fuqarolar o‘rtasidagi qarz summasi bazaviy hisoblash miqdorining (BHM) 10 baravaridan oshsa, shartnoma yozma shaklda tuzilishi kerak — qarz oluvchining tilxati ham yozma dalil hisoblanadi. Yozma shakl bo‘lmasa, shartnoma haqiqiy bo‘laveradi, lekin qarzni faqat guvohlar ko‘rsatuvi bilan isbotlash huquqi yo‘qoladi.",
+      "intro": "Fuqarolar o‘rtasidagi qarz summasi bazaviy hisoblash miqdorining (BHM) 10 baravaridan oshsa, shartnoma yozma shaklda tuzilishi kerak — qarz oluvchining tilxati ham yozma dalil hisoblanadi. Yozma shakl bo‘lmasa, shartnoma haqiqiy bo‘laveradi, lekin nizoda qarzni guvohlar ko‘rsatuvi bilan isbotlab bo‘lmaydi; yozma va boshqa dalillar bilan isbotlash mumkin (FK 109-modda).",
       "steps": [
         [
           "Dalillarni yig‘ing",
@@ -726,7 +726,7 @@
         ],
         [
           "Muddatni aniqlang",
-          "Qaytarish muddati belgilangan bo‘lsa — shu muddatda. Muddat belgilanmagan bo‘lsa, qarz beruvchi talab qilganidan keyin qaytarilishi kerak (FK 735-modda)."
+          "Qaytarish muddati belgilangan bo‘lsa — shu muddatda. Muddat belgilanmagan bo‘lsa, qarz oluvchi qarz beruvchi talab qo‘ygan kundan boshlab o‘ttiz kun ichida qaytarishi kerak (FK 735-moddaning ikkinchi qismi)."
         ],
         [
           "Yozma talabnoma yuboring",
@@ -738,12 +738,12 @@
         ],
         [
           "Da’vo muddati",
-          "Fuqarolik kodeksi bo‘yicha umumiy da’vo muddati — 3 yil; u odatda qarzni qaytarish muddati o‘tgan kundan boshlanadi. Muddat o‘tib ketmasidan harakat qiling."
+          "Umumiy da’vo muddati — uch yil (FK 150-modda); u odatda qarzni qaytarish muddati o‘tgan kundan boshlanadi. Muddat o‘tib ketmasidan harakat qiling."
         ]
       ],
       "laws": [
         "Fuqarolik kodeksi (2-qism): 732-modda — qarz shartnomasi; 733-modda — qarz shartnomasining shakli; 734-modda — foizlar; 735-modda — qarzni qaytarish majburiyati; 737-modda — qarz shartnomasi yuzasidan nizolashish",
-        "Fuqarolik kodeksi (1-qism) — bitim shakli va da’vo muddati",
+        "Fuqarolik kodeksi (1-qism): 109-modda — oddiy yozma shaklga rioya qilmaslik oqibatlari; 150-modda — umumiy da’vo muddati",
         "Fuqarolik protsessual kodeksi"
       ],
       "qs": [
@@ -811,7 +811,7 @@
       "title": "Uy yoki kvartira sotib olish",
       "desc": "Notarial shartnoma, hujjatlarni tekshirish va mulk huquqini ro‘yxatdan o‘tkazish",
       "tag": "Fuqarolik kodeksi",
-      "intro": "Uy-joy oldi-sotdi shartnomasi yozma shaklda tuzilib, notarial tasdiqlanadi; mulk huquqining xaridorga o‘tishi esa davlat ro‘yxatidan o‘tkaziladi. Pul berishdan oldin sotuvchining huquqi, taqiqlar va roziliklarni tekshirish eng muhim qadam.",
+      "intro": "Uy yoki kvartirani sotish shartnomasi taraflar imzolagan yozma shakldagi bitta hujjat tarzida tuziladi, notarial tasdiqlanadi va davlat ro‘yxatidan o‘tkaziladi; mulk huquqining xaridorga o‘tishi ham davlat ro‘yxatidan o‘tkaziladi. Pul berishdan oldin sotuvchining huquqi, taqiqlar va roziliklarni tekshirish eng muhim qadam.",
       "steps": [
         [
           "Sotuvchining huquqini tekshiring",
@@ -823,19 +823,19 @@
         ],
         [
           "Notarius orqali rasmiylashtiring",
-          "Shartnoma notarial tasdiqlanadi (FK 480-modda). Kommunal to‘lovlar va budjet oldidagi qarzlar bo‘yicha ma’lumotnomalarni notarius elektron tizim orqali o‘zi oladi."
+          "Shartnoma taraflar imzolagan bitta yozma hujjat bo‘lishi kerak — shakl buzilsa, shartnoma haqiqiy emas (FK 480-modda). Uy yoki kvartira sotish shartnomasi notarial tasdiqlanishi va davlat ro‘yxatidan o‘tkazilishi lozim (FK 488-moddaning ikkinchi qismi). Kommunal to‘lovlar va budjet oldidagi qarzlar bo‘yicha ma’lumotnomalarni notarius elektron tizim orqali o‘zi oladi."
         ],
         [
           "Shartlarni aniqlashtiring",
-          "Shartnomada narx, to‘lov tartibi, uyni topshirish muddati yozilsin. Uy-joy sotishning o‘ziga xos talablari FK 488-moddasida belgilangan — uyda yashash huquqini saqlab qoladigan shaxslar bor-yo‘qligini aniqlang. Pulni bank orqali o‘tkazing, naqd bo‘lsa — tilxat oling."
+          "Shartnomada narx, to‘lov tartibi, uyni topshirish muddati yozilsin. Sotilgandan keyin ham uydan foydalanish huquqini saqlab qoladigan shaxslar bo‘lsa, ularning ro‘yxati va huquqlari shartnomada ko‘rsatilishi shart — bu muhim shart (FK 488-moddaning birinchi qismi). Pulni bank orqali o‘tkazing, naqd bo‘lsa — tilxat oling."
         ],
         [
           "Mulk huquqini ro‘yxatdan o‘tkazing",
-          "Mulk huquqining o‘tishi davlat ro‘yxatidan o‘tkazilgach (FK 481-modda), reyestrdan yangi ko‘chirma olib, mulkdor sifatida siz qayd etilganingizni tekshiring."
+          "Mulk huquqining sizga o‘tishi davlat ro‘yxatidan o‘tkaziladi (FK 481-modda); keyin reyestrdan yangi ko‘chirma olib, mulkdor sifatida siz qayd etilganingizni tekshiring. Sotuvchi ro‘yxatdan o‘tkazishdan bo‘yin tovlasa, sud sizning talabingiz bilan ro‘yxatdan o‘tkazish haqida qaror chiqarishi mumkin, kechikish zararini esa bo‘yin tovlagan taraf qoplaydi (FK 481-moddaning uchinchi qismi)."
         ]
       ],
       "laws": [
-        "Fuqarolik kodeksi (2-qism): 479-modda — ko‘chmas mulkni sotish shartnomasi; 480-modda — shartnoma shakli; 481-modda — mulk huquqi o‘tishini davlat ro‘yxatidan o‘tkazish; 488-modda — uy-joy binolarini sotish xususiyatlari",
+        "Fuqarolik kodeksi (2-qism): 479-modda — ko‘chmas mulkni sotish shartnomasi; 480-modda — shartnoma shakli (bitta yozma hujjat, aks holda haqiqiy emas); 481-modda — mulk huquqi o‘tishini davlat ro‘yxatidan o‘tkazish; 488-modda — uy-joyni sotish xususiyatlari (notarial tasdiq va davlat ro‘yxati)",
         "“Notariat to‘g‘risida”gi Qonun",
         "Uy-joy kodeksi"
       ],
@@ -954,19 +954,24 @@
           "Qaysi hisobga yoki kartaga pul o‘tganini aniqlab, PDF chekini yuklab oling."
         ],
         [
-          "Kiberxavfsizlik bo‘limiga ariza bering",
-          "Yashash joyingizdagi IIBga yoki elektron shaklda ariza yuboring."
+          "Ichki ishlar organiga ariza bering",
+          "Yashash joyingizdagi IIBga yoki elektron shaklda ariza yuboring va ro‘yxatga olinganini tasdiqlovchi hujjat so‘rang. Shaxsning arizasi jinoyat ishini qo‘zg‘atish sababidir (JPK 322-modda). Ariza darhol, qo‘shimcha tekshiruv kerak bo‘lsa — o‘n sutkadan kechiktirmay hal qilinishi kerak (JPK 329-modda); natijada ish qo‘zg‘atish, rad etish yoki arizani tegishliligi bo‘yicha yuborish haqida qaror chiqariladi (JPK 330-modda)."
         ]
       ],
       "laws": [
-        "O‘zbekiston Respublikasi Jinoyat kodeksi (168-modda — firibgarlik, 169-modda — o‘g‘rilik, 278-2-modda — kompyuter axborotidan ruxsatsiz foydalanish)"
+        "O‘zbekiston Respublikasi Jinoyat kodeksi (168-modda — firibgarlik, 169-modda — o‘g‘rilik, 278-2-modda — kompyuter axborotidan qonunga xilof ravishda (ruxsatsiz) foydalanish)",
+        "Jinoyat-protsessual kodeksi: 322-modda — jinoyat ishini qo‘zg‘atish sabablari; 329-modda — arizani ko‘rib chiqish tartibi va muddati; 330-modda — qabul qilinadigan qarorlar"
       ],
       "qs": [
         "Karta raqamimni aytib pulimni oldirib qo‘ydim, qaytarsa bo‘ladimi?",
         "Bank kiberhujum vaqtida pulni qaytarishga majburmi?"
       ],
-      "sourceUrls": [],
-      "group": "Xarid va internet"
+      "sourceUrls": [
+        "https://lex.uz/docs/-111453",
+        "https://lex.uz/docs/-111460"
+      ],
+      "group": "Xarid va internet",
+      "reviewedAt": "2026-10-31"
     },
     {
       "id": "onlayn",
@@ -988,11 +993,11 @@
         ],
         [
           "Tavsifga mos kelmasa",
-          "Tovar saytdagi tavsif yoki namunaga mos kelmasa, almashtirish yoki pulni qaytarishni talab qilishingiz mumkin (Elektron tijorat to‘g‘risidagi qonun 26-modda; Iste’molchilar huquqlarini himoya qilish to‘g‘risidagi qonun 28¹-modda)."
+          "Tovar saytdagi tavsif yoki namunaga mos kelmasa, almashtirish yoki pulni qaytarishni talab qilishingiz mumkin (Elektron tijorat to‘g‘risidagi qonun 26-modda; Iste’molchilar huquqlarini himoya qilish to‘g‘risidagi qonun 28¹-modda). Tovarni qaytarish xarajatlari sotuvchi zimmasida; ko‘rib chiqish uchun qadoqni ochish sizni shartnomani bekor qilish huquqidan mahrum qilmaydi. Shartnoma bekor qilingach pul belgilangan muddatda qaytarilmasa, sotuvchi har bir kechiktirilgan kun uchun qaytariladigan summaning 1 foizi miqdorida penya to‘laydi (28¹-modda)."
         ],
         [
           "Sifatli, lekin to‘g‘ri kelmagan tovar",
-          "O‘lchami, rangi yoki fasoni to‘g‘ri kelmagan sifatli tovarni 10 kun ichida almashtirish mumkin; mos tovar bo‘lmasa — pul qaytariladi (Iste’molchilar huquqlarini himoya qilish to‘g‘risidagi qonun 18-modda). Ayrim tovarlar (masalan, kosmetika) sifatli bo‘lsa qaytarilmaydi."
+          "O‘lchami, rangi yoki fasoni to‘g‘ri kelmagan sifatli nooziq-ovqat tovarini xarid kunidan 10 kun ichida xuddi shunday tovarga almashtirish, bunday tovar bo‘lmasa — pulni qaytarib olish mumkin. Buning uchun tovar ishlatilmagan, shikastlanmagan, qadog‘i va iste’mol xususiyatlari saqlangan bo‘lishi hamda xarid dalili bo‘lishi kerak (Iste’molchilar huquqlarini himoya qilish to‘g‘risidagi qonun 18-modda). Almashtirilmaydigan tovarlar ro‘yxatini Hukumat belgilaydi."
         ],
         [
           "Yozma talab va shikoyat",
@@ -1032,11 +1037,15 @@
         ],
         [
           "E’tirozni dalillar bilan asoslang",
-          "Qaror nusxasi, foto/video, joy va vaqt, transportga aloqador hujjatlarni yig‘ing. Imtiyozli to‘lov masalasi va istisnolarini MJtK 332-1-moddasining amaldagi matnidan alohida tekshiring."
+          "Qaror nusxasi, foto/video, joy va vaqt, transportga aloqador hujjatlarni yig‘ing. Kamera qayd etgan qoidabuzarlik uchun odatda transport vositasining mulkdori javobgar bo‘ladi; shikoyatni ko‘rish jarayonida o‘sha paytda mashinani boshqa shaxs boshqargani yoki mashina mulkdorning egaligidan g‘ayrihuquqiy chiqib ketgani aniqlansa, mulkdor javobgarlikdan ozod etiladi (MJtK 17-1-moddaning beshinchi qismi). Organ qaroriga shikoyat bergan shaxs davlat bojidan ozod (MJtK 315-modda)."
+        ],
+        [
+          "Imtiyozli to‘lovni hisobga oling",
+          "Qaror topshirilgan kundan 15 kun ichida jarimaning 50 foizi yoki 30 kun ichida 70 foizi ixtiyoriy to‘lansa, qolgan qismi to‘lanmaydi. Bu tartib qarorga shikoyat qilinganda, MJtK 131, 132, 136, 140-moddalaridagi huquqbuzarliklarda va bir yil ichida takror sodir etilganda qo‘llanilmaydi (MJtK 332-1-modda) — shikoyat qilish yoki chegirma bilan to‘lashni shuni hisobga olib tanlang."
         ]
       ],
       "laws": [
-        "Ma’muriy javobgarlik to‘g‘risidagi kodeks: 315–316-moddalar — organ qaroriga shikoyat; 332-1-modda — imtiyozli to‘lov."
+        "Ma’muriy javobgarlik to‘g‘risidagi kodeks: 17-1-modda — kamera qayd etgan qoidabuzarlik uchun javobgarlik; 315–316-moddalar — organ qaroriga shikoyat va 10 kunlik muddat; 332-1-modda — jarimani imtiyozli to‘lash."
       ],
       "qs": [
         "Radar jarimasiga qanday e’tiroz bildirsa bo‘ladi?",
@@ -1046,7 +1055,8 @@
       "sourceUrls": [
         "https://lex.uz/docs/-97664"
       ],
-      "group": "Davlat va ijtimoiy"
+      "group": "Davlat va ijtimoiy",
+      "reviewedAt": "2026-10-31"
     },
     {
       "id": "biznes",
@@ -1692,10 +1702,10 @@
     {
       "doc": "fk2",
       "art": "1112",
-      "title": "Vorislik to‘g‘risidagi umumiy qoidalar",
+      "title": "Vorislik asoslari",
       "kw": "meros vorislik vafot",
       "approx": false,
-      "reviewedAt": null
+      "reviewedAt": "2026-10-31"
     },
     {
       "doc": "fk2",
@@ -1708,18 +1718,18 @@
     {
       "doc": "fk2",
       "art": "1145",
-      "title": "Merosni egallash (umumiy qoidalar)",
+      "title": "Umumiy qoidalar (merosni egallash)",
       "kw": "merosni qabul qilish egallash notarius olti oy",
-      "approx": true,
-      "reviewedAt": null
+      "approx": false,
+      "reviewedAt": "2026-10-31"
     },
     {
       "doc": "fk2",
       "art": "1146",
-      "title": "Meros huquqi to‘g‘risidagi guvohnoma",
+      "title": "Merosga bo‘lgan huquq to‘g‘risida guvohnoma berish",
       "kw": "meros guvohnoma notarius",
-      "approx": true,
-      "reviewedAt": "2026-10-29"
+      "approx": false,
+      "reviewedAt": "2026-10-31"
     },
     {
       "doc": "jk",
@@ -1740,42 +1750,42 @@
     {
       "doc": "jk",
       "art": "278-2",
-      "title": "Kompyuter axborotidan qonunga xilof (ruxsatsiz) foydalanish",
+      "title": "Kompyuter axborotidan qonunga xilof ravishda (ruxsatsiz) foydalanish",
       "kw": "kiber karta xakerlik akkaunt buzish",
       "approx": false,
-      "reviewedAt": null
+      "reviewedAt": "2026-10-31"
     },
     {
       "doc": "jk",
       "art": "278-7",
-      "title": "Telekommunikatsiya tarmog‘idan qonunga xilof (ruxsatsiz) foydalanish",
+      "title": "Telekommunikatsiya tarmog‘idan qonunga xilof ravishda (ruxsatsiz) foydalanish",
       "kw": "telefon raqam tarmoq kiber",
       "approx": false,
-      "reviewedAt": null
+      "reviewedAt": "2026-10-31"
     },
     {
       "doc": "mjtk",
       "art": "17-1",
-      "title": "Maxsus avtomatlashtirilgan foto va video qayd etish vositalari qayd etgan yo‘l harakati qoidalari buzilishi uchun javobgarlik",
+      "title": "Maxsus avtomatlashtirilgan foto va video qayd etish texnika vositalari orqali qayd etilgan yo‘l harakati qoidalarini buzganlik uchun shaxslarning ma’muriy javobgarligi",
       "kw": "radar kamera jarima tezlik yhxbb yo‘l harakati yhxx",
-      "approx": true,
-      "reviewedAt": null
+      "approx": false,
+      "reviewedAt": "2026-10-31"
     },
     {
       "doc": "mjtk",
       "art": "332-1",
-      "title": "Jarimani imtiyozli (50% yoki 70%) to‘lash",
+      "title": "Jarima solish to‘g‘risidagi qarorni ijro etishning soddalashtirilgan tartibi",
       "kw": "jarima chegirma 50 foiz 70 foiz to‘lash",
-      "approx": true,
-      "reviewedAt": null
+      "approx": false,
+      "reviewedAt": "2026-10-31"
     },
     {
       "doc": "ist",
       "art": "29",
-      "title": "Iste’molchilar huquqlarini sud orqali himoya qilish",
+      "title": "Iste’molchilarning huquqlarini sud orqali himoya qilish",
       "kw": "iste’molchi sud himoya",
-      "approx": true,
-      "reviewedAt": "2026-10-29"
+      "approx": false,
+      "reviewedAt": "2026-10-31"
     },
     {
       "doc": "ist",
@@ -1783,7 +1793,7 @@
       "title": "Iste’molchiga nuqsonli tovar sotilganda uning huquqlari",
       "kw": "sifatsiz brak buzilgan tovar pulni qaytarish telefon do‘kon",
       "approx": false,
-      "reviewedAt": null
+      "reviewedAt": "2026-10-31"
     },
     {
       "doc": "ist",
@@ -1791,7 +1801,7 @@
       "title": "Nuqsonli tovarni almashtirib berish tartibi",
       "kw": "almashtirish 7 kun 20 kun sifatsiz",
       "approx": false,
-      "reviewedAt": null
+      "reviewedAt": "2026-10-31"
     },
     {
       "doc": "ist",
@@ -1799,7 +1809,7 @@
       "title": "Tovar nuqsonlarini bepul bartaraf etish tartibi",
       "kw": "ta’mirlash kafolat bepul tuzatish",
       "approx": false,
-      "reviewedAt": null
+      "reviewedAt": "2026-10-31"
     },
     {
       "doc": "ist",
@@ -1807,15 +1817,15 @@
       "title": "Iste’molchining maqbul sifatli tovarni almashtirib olish huquqi",
       "kw": "qaytarish almashtirish 10 kun yoqmadi o‘lcham",
       "approx": false,
-      "reviewedAt": null
+      "reviewedAt": "2026-10-31"
     },
     {
       "doc": "ist",
       "art": "19",
-      "title": "Bajarilgan ish yoki xizmatdagi nuqsonlar",
+      "title": "Ishni bajarish, xizmat ko‘rsatish to‘g‘risidagi shartnoma shartlari buzilgan taqdirda iste’molchining huquqlari",
       "kw": "xizmat ish sifatsiz usta",
-      "approx": true,
-      "reviewedAt": null
+      "approx": false,
+      "reviewedAt": "2026-10-31"
     },
     {
       "doc": "mk",
@@ -1838,16 +1848,16 @@
       "art": "40",
       "title": "Nikohdan sud tartibida ajratish",
       "kw": "nikoh ajrashish yarashish sud",
-      "approx": true,
-      "reviewedAt": null
+      "approx": false,
+      "reviewedAt": "2026-10-31"
     },
     {
       "doc": "ist",
       "art": "4",
       "title": "Iste’molchilarning asosiy huquqlari",
       "kw": "iste’molchi asosiy huquq",
-      "approx": true,
-      "reviewedAt": "2026-10-29"
+      "approx": false,
+      "reviewedAt": "2026-10-31"
     }
   ],
   "sourceLabels": {

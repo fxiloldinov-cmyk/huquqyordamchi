@@ -96,3 +96,83 @@ Asosiy qayta tekshirish navbati: hostingda AI/RSS sinovi, qolgan katalogning huq
 - `i18n.js` va `ui.js` til/mavzuni faqat `HK_CONSENT.allowed("prefs")` bo'lsa saqlaydi.
 - FAQ va oferta maxfiylik bo'limi hisoblarga moslandi; ru/en lug'atiga ~70 satr qo'shildi.
 - Testlar: 42/42 (ro'yxat, cookie atributlari, scrypt xesh, saqlash, chiqish, bloklash, begona origin, rozilik).
+
+## v11.2 — Oila va Fuqarolik kodekslari, avtomatik yangilash
+
+- **Import** (`scripts/import_lexuz.py`):
+  - `--name` parametri qo‘shildi.
+  - Raqamlar orasidagi bo‘shliqlar lex.uz izohi bo‘yicha `repealed` deb belgilanadi: "chiqarilgan", "oʻz kuchini yoʻqotgan", "65 va 66-moddalar…", "176 — 193-moddalar…".
+  - Izohsiz bo‘shliq — import muammosi sifatida chiqadi.
+  - MK qayta import qilinganda natija o‘zgarmadi (tekshirildi).
+- **RAG** (`rag.mjs`):
+  - FK 1- va 2-qismi bitta "FK" (raqamlar kesishmaydi: 1–385, 386–1199); har bir modda o‘z qismining URL’ini saqlaydi.
+  - Indekslar kodeks birinchi kerak bo‘lganda quriladi: modul ~40 ms da yuklanadi, birinchi indeks ~100–200 ms.
+  - Soha kuchi mavzu so‘zlari bo‘yicha hisoblanadi (har so‘z ko‘pi bilan 2 marta).
+  - "mehnat shartnomasi" FK belgisi hisoblanmaydi; aliment haqidagi gapdagi "qarz" — OK.
+  - `retrieve().provided` endi `{mk, ok, fk}`; `citationReport` eski `Set` ni ham qabul qiladi.
+- **Tuzatilgan yo‘riqnoma xatolari** (rasmiy matn bilan solishtirib):
+  - Uy sotishda notarial tasdiq FK 480 ga emas, FK 488(2) ga havola qilinardi.
+  - Mulk bo‘lishda uch yillik muddat OK 12 ga emas, OK 27(9) ga havola qilinardi.
+  - Bola masalasida qonunda yo‘q "o‘n yosh" chegarasi bor edi; OK 68 bo‘yicha bolaning fikri yoshidan qat’i nazar ko‘riladi.
+  - Otalik da’vosini kim berishi OK 62(2) bo‘yicha aniqlashtirildi.
+  - Qarzda muddat ko‘rsatilmagan bo‘lsa, talabdan keyin 30 kun (FK 735(2)).
+  - Katalogdagi FK 1112, 1145, 1146 sarlavhalari rasmiy matnga moslandi.
+- **Yangilash workflow**:
+  - `scripts/check-law-updates.mjs`: lex.uz sahifasidagi eng kech "dd.mm.yyyy-y." sanasi bazadagi `asOf` bilan solishtiriladi.
+  - Word yuklash havolasi `LEX_WORD_URL_TEMPLATE` orqali beriladi: lex.uz sahifasida statik yuklash havolasi yo‘q (tugma JS orqali ishlaydi).
+  - Himoya: moddalar soni 5% dan ko‘p kamaysa yoki tahrir eski bo‘lsa, baza o‘zgartirilmaydi.
+  - Testlar o‘tmasa ham PR ochiladi, lekin tavsifida ⚠️ va xatolar ro‘yxati bo‘ladi; merge — qo‘lda.
+- **Testlar: 48/48.**
+
+## v11.3 — JK, JPK, MJtK, FPK
+
+- **Import natijalari:**
+
+  | Kodeks | Moddalar | Kuchini yo‘qotgan | Muammo | Tahrir |
+  |---|---|---|---|---|
+  | JK | 406 | 15 | 0 | 2026-10-15 |
+  | MJtK | 673 | 21 | 0 | 2026-10-15 |
+  | JPK (kirill) | 773 | 47 | 0 | 2026-10-15 |
+  | FPK | 513 | 37 | 0 | 2026-09-12 |
+
+  Avvalgi kodekslarni qayta import qilish natijani o‘zgartirmadi (tekshirildi).
+- **Importer o‘zgarishlari:**
+  - kirill matnda sarlavha, modda va sana belgilari aniqlanadi; asosiy matn rasmiy yozuvda qoladi;
+  - `script: cyrl|latn` maydoni qo‘shildi;
+  - kirill hujjatda `titleLatn` sarlavhaning o‘zbek lotin qoidalari bo‘yicha o‘girilgan nusxasi: е → ye so‘z boshida va unlidan keyin, ц → ts unlidan keyin, aks holda s;
+  - "chiqarildi" va "kuchini yoʻqotadi" (kelajak sanadan) ham kuchini yo‘qotgan deb hisoblanadi;
+  - butun bob kuchini yo‘qotgan bo‘lsa ("(43-bob ... oʻz kuchini yoʻqotgan)"), keyingi moddagacha bo‘lgan bo‘shliq ham shunday belgilanadi (masalan, FPK 373–382);
+  - chiqarilgan yuqori indeksli moddalar ham belgilanadi (masalan, JK 186-3).
+- **RAG:**
+  - 7 kodeks; `topic` regexlari kodeks ichida.
+  - Bir so‘z ikki sohaga tegishli bo‘lsa (haqorat, apellyatsiya), ikkala kodeks ham qo‘shiladi.
+  - Kazusda qilmish nomi aytilmasa ham, "roziligisiz olib ketdi" kabi belgilar o‘g‘rilik moddalariga yo‘naltiriladi.
+  - `ROUTE_TABLE` testi yo‘naltirishdagi har bir modda bazada borligini va kuchini yo‘qotmaganini tekshiradi.
+  - Modul yuklanishi taxminan 120 ms (7 MB JSON); kodeks indeksi birinchi so‘rovda quriladi (JPK uchun taxminan 0,5 s, keyin keshda).
+- **Tekshirilgan yo‘riqnomalar:** jarima (MJtK 17-1, 315, 316, 332-1), kiber (JK 168, 169, 278-2; JPK 322, 329, 330). Katalogdagi JK 278-2, 278-7, MJtK 17-1, 332-1 sarlavhalari rasmiy matnga moslandi.
+- **Testlar: 51/51.**
+
+## v11.4 — Konstitutsiya, SK, UJK, IPK, Iste’molchilar qonuni
+
+- **Import:** hammasida muammo — 0.
+
+  | Hujjat | Moddalar | Kuchini yo‘qotgan |
+  |---|---|---|
+  | Konstitutsiya | 155 | 0 |
+  | SK | 500 | 6 |
+  | UJK | 141 | 1 |
+  | IPK | 390 | 3 |
+  | Iste’molchilar qonuni | 33 | 0 |
+
+  Importerga "XVIII 1 BOʻLIM" ko‘rinishidagi sarlavha qo‘shildi.
+- **RAG:**
+  - 12 manba; har bir kodeksning `note` maydoni hisobotda chiqadi (Konstitutsiya tahriri).
+  - Bitta belgili, lekin mavzusi aniq (yo‘naltirish mos kelgan) soha 1 ta modda oladi.
+  - Iqtisodiy sud tilga olinsa, FPK o‘chiriladi.
+  - "buzildi" (telefon) endi uy buzish deb tushunilmaydi; "kvartira" so‘zining o‘zi oldi-sotdi moddalariga yo‘naltirmaydi.
+- **Unumdorlik:** baza 9,5 MB.
+  - Modul taxminan 230 ms da yuklanadi.
+  - Har bir manba indeksi birinchi so‘rovda quriladi: 0,1–0,5 s, hammasi birga taxminan 2,1 s; keyin keshda.
+  - Xotira taxminan 160 MB.
+  - Keyinchalik indekslarni build paytida oldindan hisoblash mumkin.
+- **Testlar: 53/53.**
