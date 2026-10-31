@@ -37,7 +37,8 @@
       ],
       "sourceUrls": [
         "https://lex.uz/docs/-6257288"
-      ]
+      ],
+      "group": "Mehnat"
     },
     {
       "id": "ish_haqi",
@@ -71,7 +72,317 @@
       ],
       "sourceUrls": [
         "https://lex.uz/docs/-6257288"
-      ]
+      ],
+      "group": "Mehnat"
+    },
+    {
+      "id": "sinov",
+      "slug": "sinov-muddati",
+      "group": "Mehnat",
+      "icon": "clock",
+      "title": "Sinov muddati va undan o‘tmaslik",
+      "desc": "Sinov qancha davom etadi, kimga belgilanmaydi va qanday bekor qilinadi",
+      "tag": "Mehnat kodeksi",
+      "intro": "Dastlabki sinov faqat mehnat shartnomasida yozilgan bo‘lsa amal qiladi va uch oydan (rahbarlar uchun olti oydan) oshmaydi. Sinov davrida ham xodimga Mehnat kodeksining barcha kafolatlari to‘liq tatbiq etiladi.",
+      "steps": [
+        [
+          "Shartnomani tekshiring",
+          "Sinov sharti mehnat shartnomasida yozilmagan bo‘lsa, siz sinovsiz ishga qabul qilingan hisoblanasiz (MK 129-modda). Sinov faqat ishga qabul qilishda belgilanadi — boshqa ishga o‘tkazishda belgilanmaydi."
+        ],
+        [
+          "Sinov sizga belgilanishi mumkinmi",
+          "Homilador ayol, uch yoshga to‘lmagan bolasi bor ayol, 18 yoshga to‘lmaganlar, olti oygacha shartnoma tuzilayotgan xodimlar, o‘qishni tamomlaganidan keyin bir yil ichida mutaxassisligi bo‘yicha birinchi bor ishga kirayotgan bitiruvchilar va MK 129-moddasida sanalgan boshqa shaxslarga sinov belgilanmaydi."
+        ],
+        [
+          "Muddatni hisoblang",
+          "Sinov 3 oydan, tashkilot rahbari, uning o‘rinbosarlari, bosh buxgalter va alohida bo‘linma rahbari uchun 6 oydan oshmaydi. Kasal bo‘lgan va ishda haqiqatda bo‘lmagan kunlar sinov muddatiga qo‘shilmaydi (MK 130-modda). Sinov davri ish stajiga kiradi (MK 131-modda)."
+        ],
+        [
+          "Bekor qilish tartibini biling",
+          "Sinov davrida har ikki taraf kamida 3 kun oldin yozma ogohlantirib shartnomani bekor qila oladi. Ish beruvchi “sinovdan o‘tmadi” deb bo‘shatsa, buning sabablarini ko‘rsatishi shart (MK 132-modda). Sinov muddati tugab, ishda davom etsangiz — keyin faqat umumiy asoslarda bo‘shatish mumkin."
+        ],
+        [
+          "Rozi bo‘lmasangiz",
+          "Bo‘shatishni noqonuniy deb hisoblasangiz, buyruq ko‘chirma nusxasi topshirilgan kundan 3 oy ichida ishga tiklash to‘g‘risida sudga da’vo bering (MK 560-modda)."
+        ]
+      ],
+      "laws": [
+        "Mehnat kodeksi: 129-modda — dastlabki sinov; 130-modda — sinov muddati; 131-modda — sinov davrida qonunchilikning amal qilishi; 132-modda — sinov natijasi",
+        "Mehnat kodeksi, 560-modda — sudga murojaat qilish muddatlari"
+      ],
+      "qs": [
+        "Sinov muddatida maosh kamroq to‘lanishi mumkinmi?",
+        "Sinovdan o‘tmadim deb bo‘shatishdi, sababini yozma so‘rasam bo‘ladimi?",
+        "Sinov muddatini uzaytirish mumkinmi?"
+      ],
+      "sourceUrls": [
+        "https://lex.uz/docs/-6257288"
+      ],
+      "reviewedAt": "2026-10-31"
+    },
+    {
+      "id": "tatil",
+      "slug": "mehnat-tatili",
+      "group": "Mehnat",
+      "icon": "calendar",
+      "title": "Yillik mehnat ta’tili",
+      "desc": "Necha kun, qachondan, ta’til puli va ishdan ketganda kompensatsiya",
+      "tag": "Mehnat kodeksi",
+      "intro": "Har bir xodim har yili kamida 21 kalendar kunlik haq to‘lanadigan mehnat ta’tiliga ega. Ta’til puli ta’til boshlanishidan oldin to‘lanadi, ishdan ketganda esa foydalanilmagan ta’til uchun pul kompensatsiyasi beriladi.",
+      "steps": [
+        [
+          "Davomiylikni biling",
+          "Asosiy eng kam ta’til — 21 kalendar kun (MK 217-modda). Ta’tilga to‘g‘ri kelgan ishlanmaydigan bayram kunlari ta’til davomiyligiga kiritilmaydi (MK 221-modda). Ayrim toifalarga uzaytirilgan yoki qo‘shimcha ta’til beriladi (MK 218–220-moddalar)."
+        ],
+        [
+          "Birinchi ish yili",
+          "Yangi ish joyida birinchi yil uchun ta’til olish huquqi 6 oy uzluksiz ishlagandan keyin paydo bo‘ladi; kelishuv bilan oldinroq ham berilishi mumkin. Ayollarga homiladorlik va tug‘ish ta’tilidan oldin yoki keyin, 18 yoshga to‘lmaganlarga, I va II guruh nogironligi bo‘lganlarga va MK 227-moddasida sanalgan boshqa shaxslarga xohishiga ko‘ra 6 oydan oldin beriladi."
+        ],
+        [
+          "Jadval va ogohlantirish",
+          "Keyingi yillarda ta’til ta’tillar jadvali asosida beriladi; ish beruvchi ta’til boshlanishidan kamida 15 kun oldin xabardor qilishi kerak. Jadvaldagi vaqtni taraflar kelishuvi bilan o‘zgartirish mumkin (MK 228-modda)."
+        ],
+        [
+          "Ta’til pulini tekshiring",
+          "Ta’til davri uchun o‘rtacha ish haqi saqlanadi va ta’til boshlanguniga qadar oxirgi ish kunidan kechiktirmay to‘lanadi; hisoblashda yakshanba kunlari inobatga olinmaydi (MK 233-modda)."
+        ],
+        [
+          "Ishdan ketayotgan bo‘lsangiz",
+          "Mehnat shartnomasi bekor qilinganda barcha foydalanilmagan ta’tillar uchun pul kompensatsiyasi to‘lanadi (MK 234-modda) va u yakuniy hisob-kitobga kiradi (MK 172-modda). Ish davrida esa 21 kundan ortiq qismini xohishingizga ko‘ra pulga almashtirish mumkin."
+        ]
+      ],
+      "laws": [
+        "Mehnat kodeksi: 217-modda — 21 kalendar kun; 221-modda — davomiylikni hisoblash; 227–228-moddalar — ta’til berish tartibi; 233-modda — ta’til puli; 234-modda — pul kompensatsiyasi; 172-modda — hisob-kitob"
+      ],
+      "qs": [
+        "Ish beruvchi ta’tilga chiqarmayapti, nima qilsam bo‘ladi?",
+        "Ta’til puli qanday hisoblanadi?",
+        "Ishdan ketganimda ishlatilmagan ta’til puli to‘lanadimi?"
+      ],
+      "sourceUrls": [
+        "https://lex.uz/docs/-6257288"
+      ],
+      "reviewedAt": "2026-10-31"
+    },
+    {
+      "id": "dekret",
+      "slug": "homiladorlik-va-bola-parvarishi-tatili",
+      "group": "Mehnat",
+      "icon": "heart",
+      "title": "Homiladorlik, tug‘ish va bola parvarishi ta’tili",
+      "desc": "Dekret ta’tili, nafaqa va ishdan bo‘shatishdan himoya",
+      "tag": "Mehnat kodeksi",
+      "intro": "Ayolga tug‘ruqqacha 70 va tug‘ruqdan keyin 56 kalendar kunlik ta’til beriladi va nafaqa to‘lanadi. Undan keyin bola 2 yoshga to‘lguncha nafaqali, 3 yoshga to‘lguncha esa haq to‘lanmaydigan bola parvarishi ta’tili olish mumkin; bu davrda ish joyi saqlanadi.",
+      "steps": [
+        [
+          "Ariza va tibbiy hujjat",
+          "Shifokordan homiladorlik va tug‘ish ta’tili uchun tibbiy hujjat (mehnatga qobiliyatsizlik varaqasi) oling va ish beruvchiga ta’til so‘rab ariza bering."
+        ],
+        [
+          "Muddatlarni biling",
+          "Tug‘ruqqacha 70, tug‘ruqdan keyin 56 kalendar kun; tug‘ish qiyin kechsa yoki ikki va undan ortiq bola tug‘ilsa — tug‘ruqdan keyin 70 kun. Ta’til jamlab hisoblanadi va to‘liq beriladi; nafaqa o‘rtacha oylik ish haqining kamida 75 foizi miqdorida (MK 404-modda)."
+        ],
+        [
+          "Bola parvarishi ta’tili",
+          "Xohishingizga ko‘ra bola 2 yoshga to‘lguncha nafaqa to‘lanadigan, 3 yoshga to‘lguncha ish haqi saqlanmaydigan ta’til beriladi. Undan ota, buvi, buva, bolani haqiqatda parvarishlayotgan boshqa qarindosh yoki vasiy ham foydalanishi mumkin (MK 405-modda)."
+        ],
+        [
+          "Ish joyingiz himoyada",
+          "Homilador ayol bilan shartnomani ish beruvchi tashabbusi bilan bekor qilish mumkin emas — tashkilot tugatilgan hollar bundan mustasno (MK 408-modda). Homiladorlik yoki farzand borligi sababli ishga olmaslik, bo‘shatish yoki maoshni kamaytirish taqiqlanadi (MK 392-modda). Bola parvarishi ta’tilida ish joyi (lavozim) saqlanadi."
+        ],
+        [
+          "Huquq buzilsa",
+          "Ish beruvchiga yozma talab bering, Davlat mehnat inspeksiyasiga shikoyat qiling yoki sudga murojaat qiling. Ishga tiklash bo‘yicha muddat — buyruq ko‘chirma nusxasi topshirilgan kundan 3 oy (MK 560-modda)."
+        ]
+      ],
+      "laws": [
+        "Mehnat kodeksi: 392-modda — homiladorlik yoki farzand sababli kamsitish taqiqi; 404-modda — homiladorlik va tug‘ish ta’tili; 405-modda — bola parvarishi ta’tillari; 408-modda — homilador ayollar uchun kafolatlar"
+      ],
+      "qs": [
+        "Dekret nafaqasi qanday hisoblanadi va kim to‘laydi?",
+        "Bola parvarishi ta’tilini otasi olishi mumkinmi?",
+        "Ta’tilda bo‘lganimda meni ishdan bo‘shatishlari mumkinmi?"
+      ],
+      "sourceUrls": [
+        "https://lex.uz/docs/-6257288"
+      ],
+      "reviewedAt": "2026-10-31"
+    },
+    {
+      "id": "ish_vaqti",
+      "slug": "ish-vaqti-va-ortiqcha-ish",
+      "group": "Mehnat",
+      "icon": "clock",
+      "title": "Ish vaqti, ortiqcha ish va dam olish kunlari",
+      "desc": "Ish vaqti normasi, ortiqcha ish va bayramda ishlash uchun haq",
+      "tag": "Mehnat kodeksi",
+      "intro": "Ish vaqtining normal davomiyligi haftasiga 40 soatdan oshmaydi. Ish vaqtidan tashqari ish, dam olish va bayram kunlaridagi ish uchun oshirilgan haq to‘lanadi yoki xohishingizga ko‘ra qo‘shimcha dam olish beriladi.",
+      "steps": [
+        [
+          "Normani tekshiring",
+          "Besh yoki olti kunlik ish haftasida ish vaqti haftasiga 40 soatdan oshmasligi kerak (MK 182-modda). Ish kuni davomida ish vaqtiga kirmaydigan kamida 30 daqiqa, ko‘pi bilan 2 soatlik dam olish va ovqatlanish tanaffusi beriladi (MK 204-modda)."
+        ],
+        [
+          "Ortiqcha ishga rozilik",
+          "Avariya, tabiiy ofat va MK 189-moddasida sanalgan boshqa favqulodda hollardan tashqari, ish vaqtidan tashqari ishga faqat yozma roziligingiz bilan jalb qilish mumkin. U ketma-ket ikki kun davomida 4 soatdan oshmasligi kerak (MK 190-modda)."
+        ],
+        [
+          "Haqni tekshiring",
+          "Ortiqcha ishning kundagi birinchi 2 soati uchun kamida 1,5 hissa, qolgan soatlari uchun kamida 2 hissa to‘lanadi; xohishingizga ko‘ra oshirilgan haq o‘rniga qo‘shimcha dam olish berilishi mumkin (MK 262-modda). Dam olish va bayram kunlaridagi ish uchun kamida ikki hissa to‘lanadi (MK 263-modda)."
+        ],
+        [
+          "Dalil to‘plang",
+          "Ishlagan soatlaringizni yozib boring: smena jadvali, tabel, ish chatidagi xabarlar, kirish-chiqish qaydlari. Ish beruvchi ortiqcha ish davomiyligini aniq hisobga olishi shart (MK 190-modda)."
+        ],
+        [
+          "To‘lanmasa",
+          "Ish beruvchiga yozma talab bering, javob bo‘lmasa Davlat mehnat inspeksiyasiga yoki sudga murojaat qiling. Bunday mehnat nizolari bo‘yicha sudga murojaat muddati — huquq buzilganini bilgan yoki bilishi kerak bo‘lgan kundan 6 oy (MK 560-modda)."
+        ]
+      ],
+      "laws": [
+        "Mehnat kodeksi: 182-modda — 40 soatlik norma; 189–190-moddalar — ish vaqtidan tashqari ish; 204-modda — tanaffus; 262–263-moddalar — oshirilgan haq"
+      ],
+      "qs": [
+        "Rahbar har kuni kechgacha qoldiradi, bu qonuniymi?",
+        "Bayram kuni ishlaganim uchun qancha to‘lanishi kerak?",
+        "Ortiqcha ish o‘rniga dam olish kuni olsam bo‘ladimi?"
+      ],
+      "sourceUrls": [
+        "https://lex.uz/docs/-6257288"
+      ],
+      "reviewedAt": "2026-10-31"
+    },
+    {
+      "id": "ketish",
+      "slug": "oz-xohishi-bilan-ishdan-ketish",
+      "group": "Mehnat",
+      "icon": "briefcase",
+      "title": "O‘z xohishi bilan ishdan ketish",
+      "desc": "Ariza, ogohlantirish muddati, hisob-kitob va hujjatlar",
+      "tag": "Mehnat kodeksi",
+      "intro": "Xodim ish beruvchini 14 kalendar kun oldin yozma ogohlantirib, mehnat shartnomasini bekor qila oladi. Muddat tugagach, ish beruvchi buyruq ko‘chirmasini, mehnat daftarchasini (yoki elektron daftarchadan ko‘chirmani) berishi va to‘liq hisob-kitob qilishi shart.",
+      "steps": [
+        [
+          "Yozma ariza bering",
+          "Arizani ikki nusxada yozing va qabul qilinganini ikkinchi nusxaga belgilatib oling yoki xabarnomali pochta orqali yuboring. 14 kunlik muddat ish beruvchi arizani olgan kunning ertasidan boshlanadi (MK 160-modda). Rahbarlar, mavsumiy va vaqtinchalik xodimlar, mikrofirma va YaTT xodimlari uchun boshqa muddatlar belgilangan."
+        ],
+        [
+          "Muddatni qisqartirish",
+          "Ish beruvchi bilan kelishib, 14 kun tugashidan oldin ham ketish mumkin. O‘qishga kirish, pensiyaga chiqish kabi ishni davom ettirib bo‘lmaydigan hollarda shartnoma siz so‘ragan muddatda bekor qilinishi kerak. Muddatli shartnomani muddatidan oldin bekor qilsangiz, shartnomada neustoyka nazarda tutilgan bo‘lishi mumkin."
+        ],
+        [
+          "Fikringiz o‘zgarsa",
+          "Ogohlantirish muddatining oxirgi kuni ish vaqti tugaguniga qadar arizani qaytarib olishingiz mumkin. Muddat tugab, ishlashda davom etsangiz, ariza kuchini yo‘qotadi (MK 160-modda)."
+        ],
+        [
+          "Hujjat va hisob-kitob",
+          "Oxirgi kuni ish beruvchi buyruq ko‘chirma nusxasini va mehnat daftarchasini (elektron daftarchadan ko‘chirmani) berishi, olinmagan ish haqi va foydalanilmagan ta’til kompensatsiyasini to‘lashi shart (MK 160, 171, 172-moddalar)."
+        ],
+        [
+          "Kechiktirilsa",
+          "Ish haqi va boshqa to‘lovlarni kechiktirgani uchun ish beruvchi moddiy javobgar bo‘ladi (MK 333-modda). Yozma talab bering, so‘ng Davlat mehnat inspeksiyasi yoki sudga murojaat qiling."
+        ]
+      ],
+      "laws": [
+        "Mehnat kodeksi: 160-modda — xodim tashabbusi bilan bekor qilish; 171-modda — mehnat daftarchasi va buyruq ko‘chirmasi; 172-modda — hisob-kitob; 333-modda — kechiktirganlik uchun javobgarlik"
+      ],
+      "qs": [
+        "Ish beruvchi arizamni qabul qilmayapti, nima qilay?",
+        "14 kun ishlamasdan ketsam bo‘ladimi?",
+        "Ishdan ketganda qanday to‘lovlar olishim kerak?"
+      ],
+      "sourceUrls": [
+        "https://lex.uz/docs/-6257288"
+      ],
+      "reviewedAt": "2026-10-31"
+    },
+    {
+      "id": "moddiy",
+      "slug": "xodimning-moddiy-javobgarligi",
+      "group": "Mehnat",
+      "icon": "scale",
+      "title": "Xodimdan zarar undirish va maoshdan ushlab qolish",
+      "desc": "Kamomad, buzilgan jihoz, ushlab qolish chegarasi va xizmat tekshiruvi",
+      "tag": "Mehnat kodeksi",
+      "intro": "Xodim odatda ish beruvchiga yetkazilgan zarar uchun o‘rtacha oylik ish haqi doirasida javob beradi. To‘liq javobgarlik faqat qonunda sanalgan hollarda bo‘ladi, zarar miqdori va sababini esa ish beruvchi xizmat tekshiruvi orqali aniqlashi shart.",
+      "steps": [
+        [
+          "Tekshiruv o‘tkazilishini talab qiling",
+          "Zararni undirish haqida qaror qabul qilishdan oldin ish beruvchi xizmat tekshiruvi o‘tkazishi va sizdan yozma tushuntirish talab qilishi shart (MK 344-modda). Tekshiruv materiallari va natijalari haqidagi dalolatnoma bilan tanishish huquqingiz bor (MK 306-modda)."
+        ],
+        [
+          "Javobgarlik doirasini aniqlang",
+          "Umumiy qoida — o‘rtacha oylik ish haqi doirasida (MK 340-modda). To‘liq javobgarlik: to‘liq moddiy javobgarlik shartnomasi bo‘yicha kamomad, qasddan zarar, mastlik holatida zarar va MK 342-moddasida sanalgan boshqa hollar. Zarar yengib bo‘lmaydigan kuch yoki ish beruvchi saqlash sharoitini ta’minlamagani tufayli yuzaga kelsa, javobgarlik istisno etiladi (MK 338-modda)."
+        ],
+        [
+          "Undirish tartibini tekshiring",
+          "O‘rtacha oylik ish haqidan oshmaydigan zarar ish beruvchining zarar aniqlangan kundan 1 oy ichida chiqarilgan buyrug‘i bilan undiriladi. Summa bundan ko‘p bo‘lsa yoki 1 oy o‘tgan bo‘lsa — faqat sud orqali (MK 347-modda)."
+        ],
+        [
+          "Ushlab qolish chegarasi",
+          "Har bir to‘lovda ish haqidan ushlab qolingan jami summa hisoblangan ish haqining 50 foizidan oshmasligi kerak; aliment qarzi va axloq tuzatish ishlari bo‘yicha — 70 foizdan (MK 270-modda)."
+        ],
+        [
+          "Rozi bo‘lmasangiz",
+          "Buyruqqa yozma e’tiroz bildiring va mehnat nizosi sifatida sudga murojaat qiling. Sud xodimdan undiriladigan zarar miqdorini kamaytirishi mumkin (MK 350-modda)."
+        ]
+      ],
+      "laws": [
+        "Mehnat kodeksi: 338-modda — javobgarlikni istisno etuvchi holatlar; 340–342-moddalar — javobgarlik doirasi; 344, 347-moddalar — tekshiruv va undirish tartibi; 270-modda — ushlab qolish chegarasi; 350-modda — summani sud tomonidan kamaytirish"
+      ],
+      "qs": [
+        "Do‘konda kamomad chiqdi, hammasini mendan ushlab qolishlari mumkinmi?",
+        "Maoshimdan roziligimsiz pul ushlab qolishdi, nima qilaman?",
+        "To‘liq moddiy javobgarlik shartnomasini imzolashim shartmi?"
+      ],
+      "sourceUrls": [
+        "https://lex.uz/docs/-6257288"
+      ],
+      "reviewedAt": "2026-10-31"
+    },
+    {
+      "id": "shartnoma",
+      "slug": "mehnat-shartnomasisiz-ishlash",
+      "group": "Mehnat",
+      "icon": "doc",
+      "title": "Mehnat shartnomasisiz (norasmiy) ishlash",
+      "desc": "Shartnoma tuzilmagan bo‘lsa ham huquqlaringiz va rasmiylashtirish",
+      "tag": "Mehnat kodeksi",
+      "intro": "Ish beruvchi yoki uning ruxsati bilan haqiqatda ishga qo‘yilgan bo‘lsangiz, mehnat shartnomasi ish boshlangan kundan tuzilgan hisoblanadi. Ish beruvchi 3 kun ichida shartnoma tuzib, ishga qabul qilish haqida buyruq chiqarishi shart.",
+      "steps": [
+        [
+          "Ishga qo‘yilganingizni qayd eting",
+          "Ish boshlagan kun, lavozim, ish joyi va sizni kim ishga qo‘yganini yozib qo‘ying. Ishga qabul qilish rasmiylashtirilmagan bo‘lsa ham, shartnoma ish boshlangan kundan tuzilgan hisoblanadi (MK 128-modda)."
+        ],
+        [
+          "Yozma shartnoma talab qiling",
+          "Mehnat shartnomasi kamida ikki nusxada yozma (qog‘oz yoki elektron) shaklda tuziladi, bir nusxasi xodimga beriladi (MK 106-modda). Haqiqatda ishga qo‘yilganda ish beruvchi 3 kun ichida shartnoma tuzishi va buyruq chiqarishi shart (MK 128-modda)."
+        ],
+        [
+          "Elektron daftarchani tekshiring",
+          "Elektron shakldagi shartnoma “Yagona milliy mehnat tizimi”da rasmiylashtiriladi (MK 106-modda). Elektron mehnat daftarchangizda ish joyingiz qayd etilganini tekshiring."
+        ],
+        [
+          "Dalillarni saqlang",
+          "Maosh o‘tkazmalari, ish chatidagi xabarlar, smena jadvali, ruxsatnoma, guvohlar — mehnat munosabatini isbotlashda yordam beradi."
+        ],
+        [
+          "Rad etilsa",
+          "Ish beruvchi mehnat munosabatini tan olmasa, Davlat mehnat inspeksiyasiga yoki sudga murojaat qiling. Qonunga xilof ravishda ishga qabul qilish rad etilgan shaxs bilan shartnoma tuzish majburiyatini sud ish beruvchiga yuklashi mumkin (MK 32-modda)."
+        ]
+      ],
+      "laws": [
+        "Mehnat kodeksi: 106-modda — shartnoma shakli; 107-modda — rekvizitlar; 128-modda — xodimni haqiqatda ishga qo‘yish; 32-modda — sud qarori bilan shartnoma tuzish"
+      ],
+      "qs": [
+        "Shartnomasiz ishladim, maoshni to‘lamayapti — nima qilaman?",
+        "Ish beruvchi mehnat shartnomasini bermayapti, talab qilsam bo‘ladimi?",
+        "Norasmiy ishlagan vaqtim stajga kiradimi?"
+      ],
+      "sourceUrls": [
+        "https://lex.uz/docs/-6257288"
+      ],
+      "reviewedAt": "2026-10-31"
     },
     {
       "id": "oila",
@@ -107,41 +418,8 @@
       "sourceUrls": [
         "https://lex.uz/docs/-104720",
         "https://lex.uz/docs/-3517337"
-      ]
-    },
-    {
-      "id": "jarima",
-      "slug": "yhxx-jarimasiga-shikoyat",
-      "icon": "car",
-      "title": "YHXX ma’muriy jarimalari",
-      "desc": "Radar, kamera va nohaq jarimaga shikoyat qilish",
-      "tag": "Ma’muriy javobgarlik",
-      "intro": "YHXX yoki boshqa vakolatli organ chiqargan ma’muriy jarima qaroriga e’tiroz bo‘lsa, MJtKning 315–316-moddalari asosida yuqori turuvchi organga yoki jinoyat ishlari bo‘yicha tuman (shahar) sudiga shikoyat qilish mumkin. Sud qaroriga shikoyat uchun boshqa tartib qo‘llanadi.",
-      "steps": [
-        [
-          "Qaror va fotosuratni tekshiring",
-          "my.gov.uz yoki YHXXning rasmiy xizmatlari orqali fotosurat va vaqtni aniq tekshirib oling."
-        ],
-        [
-          "Muddat va qaror turini tekshiring",
-          "Organ qarori nusxasi olingan kundan odatda 10 kun ichida shikoyat beriladi. Uzrli sabab bo‘lsa, dalillar bilan muddatni tiklash so‘raladi. Sud chiqargan qarorning tartibini alohida aniqlashtiring."
-        ],
-        [
-          "E’tirozni dalillar bilan asoslang",
-          "Qaror nusxasi, foto/video, joy va vaqt, transportga aloqador hujjatlarni yig‘ing. Imtiyozli to‘lov masalasi va istisnolarini MJtK 332-1-moddasining amaldagi matnidan alohida tekshiring."
-        ]
       ],
-      "laws": [
-        "Ma’muriy javobgarlik to‘g‘risidagi kodeks: 315–316-moddalar — organ qaroriga shikoyat; 332-1-modda — imtiyozli to‘lov."
-      ],
-      "qs": [
-        "Radar jarimasiga qanday e’tiroz bildirsa bo‘ladi?",
-        "Jarimalarni 50 foiz chegirma bilan to‘lash tartibi qanday?",
-        "Mening mashinam emas, boshqa odam haydagan bo‘lsa nima qilaman?"
-      ],
-      "sourceUrls": [
-        "https://lex.uz/docs/-97664"
-      ]
+      "group": "Oila"
     },
     {
       "id": "meros",
@@ -180,7 +458,444 @@
       ],
       "sourceUrls": [
         "https://lex.uz/docs/-180552"
-      ]
+      ],
+      "group": "Oila"
+    },
+    {
+      "id": "nikoh",
+      "slug": "nikohdan-otish",
+      "group": "Oila",
+      "icon": "users",
+      "title": "Nikohdan o‘tish (FHDYo)",
+      "desc": "Nikoh yoshi, ariza, bir oylik muddat va tibbiy ko‘rik",
+      "tag": "Oila kodeksi",
+      "intro": "Nikoh FHDYo organida (fuqarolik holati dalolatnomalarini yozish organi) qayd etiladi va er-xotinlik huquqlari faqat shundan keyin vujudga keladi. Nikoh yoshi erkaklar va ayollar uchun 18 yosh.",
+      "steps": [
+        [
+          "Shartlarni tekshiring",
+          "Nikoh yoshi — 18 (Oila kodeksi 15-modda); uzrli sabablar bo‘lganda tuman (shahar) hokimi uni ko‘pi bilan bir yilga kamaytirishi mumkin. Kamida biri boshqa qayd etilgan nikohda bo‘lsa, yaqin qarindoshlar, farzandlikka oluvchi va farzandlikka olingan o‘rtasida, sud muomalaga layoqatsiz deb topgan shaxs bilan nikoh tuzilmaydi (OK 16-modda)."
+        ],
+        [
+          "Ariza bering",
+          "Nikohlanuvchilar FHDYo organiga ariza beradi. Nikoh ariza berilgandan bir oy o‘tgach, ikkalasining shaxsan ishtirokida qayd etiladi. Uzrli sabab bo‘lsa, muddat qisqartirilishi; homiladorlik, bola tug‘ilishi, kasallik kabi alohida hollarda esa nikoh ariza berilgan kuni qayd etilishi mumkin (OK 13-modda)."
+        ],
+        [
+          "Tibbiy ko‘rikdan o‘ting",
+          "Nikohlanuvchilar davlat sog‘liqni saqlash muassasalarida bepul tibbiy ko‘rikdan o‘tadi; 50 yoshdan oshganlar uchun ixtiyoriy. Ko‘rik hajmi va tartibini Vazirlar Mahkamasi belgilaydi (OK 17-modda)."
+        ],
+        [
+          "Familiya va mulk",
+          "Umumiy familiya tanlash yoki nikohgacha bo‘lgan familiyani saqlab qolish mumkin (OK 20-modda). Nikoh davomida orttirilgan mol-mulk, qonun yoki nikoh shartnomasida boshqacha belgilanmagan bo‘lsa, umumiy birgalikdagi mulk hisoblanadi (OK 23-modda)."
+        ],
+        [
+          "Rad etilsa",
+          "Nikohni qayd etish rad etilsa, bu ustidan bevosita sudga yoki yuqori turuvchi organga shikoyat qilish mumkin (OK 13-modda)."
+        ]
+      ],
+      "laws": [
+        "Oila kodeksi: 13-modda — nikoh tuzish tartibi; 15-modda — nikoh yoshi; 16-modda — nikohga to‘sqinlik qiluvchi holatlar; 17-modda — tibbiy ko‘rik; 20, 23-moddalar — familiya va umumiy mulk"
+      ],
+      "qs": [
+        "Nikohni bir oydan oldin qayd ettirsa bo‘ladimi?",
+        "Nikoh shartnomasi nima va qachon tuziladi?",
+        "Chet el fuqarosi bilan nikoh qanday qayd etiladi?"
+      ],
+      "sourceUrls": [
+        "https://lex.uz/docs/-104720"
+      ],
+      "reviewedAt": "2026-10-31"
+    },
+    {
+      "id": "otalik",
+      "slug": "otalikni-belgilash",
+      "group": "Oila",
+      "icon": "users",
+      "title": "Otalikni belgilash",
+      "desc": "Nikohsiz tug‘ilgan bola: FHDYo orqali yoki sud tartibida",
+      "tag": "Oila kodeksi",
+      "intro": "Ota-ona nikohda bo‘lmasa, otalik ota va onaning FHDYo organiga birgalikdagi arizasi bilan belgilanadi. Ota ixtiyoriy tan olmasa, otalik sud tartibida belgilanadi — shundan keyin bola va ota o‘rtasida qonunda belgilangan huquq va majburiyatlar (jumladan aliment) vujudga keladi.",
+      "steps": [
+        [
+          "Ixtiyoriy tan olish",
+          "Ota bolani o‘ziniki deb tan olsa, ota va ona FHDYo organiga birgalikda ariza beradi (Oila kodeksi 61-modda). Bu bola tug‘ilishini qayd etish chog‘ida ham qilinishi mumkin (OK 208-modda)."
+        ],
+        [
+          "Sudga da’vo",
+          "Birgalikdagi ariza berilmasa, otalikni belgilash haqida sudga da’vo beriladi (OK 62-modda). Da’voni odatda bolaning onasi yoki vasiysi beradi; da’vo arizasiga bolaning tug‘ilganlik haqidagi guvohnomasini ilova qiling."
+        ],
+        [
+          "Dalillarni tayyorlang",
+          "Birga yashaganlik, bolani birga tarbiyalaganlik, yozishmalar, suratlar, guvohlar ko‘rsatuvi. Sud zarur hollarda genetik (DNK) ekspertiza tayinlashi mumkin."
+        ],
+        [
+          "Aliment talabi",
+          "Otalikni belgilash haqidagi da’vo bilan birga bolaga aliment undirish talabini ham qo‘yish mumkin."
+        ],
+        [
+          "Natija",
+          "Sud qarori qonuniy kuchga kirgach, FHDYo organi tug‘ilganlik haqidagi yozuvga ota to‘g‘risidagi ma’lumotni kiritadi. Otalikka keyinchalik e’tiroz bildirish tartibi OK 63-moddasida belgilangan."
+        ]
+      ],
+      "laws": [
+        "Oila kodeksi: 60-modda — bolaning kelib chiqishini belgilash asoslari; 61-modda — ota-onaning arizasi bo‘yicha; 62-modda — sud tartibida; 63-modda — otalikka e’tiroz; 208-modda — tug‘ilishni qayd etishda otalikni belgilash",
+        "Fuqarolik protsessual kodeksi"
+      ],
+      "qs": [
+        "Ota bolani tan olmayapti, DNK ekspertiza qanday tayinlanadi?",
+        "Otalik belgilangach aliment qachondan undiriladi?",
+        "Bolaning familiyasini o‘zgartirish mumkinmi?"
+      ],
+      "sourceUrls": [
+        "https://lex.uz/docs/-104720",
+        "https://lex.uz/docs/-3517337"
+      ],
+      "reviewedAt": "2026-10-31"
+    },
+    {
+      "id": "bola",
+      "slug": "bola-kim-bilan-qoladi",
+      "group": "Oila",
+      "icon": "users",
+      "title": "Ajrashgandan keyin bola kim bilan qoladi",
+      "desc": "Yashash joyi, ko‘rishish tartibi va vasiylik organining roli",
+      "tag": "Oila kodeksi",
+      "intro": "Ota-ona alohida yashasa, bolaning yashash joyi ularning kelishuvi bilan, kelishuv bo‘lmasa sud tomonidan bolaning manfaatlaridan kelib chiqib belgilanadi. Bola bilan alohida yashayotgan ota yoki ona ham u bilan ko‘rishish va tarbiyasida qatnashish huquqiga ega.",
+      "steps": [
+        [
+          "Kelishuvga harakat qiling",
+          "Bola kim bilan yashashi, ko‘rishish kunlari va tartibi, aliment — barchasini yozma kelishuvda belgilash nizoning oldini oladi. Nikohdan ajratish jarayonida sud bu masalalarni ham hal qilishi mumkin."
+        ],
+        [
+          "Sud nimaga qaraydi",
+          "Kelishuv bo‘lmasa, sud bolaning manfaatini birinchi o‘ringa qo‘yadi: bolaning yoshi, har bir ota-onaga bog‘liqligi, ota-onaning shaxsiy sifatlari va yashash sharoiti hisobga olinadi; bola o‘n yoshga to‘lgan bo‘lsa, uning fikri ham so‘raladi."
+        ],
+        [
+          "Vasiylik va homiylik organi",
+          "Bola tarbiyasi bilan bog‘liq nizolarda sud vasiylik va homiylik organini ishga jalb qiladi; u oilaning sharoitini o‘rganib, xulosa beradi (OK 88-modda)."
+        ],
+        [
+          "Ko‘rishish huquqi",
+          "Alohida yashayotgan ota yoki ona bola bilan ko‘rishish va uning tarbiyasida qatnashish huquqiga ega; bola bilan yashayotgan ota-ona bunga to‘sqinlik qilmasligi kerak (OK 76-modda). Kelisha olinmasa, ko‘rishish tartibini sud belgilaydi. Buvi-buva va boshqa qarindoshlarning ham bola bilan ko‘rishish huquqi bor (OK 77-modda)."
+        ],
+        [
+          "Qaror bajarilmasa",
+          "Sud qarori ixtiyoriy bajarilmasa, ijro varaqasini olib, Majburiy ijro byurosiga murojaat qiling."
+        ]
+      ],
+      "laws": [
+        "Oila kodeksi: 65-modda — bolaning oilada yashash va tarbiyalanish huquqi; 66-modda — ota-ona va qarindoshlar bilan muloqot huquqi; 76-modda — bola bilan alohida yashovchi ota-onaning huquqlari; 77-modda — buvi-buva va qarindoshlar; 88-modda — vasiylik va homiylik organining ishtiroki"
+      ],
+      "qs": [
+        "Bolani ko‘rsatmayapti, ko‘rishish tartibini qanday belgilatsam bo‘ladi?",
+        "Bolaning fikri sudda qanday hisobga olinadi?",
+        "Bolani chet elga olib chiqish uchun ikkinchi ota-onaning roziligi kerakmi?"
+      ],
+      "sourceUrls": [
+        "https://lex.uz/docs/-104720"
+      ],
+      "reviewedAt": "2026-10-31"
+    },
+    {
+      "id": "mulk",
+      "slug": "er-xotin-mulkini-bolish",
+      "group": "Oila",
+      "icon": "home",
+      "title": "Er-xotin umumiy mulkini bo‘lish",
+      "desc": "Nikohda orttirilgan mulk, teng ulush va da’vo muddati",
+      "tag": "Oila kodeksi",
+      "intro": "Nikoh davomida orttirilgan mol-mulk, kimning nomiga rasmiylashtirilganidan qat’i nazar, er-xotinning umumiy mulki hisoblanadi va odatda teng bo‘linadi. Ajrashgandan keyin bo‘lish talabi uchun 3 yillik da’vo muddati qo‘llaniladi.",
+      "steps": [
+        [
+          "Umumiy va shaxsiy mulkni ajrating",
+          "Nikohda orttirilgan daromad, uy, avtomobil, omonatlar — umumiy mulk (Oila kodeksi 23-modda). Nikohgacha bo‘lgan, nikoh davrida hadya yoki meros sifatida olingan mulk har birining o‘z mulki hisoblanadi (OK 25-modda); shaxsiy foydalanishdagi buyumlar haqida alohida qoida bor (OK 26-modda)."
+        ],
+        [
+          "Kelishib bo‘lish",
+          "Er-xotin mulkni o‘zaro kelishuv bilan bo‘lishi va kelishuvni notarial tasdiqlatishi mumkin."
+        ],
+        [
+          "Sud orqali bo‘lish",
+          "Kelisha olinmasa, sudga da’vo beriladi. Ulushlar teng deb hisoblanadi; sud voyaga yetmagan bolalarning manfaatini yoki er-xotindan birining e’tiborga loyiq manfaatini hisobga olib, tenglikdan chetga chiqishi mumkin (OK 27–28-moddalar)."
+        ],
+        [
+          "Bolalar buyumlari va qarzlar",
+          "Voyaga yetmagan bolalar uchun olingan kiyim, o‘quv va sport anjomlari bo‘linmaydi va bola bilan yashayotgan ota-onaga beriladi; bolalar nomidagi omonatlar bolalarniki hisoblanadi. Umumiy qarzlar ulushlarga mutanosib taqsimlanadi."
+        ],
+        [
+          "Muddatni o‘tkazib yubormang",
+          "Nikohi bekor qilingan er-xotinning umumiy mulkni bo‘lish haqidagi talabiga 3 yillik da’vo muddati qo‘llaniladi (OK 12-modda)."
+        ]
+      ],
+      "laws": [
+        "Oila kodeksi: 23-modda — umumiy birgalikdagi mulk; 25–26-moddalar — har birining o‘z mulki; 27-modda — umumiy mulkni bo‘lish; 28-modda — ulushlarni aniqlash; 12-modda — da’vo muddati"
+      ],
+      "qs": [
+        "Er nomidagi uyni ajrashganda bo‘lish mumkinmi?",
+        "Nikohdan oldin olingan kvartira ham bo‘linadimi?",
+        "Kredit bilan olingan mashina qanday bo‘linadi?"
+      ],
+      "sourceUrls": [
+        "https://lex.uz/docs/-104720",
+        "https://gov.uz/oz/advice/58/document/581"
+      ],
+      "reviewedAt": "2026-10-31"
+    },
+    {
+      "id": "uy",
+      "slug": "uy-ijarasi",
+      "icon": "home",
+      "title": "Turar joy ijarasi va mulk",
+      "desc": "Ijara shartnomasi, depozitni qaytarish va ijarachi huquqlari",
+      "tag": "Fuqarolik kodeksi",
+      "intro": "Jismoniy shaxslar o‘rtasidagi ko‘chmas mulk ijara shartnomasi soliq organlarida (ijara.soliq.uz) hisobga qo‘yilishi kerak (PQ-3741, 25.05.2018). Uy-joy ijarasi Fuqarolik kodeksining 35-bobida (600–616-moddalar) tartibga solinadi; yozma shartnoma va topshirish dalolatnomasi nizoda asosiy dalil bo‘ladi.",
+      "steps": [
+        [
+          "Rasmiy shartnoma tuzing",
+          "ijara.soliq.uz portali orqali shartnomani ro‘yxatdan o‘tkazing."
+        ],
+        [
+          "Dalolatnoma (Akt) imzolang",
+          "Uyga kirishda mavjud jihozlar va kamchiliklarni akt orqali rasmiylashtiring va rasmga oling."
+        ],
+        [
+          "To‘lovlarni bank orqali qiling",
+          "Naqd bermasdan, kartadan kartaga o‘tkazib, izohida 'falon oy ijarasi' deb yozib boring."
+        ]
+      ],
+      "laws": [
+        "Fuqarolik kodeksi, 2-qism, 35-bob (600–616-moddalar — uy-joyni ijaraga berish)",
+        "Uy-joy kodeksi",
+        "Prezidentning PQ-3741-son qarori (25.05.2018)"
+      ],
+      "qs": [
+        "Uy egasi depozitni qaytarmayapti, nima qilsam bo‘ladi?",
+        "Shartnomasiz yashaganda qanday xavf bor?",
+        "Ijarachini to‘satdan chiqarib yuborish mumkinmi?"
+      ],
+      "sourceUrls": [],
+      "group": "Uy va pul"
+    },
+    {
+      "id": "kredit",
+      "slug": "bank-krediti-va-foizlar",
+      "icon": "credit",
+      "title": "Bank kreditlari va foizlar",
+      "desc": "Muddati o‘tgan qarz, garov mulki va bank nizolari",
+      "tag": "Bank qonunchiligi",
+      "intro": "Bank qarzdorlikni undirishda qonun doirasidan chiqa olmaydi. Qisman to‘lovda avval muddati o‘tgan asosiy qarz va foiz, keyin joriy foiz va qarz, so‘ngra neustoyka uziladi (O‘RQ-914). Moliyaviy qiyinchilikda bankdan to‘lov grafigini qayta ko‘rib chiqishni (restrukturizatsiya) so‘rash mumkin.",
+      "steps": [
+        [
+          "Shartnoma shartlarini o‘rganing",
+          "Foiz, penya va jarima miqdorlarini diqqat bilan o‘qing. Sud kredit qarzini undirish to‘g‘risida qaror chiqargach, undirilgan summaga foiz va neustoyka hisoblash to‘xtatiladi (FK, O‘RQ-914, 27.02.2024)."
+        ],
+        [
+          "Bankka yozma ariza bering",
+          "Muammoli holat haqida ma’lum qilib, kredit to‘lov grafigini uzaytirishni (kredit ta’tili) so‘rang."
+        ],
+        [
+          "Markaziy bankka murojaat qiling",
+          "Bank huquqlaringizni buzsa, Markaziy bankning iste’molchilar huquqlarini himoya qilish xizmatiga shikoyat bering."
+        ]
+      ],
+      "laws": [
+        "\"Banklar va bank faoliyati to‘g‘risida\"gi Qonun",
+        "Fuqarolik kodeksi (garov, qarz va kredit shartnomalari)",
+        "O‘RQ-914-son Qonun (27.02.2024)"
+      ],
+      "qs": [
+        "Kreditni to‘lay olmasam garovdagi uyimni tortib olishadimi?",
+        "Kredit bo‘yicha penya qancha bo‘lishi mumkin?",
+        "Kafillikdan voz kechish mumkinmi?"
+      ],
+      "sourceUrls": [],
+      "group": "Uy va pul"
+    },
+    {
+      "id": "qarz",
+      "slug": "qarz-qaytarilmasa",
+      "group": "Uy va pul",
+      "icon": "cash",
+      "title": "Bergan qarzim qaytarilmayapti",
+      "desc": "Tilxat, yozma shakl, talabnoma va sudga murojaat",
+      "tag": "Fuqarolik kodeksi",
+      "intro": "Fuqarolar o‘rtasidagi qarz summasi bazaviy hisoblash miqdorining (BHM) 10 baravaridan oshsa, shartnoma yozma shaklda tuzilishi kerak — qarz oluvchining tilxati ham yozma dalil hisoblanadi. Yozma shakl bo‘lmasa, shartnoma haqiqiy bo‘laveradi, lekin qarzni faqat guvohlar ko‘rsatuvi bilan isbotlash huquqi yo‘qoladi.",
+      "steps": [
+        [
+          "Dalillarni yig‘ing",
+          "Tilxat, qarz shartnomasi, bank o‘tkazmasi, qarzni tan olgan xabarlar va qisman to‘lovlar. Bank o‘tkazmasining o‘zi har doim ham qarzni isbotlamaydi — to‘lov maqsadi va yozishmalar ham baholanadi."
+        ],
+        [
+          "Muddatni aniqlang",
+          "Qaytarish muddati belgilangan bo‘lsa — shu muddatda. Muddat belgilanmagan bo‘lsa, qarz beruvchi talab qilganidan keyin qaytarilishi kerak (FK 735-modda)."
+        ],
+        [
+          "Yozma talabnoma yuboring",
+          "Qarz summasi, berilgan sana va qaytarish muddatini ko‘rsatib, xabarnomali pochta orqali yoki ikkinchi nusxaga imzo qo‘ydirib talabnoma bering. Bu keyin sudda talab qilinganini isbotlaydi."
+        ],
+        [
+          "Sudga da’vo bering",
+          "Javob bo‘lmasa, fuqarolik ishlari bo‘yicha sudga da’vo bering (odatda javobgar yashaydigan joydagi sudga). Shartnomada foiz belgilangan bo‘lsa, u ham talab qilinadi (FK 734-modda)."
+        ],
+        [
+          "Da’vo muddati",
+          "Fuqarolik kodeksi bo‘yicha umumiy da’vo muddati — 3 yil; u odatda qarzni qaytarish muddati o‘tgan kundan boshlanadi. Muddat o‘tib ketmasidan harakat qiling."
+        ]
+      ],
+      "laws": [
+        "Fuqarolik kodeksi (2-qism): 732-modda — qarz shartnomasi; 733-modda — qarz shartnomasining shakli; 734-modda — foizlar; 735-modda — qarzni qaytarish majburiyati; 737-modda — qarz shartnomasi yuzasidan nizolashish",
+        "Fuqarolik kodeksi (1-qism) — bitim shakli va da’vo muddati",
+        "Fuqarolik protsessual kodeksi"
+      ],
+      "qs": [
+        "Tilxatsiz bergan qarzimni qanday undiraman?",
+        "Qarz uchun sudga da’vo arizasi qanday yoziladi?",
+        "Qarzni kechiktirgani uchun foiz undirsa bo‘ladimi?"
+      ],
+      "sourceUrls": [
+        "https://lex.uz/docs/-180552",
+        "https://lex.uz/docs/-111189"
+      ],
+      "reviewedAt": "2026-10-31"
+    },
+    {
+      "id": "kommunal",
+      "slug": "kommunal-hisob-nizosi",
+      "group": "Uy va pul",
+      "icon": "bolt",
+      "title": "Elektr va gaz hisobi bo‘yicha nizo",
+      "desc": "Noto‘g‘ri yozilgan qarz, hisoblagich va uzib qo‘yish",
+      "tag": "Fuqarolik kodeksi",
+      "intro": "Elektr va gaz yetkazib berish energiya ta’minoti shartnomasi bilan tartibga solinadi: yetkazib beruvchi sifatli energiya berishi, abonent esa haqiqatda olgan energiya uchun to‘lashi kerak. 2026-yil apreldan kommunal qarzlar Majburiy ijro byurosi tomonidan soddalashtirilgan tartibda undirilishi mumkin, shuning uchun nizoli summaga o‘z vaqtida e’tiroz bildiring.",
+      "steps": [
+        [
+          "Ko‘rsatkichni qayd eting",
+          "Hisoblagich ko‘rsatkichini sanasi bilan suratga oling, to‘lov cheklari va hisob varaqalarini saqlang."
+        ],
+        [
+          "Hisobni solishtiring",
+          "Shaxsiy hisob raqamingiz bo‘yicha hisob-kitob tarixini so‘rang yoki rasmiy ilova/kabinetda ko‘ring: qaysi oy va qanday asosda qarz yozilganini aniqlang."
+        ],
+        [
+          "Yozma talab bering",
+          "Hududiy elektr tarmoqlari yoki gaz ta’minoti korxonasiga xatoni tuzatish va ortiqcha yozilgan summani olib tashlash talabi bilan yozma murojaat qiling; qabul qilinganini belgilatib oling."
+        ],
+        [
+          "Yuqori organga murojaat",
+          "Javob bo‘lmasa yoki asossiz rad etilsa, Energetika vazirligiga uning rasmiy murojaat kanallari orqali shikoyat qiling."
+        ],
+        [
+          "Sud",
+          "Nizo hal bo‘lmasa, sudga murojaat qiling. Yetkazib beruvchi shartnoma majburiyatlarini buzgani uchun javobgar bo‘ladi (FK 477-modda); iste’molchi sifatida “Iste’molchilarning huquqlarini himoya qilish to‘g‘risida”gi Qonunga ham tayanishingiz mumkin."
+        ]
+      ],
+      "laws": [
+        "Fuqarolik kodeksi (2-qism), energiya ta’minoti: 468-modda — shartnoma; 470-modda — energiya miqdori; 472-modda — energiya sifati; 474-modda — energiya haqini to‘lash; 477-modda — javobgarlik",
+        "O‘RQ-1134-son Qonun (20.04.2026) — kommunal qarzlarni soddalashtirilgan tartibda ijro etish",
+        "“Iste’molchilarning huquqlarini himoya qilish to‘g‘risida”gi Qonun"
+      ],
+      "qs": [
+        "Hisoblagich buzilgan bo‘lsa, qarz qanday hisoblanadi?",
+        "Ogohlantirmasdan gazni uzib qo‘yishga haqlimi?",
+        "Ortiqcha yozilgan qarzni qanday olib tashlatsam bo‘ladi?"
+      ],
+      "sourceUrls": [
+        "https://lex.uz/docs/-180552"
+      ],
+      "reviewedAt": "2026-10-31"
+    },
+    {
+      "id": "uy_sotish",
+      "slug": "uy-oldi-sotdisi",
+      "group": "Uy va pul",
+      "icon": "home",
+      "title": "Uy yoki kvartira sotib olish",
+      "desc": "Notarial shartnoma, hujjatlarni tekshirish va mulk huquqini ro‘yxatdan o‘tkazish",
+      "tag": "Fuqarolik kodeksi",
+      "intro": "Uy-joy oldi-sotdi shartnomasi yozma shaklda tuzilib, notarial tasdiqlanadi; mulk huquqining xaridorga o‘tishi esa davlat ro‘yxatidan o‘tkaziladi. Pul berishdan oldin sotuvchining huquqi, taqiqlar va roziliklarni tekshirish eng muhim qadam.",
+      "steps": [
+        [
+          "Sotuvchining huquqini tekshiring",
+          "Ko‘chmas mulkka bo‘lgan huquqlar davlat reyestridan ko‘chirma oling: mulkdor kim, ulushdorlar bormi, garov yoki taqiq (xatlov) yo‘qmi."
+        ],
+        [
+          "Roziliklarni oling",
+          "Uy er-xotinning umumiy mulki bo‘lsa — ikkinchi er yoki xotinning roziligi; ulushli mulkda — boshqa ulushdorlarning imtiyozli sotib olish huquqidan yozma voz kechishi; garovdagi uy uchun — garovga oluvchining roziligi kerak."
+        ],
+        [
+          "Notarius orqali rasmiylashtiring",
+          "Shartnoma notarial tasdiqlanadi (FK 480-modda). Kommunal to‘lovlar va budjet oldidagi qarzlar bo‘yicha ma’lumotnomalarni notarius elektron tizim orqali o‘zi oladi."
+        ],
+        [
+          "Shartlarni aniqlashtiring",
+          "Shartnomada narx, to‘lov tartibi, uyni topshirish muddati yozilsin. Uy-joy sotishning o‘ziga xos talablari FK 488-moddasida belgilangan — uyda yashash huquqini saqlab qoladigan shaxslar bor-yo‘qligini aniqlang. Pulni bank orqali o‘tkazing, naqd bo‘lsa — tilxat oling."
+        ],
+        [
+          "Mulk huquqini ro‘yxatdan o‘tkazing",
+          "Mulk huquqining o‘tishi davlat ro‘yxatidan o‘tkazilgach (FK 481-modda), reyestrdan yangi ko‘chirma olib, mulkdor sifatida siz qayd etilganingizni tekshiring."
+        ]
+      ],
+      "laws": [
+        "Fuqarolik kodeksi (2-qism): 479-modda — ko‘chmas mulkni sotish shartnomasi; 480-modda — shartnoma shakli; 481-modda — mulk huquqi o‘tishini davlat ro‘yxatidan o‘tkazish; 488-modda — uy-joy binolarini sotish xususiyatlari",
+        "“Notariat to‘g‘risida”gi Qonun",
+        "Uy-joy kodeksi"
+      ],
+      "qs": [
+        "Kvartira sotib olishdan oldin nimalarni tekshirish kerak?",
+        "Oldi-sotdi shartnomasini notariussiz tuzish mumkinmi?",
+        "Sotuvchi pulni olib, hujjatni rasmiylashtirmasa nima qilaman?"
+      ],
+      "sourceUrls": [
+        "https://lex.uz/docs/-180552",
+        "https://gov.uz/oz/advice/72/document/1966"
+      ],
+      "reviewedAt": "2026-10-31"
+    },
+    {
+      "id": "mib",
+      "slug": "mib-qarzdorlik-va-karta-bloki",
+      "group": "Uy va pul",
+      "icon": "credit",
+      "title": "MIB qarzdorligi va karta bloklanishi",
+      "desc": "Qarz asosini aniqlash, ish haqidan ushlab qolish chegarasi va shikoyat",
+      "tag": "Ijro qonunchiligi",
+      "intro": "Majburiy ijro byurosi (MIB) sud qarorlari, jarimalar, soliq va kommunal qarzlar bo‘yicha ijro hujjatlarini ijro etadi: hisobvaraqni xatlashi, ish haqidan ushlab qolishi, chet elga chiqishni vaqtincha cheklashi mumkin. Qarzdorning ham qonuniy huquqlari bor.",
+      "steps": [
+        [
+          "Qarz asosini aniqlang",
+          "Qaysi ijro hujjati (sud qarori, jarima qarori va h.k.), qancha summa va qaysi MIB bo‘limi ijro ishini yuritayotganini aniqlang. Taraflar ijro ishi materiallari bilan tanishish huquqiga ega (Ijro to‘g‘risidagi qonun 11-modda)."
+        ],
+        [
+          "To‘lang yoki e’tiroz bildiring",
+          "Qarz to‘g‘ri bo‘lsa, ixtiyoriy to‘lov majburiy choralar va ijro yig‘imining oldini oladi. Qarzni allaqachon to‘lagan bo‘lsangiz, to‘lov hujjatini davlat ijrochisiga taqdim etib, ijro ishini tugatish va xatlovni bekor qilishni yozma so‘rang."
+        ],
+        [
+          "Ushlab qolish chegarasi",
+          "Har bir to‘lovda ish haqidan ushlab qolinadigan jami summa hisoblangan ish haqining 50 foizidan oshmasligi kerak; aliment qarzi va axloq tuzatish ishlari bo‘yicha — 70 foizdan (MK 270-modda; Ijro to‘g‘risidagi qonun 66-modda)."
+        ],
+        [
+          "Undirib bo‘lmaydigan summalar",
+          "Qonunda undiruv qaratilishi mumkin bo‘lmagan mol-mulk va summalar ro‘yxati bor (Ijro to‘g‘risidagi qonun 52 va 69-moddalar). Kartangizga shunday to‘lov tushib, xatlangan bo‘lsa, hujjat bilan davlat ijrochisiga yozma murojaat qiling."
+        ],
+        [
+          "Shikoyat qiling",
+          "Davlat ijrochisining qarori yoki harakati (harakatsizligi) ustidan yuqori turuvchi mansabdor shaxsga yoki sudga shikoyat qilish mumkin (Ijro to‘g‘risidagi qonun 86¹-modda)."
+        ]
+      ],
+      "laws": [
+        "“Sud hujjatlari va boshqa organlar hujjatlarini ijro etish to‘g‘risida”gi Qonun (29.08.2001, 258-II): 11-modda — taraflarning huquqlari; 42¹-modda — chet elga chiqishni vaqtincha cheklash; 52, 69-moddalar — undiruv qaratilmaydigan mol-mulk va summalar; 64–66-moddalar — ish haqidan undirish; 86¹-modda — shikoyat",
+        "O‘RQ-1134-son Qonun (20.04.2026) — jarima, soliq, kommunal qarzlar va 5 BHMgacha summalarni soddalashtirilgan tartibda ijro etish",
+        "Mehnat kodeksi, 270-modda — ushlab qolish chegarasi"
+      ],
+      "qs": [
+        "Kartam bloklandi, qaysi qarz uchunligini qanday bilaman?",
+        "Qarzni to‘ladim, blok qachon olinadi?",
+        "Ish haqimning qancha qismini ushlab qolishlari mumkin?"
+      ],
+      "sourceUrls": [
+        "https://lex.uz/docs/-26477",
+        "https://lex.uz/docs/-8148836"
+      ],
+      "reviewedAt": "2026-10-31"
     },
     {
       "id": "istemol",
@@ -218,75 +933,120 @@
       ],
       "sourceUrls": [
         "https://lex.uz/docs/-4704"
-      ]
+      ],
+      "group": "Xarid va internet"
     },
     {
-      "id": "uy",
-      "slug": "uy-ijarasi",
-      "icon": "home",
-      "title": "Turar joy ijarasi va mulk",
-      "desc": "Ijara shartnomasi, depozitni qaytarish va ijarachi huquqlari",
-      "tag": "Fuqarolik kodeksi",
-      "intro": "Jismoniy shaxslar o‘rtasidagi ko‘chmas mulk ijara shartnomasi soliq organlarida (ijara.soliq.uz) hisobga qo‘yilishi kerak (PQ-3741, 25.05.2018). Uy-joy ijarasi Fuqarolik kodeksining 35-bobida (600–616-moddalar) tartibga solinadi; yozma shartnoma va topshirish dalolatnomasi nizoda asosiy dalil bo‘ladi.",
+      "id": "kiber",
+      "slug": "kiberfiribgarlik-karta",
+      "icon": "lock",
+      "title": "Kiberfiribgarlik va karta o‘g‘irligi",
+      "desc": "Bank kartasidan noqonuniy pul yechilganda nima qilish kerak?",
+      "tag": "Jinoyat qonunchiligi",
+      "intro": "Bank kartasidan ruxsatsiz pul yechib olinganda, zudlik bilan kartani bloklash va 102 raqamiga yoki ichki ishlar organlariga xabar berish kerak — kechiksangiz pul tezda chet elga o‘tkazib yuborilishi mumkin. Shubhali havolalarga (fishing) kirmaslik eng asosiy xavfsizlik chorasidir.",
       "steps": [
         [
-          "Rasmiy shartnoma tuzing",
-          "ijara.soliq.uz portali orqali shartnomani ro‘yxatdan o‘tkazing."
+          "Kartani darhol bloklang",
+          "Bank mobil ilovasi orqali yoki bank call-markaziga qo‘ng‘iroq qilib bloklang."
         ],
         [
-          "Dalolatnoma (Akt) imzolang",
-          "Uyga kirishda mavjud jihozlar va kamchiliklarni akt orqali rasmiylashtiring va rasmga oling."
+          "Pul o‘tkazmasi chekini saqlang",
+          "Qaysi hisobga yoki kartaga pul o‘tganini aniqlab, PDF chekini yuklab oling."
         ],
         [
-          "To‘lovlarni bank orqali qiling",
-          "Naqd bermasdan, kartadan kartaga o‘tkazib, izohida 'falon oy ijarasi' deb yozib boring."
+          "Kiberxavfsizlik bo‘limiga ariza bering",
+          "Yashash joyingizdagi IIBga yoki elektron shaklda ariza yuboring."
         ]
       ],
       "laws": [
-        "Fuqarolik kodeksi, 2-qism, 35-bob (600–616-moddalar — uy-joyni ijaraga berish)",
-        "Uy-joy kodeksi",
-        "Prezidentning PQ-3741-son qarori (25.05.2018)"
+        "O‘zbekiston Respublikasi Jinoyat kodeksi (168-modda — firibgarlik, 169-modda — o‘g‘rilik, 278-2-modda — kompyuter axborotidan ruxsatsiz foydalanish)"
       ],
       "qs": [
-        "Uy egasi depozitni qaytarmayapti, nima qilsam bo‘ladi?",
-        "Shartnomasiz yashaganda qanday xavf bor?",
-        "Ijarachini to‘satdan chiqarib yuborish mumkinmi?"
+        "Karta raqamimni aytib pulimni oldirib qo‘ydim, qaytarsa bo‘ladimi?",
+        "Bank kiberhujum vaqtida pulni qaytarishga majburmi?"
       ],
-      "sourceUrls": []
+      "sourceUrls": [],
+      "group": "Xarid va internet"
     },
     {
-      "id": "kredit",
-      "slug": "bank-krediti-va-foizlar",
-      "icon": "credit",
-      "title": "Bank kreditlari va foizlar",
-      "desc": "Muddati o‘tgan qarz, garov mulki va bank nizolari",
-      "tag": "Bank qonunchiligi",
-      "intro": "Bank qarzdorlikni undirishda qonun doirasidan chiqa olmaydi. Qisman to‘lovda avval muddati o‘tgan asosiy qarz va foiz, keyin joriy foiz va qarz, so‘ngra neustoyka uziladi (O‘RQ-914). Moliyaviy qiyinchilikda bankdan to‘lov grafigini qayta ko‘rib chiqishni (restrukturizatsiya) so‘rash mumkin.",
+      "id": "onlayn",
+      "slug": "onlayn-xarid-qaytarish",
+      "group": "Xarid va internet",
+      "icon": "cart",
+      "title": "Internet-do‘kondan xarid va qaytarish",
+      "desc": "Nuqsonli, tavsifga mos kelmagan yoki o‘lchami to‘g‘ri kelmagan tovar",
+      "tag": "Iste’molchilar huquqlari",
+      "intro": "Onlayn sotib olingan tovarga ham iste’molchilar huquqlarini himoya qilish qonuni amal qiladi. Tovar tavsifga mos kelmasa yoki nuqsonli bo‘lsa, sotuvchidan almashtirish yoki pulni qaytarishni talab qilish mumkin.",
       "steps": [
         [
-          "Shartnoma shartlarini o‘rganing",
-          "Foiz, penya va jarima miqdorlarini diqqat bilan o‘qing. Sud kredit qarzini undirish to‘g‘risida qaror chiqargach, undirilgan summaga foiz va neustoyka hisoblash to‘xtatiladi (FK, O‘RQ-914, 27.02.2024)."
+          "Dalillarni saqlang",
+          "Buyurtma sahifasi, tovar tavsifi va rasmlari, chek yoki to‘lov tasdig‘i, yetkazilgan sana, qadoqni ochish paytidagi rasm yoki video."
         ],
         [
-          "Bankka yozma ariza bering",
-          "Muammoli holat haqida ma’lum qilib, kredit to‘lov grafigini uzaytirishni (kredit ta’tili) so‘rang."
+          "Nuqsonli tovar",
+          "Nuqson aniqlansa, almashtirish, bepul ta’mirlash, narxni kamaytirish yoki pulni qaytarishni talab qiling (Iste’molchilar huquqlarini himoya qilish to‘g‘risidagi qonun 13–14-moddalar). Almashtirish odatda 7 kun ichida, qo‘shimcha tekshiruv kerak bo‘lsa 20 kun ichida amalga oshiriladi."
         ],
         [
-          "Markaziy bankka murojaat qiling",
-          "Bank huquqlaringizni buzsa, Markaziy bankning iste’molchilar huquqlarini himoya qilish xizmatiga shikoyat bering."
+          "Tavsifga mos kelmasa",
+          "Tovar saytdagi tavsif yoki namunaga mos kelmasa, almashtirish yoki pulni qaytarishni talab qilishingiz mumkin (Elektron tijorat to‘g‘risidagi qonun 26-modda; Iste’molchilar huquqlarini himoya qilish to‘g‘risidagi qonun 28¹-modda)."
+        ],
+        [
+          "Sifatli, lekin to‘g‘ri kelmagan tovar",
+          "O‘lchami, rangi yoki fasoni to‘g‘ri kelmagan sifatli tovarni 10 kun ichida almashtirish mumkin; mos tovar bo‘lmasa — pul qaytariladi (Iste’molchilar huquqlarini himoya qilish to‘g‘risidagi qonun 18-modda). Ayrim tovarlar (masalan, kosmetika) sifatli bo‘lsa qaytarilmaydi."
+        ],
+        [
+          "Yozma talab va shikoyat",
+          "Sotuvchiga (marketpleys bo‘lsa, ilova ichidagi murojaat orqali ham) yozma talab yuboring. Javob bo‘lmasa, Iste’molchilar huquqlarini himoya qilish qo‘mitasiga shikoyat qiling yoki sudga murojaat qiling. 2026-yil sentabrda imzolangan qonun marketpleys operatorining xaridor oldidagi qo‘shimcha javobgarligini belgiladi (rasmiy e’lon qilinganidan 3 oy o‘tib kuchga kiradi)."
         ]
       ],
       "laws": [
-        "\"Banklar va bank faoliyati to‘g‘risida\"gi Qonun",
-        "Fuqarolik kodeksi (garov, qarz va kredit shartnomalari)",
-        "O‘RQ-914-son Qonun (27.02.2024)"
+        "“Iste’molchilarning huquqlarini himoya qilish to‘g‘risida”gi Qonun: 13–14-moddalar — nuqsonli tovar; 18-modda — sifatli tovarni almashtirish; 28¹-modda",
+        "“Elektron tijorat to‘g‘risida”gi Qonun, 26-modda"
       ],
       "qs": [
-        "Kreditni to‘lay olmasam garovdagi uyimni tortib olishadimi?",
-        "Kredit bo‘yicha penya qancha bo‘lishi mumkin?",
-        "Kafillikdan voz kechish mumkinmi?"
+        "Marketpleysdan kelgan tovar rasmdagidek emas, pulni qaytarishadimi?",
+        "Sifatli tovarni necha kun ichida almashtirish mumkin?",
+        "Sotuvchi javob bermasa qayerga shikoyat qilaman?"
       ],
-      "sourceUrls": []
+      "sourceUrls": [
+        "https://lex.uz/docs/-4704"
+      ],
+      "reviewedAt": "2026-10-31"
+    },
+    {
+      "id": "jarima",
+      "slug": "yhxx-jarimasiga-shikoyat",
+      "icon": "car",
+      "title": "YHXX ma’muriy jarimalari",
+      "desc": "Radar, kamera va nohaq jarimaga shikoyat qilish",
+      "tag": "Ma’muriy javobgarlik",
+      "intro": "YHXX yoki boshqa vakolatli organ chiqargan ma’muriy jarima qaroriga e’tiroz bo‘lsa, MJtKning 315–316-moddalari asosida yuqori turuvchi organga yoki jinoyat ishlari bo‘yicha tuman (shahar) sudiga shikoyat qilish mumkin. Sud qaroriga shikoyat uchun boshqa tartib qo‘llanadi.",
+      "steps": [
+        [
+          "Qaror va fotosuratni tekshiring",
+          "my.gov.uz yoki YHXXning rasmiy xizmatlari orqali fotosurat va vaqtni aniq tekshirib oling."
+        ],
+        [
+          "Muddat va qaror turini tekshiring",
+          "Organ qarori nusxasi olingan kundan odatda 10 kun ichida shikoyat beriladi. Uzrli sabab bo‘lsa, dalillar bilan muddatni tiklash so‘raladi. Sud chiqargan qarorning tartibini alohida aniqlashtiring."
+        ],
+        [
+          "E’tirozni dalillar bilan asoslang",
+          "Qaror nusxasi, foto/video, joy va vaqt, transportga aloqador hujjatlarni yig‘ing. Imtiyozli to‘lov masalasi va istisnolarini MJtK 332-1-moddasining amaldagi matnidan alohida tekshiring."
+        ]
+      ],
+      "laws": [
+        "Ma’muriy javobgarlik to‘g‘risidagi kodeks: 315–316-moddalar — organ qaroriga shikoyat; 332-1-modda — imtiyozli to‘lov."
+      ],
+      "qs": [
+        "Radar jarimasiga qanday e’tiroz bildirsa bo‘ladi?",
+        "Jarimalarni 50 foiz chegirma bilan to‘lash tartibi qanday?",
+        "Mening mashinam emas, boshqa odam haydagan bo‘lsa nima qilaman?"
+      ],
+      "sourceUrls": [
+        "https://lex.uz/docs/-97664"
+      ],
+      "group": "Davlat va ijtimoiy"
     },
     {
       "id": "biznes",
@@ -319,7 +1079,8 @@
         "O‘zini o‘zi band qilgan shaxslar qanday soliq to‘laydi?",
         "Biznes hisob raqami qanday ochiladi?"
       ],
-      "sourceUrls": []
+      "sourceUrls": [],
+      "group": "Davlat va ijtimoiy"
     },
     {
       "id": "talim",
@@ -351,7 +1112,8 @@
         "Kontrakt to‘lovini bo‘lib to‘lash mumkinmi?",
         "Akademik ta’tildan qaytish qoidalari qanday?"
       ],
-      "sourceUrls": []
+      "sourceUrls": [],
+      "group": "Davlat va ijtimoiy"
     },
     {
       "id": "pasport",
@@ -382,38 +1144,190 @@
         "Toshkentdan uy olmasdan ham doimiy propiskaga o‘tsa bo‘ladimi?",
         "Qizil pasport yo‘qolsa nima qilish kerak?"
       ],
-      "sourceUrls": []
+      "sourceUrls": [],
+      "group": "Davlat va ijtimoiy"
     },
     {
-      "id": "kiber",
-      "slug": "kiberfiribgarlik-karta",
-      "icon": "lock",
-      "title": "Kiberfiribgarlik va karta o‘g‘irligi",
-      "desc": "Bank kartasidan noqonuniy pul yechilganda nima qilish kerak?",
-      "tag": "Jinoyat qonunchiligi",
-      "intro": "Bank kartasidan ruxsatsiz pul yechib olinganda, zudlik bilan kartani bloklash va 102 raqamiga yoki ichki ishlar organlariga xabar berish kerak — kechiksangiz pul tezda chet elga o‘tkazib yuborilishi mumkin. Shubhali havolalarga (fishing) kirmaslik eng asosiy xavfsizlik chorasidir.",
+      "id": "yth",
+      "slug": "yth-va-osago",
+      "group": "Davlat va ijtimoiy",
+      "icon": "car",
+      "title": "Yo‘l-transport hodisasi va OSAGO to‘lovi",
+      "desc": "Avariyadan keyingi qadamlar, yevroprotokol va sug‘urta puli",
+      "tag": "Sug‘urta",
+      "intro": "Transport vositasi egalarining fuqarolik javobgarligi majburiy sug‘urta (OSAGO) qilinadi: aybdor haydovchi yetkazgan zararni uning sug‘urtasi qoplaydi. Odamlar jabrlanmagan, faqat ikki avtomobil to‘qnashgan va aybdor aybini tan olgan hollarda politsiyasiz, xabarnoma (yevroprotokol) bilan rasmiylashtirish mumkin.",
       "steps": [
         [
-          "Kartani darhol bloklang",
-          "Bank mobil ilovasi orqali yoki bank call-markaziga qo‘ng‘iroq qilib bloklang."
+          "Xavfsizlikni ta’minlang",
+          "To‘xtang, avariya chiroqlarini yoqing va ogohlantiruvchi belgi qo‘ying. Jabrlanganlar bo‘lsa, darhol tez yordam va politsiyani chaqiring — bunday holda yevroprotokol qo‘llanilmaydi."
         ],
         [
-          "Pul o‘tkazmasi chekini saqlang",
-          "Qaysi hisobga yoki kartaga pul o‘tganini aniqlab, PDF chekini yuklab oling."
+          "Dalil to‘plang",
+          "Joyni, avtomobillar joylashuvi, davlat raqamlari va shikastlarni turli burchakdan surat va videoga oling; guvohlarning kontaktlarini yozib oling."
         ],
         [
-          "Kiberxavfsizlik bo‘limiga ariza bering",
-          "Yashash joyingizdagi IIBga yoki elektron shaklda ariza yuboring."
+          "Yevroprotokol shartlari",
+          "Faqat ikki avtomobil to‘qnashgan, odamlar va boshqa mulk jabrlanmagan, ikkala egada OSAGO bor, bir haydovchi aybini tan olgan va zarar yuzasidan kelishmovchilik yo‘q bo‘lsa — xabarnoma blankasi ikki tomon tomonidan to‘ldiriladi. Ikkala haydovchi qisqa muddatda (4 soat ichida) tibbiy ko‘rikdan o‘tishi kerak."
+        ],
+        [
+          "Sug‘urtachiga xabar bering",
+          "Hodisa haqida 72 soat ichida sug‘urta kompaniyasiga xabar bering va hujjatlarni topshiring. Jabrlanuvchi o‘z sug‘urtachisiga to‘g‘ridan-to‘g‘ri hisob-kitob tartibida murojaat qilishi mumkin."
+        ],
+        [
+          "To‘lov va limit",
+          "2026-yil 1-yanvardan OSAGO bo‘yicha sug‘urta summasi 80 mln so‘mgacha oshirildi (avval 40 mln so‘m). Zarar sug‘urta limitidan oshsa, qolgan qismini aybdordan sud orqali undirish mumkin. Sug‘urta to‘lovi asossiz rad etilsa yoki kamaytirilsa, mustaqil baholash o‘tkazib, sudga murojaat qiling."
         ]
       ],
       "laws": [
-        "O‘zbekiston Respublikasi Jinoyat kodeksi (168-modda — firibgarlik, 169-modda — o‘g‘rilik, 278-2-modda — kompyuter axborotidan ruxsatsiz foydalanish)"
+        "“Transport vositalari egalarining fuqarolik javobgarligini majburiy sug‘urta qilish to‘g‘risida”gi Qonun",
+        "O‘RQ-711-son Qonun (25.08.2021) — YTHni xabarnoma orqali soddalashtirilgan rasmiylashtirish",
+        "Fuqarolik kodeksi — zarar yetkazishdan kelib chiqadigan majburiyatlar",
+        "Ma’muriy javobgarlik to‘g‘risidagi kodeks"
       ],
       "qs": [
-        "Karta raqamimni aytib pulimni oldirib qo‘ydim, qaytarsa bo‘ladimi?",
-        "Bank kiberhujum vaqtida pulni qaytarishga majburmi?"
+        "Aybdorning sug‘urtasi bo‘lmasa, zararni kim to‘laydi?",
+        "Yevroprotokolni qanday to‘ldiraman?",
+        "Sug‘urta puli kam baholandi, mustaqil baholash qilsam bo‘ladimi?"
       ],
-      "sourceUrls": []
+      "sourceUrls": [
+        "https://gov.uz/oz/advice/71/document/2599"
+      ],
+      "reviewedAt": "2026-10-31"
+    },
+    {
+      "id": "pensiya",
+      "slug": "yoshga-doir-pensiya",
+      "group": "Davlat va ijtimoiy",
+      "icon": "calendar",
+      "title": "Yoshga doir pensiya tayinlash",
+      "desc": "Yosh va staj talablari, hujjatlar va murojaat muddati",
+      "tag": "Pensiya ta’minoti",
+      "intro": "To‘liq yoshga doir pensiya erkaklarga 60 yoshda kamida 25 yil, ayollarga 55 yoshda kamida 20 yil ish staji bo‘lganda tayinlanadi. Pensiya huquqi paydo bo‘lgan kundan 60 kun ichida murojaat qilinsa, pensiya shu kundan tayinlanadi.",
+      "steps": [
+        [
+          "Stajingizni tekshiring",
+          "Mehnat daftarchasi, elektron mehnat daftarchasi va ish haqi ma’lumotnomalarini oldindan tekshiring; yetishmayotgan davrlar bo‘yicha arxiv ma’lumotnomasini so‘rang."
+        ],
+        [
+          "Qayerga murojaat qilish",
+          "Ishlayotgan bo‘lsangiz — ish joyingiz ma’muriyati orqali; ishlamayotganlar, fermer xo‘jaligi a’zolari va o‘zini o‘zi band qilganlar — Pensiya jamg‘armasining tuman (shahar) bo‘limiga yozma ariza bilan."
+        ],
+        [
+          "Hujjatlar",
+          "Umumiy (kerak bo‘lsa maxsus) ish stajini tasdiqlovchi hujjatlar va ish haqi to‘g‘risida ma’lumotnoma; zarurat bo‘lsa boshqa hujjatlar so‘ralishi mumkin."
+        ],
+        [
+          "Muddatni o‘tkazib yubormang",
+          "Pensiya olish huquqi paydo bo‘lgan kundan 60 kun ichida murojaat qilinsa — shu kundan, keyinroq murojaat qilinsa — murojaat qilingan kundan tayinlanadi."
+        ],
+        [
+          "Muddatidan oldin va imtiyozli pensiya",
+          "Shtat qisqarishi yoki tashkilot tugatilishi sababli ishdan bo‘shagan, talab qilinadigan stajga ega shaxslarga pensiya yoshiga 2 yil qolganda muddatidan oldin pensiya tayinlanishi mumkin. Noqulay mehnat sharoitidagi ishlar va boshqa toifalar uchun imtiyozli shartlar bor. Savollar uchun Pensiya jamg‘armasi ishonch telefoni — 1140."
+        ]
+      ],
+      "laws": [
+        "“Fuqarolarning davlat pensiya ta’minoti to‘g‘risida”gi Qonun",
+        "“Aholini ish bilan ta’minlash to‘g‘risida”gi Qonun — muddatidan oldin pensiya"
+      ],
+      "qs": [
+        "Stajim 25 yilga yetmasa pensiya olamanmi?",
+        "Pensiya miqdori qanday hisoblanadi?",
+        "Ishlayotgan pensionerga pensiya to‘liq to‘lanadimi?"
+      ],
+      "sourceUrls": [
+        "https://lex.uz/docs/-112314"
+      ],
+      "reviewedAt": "2026-10-31"
+    },
+    {
+      "id": "nogironlik",
+      "slug": "nogironlik-belgilash-va-tolovlar",
+      "group": "Davlat va ijtimoiy",
+      "icon": "shield",
+      "title": "Nogironlikni belgilash va to‘lovlar",
+      "desc": "Oilaviy shifokor, tibbiy-ijtimoiy ekspertiza, pensiya va nafaqa",
+      "tag": "Ijtimoiy himoya",
+      "intro": "Nogironlik guruhi tibbiy-ijtimoiy ekspert komissiyasi tomonidan belgilanadi; 2025-yildan tibbiy maslahat komissiyalari (VKK) bosqichi bekor qilinib, hujjatlar oilaviy shifokor tavsiyasi asosida tayyorlanadi. Nogironlik belgilangach, unga bog‘liq pensiya, nafaqa va imtiyozlarni rasmiylashtirish mumkin.",
+      "steps": [
+        [
+          "Oilaviy shifokorga murojaat qiling",
+          "Tibbiy hujjatlaringiz (kasallik tarixi, tahlillar, mutaxassislar xulosalari) bilan oilaviy poliklinikaga boring; shifokor ekspertizaga yuborish uchun tavsiya va hujjatlarni tayyorlaydi."
+        ],
+        [
+          "Ekspertiza",
+          "Tibbiy-ijtimoiy ekspert komissiyasi organizm funksiyalari buzilishi va hayot faoliyati cheklanishi darajasiga qarab I, II yoki III guruhni ma’lum muddatga yoki muddatsiz belgilaydi; qayta ko‘rik muddati qarorda ko‘rsatiladi."
+        ],
+        [
+          "To‘lovlarni rasmiylashtiring",
+          "Ish stajingiz bo‘lsa — nogironlik pensiyasi, staj bo‘lmasa — nafaqa tayinlanadi; 18 yoshgacha nogironligi bo‘lgan bola uchun alohida to‘lov va uni parvarish qiluvchiga nafaqa bor. Bu bo‘yicha Ijtimoiy himoya milliy agentligi tizimidagi hududiy bo‘linma yoki “Inson” ijtimoiy xizmatlar markaziga murojaat qiling."
+        ],
+        [
+          "Ish joyidagi kafolatlar",
+          "I va II guruh nogironligi bo‘lgan xodimlar uchun ish vaqti haftasiga 36 soatdan oshmaydi (MK 427-modda) va kamida 30 kalendar kunlik yillik ta’til beriladi (MK 429-modda); xizmat safari, tungi, ortiqcha va bayram kunlaridagi ishlarga faqat roziligi bilan, tibbiy-ijtimoiy ekspert komissiyasi tavsiyasida taqiqlanmagan bo‘lsa jalb qilinadi (MK 428-modda)."
+        ],
+        [
+          "Qarorga rozi bo‘lmasangiz",
+          "Ekspertiza qaroriga yuqori turuvchi ekspertiza organiga yoki sudga shikoyat qilish mumkin; muddat va tartibni qaroringizda tekshiring."
+        ]
+      ],
+      "laws": [
+        "“Nogironligi bo‘lgan shaxslarning huquqlari to‘g‘risida”gi Qonun (15.10.2020, O‘RQ-641)",
+        "“Fuqarolarning davlat pensiya ta’minoti to‘g‘risida”gi Qonun",
+        "Mehnat kodeksi: 427-modda — 36 soatlik ish haftasi; 428-modda — ishga jalb qilish cheklovlari; 429-modda — kamida 30 kunlik yillik ta’til"
+      ],
+      "qs": [
+        "Nogironlik guruhi uchun qanday hujjatlar kerak?",
+        "Nogironlik pensiyasi va nafaqasining farqi nima?",
+        "Nogironligi bo‘lgan xodimga ish beruvchi qanday shart-sharoit yaratishi kerak?"
+      ],
+      "sourceUrls": [
+        "https://lex.uz/docs/-5049511",
+        "https://lex.uz/docs/-6257288"
+      ],
+      "reviewedAt": "2026-10-31"
+    },
+    {
+      "id": "nafaqa",
+      "slug": "ijtimoiy-reyestr-va-bolalar-nafaqasi",
+      "group": "Davlat va ijtimoiy",
+      "icon": "heart",
+      "title": "Bolalar nafaqasi va moddiy yordam (Ijtimoiy reyestr)",
+      "desc": "Kam ta’minlangan oilalar uchun ariza, daromadni baholash va toifalar",
+      "tag": "Ijtimoiy himoya",
+      "intro": "2026-yil 1-fevraldan bolalar nafaqasi va moddiy yordam yangi Ijtimoiy reyestr orqali beriladi. Oila har bir a’zosiga to‘g‘ri keladigan o‘rtacha oylik daromadiga qarab “davlat ta’minotidagi”, “kambag‘al” yoki “kambag‘allik chegarasidagi” oila toifasiga kiritiladi.",
+      "steps": [
+        [
+          "Ariza bering",
+          "Davlat xizmatlari markazi, ijtimoiy xodim, “Ijtimoiy karta” mobil ilovasi yoki Yagona interaktiv davlat xizmatlari portali orqali ariza berish mumkin; oila oyiga bir marta ariza bera oladi."
+        ],
+        [
+          "Daromad qanday hisoblanadi",
+          "Oila a’zolarining so‘nggi 3 oydagi jami daromadi oila a’zolari soniga va 3 ga bo‘linadi; natija eng kam iste’mol xarajatlari bilan solishtiriladi."
+        ],
+        [
+          "Baholash bosqichlari",
+          "Dastlabki baholashdan so‘ng ijtimoiy xodim so‘rovnomani to‘ldiradi, uni mahalla yettiligi ko‘rib chiqadi, so‘ng yakuniy baholash 3 ish kuni ichida o‘tkaziladi."
+        ],
+        [
+          "To‘lov tartibi",
+          "Davlat ta’minotidagi oilalarga bolalar nafaqasi va moddiy yordam bandlikdan qat’i nazar to‘lanadi; kambag‘allik chegarasidagi oilalarga 6 oy davomida daromadiga qarab 75 yoki 50 foiz miqdorida. Mehnatga layoqatli a’zolar 6 oy ishlamasa yoki taklif qilingan ishdan bosh tortsa, yordam to‘xtatilishi mumkin."
+        ],
+        [
+          "Qayta to‘ldirish va shikoyat",
+          "So‘rovnoma davlat ta’minotidagi oilalar uchun har 12 oyda, kambag‘al oilalar uchun har 6 oyda oila a’zolari ishtirokida qayta to‘ldiriladi. Rad javobiga rozi bo‘lmasangiz, Ijtimoiy himoya milliy agentligining hududiy bo‘linmasiga yozma shikoyat bering yoki sudga murojaat qiling."
+        ]
+      ],
+      "laws": [
+        "Vazirlar Mahkamasining 29.01.2026 yildagi 35-son qarori — Ijtimoiy reyestrni yuritish tartibi to‘g‘risidagi nizom",
+        "Prezidentning ijtimoiy himoyaga muhtoj aholiga davlat ijtimoiy qo‘llab-quvvatlash choralarini taqdim etish tizimini takomillashtirish to‘g‘risidagi farmoni (2025-yil dekabr)"
+      ],
+      "qs": [
+        "Ijtimoiy reyestrga kirish uchun qanday daromad mezoni bor?",
+        "Bolalar nafaqasi necha yoshgacha beriladi?",
+        "Arizam rad etildi, qayerga shikoyat qilaman?"
+      ],
+      "sourceUrls": [],
+      "reviewedAt": "2026-10-31"
     }
   ],
   "codes": [
@@ -935,5 +1849,12 @@
       "approx": true,
       "reviewedAt": "2026-10-29"
     }
-  ]
+  ],
+  "sourceLabels": {
+    "-26477": "Ijro to‘g‘risidagi qonun",
+    "-8148836": "O‘RQ-1134-son Qonun",
+    "-4704": "Iste’molchilar huquqlarini himoya qilish qonuni",
+    "-112314": "Davlat pensiya ta’minoti qonuni",
+    "-5049511": "Nogironligi bo‘lgan shaxslar huquqlari qonuni"
+  }
 }

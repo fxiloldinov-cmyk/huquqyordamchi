@@ -64,3 +64,27 @@ Asosiy qayta tekshirish navbati: hostingda AI/RSS sinovi, qolgan katalogning huq
 - `/api/status`: kalit borligi va formati, modellar bo‘yicha sinov, Google xatosining sababi (ErrorInfo reason + xabar) o‘zbekcha izoh bilan. Kalit javobda yashiriladi.
 - Foydalanuvchiga umumiy "ulanishda xatolik" o‘rniga aniq sabab ko‘rsatiladi; kalit/kvota xatolarida keraksiz model almashtirish qilinmaydi.
 - Kalit avtomatik tozalanadi (bo‘sh joy, qo‘shtirnoq, `GEMINI_API_KEY=` prefiksi).
+
+## v10.8 — kundalik vaziyatlar 12 → 32
+
+- `data/legal.json`: 20 ta yangi vaziyat, barcha 32 tasiga `group`; yangi yozuvlarda `reviewedAt: 2026-10-31`; `sourceLabels` (lex.uz ID → hujjat nomi).
+- Manbalar: Mehnat — `data/laws/mk.json` (rasmiy matn); Oila kodeksi 13, 15–17, 20, 23 — lex.uz matni (12.09.2026 tahriri); 25–28, 60–63, 65–66, 76–77, 88, 208 — lex.uz mundarijasi; FK 468–477, 479–481, 488, 732–737 — lex.uz mundarijasi; Ijro qonuni (258-II) moddalari — lex.uz mundarijasi; O‘RQ-1134 (20.04.2026) — lex.uz; pensiya — gov.uz (19.10.2026); Ijtimoiy reyestr — VMQ 35-son (29.01.2026); onlayn xarid — kun.uz (26.10.2026) va 2026-yil sentabrdagi e-tijorat qonuni.
+- Ataylab yozilmaganlar: tasdiqlanmagan summalar, telefon raqamlari (Pensiya jamg‘armasi 1140 dan tashqari), OSAGO mol-mulk limiti taqsimoti, FK 571 (u transport ijarasiga oid — umumiy YTH javobgarligiga emas).
+- UI: guruh filtri, 12 ta kartochka + "hammasini ko‘rsatish", mobil'da gorizontal chiplar; 5 ta yangi ikonka (clock, calendar, heart, scale, bolt).
+- Testlar: 37/37 — yangi test har bir vaziyatdagi MK havolasini rasmiy matn bilan, ikonka va guruhni tekshiradi.
+
+## v10.9 — dizaynda raqamlar yo‘q
+
+- Bosh sahifa: hero faktlari raqam o‘rniga so‘z bilan (Kodekslar / Namunalar / Qidiruv); "8 TA NAMUNA" → "TAYYOR NAMUNALAR"; "01 → 05" → "FAKT → XULOSA"; tahlil bosqichlari va forma bo‘limlaridan raqamlar olib tashlandi.
+- Vaziyat guruhlari va "Barcha vaziyatlarni ko‘rsatish" tugmasida son yo‘q; kartochka tavsiflarida raqam yo‘q (raqamlar yo‘riqnoma ichida qoladi).
+- Hujjat namunalari tablaridagi 01–08 olib tashlandi; "Qonuniy asos 1/2" → hujjat nomi.
+- Yangiliklar filtrida son yo‘q, har bir yangilikdagi "Zaxira: sana" belgisi olib tashlandi (manba qatorida qoladi).
+- Belgilar hisoblagichi ("0 / 2000") o‘rniga faqat chegaraga yaqinlashganda matnli ogohlantirish.
+- Qoldirilgan raqamlar — bu ma’lumot, bezak emas: modda havolalari, hujjat sanalari va ro‘yxat raqamlari, "JK 168" qidiruv misoli, footer’dagi yil.
+
+## v11.0 — animatsiya, logotip, til, oferta
+
+- `public/motion.js` (yangi): header soyasi, rasm parallaksi (`--py`), IntersectionObserver bilan `[data-reveal]`; dinamik kodeks kartochkalari va bo‘lim almashinuvi kuzatiladi. CSS: `hk-rise/hk-up/hk-kenburns/hk-drift/hk-twinkle`; `prefers-reduced-motion` da o‘chadi. Vaziyat kartochkalari `--i` bilan navbatma-navbat chiqadi.
+- `public/i18n.js` (yangi): lotin→kirill transliteratsiyasi (o‘/g‘, sh/ch, yo/ya/yu/ye, so‘z boshida e→э, tutuq→ъ, o‘zlashma ts→ц: -tsiya/-tsess/-tsent; URL, email, AI/PDF kabi tokenlar o‘zgarmaydi); ru/en lug‘ati (~300 satr, normallashtirilgan kalit). MutationObserver dinamik matnni ham o‘giradi; asl matn WeakMap’da saqlanadi, til qaytarilganda tiklanadi. `HK_I18N.lang` → `/api/chat`, `/api/search`, `/api/kazus` so‘rovlariga `lang`; serverda `langNote()` system prompt’ga qo‘shiladi.
+- Oferta: FK 360, 367, 369, 370 (lex.uz mundarijasi), “Shaxsga doir ma’lumotlar to‘g‘risida”gi Qonun (O‘RQ-547), “Mualliflik huquqi…” Qonuni 8-modda (lex.uz matni). Rekvizitlar bo‘sh — to‘ldirilishi kerak.
+- Testlar: 40/40 (logotip, menyu, til tugmalari, oferta va sitemap, transliteratsiya, lug‘at to‘liqligi, AI tiliga ko‘rsatma).

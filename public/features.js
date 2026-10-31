@@ -56,6 +56,12 @@ function findVerified(hujjat,modda){const key=HKCore.resolveDoc(hujjat,LAW_DOCS)
 
 const docUrl = (docKey) => `https://lex.uz/docs/${LAW_DOCS[docKey].id}`;
 
+// Belgilar hisoblagichi raqamsiz: faqat chegaraga yaqinlashganda ogohlantiradi.
+function limitNote(len, max) {
+  if (len >= max) return "Belgilar chegarasiga yetdingiz — matnni qisqartiring";
+  return len >= max * 0.9 ? "Belgilar chegarasiga yaqinlashdingiz" : "";
+}
+
 // ---- Aqlli qidiruv UI -------------------------------------------------------
 const smartForm = $("#smart-search");
 const smartQuery = $("#smart-query");
@@ -65,7 +71,7 @@ let smartBusy = false;
 let smartController=null;
 
 smartQuery?.addEventListener("input", () => {
-  $("#smart-count").textContent = `${smartQuery.value.length} / 2000`;
+  $("#smart-count").textContent = limitNote(smartQuery.value.length, 2000);
 });
 
 $("#smart-examples")?.addEventListener("click", (e) => {
@@ -124,7 +130,7 @@ function renderAiBlock(data) {
     </li>`;
   }).join("");
   const sources = data.manbalar?.length
-    ? `<details class="smart-sources"><summary>AI foydalangan manbalar (${data.manbalar.length})</summary><ul>${data.manbalar.map((s) =>
+    ? `<details class="smart-sources"><summary>AI foydalangan manbalar</summary><ul>${data.manbalar.map((s) =>
         `<li><a href="${escapeHtml(HKCore.safeUrl(s.uri)||"https://lex.uz")}" target="_blank" rel="noopener noreferrer">${escapeHtml(s.title)}</a></li>`).join("")}</ul></details>`
     : "";
   return `<div class="smart-block ai">
@@ -145,7 +151,7 @@ smartForm?.addEventListener("submit", async (e) => {
   if (smartBusy || query.length < 3) {
     if (query.length < 3) {
       smartResults.hidden = false;
-      smartResults.innerHTML = `<p class="smart-muted">Kamida 3 belgi yozing: masalan, JK 168 yoki vaziyatingiz.</p>`;
+      smartResults.innerHTML = `<p class="smart-muted">Savolni to‘liqroq yozing: vaziyatingiz yoki kodeks va modda.</p>`;
     }
     return;
   }
@@ -164,7 +170,7 @@ smartForm?.addEventListener("submit", async (e) => {
     const res = await fetch("/api/search", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ query }), signal:smartController.signal,
+      body: JSON.stringify({ query, lang: globalThis.HK_I18N?.lang || "uz" }), signal:smartController.signal,
     });
     let data = null;
     try { data = await res.json(); } catch {}
@@ -203,7 +209,7 @@ let kazusAnswer = "";
 let namunalar = [];
 
 kazusText?.addEventListener("input", () => {
-  $("#kazus-count").textContent = `${kazusText.value.length} / 6000`;
+  $("#kazus-count").textContent = limitNote(kazusText.value.length, 6000);
 });
 
 function currentMode() {
@@ -250,7 +256,7 @@ async function loadNamunalar() {
   }
   if (namunalar.length) {
     const fans = [...new Set(namunalar.map((n) => n.fanNomi))].join(", ");
-    status.textContent = `${namunalar.length} ta arxiv namunasi (${fans}); normalarni tekshiring`;
+    status.textContent = `Arxiv namunalari topildi (${fans}); normalarni tekshiring`;
     radio.disabled = false;
   } else {
     status.textContent = "Namunalar yuklanmadi — standart shakldan foydalaning";
@@ -270,8 +276,8 @@ kazusForm?.addEventListener("submit", async (e) => {
   const mode = currentMode();
   const format = formatArea.value.trim();
   const showError = (msg) => { kazusOut.innerHTML = `<p class="kazus-error">⚠️ ${escapeHtml(msg)}</p>`; };
-  if (kazus.length < 40) return showError("Kazus shartini to'liq yozing (kamida 40 belgi).");
-  if ($('#kazus-task').value==='review' && $('#kazus-student-answer').value.trim().length<40) return showError('Javobingizni kiriting (kamida 40 belgi).');
+  if (kazus.length < 40) return showError("Kazus shartini to‘liqroq yozing.");
+  if ($('#kazus-task').value==='review' && $('#kazus-student-answer').value.trim().length<40) return showError('Javobingizni to‘liqroq kiriting.');
   if (mode === "ozim" && format.length < 20) return showError("O'zingiz xohlagan javob shaklini kiriting.");
 
   kazusBusy = true;
@@ -282,7 +288,7 @@ kazusForm?.addEventListener("submit", async (e) => {
   kazusCopy.disabled = true;
   $("#kazus-download").disabled = true;
   kazusAnswer = "";
-  kazusOut.innerHTML = `<p class="kazus-empty">Kazus tahlil qilinmoqda... Uzun tahlil 1–3 daqiqa davom etishi mumkin.</p>`;
+  kazusOut.innerHTML = `<p class="kazus-empty">Kazus tahlil qilinmoqda… Uzun tahlil bir necha daqiqa davom etishi mumkin.</p>`;
 
   // Server har ~50 soniyada (Netlify chegarasi) javobni xavfsiz to'xtatib, yashirin belgi yuboradi:
   // HK:CONT — davomi bor (manbalar bilan), HK:END — tugadi. Davomi avtomatik so'raladi va matn ulanadi.
@@ -302,7 +308,7 @@ kazusForm?.addEventListener("submit", async (e) => {
       const res = await fetch("/api/kazus", {
         method: "POST", signal: kazusController.signal,
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({ ...payload, lang: globalThis.HK_I18N?.lang || "uz" }),
       });
       if (!res.ok || !res.body) {
         let detail = "";
@@ -326,7 +332,7 @@ kazusForm?.addEventListener("submit", async (e) => {
       if (!cont && !chunk.trim()) break;
       if (cont) { try { const extra = JSON.parse(decodeURIComponent(cont[1])); if (Array.isArray(extra)) sources = [...sources, ...extra].slice(0, 20); } catch {} }
       if (round === MAX_ROUNDS - 1) { kazusAnswer += "\n\n⚠️ Tahlil juda uzun bo‘ldi va oxirigacha yetmadi. Savollarni qisqartirib qayta yuboring."; break; }
-      kazusOut.innerHTML = md(kazusAnswer) + `<p class="kazus-empty">Davomi yuklanmoqda (${round + 2}/${MAX_ROUNDS})…</p>`;
+      kazusOut.innerHTML = md(kazusAnswer) + `<p class="kazus-empty">Davomi yuklanmoqda…</p>`;
     }
     if (!kazusAnswer.trim()) throw new Error("AI bo'sh javob qaytardi.");
     kazusOut.innerHTML = md(kazusAnswer);

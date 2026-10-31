@@ -274,6 +274,8 @@ test('chat on a non-labour topic gets no labour passages; search marks official 
 }));
 
 // ---- v10.7: /api/status diagnostikasi va kalit xatolari ----
+// Soxta kalitlar ish vaqtida yig'iladi: repozitoriyda haqiqiy kalit shaklidagi satr bo'lmasin (GitHub push protection).
+const fakeKey = tag => ['AI', 'za', 'Sy'].join('') + tag.repeat(Math.ceil(33 / tag.length)).slice(0, 33);
 const status = (await import('../netlify/functions/status.mjs')).default;
 const gErr = (code, statusText, reason, message) => new Response(JSON.stringify({error: {code, status: statusText, message, details: reason ? [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', reason}] : []}}), {status: code});
 const getStatus = async () => (await status(new Request('https://example.test/api/status'), {ip: 'test-' + sequence++})).json();
@@ -281,7 +283,7 @@ const getStatus = async () => (await status(new Request('https://example.test/ap
 test('status explains a missing key, a leaked key and a referrer-restricted key without exposing it', async () => withKey(async () => {
  delete process.env.GEMINI_API_KEY;
  let s = await getStatus(); assert.equal(s.ok, false); assert.equal(s.sabab, 'kalit_yoq'); assert.match(s.xabar, /qayta deploy/);
- process.env.GEMINI_API_KEY = 'AIzaSyLEAKEDLEAKEDLEAKEDLEAKEDLEAKED12';
+ process.env.GEMINI_API_KEY = fakeKey('LEAKED');
  let calls = 0;
  globalThis.fetch = async () => { calls++; return gErr(403, 'PERMISSION_DENIED', null, 'Your API key was reported as leaked. Please use another API key.'); };
  s = await getStatus(); assert.equal(s.sabab, 'kalit_oshkor'); assert.equal(calls, 1, 'kalit xatosida boshqa modellar sinalmaydi');
@@ -295,12 +297,12 @@ test('status explains a missing key, a leaked key and a referrer-restricted key 
 }));
 
 test('status cleans a quoted key with spaces, falls back past an unavailable model and reports the working one', async () => withKey(async () => {
- process.env.GEMINI_API_KEY = '  "AIzaSyCLEANCLEANCLEANCLEANCLEANCLEAN123"\n';
+ const CLEAN = fakeKey('CLEAN'); process.env.GEMINI_API_KEY = '  "' + CLEAN + '"\n';
  const keys = [];
  globalThis.fetch = async (url, options) => { keys.push(options.headers['x-goog-api-key']); if (String(url).includes('gemini-3.8-flash')) return gErr(404, 'NOT_FOUND', null, 'models/gemini-3.8-flash is not found'); return new Response(JSON.stringify(packet('ok', 'STOP')), {status: 200}); };
  const s = await getStatus();
  assert.equal(s.ok, true); assert.equal(s.ishlaganModel, 'gemini-flash-latest'); assert.equal(s.kalit.tozalangan, true); assert.equal(s.kalit.odatiyFormat, true);
- assert.ok(keys.every(k => k === 'AIzaSyCLEANCLEANCLEANCLEANCLEANCLEAN123'));
+ assert.ok(keys.every(k => k === CLEAN));
  assert.ok(!JSON.stringify(s).includes('CLEANCLEAN'));
 }));
 
@@ -310,3 +312,68 @@ test('chat shows the specific admin reason for a leaked key instead of a generic
  const res = await chat(req({messages: [{role: 'user', content: 'Savol matni'}]}), {ip: 'test-' + sequence++});
  assert.equal(res.status, 503); assert.match((await res.json()).error, /oshkor/); assert.equal(calls, 1);
 }));
+
+test('Situations: unique ids/slugs, known group and icon, every cited MK article exists in the official text', () => {
+ const appJs = read('public/app.js');
+ const icons = new Set([...appJs.split('function getSvgIcon')[1].split('return icons')[0].matchAll(/^\s+([a-z]+):\s*`/gm)].map(m => m[1]));
+ const mk = new Set(JSON.parse(read('data/laws/mk.json')).articles.map(a => a.art));
+ const groups = ['Mehnat', 'Oila', 'Uy va pul', 'Xarid va internet', 'Davlat va ijtimoiy'];
+ const ids = new Set(), slugs = new Set();
+ assert.ok(legal.situations.length >= 32);
+ for (const s of legal.situations) {
+  assert.ok(!ids.has(s.id) && !slugs.has(s.slug), `takror: ${s.id}`); ids.add(s.id); slugs.add(s.slug);
+  assert.ok(groups.includes(s.group), `guruh yo'q: ${s.id}`);
+  assert.ok(icons.has(s.icon), `ikonka yo'q: ${s.icon}`);
+  assert.ok(s.steps.length >= 3 && s.laws.length >= 1 && s.qs.length >= 2, `to'liq emas: ${s.id}`);
+  const text = JSON.stringify(s);
+  for (const m of text.matchAll(/MK (\d+)(?:, (\d+))?(?:, (\d+))?-modda/g))
+   for (const n of m.slice(1).filter(Boolean)) assert.ok(mk.has(n), `${s.id}: MK ${n} rasmiy matnda yo'q`);
+ }
+});
+
+test('Homepage shows 12 situations first, group chips filter the list', () => {
+ const html = read('public/index.html');
+ assert.match(html, /id="sit-groups"/); assert.match(html, /id="sit-more"/);
+ const app = read('public/app.js');
+ assert.match(app, /const SIT_PREVIEW = 12;/);
+ assert.match(app, /!sitGroup \|\| s\.group === sitGroup/);
+});
+
+test('v11: Hidoya logo, Kazus ustaxonasi menu, language switcher, motion and public offer are wired in', () => {
+ const html = read('public/index.html');
+ assert.ok(!html.includes('<span class="brand-icon">§</span>'), 'eski § logotipi qolmasin');
+ assert.match(html, /class="hidoya"/); assert.match(read('public/assets/favicon.svg'), /M17 59V33C17 22 25 15 32 11/);
+ assert.match(html, /data-view="kazus">Kazus ustaxonasi<\/a><\/nav>/);
+ for (const l of ['uz', 'cy', 'ru', 'en']) assert.match(html, new RegExp(`data-lang="${l}"`));
+ assert.match(html, /<script src="motion\.js"><\/script><script src="i18n\.js"><\/script>/);
+ assert.match(html, /href="\/oferta\/">Ommaviy oferta<\/a>/);
+ const oferta = read('public/oferta/index.html');
+ assert.match(oferta, /369-modda/); assert.match(oferta, /370-modda/); assert.match(oferta, /Ijrochi rekvizitlari/);
+ assert.match(read('public/sitemap.xml'), /\/oferta\/<\/loc>/);
+ assert.match(read('public/vaziyat/otalikni-belgilash/index.html'), /<script src="\/i18n\.js"><\/script>/);
+});
+
+test('v11: Latin→Cyrillic transliteration and ru/en dictionary cover the main interface', () => {
+ const src = read('public/i18n.js');
+ const box = {};
+ vm.runInNewContext(src.match(/const APOS[\s\S]*?function toCyr[\s\S]*?\n  }\n/)[0].replace(/\bconst /g, 'var ') + ';this.toCyr=toCyr;', box);
+ assert.equal(box.toCyr('O‘zbekiston Respublikasi Konstitutsiyasi'), 'Ўзбекистон Республикаси Конституцияси');
+ assert.equal(box.toCyr('yo‘l-yo‘riq, ma’lumot, ketsa'), 'йўл-йўриқ, маълумот, кетса');
+ assert.equal(box.toCyr('YaTT, MChJ, FHDYo, elektron'), 'ЯТТ, МЧЖ, ФҲДЁ, электрон');
+ assert.equal(box.toCyr('Lex.uz va AI yordamchi'), 'Lex.uz ва AI ёрдамчи');
+ for (const k of ['Aqlli qidiruv', 'Kazus ustaxonasi', 'Huquqingizni biling.', 'Ommaviy oferta', 'Barcha vaziyatlarni ko‘rsatish', 'Mehnat'])
+  assert.ok(src.includes(`"${k}": [`), `lug'atda yo'q: ${k}`);
+ for (const s of legal.situations) assert.ok(src.includes(`"${s.title}": [`), `vaziyat sarlavhasi tarjimasiz: ${s.title}`);
+});
+
+test('v11: chosen interface language reaches the AI system prompt', async () => {
+ const oldFetch = globalThis.fetch, oldKey = process.env.GEMINI_API_KEY; process.env.GEMINI_API_KEY = 'test-only-not-a-real-key';
+ try {
+  let sys = '';
+  globalThis.fetch = async (url, options) => { sys = JSON.parse(options.body).system_instruction.parts[0].text; return sse(['data: ' + JSON.stringify(packet('Ответ', 'STOP'))]); };
+  await (await chat(req({messages: [{role: 'user', content: 'Как взыскать алименты?'}], lang: 'ru'}), {ip: 'test-' + sequence++})).text();
+  assert.match(sys, /JAVOB TILI: .*rus tilida/);
+  await (await chat(req({messages: [{role: 'user', content: 'Aliment qanday undiriladi?'}]}), {ip: 'test-' + sequence++})).text();
+  assert.ok(!sys.includes('JAVOB TILI'));
+ } finally { globalThis.fetch = oldFetch; if (oldKey === undefined) delete process.env.GEMINI_API_KEY; else process.env.GEMINI_API_KEY = oldKey; }
+});

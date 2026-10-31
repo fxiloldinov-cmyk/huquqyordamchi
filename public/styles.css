@@ -16,3 +16,76 @@
 .static-related{margin:40px 0 60px;font-size:13px}.static-related h2{font-size:20px}
 .all-sits-link{margin-top:16px}.share-line{margin:18px 0 0}
 @media (max-width:760px){.static-nav{display:none}.static-article h1{font-size:28px}.static-hub{grid-template-columns:1fr}}
+
+/* v10.8: vaziyat guruhlari */
+.sit-groups{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}.sit-group{min-height:40px;padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--text);font-size:13px;font-weight:600;cursor:pointer}.sit-group span{color:var(--muted);font-weight:500;margin-left:2px}.sit-group:hover{border-color:var(--accent)}.sit-group.active{background:var(--blue);border-color:var(--blue);color:var(--card)}.sit-group.active span{color:inherit;opacity:.8}.sit-more{display:block;margin:16px auto 0}.sit-more[hidden]{display:none}.static-groups h2{margin-top:32px}
+@media(max-width:700px){.sit-groups{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:2px}.sit-groups::-webkit-scrollbar{display:none}.sit-group{flex:none}}
+
+/* v10.9: dizaynda raqamlar yo‘q — faktlar so‘z bilan */
+.hero-facts b{font-size:17px;margin-bottom:2px}.analysis-steps b{margin-left:0}
+
+/* v11: Hidoya logotipi */
+.brand-icon{background:none!important;width:40px!important;height:40px!important;border-radius:0}.brand-icon .hidoya{width:100%;height:100%;display:block}
+.caption-mark{width:34px;height:34px;flex:none}.caption-mark .hidoya{width:100%;height:100%;display:block}
+.hidoya-star{transform-origin:32px 32px;transform-box:view-box;transition:transform .7s cubic-bezier(.2,.7,.2,1)}.brand:hover .hidoya-star{transform:rotate(90deg)}
+@media(max-width:700px){.brand-icon{width:34px!important;height:34px!important}}
+
+/* ================= v11: animatsiyalar ================= */
+:root{--ease:cubic-bezier(.2,.7,.2,1)}
+.header{transition:box-shadow .3s}.header.scrolled{box-shadow:0 8px 26px #10284a12}
+.btn{transition:background .2s,border-color .2s,color .2s,transform .2s,box-shadow .2s}.btn:hover{transform:translateY(-1px)}.btn:active{transform:translateY(0) scale(.98)}
+/* bosh qism: satrlar pastdan chiqadi, keyin matn va tugmalar */
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.06em;margin-bottom:-.06em}
+.hero h1 .ln>*{display:inline-block;transform:translateY(105%);animation:hk-rise .9s var(--ease) forwards}
+.hero h1 .ln+.ln>*{animation-delay:.12s}
+.hero-copy>.eyebrow{animation:hk-fade .7s var(--ease) both}
+.hero-copy>p{animation:hk-up .8s var(--ease) .3s both}.hero-links{animation:hk-up .8s var(--ease) .42s both}.hero-facts{animation:hk-up .8s var(--ease) .54s both}
+.hero-photo{animation:hk-fade 1s ease .1s both}
+.hero-photo img{transform:translate3d(0,var(--py,0px),0) scale(1.06);animation:hk-kenburns 22s ease-out both}
+.photo-caption{animation:hk-up .8s var(--ease) .7s both}
+.caption-mark .hidoya-star{animation:hk-twinkle 5s ease-in-out 1.5s infinite}
+@keyframes hk-rise{to{transform:none}}
+@keyframes hk-up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes hk-fade{from{opacity:0}to{opacity:1}}
+@keyframes hk-kenburns{from{scale:1.12}to{scale:1}}
+@keyframes hk-twinkle{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(1.18) rotate(45deg)}}
+/* aylantirganda paydo bo'lish */
+.motion-ready [data-reveal]{opacity:0;transform:translateY(26px);transition:opacity .75s var(--ease),transform .75s var(--ease);transition-delay:var(--d,0s)}
+.motion-ready [data-reveal].in{opacity:1;transform:none}
+/* bo'lim almashganda */
+.view.active{animation:hk-fade .35s ease both}
+/* vaziyat kartochkalari: chizilganda navbat bilan */
+.situations-grid .sit-card{animation:hk-up .55s var(--ease) both;animation-delay:calc(var(--i,0)*45ms)}
+.sit-card{transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s}
+.sit-card:hover{transform:translateY(-4px)}
+.sit-card .sit-arrow{transition:transform .3s var(--ease)}.sit-card:hover .sit-arrow{transform:translateX(4px)}
+.sit-card .sit-icon-wrap{transition:transform .35s var(--ease)}.sit-card:hover .sit-icon-wrap{transform:rotate(-6deg) scale(1.06)}
+.code-card{transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s}.code-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.news-item{transition:background .25s}
+/* talabalar bloki: sekin suzuvchi yorug'lik */
+.student-banner{position:relative;overflow:hidden;isolation:isolate}
+.student-banner::before,.student-banner::after{content:"";position:absolute;z-index:-1;border-radius:50%;pointer-events:none}
+.student-banner::before{width:60%;aspect-ratio:1;left:-18%;top:-55%;background:radial-gradient(closest-side,#2e75c055,transparent);animation:hk-drift 18s ease-in-out infinite alternate}
+.student-banner::after{width:42%;aspect-ratio:1;right:-12%;bottom:-60%;background:radial-gradient(closest-side,#b48c4940,transparent);animation:hk-drift 23s ease-in-out infinite alternate-reverse}
+@keyframes hk-drift{from{transform:translate(0,0)}to{transform:translate(16%,20%)}}
+.faq details{transition:border-color .25s}.faq details[open] p{animation:hk-up .4s var(--ease) both}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.hero h1 .ln>*{transform:none}.motion-ready [data-reveal]{opacity:1;transform:none}.hero-photo img{transform:none}}
+
+/* v11: til almashtirgich */
+.util-right{display:flex;align-items:center;gap:14px}
+.lang-switch{display:inline-flex;gap:2px;padding:2px;border-radius:999px;background:#ffffff14}
+.lang-switch button{border:0;background:transparent;color:inherit;font:inherit;font-size:11px;line-height:1;padding:6px 10px;border-radius:999px;cursor:pointer;min-height:26px;opacity:.85}
+.lang-switch button:hover{opacity:1;background:#ffffff1f}
+.lang-switch button[aria-pressed=true]{background:#fff;color:#123a66;opacity:1;font-weight:700}
+.lang-switch .ls-short{display:none}
+.lang-note{background:#fff7e6;color:#5c4210;border-bottom:1px solid #f0dcae;font-size:13px;line-height:1.5;padding:9px 20px;text-align:center}
+:root[data-theme=dark] .lang-note{background:#2b2414;color:#f2dfb5;border-color:#4a3c1c}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .lang-note{background:#2b2414;color:#f2dfb5;border-color:#4a3c1c}}
+@media(max-width:700px){.lang-switch .ls-long{display:none}.lang-switch .ls-short{display:inline}.lang-switch button{padding:7px 9px;min-height:30px;font-size:10px}.util-src{display:none}.utility .wrap>span:first-child{max-width:48%}}
+.utility .wrap{align-items:center}
+
+/* v11: ommaviy oferta */
+.oferta section{margin:28px 0}.oferta section h2{font-size:21px;margin-bottom:10px}.oferta section p{color:var(--text);line-height:1.75;margin:0 0 10px}
+.oferta-req dl{display:grid;grid-template-columns:max-content 1fr;gap:8px 18px;margin:0;padding:18px 20px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+.oferta-req dt{color:var(--muted)}.oferta-req dd{margin:0;font-weight:600}
+@media(max-width:700px){.oferta-req dl{grid-template-columns:1fr}.oferta-req dd{margin-bottom:6px}}

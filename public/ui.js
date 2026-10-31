@@ -135,7 +135,7 @@ function wireTabs(tabs, panels, onChange) {
         </div>
         <div class="news-eff">
           <span class="news-date-label">Kuchga kiradi</span>
-          <time>${escapeHtml(it.effective || "—")}</time>${it.archive?`<small class="archive-label">Zaxira: ${escapeHtml(it.archive)}</small>`:""}
+          <time>${escapeHtml(it.effective || "—")}</time>
         </div>
       </li>`).join("");
     more.hidden = filtered.length <= shown;
@@ -174,7 +174,7 @@ function wireTabs(tabs, panels, onChange) {
     }
     items = data.items.filter(it=>{try{return /^https:$/.test(new URL(it.url).protocol)&&['lex.uz','www.lex.uz'].includes(new URL(it.url).hostname)}catch{return false}}).map(it=>({...it,type:typeOf(it),archive:live?null:data.updated}));
     if(live){try{const backup=await load('data/news.json');const present=new Set(items.map(it=>it.type));const urls=new Set(items.map(it=>it.url));items.push(...backup.items.filter(it=>!present.has(typeOf(it))&&!urls.has(it.url)&&/^https:\/\/(www\.)?lex\.uz\//.test(it.url)).map(it=>({...it,type:typeOf(it),archive:backup.updated})));}catch{}}
-    filters.querySelectorAll('[data-type]').forEach(b=>{const n=b.dataset.type==='all'?items.length:items.filter(it=>it.type===b.dataset.type).length;const label=b.dataset.type==='all'?'Barchasi':({qonun:'Qonunlar',farmon:'Farmonlar',qaror:'Qarorlar',buyruq:'Buyruqlar'})[b.dataset.type];b.textContent=`${label} (${n})`;});
+    filters.querySelectorAll('[data-type]').forEach(b=>{const label=b.dataset.type==='all'?'Barchasi':({qonun:'Qonunlar',farmon:'Farmonlar',qaror:'Qarorlar',buyruq:'Buyruqlar'})[b.dataset.type];b.textContent=label;});
     if (sourceEl) {
       const when = live ? `oxirgi yuklash: ${escapeHtml(data.updated||"")} (ayrim turlar zaxiradan)` : `${escapeHtml(data.updated || "")} holatiga`;
       sourceEl.innerHTML = `Manba: <a href="https://lex.uz" target="_blank" rel="noopener">lex.uz</a> rasmiy RSS lentasi · ${when}.`;

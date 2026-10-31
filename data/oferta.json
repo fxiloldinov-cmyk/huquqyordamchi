@@ -1,0 +1,108 @@
+{
+  "title": "Ommaviy oferta",
+  "subtitle": "HuquqYordamchi xizmatlaridan foydalanish shartlari",
+  "edition": "2026-yil 31-oktabr tahriri",
+  "requisites": {
+    "name": "[Ijrochining to‘liq nomi yoki F.I.Sh.]",
+    "tin": "[STIR]",
+    "address": "[Yuridik / pochta manzili]",
+    "email": "[Elektron pochta]",
+    "phone": "[Telefon raqami]"
+  },
+  "sections": [
+    {
+      "h": "Umumiy qoidalar",
+      "p": [
+        "Ushbu hujjat HuquqYordamchi veb-sayti va uning xizmatlaridan (keyingi o‘rinlarda — Xizmat) foydalanish shartlarini belgilaydi va O‘zbekiston Respublikasi Fuqarolik kodeksining 369-moddasiga muvofiq ommaviy oferta hisoblanadi.",
+        "Saytdan foydalanishni boshlash, shu jumladan qidiruv, AI yordamchi, kazus ustaxonasi yoki hujjat namunalaridan foydalanish ushbu oferta shartlarini to‘liq va so‘zsiz qabul qilish (aksept) hisoblanadi (Fuqarolik kodeksining 370-moddasi). Shartlarga rozi bo‘lmasangiz, Xizmatdan foydalanmang.",
+        "Ushbu oferta Fuqarolik kodeksining 360-moddasida nazarda tutilgan qo‘shilish shartnomasi xususiyatiga ega: uning shartlari Ijrochi tomonidan belgilanadi va Foydalanuvchi ularga butunligicha qo‘shiladi."
+      ]
+    },
+    {
+      "h": "Atamalar",
+      "p": [
+        "Ijrochi — ushbu sahifaning “Ijrochi rekvizitlari” qismida ko‘rsatilgan, Xizmatni taqdim etuvchi shaxs.",
+        "Foydalanuvchi — Saytdan foydalanayotgan har qanday jismoniy yoki yuridik shaxs.",
+        "Sayt — HuquqYordamchi nomi ostidagi veb-sayt va uning barcha sahifalari.",
+        "AI yordamchi — Foydalanuvchi savoliga sun’iy intellekt yordamida umumiy axborot tusidagi javob tayyorlaydigan funksiya."
+      ]
+    },
+    {
+      "h": "Shartnoma predmeti",
+      "p": [
+        "Ijrochi Foydalanuvchiga O‘zbekiston qonunchiligi bo‘yicha axborot materiallari, kundalik vaziyatlar bo‘yicha yo‘riqnomalar, hujjat namunalari, aqlli qidiruv, AI yordamchi va kazus ustaxonasidan foydalanish imkoniyatini beradi.",
+        "Xizmat axborot-ma’rifiy xususiyatga ega. U yuridik xizmat, advokat yoki yurist maslahati, sudda vakillik hisoblanmaydi va ularning o‘rnini bosmaydi.",
+        "Ushbu tahrir kuchga kirgan paytda Xizmat bepul taqdim etiladi. Pullik xizmatlar joriy etilsa, ularning narxi va tartibi Saytda oldindan e’lon qilinadi va oferta tegishli ravishda yangilanadi."
+      ]
+    },
+    {
+      "h": "Foydalanuvchining majburiyatlari",
+      "p": [
+        "Xizmatdan faqat qonuniy maqsadlarda foydalanish.",
+        "Savollarga boshqa shaxslarning shaxsga doir ma’lumotlarini (F.I.Sh., manzil, telefon, pasport, karta raqami va boshqalar) kiritmaslik; o‘z ma’lumotlarini kiritishda ehtiyot bo‘lish.",
+        "Xizmatni avtomatlashtirilgan vositalar bilan ommaviy yuklamaslik, so‘rovlar chegarasini aylanib o‘tishga, Sayt ishini buzishga urinmaslik.",
+        "Xizmat taqdim etgan ma’lumotni muhim qaror qabul qilishdan oldin Lex.uz’dagi amaldagi rasmiy matn bilan tekshirish va zarur hollarda advokat yoki yuristga murojaat qilish."
+      ]
+    },
+    {
+      "h": "Ijrochining huquq va majburiyatlari",
+      "p": [
+        "Ijrochi Xizmatning ishlashini ta’minlashga va materiallarni rasmiy manbalar asosida yangilab borishga harakat qiladi.",
+        "Ijrochi Xizmat tarkibini, dizaynini va funksiyalarini o‘zgartirish, profilaktika yoki texnik sabablarga ko‘ra uni vaqtincha to‘xtatib turish huquqiga ega.",
+        "Ijrochi ushbu oferta shartlarini buzgan Foydalanuvchining Xizmatdan foydalanishini cheklash huquqiga ega."
+      ]
+    },
+    {
+      "h": "Javobgarlikni cheklash",
+      "p": [
+        "Sayt materiallari va AI javoblari umumiy axborot bo‘lib, ularda xato, noaniqlik yoki eskirgan ma’lumot bo‘lishi mumkin. Qonunchilik o‘zgarishi mumkinligi sababli rasmiy matnni Lex.uz’da tekshirish Foydalanuvchining zimmasida.",
+        "Qonunchilikda ruxsat etilgan doirada Ijrochi Foydalanuvchining Xizmat ma’lumotlari asosida qabul qilgan qarorlari va ularning oqibatlari uchun javobgar bo‘lmaydi.",
+        "Hujjat namunalari boshlang‘ich andoza hisoblanadi; ularni aniq holatga moslashtirish, rekvizit, muddat va ilovalarni tekshirish Foydalanuvchining zimmasida.",
+        "Ijrochi uchinchi shaxslar xizmatlarining (internet provayder, xosting, AI provayderi) uzilishi natijasida yuzaga kelgan nosozliklar uchun javobgar bo‘lmaydi."
+      ]
+    },
+    {
+      "h": "Shaxsga doir ma’lumotlar va maxfiylik",
+      "p": [
+        "Ijrochi shaxsga doir ma’lumotlarga “Shaxsga doir ma’lumotlar to‘g‘risida”gi O‘zbekiston Respublikasi Qonuniga muvofiq ishlov beradi.",
+        "Xizmat Foydalanuvchi savollari va hujjatlarini o‘z ma’lumotlar bazasida saqlamaydi. AI yordamchiga yuborilgan savollar Google Gemini xizmatiga uzatiladi va ushbu provayderning shartlari qo‘llaniladi. Yuborishdan oldin telefon, elektron pochta, pasport, karta va JSHSHIR raqamlari imkon qadar avtomatik yashiriladi; ism va manzil avtomatik yashirilmaydi.",
+        "Suiiste’moldan himoya qilish maqsadida so‘rovlar soni IP-manzil bo‘yicha cheklanadi. Tanlangan til va mavzu (yorug‘/tungi rejim) faqat Foydalanuvchi brauzerida saqlanadi."
+      ]
+    },
+    {
+      "h": "Intellektual mulk",
+      "p": [
+        "Saytning dizayni, logotipi, yo‘riqnomalar matni va dasturiy ta’minoti Ijrochiga tegishli. Ulardan tijorat maqsadida foydalanish uchun Ijrochining yozma roziligi talab etiladi.",
+        "Qonun hujjatlarining rasmiy matnlari Lex.uz manbasidan olingan; rasmiy hujjatlar mualliflik huquqi obyekti hisoblanmaydi (“Mualliflik huquqi va turdosh huquqlar to‘g‘risida”gi Qonunning 8-moddasi)."
+      ]
+    },
+    {
+      "h": "Nizolarni hal qilish",
+      "p": [
+        "Taraflar o‘rtasidagi nizolar avvalo muzokaralar yo‘li bilan hal qilinadi. Foydalanuvchi da’vo yoki taklifini Ijrochining elektron pochtasiga yuborishi mumkin.",
+        "Muzokaralar orqali hal qilinmagan nizolar O‘zbekiston Respublikasi qonunchiligiga muvofiq sud tartibida ko‘rib chiqiladi."
+      ]
+    },
+    {
+      "h": "Ofertaning amal qilishi va o‘zgartirilishi",
+      "p": [
+        "Oferta Saytda e’lon qilingan paytdan kuchga kiradi va Ijrochi uni bekor qilgunga qadar amal qiladi.",
+        "Ijrochi ofertaga o‘zgartirish kiritish huquqiga ega. Yangi tahrir Saytda e’lon qilingan paytdan kuchga kiradi; tahrir sanasi sahifa boshida ko‘rsatiladi. Yangi tahrir e’lon qilingandan keyin Xizmatdan foydalanishni davom ettirish uni qabul qilish hisoblanadi."
+      ]
+    }
+  ],
+  "sources": [
+    [
+      "Fuqarolik kodeksi (1-qism): 360-modda — qo‘shilish shartnomasi; 367-modda — oferta; 369-modda — ommaviy oferta; 370-modda — aksept",
+      "https://lex.uz/docs/-111189"
+    ],
+    [
+      "“Shaxsga doir ma’lumotlar to‘g‘risida”gi Qonun (02.07.2019, O‘RQ-547)",
+      "https://lex.uz/docs/-4396419"
+    ],
+    [
+      "“Mualliflik huquqi va turdosh huquqlar to‘g‘risida”gi Qonun (20.07.2006, O‘RQ-42), 8-modda",
+      "https://lex.uz/docs/-1022944"
+    ]
+  ]
+}

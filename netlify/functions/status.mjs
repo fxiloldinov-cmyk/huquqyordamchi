@@ -5,7 +5,7 @@ import { jsonResponse, geminiConfig, callGemini, diagnoseProvider, isRateLimited
 import { LAW_META } from '../shared/rag.mjs';
 
 export const config = { path: '/api/status', method: ['GET'], rateLimit: { windowLimit: 6, windowSize: 60, aggregateBy: ['ip', 'domain'] } };
-const VERSION = '10.7.0';
+const VERSION = '11.0.0';
 
 async function probe(apiKey, model, withSearch) {
   const body = { contents: [{ role: 'user', parts: [{ text: 'Faqat "ok" deb javob bering.' }] }], generationConfig: { maxOutputTokens: 16 }, ...(withSearch ? { tools: [{ google_search: {} }] } : {}) };

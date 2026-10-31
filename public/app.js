@@ -15,7 +15,12 @@ function getSvgIcon(type) {
     building: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>`,
     school: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>`,
     shield: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
-    lock: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`
+    lock: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`,
+    clock: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>`,
+    calendar: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>`,
+    heart: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>`,
+    scale: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M7 21h10M5 7h14"/><path d="M5 7l-3 7a3 3 0 0 0 6 0zM19 7l-3 7a3 3 0 0 0 6 0z"/></svg>`,
+    bolt: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>`
   };
   return icons[type] || icons.doc;
 }
@@ -211,17 +216,39 @@ document.addEventListener("click", (e) => {
 // O'zbek apostroflarining barcha shakllarini (' ‘ ’ ʻ ʼ `) bittaga keltiradi.
 function norm(value) { return HKCore.norm(value); }
 
+// Guruh filtri va "hammasini ko'rsatish": bosh sahifada dastlab 12 ta kartochka.
+const SIT_GROUPS = [...new Set(SITUATIONS.map((s) => s.group).filter(Boolean))];
+const SIT_PREVIEW = 12;
+let sitGroup = "";
+let sitExpanded = false;
+
+function renderSitGroups() {
+  const box = $("#sit-groups");
+  if (!box) return;
+  const btn = (g, label) => `<button type="button" class="sit-group${sitGroup === g ? " active" : ""}" data-group="${escapeHtml(g)}" aria-pressed="${sitGroup === g}">${escapeHtml(label)}</button>`;
+  box.innerHTML = btn("", "Hammasi") + SIT_GROUPS.map((g) => btn(g, g)).join("");
+}
+
 function renderSituations(filter = "") {
   const f = norm(filter);
-  const list = SITUATIONS.filter(s => norm(`${s.title} ${s.desc} ${s.tag}`).includes(f));
-  
+  const list = SITUATIONS.filter(s => (!sitGroup || s.group === sitGroup) && norm(`${s.title} ${s.desc} ${s.tag} ${s.group || ""}`).includes(f));
+  const more = $("#sit-more");
+
   if (list.length === 0) {
     $("#situations").innerHTML = `<p class="empty-note">Bunday vaziyat topilmadi. Yuqoridagi aqlli qidiruvga vaziyatingizni yozib ko'ring.</p>`;
+    if (more) more.hidden = true;
     return;
   }
 
-  $("#situations").innerHTML = list.map((s) => `
-    <button type="button" class="sit-card" data-sit="${s.id}">
+  const limited = !f && !sitGroup && !sitExpanded && list.length > SIT_PREVIEW;
+  const shown = limited ? list.slice(0, SIT_PREVIEW) : list;
+  if (more) {
+    more.hidden = !limited;
+    more.textContent = "Barcha vaziyatlarni ko‘rsatish";
+  }
+
+  $("#situations").innerHTML = shown.map((s, k) => `
+    <button type="button" class="sit-card" data-sit="${s.id}" style="--i:${k % 12}">
       <span class="sit-icon-wrap" aria-hidden="true">${getSvgIcon(s.icon)}</span>
       <span class="sit-body">
         <span class="sit-tag">${escapeHtml(s.tag)}</span>
@@ -236,6 +263,17 @@ function renderSituations(filter = "") {
 // SEARCH FILTER EVENT
 $("#sit-search").addEventListener("input", (e) => {
   renderSituations(e.target.value.trim());
+});
+$("#sit-groups")?.addEventListener("click", (e) => {
+  const b = e.target.closest("[data-group]");
+  if (!b) return;
+  sitGroup = b.dataset.group;
+  renderSitGroups();
+  renderSituations($("#sit-search").value.trim());
+});
+$("#sit-more")?.addEventListener("click", () => {
+  sitExpanded = true;
+  renderSituations($("#sit-search").value.trim());
 });
 
 // RENDER CODES
@@ -252,6 +290,14 @@ $("#codes").innerHTML = CODES.map(([n, t, d, id]) => `
   </article>
 `).join("");
 
+// Manba yorlig'i: lex.uz ID bo'yicha hujjat nomi.
+const LEX_NAMES = Object.fromEntries([...HK_LEGAL.codes.map((c) => [c[3], c[1]]), ...Object.entries(HK_LEGAL.sourceLabels || {})]);
+function sourceLabel(u) {
+  const m = /lex\.uz\/(?:[a-z]{2}\/)?docs\/(-?\d+)/.exec(u);
+  if (m) return `${LEX_NAMES[m[1]] || "Rasmiy matn"} (lex.uz)`;
+  return /gov\.uz/.test(u) ? "Rasmiy tushuntirish (gov.uz)" : "Rasmiy manba";
+}
+
 // SITUATION DETAIL VIEW
 function openSituation(id) {
   const s = SITUATIONS.find((x) => x.id === id);
@@ -265,7 +311,7 @@ function openSituation(id) {
     <div class="verify-note">⚠️ Bu umumiy ma'lumot, yurist tomonidan tasdiqlanmagan. Modda raqamlari, muddatlar, summalar va telefon raqamlarini <a href="https://lex.uz" target="_blank" rel="noopener">lex.uz</a> dagi amaldagi tahrir bilan tekshiring.</div>
     <ul class="steps-list">${s.steps.map(([b, t]) => `<li><b>${b}</b><p>${t}</p></li>`).join("")}</ul>
     <p class="share-line"><a class="link-arrow" href="/vaziyat/${encodeURIComponent(s.slug||s.id)}/">Alohida sahifada ochish (ulashish uchun) ↗</a></p>
-    <div class="laws-card">${(s.sourceUrls||[]).map(u=>`<a href="${u}" target="_blank" rel="noopener">Rasmiy manba ↗</a>`).join(" · ")}
+    <div class="laws-card">${(s.sourceUrls||[]).map(u=>`<a href="${escapeHtml(u)}" target="_blank" rel="noopener">${escapeHtml(sourceLabel(u))} ↗</a>`).join(" · ")}
       <h4>Asosiy qonunchilik hujjatlari:</h4>
       <ul>${s.laws.map((l) => `<li>${l}</li>`).join("")}</ul>
     </div>
@@ -297,7 +343,7 @@ function renderDocForm(docKey) {
  form.querySelectorAll('input,select,textarea').forEach(el=>{if(saved[el.name]!==undefined)el.value=saved[el.name];el.addEventListener('input',updateDocPreview);el.addEventListener('change',updateDocPreview);});
  document.querySelectorAll('.doc-tab-btn').forEach(t=>t.classList.toggle('active',t.dataset.doc===docKey));
  $('#doc-title').textContent=doc.title;
- $('#doc-guidance').innerHTML=`<p>${escapeHtml(doc.note||'Bu boshlang‘ich namuna. Holat, rekvizitlar va ilovalarni to‘liq tekshiring.')}</p>${(doc.sources||[]).map((u,i)=>`<a href="${u}" target="_blank" rel="noopener">Qonuniy asos ${i+1} ↗</a>`).join(' · ')}`;
+ $('#doc-guidance').innerHTML=`<p>${escapeHtml(doc.note||'Bu boshlang‘ich namuna. Holat, rekvizitlar va ilovalarni to‘liq tekshiring.')}</p>${[...new Set(doc.sources||[])].map((u)=>`<a href="${escapeHtml(u)}" target="_blank" rel="noopener">${escapeHtml(sourceLabel(u))} ↗</a>`).join(' · ')}`;
  updateDocPreview();
 }
 
@@ -479,7 +525,7 @@ async function ask(text) {
     const res = await fetch("/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ messages: historyForRequest(), mode }), signal: chatController.signal
+      body: JSON.stringify({ messages: historyForRequest(), mode, lang: globalThis.HK_I18N?.lang || "uz" }), signal: chatController.signal
     });
 
     if (!res.ok || !res.body) {
@@ -533,9 +579,10 @@ $("#chat-input").addEventListener("keydown", (e) => {
 
 $('#doc-form').addEventListener('submit', e=>e.preventDefault());
 // INITIALIZE
+renderSitGroups();
 renderSituations();
 const preferred=['nikoh_ajrashish','aliment_sud','jarima_shikoyat','firibgarlik','ish_haqi','istemol_da_vo','ijara_shartnoma','mehnat_boshash'];
-$('#doc-tabs').innerHTML=preferred.map((key,i)=>`<button type="button" class="doc-tab-btn" data-doc="${key}"><span class="tab-num">${String(i+1).padStart(2,'0')}</span>${escapeHtml(DOC_TEMPLATES[key].short||DOC_TEMPLATES[key].title)}</button>`).join('');
+$('#doc-tabs').innerHTML=preferred.map((key,i)=>`<button type="button" class="doc-tab-btn" data-doc="${key}">${escapeHtml(DOC_TEMPLATES[key].short||DOC_TEMPLATES[key].title)}</button>`).join('');
 renderDocForm('nikoh_ajrashish');
 refreshApiStatus();
 

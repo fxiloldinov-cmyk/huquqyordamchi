@@ -4,7 +4,7 @@
 //   POST /api/kazus  -> yechim (matn oqimi)
 import {
   guardJsonPost, jsonError, jsonResponse, geminiConfig, callGemini,
-  providerError, pipeGeminiStream, isAllowedOrigin, LEGAL_RULES, sourceTail, redactPII,
+  providerError, pipeGeminiStream, isAllowedOrigin, LEGAL_RULES, langNote, sourceTail, redactPII,
   callGeminiResilient, safeSources, dedupeSources, SEARCH_OFF_NOTE,
 } from "../shared/common.mjs";
 import { KAZUS_NAMUNALAR, STANDART_FORMAT, FANLAR } from "../shared/kazus-namunalar.mjs";
@@ -136,7 +136,7 @@ export default async (req, context) => {
   // RAG: Mehnat kodeksi va Plenum 26-son qaroridan mos parchalar (mehnat sohasi yoki mehnatga oid kazusda).
   const rag = retrieve(kazus + (review ? "\n" + studentAnswer : ""), { k: 12, budget: 18000, force: fan === "mehnat" });
   const body0 = {
-    system_instruction: { parts: [{ text: SYSTEM + BOOK_SOURCE_RULES + rag.block }] },
+    system_instruction: { parts: [{ text: SYSTEM + BOOK_SOURCE_RULES + rag.block + langNote(body.lang) }] },
     contents,
     // Davom so'rovida qidiruv o'chiriladi: tezroq ishlaydi, manbalar birinchi qismdan olib boriladi.
     ...(cont ? {} : { tools: [{ google_search: {} }] }),

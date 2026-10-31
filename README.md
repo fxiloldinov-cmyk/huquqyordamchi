@@ -99,3 +99,26 @@ Chat, aqlli qidiruv, "Sodda tilda tushuntirish" va kazus AI'ga so‘rov yuborish
 ## AI ishlamasa: /api/status (v10.7)
 
 Brauzerda `https://<sayt>/api/status` ni oching. Sahifa Google'ga kichik sinov so‘rovi yuboradi va sababni o‘zbekcha yozadi: kalit yo‘q / noto‘g‘ri / oshkor bo‘lgani uchun o‘chirilgan / referer cheklovi / API yoqilmagan / kvota / model. Kalit hech qachon ko‘rsatilmaydi. `?search=1` Google qidiruvini ham sinaydi (bepul limitdan 1 so‘rov). Kalitdagi bo‘sh joy, qo‘shtirnoq yoki `GEMINI_API_KEY=` prefiksi avtomatik tozalanadi.
+
+## Kundalik vaziyatlar: 32 ta yo‘riqnoma (v10.8)
+
+20 ta yangi yo‘riqnoma qo‘shildi; jami 32 ta, 5 guruhda (`group` maydoni):
+
+- **Mehnat (9):** sinov muddati, yillik ta’til, homiladorlik va bola parvarishi ta’tili, ish vaqti va ortiqcha ish, o‘z xohishi bilan ketish, xodimning moddiy javobgarligi, shartnomasiz ishlash (+ eski 2 ta). Har bir MK moddasi `data/laws/mk.json` rasmiy matni bilan solishtirilgan; test buni avtomatik tekshiradi.
+- **Oila (6):** nikohdan o‘tish, otalikni belgilash, bola kim bilan qoladi, er-xotin mulkini bo‘lish (+ ajrashish/aliment, meros).
+- **Uy va pul (6):** qarz qaytarilmasa, elektr/gaz hisobi nizosi, uy oldi-sotdisi, MIB qarzdorligi va karta bloki (+ ijara, kredit).
+- **Xarid va internet (3):** onlayn xarid va qaytarish (+ sifatsiz tovar, kiberfiribgarlik).
+- **Davlat va ijtimoiy (8):** YTH va OSAGO, yoshga doir pensiya, nogironlik, Ijtimoiy reyestr va bolalar nafaqasi (+ jarima, pasport, ta’lim krediti, biznes).
+
+Bosh sahifada guruh filtri va dastlab 12 ta kartochka ("Barcha 32 ta vaziyatni ko‘rsatish" tugmasi) bor; `/vaziyat/` sahifasi guruhlarga bo‘lingan, har bir sahifadagi "Boshqa vaziyatlar" avval shu guruhdan olinadi. Yangi yozuvlarda `reviewedAt` (manbalar bilan solishtirilgan sana) saqlanadi va sahifada ko‘rsatiladi.
+
+**Eslatma:** Oila kodeksi, Fuqarolik kodeksi va boshqa qonunlarning to‘liq matni hali bazada yo‘q — ulardagi modda raqamlari lex.uz mundarijasi va gov.uz/advice.uz rasmiy tushuntirishlari bo‘yicha tekshirildi. Bu kodekslarni lex.uz’dan Word shaklida yuborsangiz, ular ham MK kabi RAG bazasiga qo‘shiladi va avtomatik tekshiriladi.
+
+## v11: animatsiyalar, Hidoya logotipi, 4 til, ommaviy oferta
+
+- **Animatsiyalar** (`public/motion.js` + `styles.css` oxiri): bosh sarlavha satrma-satr chiqadi, rasm sekin yaqinlashadi va parallaks, bo‘limlar aylantirganda paydo bo‘ladi, kartochkalar ko‘tariladi, talabalar blokida suzuvchi yorug‘lik. "Harakatni kamaytirish" yoqilgan qurilmada hammasi o‘chadi.
+- **Logotip:** Hidoya belgisi (peshtoq + yulduz) — sarlavha, footer, rasm ostidagi yozuv, favicon va barcha statik sahifalar.
+- **Tillar** (`public/i18n.js`): O‘zbekcha (lotin) · Ўзбекча (kirill) · Русский · English. Kirill — butun sahifa avtomatik o‘giriladi. Rus/ingliz — interfeys, vaziyat sarlavhalari va kodekslar lug‘at bo‘yicha; yo‘riqnoma matnlari va hujjat namunalari hozircha o‘zbekcha (sahifada ogohlantirish chiqadi). Tanlov brauzerda saqlanadi, `?til=ru` bilan ham ochiladi. AI so‘rovlariga `lang` yuboriladi — rus/ingliz tanlansa javob shu tilda yoziladi.
+- **Kazus ustaxonasi:** menyu va bo‘lim nomi.
+- **Ommaviy oferta:** `/oferta/` (`data/oferta.json` dan yaratiladi). ⚠️ E’lon qilishdan oldin `data/oferta.json` → `requisites` dagi ijrochi nomi, STIR, manzil, email va telefonni to‘ldiring va `npm run build` qiling. Yurist ko‘rib chiqishi tavsiya etiladi.
+- **Raqamlar:** interfeysdagi bezak raqamlar olib tashlandi (namuna misollari, hisoblagichlar, xabarlar).
