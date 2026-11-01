@@ -33,13 +33,21 @@
 
   // ---------------- Kirish oynasi ----------------
   const dlg = $("#auth-dialog"), form = $("#auth-form"), msg = $("#auth-form .form-msg");
-  let mode = "login";
+  let mode = "login", resetToken = "";
+  // Rejimlar: login, register, forgot (tiklash havolasini so'rash), reset (havoladan yangi parol)
+  const TITLES = { login: "Hisobingizga kiring", register: "Ro‘yxatdan o‘tish", forgot: "Parolni tiklash", reset: "Yangi parol o‘rnating" };
+  const SUBMIT = { login: "Kirish", register: "Hisob yaratish", forgot: "Tiklash havolasini yuborish", reset: "Parolni saqlash" };
   function setMode(m) {
     mode = m;
     dlg.querySelectorAll("[data-auth-tab]").forEach((b) => b.setAttribute("aria-selected", String(b.dataset.authTab === m)));
+    dlg.querySelector(".auth-tabs").hidden = m === "forgot" || m === "reset";
     dlg.querySelectorAll(".reg-only").forEach((el) => (el.hidden = m !== "register"));
-    $("#auth-title").textContent = m === "login" ? "Hisobingizga kiring" : "Ro‘yxatdan o‘tish";
-    $("#auth-submit").textContent = m === "login" ? "Kirish" : "Hisob yaratish";
+    dlg.querySelectorAll(".login-only").forEach((el) => (el.hidden = m !== "login"));
+    dlg.querySelectorAll(".no-forgot").forEach((el) => (el.hidden = m === "forgot"));
+    dlg.querySelectorAll(".no-reset").forEach((el) => (el.hidden = m === "reset"));
+    $(".pw-label", dlg).textContent = m === "reset" ? "Yangi parol" : "Parol";
+    $("#auth-title").textContent = TITLES[m];
+    $("#auth-submit").textContent = SUBMIT[m];
     form.password.autocomplete = m === "login" ? "current-password" : "new-password";
     msg.textContent = "";
   }
@@ -47,9 +55,10 @@
     setMode(m);
     const r = $("#auth-reason");
     r.hidden = !reason; r.textContent = reason;
-    dlg.showModal();
-    form.email.focus();
+    if (!dlg.open) dlg.showModal();
+    (m === "reset" ? form.password : form.email).focus();
   }
+  $("#auth-forgot")?.addEventListener("click", () => openAuth("forgot", "Hisobingiz emailini kiriting — tiklash havolasi yuboriladi."));
   dlg?.addEventListener("click", (e) => {
     const tab = e.target.closest("[data-auth-tab]");
     if (tab) setMode(tab.dataset.authTab);
@@ -65,6 +74,17 @@
   form?.addEventListener("submit", async (e) => {
     e.preventDefault();
     const btn = $("#auth-submit");
+    if (mode === "forgot" || mode === "reset") {
+      btn.disabled = true; msg.textContent = "";
+      try {
+        if (mode === "forgot") { const d = await api("/api/auth/reset-request", { body: { email: form.email.value.trim() } }); msg.textContent = d.message; }
+        else {
+          const d = await api("/api/auth/reset-confirm", { body: { token: resetToken, password: form.password.value } });
+          resetToken = ""; user = d.user; renderHeader(); dlg.close(); toast("Parol yangilandi. Boshqa qurilmalardagi sessiyalar yopildi.");
+        }
+      } catch (err) { msg.textContent = err.message; } finally { btn.disabled = false; }
+      return;
+    }
     const body = { email: form.email.value.trim(), password: form.password.value };
     if (mode === "register") { body.name = form.name.value.trim(); body.acceptOferta = form.acceptOferta.checked; }
     if (mode === "register" && !body.acceptOferta) { msg.textContent = "Ommaviy oferta shartlarini qabul qiling."; return; }
@@ -72,7 +92,7 @@
     try {
       const data = await api(`/api/auth/${mode}`, { body });
       user = data.user; renderHeader(); dlg.close();
-      toast(mode === "login" ? "Hisobingizga kirdingiz." : "Hisob yaratildi. Xush kelibsiz!");
+      toast(mode === "login" ? "Hisobingizga kirdingiz." : data.verification === "sent" ? "Hisob yaratildi. Emailingizga tasdiqlash xati yuborildi." : "Hisob yaratildi. Xush kelibsiz!");
       if (pending) { const p = pending; pending = null; p(); }
     } catch (err) {
       msg.textContent = err.status === 503 ? "Hisob xizmati hozircha ulanmagan. Keyinroq urinib ko‘ring." : err.message;
@@ -90,10 +110,18 @@
     if (!user) {
       $("#acc-email").textContent = "";
       box.innerHTML = `<div class="acc-empty"><p>Saqlangan materiallarni ko‘rish uchun hisobingizga kiring.</p><button type="button" class="btn btn-primary btn-sm" data-acc-login>Kirish</button></div>`;
+      renderBooks();
       return;
     }
     $("#acc-email").textContent = user.name ? `${user.name} · ${user.email}` : user.email;
+    const v = $("#acc-verify");
+    if (v) {
+      v.hidden = false;
+      v.innerHTML = user.emailVerified ? `<span class="ok">Email tasdiqlangan</span>`
+        : `<span>Email tasdiqlanmagan.</span> <button type="button" class="link-btn" data-acc-verify>Tasdiqlash xatini yuborish</button>`;
+    }
     box.innerHTML = `<p class="acc-loading">Yuklanmoqda…</p>`;
+    renderBooks();
     try {
       const { items } = await api("/api/account/items");
       box.innerHTML = items.length ? items.map((it) => `
@@ -109,8 +137,43 @@
       if (err.status === 401) { user = null; renderHeader(); }
     }
   }
+  // ---------------- Kitob parchalari ----------------
+  async function renderBooks() {
+    const box = $("#acc-books"), form = $("#book-form");
+    if (!box || !form) return;
+    form.hidden = !user; box.innerHTML = "";
+    if (!user) return;
+    try {
+      const { books, sources } = await api("/api/account/books");
+      const tsul = sources.find((s) => s.id === "tsul");
+      box.innerHTML = (books.length ? books.map((b) => `<article class="acc-item" data-book="${esc(b.id)}"><span class="acc-type">Kitob parchasi</span><h3>${esc(b.title)}</h3><p>${esc([b.author, b.year, b.edition].filter(Boolean).join(", "))}${b.pages ? ` · ${b.pages} ta sahifa belgisi` : ""} · ${esc(b.origin)}</p><div class="acc-actions"><button type="button" class="btn btn-ghost btn-sm" data-book-del>O‘chirish</button></div></article>`).join("")
+        : `<div class="acc-empty"><p>Hozircha kitob parchasi yo‘q.</p></div>`)
+        + (tsul ? `<p class="acc-sub">TSUL kutubxonasi: ${esc(tsul.message)}</p>` : "");
+    } catch (err) { box.innerHTML = `<p class="acc-error">${esc(err.message)}</p>`; }
+  }
+  $("#book-form")?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const f = e.target, out = $(".form-msg", f);
+    if (!f.rights.checked) { out.textContent = "Foydalanishga haqli ekaningizni tasdiqlang."; return; }
+    try {
+      await api("/api/account/books", { body: { op: "add", title: f.title.value, author: f.author.value, year: f.year.value, edition: f.edition.value, origin: f.origin.value, firstPage: f.firstPage.value, text: f.text.value, rightsConfirmed: true } });
+      f.reset(); out.textContent = "Parcha saqlandi."; renderBooks();
+    } catch (err) { out.textContent = err.message; }
+  });
+
   document.addEventListener("click", async (e) => {
     if (e.target.closest("[data-acc-login]")) { openAuth("login"); pending = renderAccount; return; }
+    const bk = e.target.closest("[data-book]");
+    if (bk && e.target.closest("[data-book-del]")) {
+      if (!confirm(T("Bu parcha o‘chirilsinmi?"))) return;
+      try { await api("/api/account/books", { body: { op: "delete", id: bk.dataset.book } }); bk.remove(); toast("O‘chirildi."); } catch (err) { toast(err.message); }
+      return;
+    }
+    if (e.target.closest("[data-acc-verify]")) {
+      try { const d = await api("/api/auth/verify-request", { body: {} }); toast(d.already ? "Email allaqachon tasdiqlangan." : d.message); }
+      catch (err) { toast(err.message); }
+      return;
+    }
     const item = e.target.closest(".acc-item");
     if (!item) return;
     const id = item.dataset.id;
@@ -192,9 +255,19 @@
   }
 
   // ---------------- Boshlash ----------------
+  // Emaildagi havolalar: #verify=TOKEN va #reset=TOKEN. Token darhol manzil satridan olib tashlanadi.
+  async function handleLinkToken() {
+    const m = location.hash.match(/^#(verify|reset)=([A-Za-z0-9_-]{20,100})$/);
+    if (!m) return;
+    history.replaceState(null, "", location.pathname + location.search);
+    if (m[1] === "reset") { resetToken = m[2]; openAuth("reset", "Yangi parol kiriting. Havola bir marta ishlaydi."); return; }
+    try { const d = await api("/api/auth/verify-confirm", { body: { token: m[2] } }); if (user) user = d.user; toast("Email tasdiqlandi."); }
+    catch (err) { toast(err.message); }
+  }
   (async () => {
     try { user = (await api("/api/auth/me")).user; } catch { user = null; }
     renderHeader();
+    await handleLinkToken();
     if (location.hash === "#account") renderAccount();
   })();
   window.addEventListener("hashchange", () => { if (location.hash === "#account") renderAccount(); });

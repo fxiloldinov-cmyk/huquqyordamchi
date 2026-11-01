@@ -30,6 +30,8 @@ const PII_RULES=[
  [new RegExp(String.raw`((?:tel(?:efon)?|mobil|aloqa|phone|тел(?:ефон)?|номер)[^\d\n]{0,20})${OPS}\d{7}\b`+NOT_MONEY,'gi'),'$1[telefon yashirildi]'],
  [/\b[A-Za-z]{2}[\s-]?\d{7}\b/g,'[pasport raqami yashirildi]'],
 ];
+// Loglarga kalitga o'xshash qatorlar tushmasin (Google, Resend, GitHub, Telegram kalitlari shakli bo'yicha).
+export const scrubSecrets=t=>String(t??'').replace(/AIza[0-9A-Za-z_-]{20,}|re_[A-Za-z0-9_]{16,}|gh[pousr]_[A-Za-z0-9]{20,}|\d{6,12}:AA[0-9A-Za-z_-]{20,}|Bearer\s+[A-Za-z0-9._-]{12,}/g,'[maxfiy]');
 export function redactPII(text){let out=String(text??'');for(const [re,to] of PII_RULES)out=out.replace(re,to);return out;}
 // Model tanlash. Google 2025-09-18 dan 2.5 modellarini faqat ularni avval ishlatganlarga qoldirgan;
 // yangi loyihalar uchun 3.8 Flash tavsiya etiladi. GEMINI_MODEL vergul bilan bir nechta model qabul qiladi —
@@ -66,7 +68,7 @@ export async function callGeminiResilient({apiKey,models,body,stream=false,signa
    const res=await callGemini({apiKey,model,body:b,stream,signal,timeoutMs});
    if(res.ok)return {ok:true,upstream:res,model,searchDropped};
    const info=await providerInfo(res);last={status:res.status,info,model};
-   console.error('AI provider',res.status,model,info.slice(0,200));
+   console.error('AI provider',res.status,model,scrubSecrets(info).slice(0,200));
    if(/api[ _-]?key|leaked|referr?er|IP_ADDRESS|SERVICE_DISABLED|has not been used|billing|RESOURCE_EXHAUSTED/i.test(info)||res.status===429)return {ok:false,...last};
    if(res.status===400&&/thinking/i.test(info)&&b.generationConfig?.thinkingConfig){delete b.generationConfig.thinkingConfig;continue;}
    if(allowNoSearch&&b.tools&&[400,403].includes(res.status)&&/search|grounding|tool/i.test(info)){delete b.tools;searchDropped=true;continue;}

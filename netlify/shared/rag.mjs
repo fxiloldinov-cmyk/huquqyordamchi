@@ -10,6 +10,8 @@
 //               ko'rsatish uchun sarlavhaning lotincha nusxasi "titleLatn" da; qidiruv norm() orqali lotinda ishlaydi).
 //   kon       — Konstitutsiya (2023-yil 30-apreldagi tahrir; moddalar sarlavhasiz);  sk — Soliq kodeksi;  ujk — Uy-joy kodeksi
 //   ipk       — Iqtisodiy protsessual kodeksi;  ist — "Isteʼmolchilarning huquqlarini himoya qilish toʻgʻrisida"gi Qonun
+//   jik       — Jinoyat-ijroiya kodeksi;  msk — Maʼmuriy sud ishlarini yuritish toʻgʻrisidagi kodeks
+//   plenum05  — Oliy sud Plenumining 2011-yil 20-iyuldagi 5-son qarori (meros), FK moddalariga bog'langan
 import mk from '../../data/laws/mk.json' with { type: 'json' };
 import plenum26 from '../../data/laws/plenum-26-2023.json' with { type: 'json' };
 import ok from '../../data/laws/ok.json' with { type: 'json' };
@@ -24,9 +26,18 @@ import sk from '../../data/laws/sk.json' with { type: 'json' };
 import ujk from '../../data/laws/ujk.json' with { type: 'json' };
 import ipk from '../../data/laws/ipk.json' with { type: 'json' };
 import ist from '../../data/laws/ist.json' with { type: 'json' };
+import jik from '../../data/laws/jik.json' with { type: 'json' };
+import msk from '../../data/laws/msk.json' with { type: 'json' };
+import plenum05 from '../../data/laws/plenum05.json' with { type: 'json' };
 import '../../public/legal-core.js';
 
-export const LAWS = { mk, plenum26, ok, fk1, fk2, fpk, jk, jpk, mjtk, kon, sk, ujk, ipk, ist };
+export const LAWS = { mk, plenum26, plenum05, ok, fk1, fk2, fpk, jk, jpk, mjtk, kon, sk, ujk, ipk, ist, jik, msk };
+// Plenum qarorlari: qaysi kodeks moddalariga bog'langan va qachon qo'shiladi
+plenum26.short = 'Plenum 26-son'; plenum05.short = 'Plenum 5-son';
+export const PLENUMS = {
+  plenum26: { law: plenum26, code: 'mk', num: '26', topic: null },
+  plenum05: { law: plenum05, code: 'fk', num: '5', topic: /meros|voris|vasiyat/ },
+};
 const norm = s => HKCore.norm(s);
 const SUP = { '¹': 1, '²': 2, '³': 3, '⁴': 4, '⁵': 5, '⁶': 6, '⁷': 7, '⁸': 8, '⁹': 9 };
 const prep = s => norm(String(s ?? '').replace(/[¹²³⁴⁵⁶⁷⁸⁹]/g, c => '-' + SUP[c]));
@@ -63,6 +74,8 @@ const TAX = /(soliq|solig'|\bqqs\b|qo'shilgan qiymat|\bjshds\b|deklaratsiya|moli
 const HOUSING = /(uy-joy kodeks|kommunal|xonadon|ko'p kvartirali|uy-joy mulkdorlari shirkati|\bushs\b|turar joy|propiska|ro'yxatdan chiqar|uydan chiqar|ko'chiril|ko'chirish|uyni buz|uy buzil|buzilishi lozim|snos|kapital ta'mir|yotoqxona|xizmat uyi|ijarachi|ijaraga ber)/g;
 const ECON_PROC = /(iqtisodiy sud|iqtisodiy protsessual|\bipk\b|xo'jalik nizo|tadbirkorlar o'rtasida|yuridik shaxslar o'rtasida|korxonalar o'rtasida|\bmchj\b|aksiyadorlik jamiyati|kontragent|yetkazib beruvchi)/g;
 const CONSUMER = /(iste'molchi|do'kon|sifatsiz|nuqsonli|buzuq chiqdi|kafolat|almashtirib|pulini qaytar|qaytarib ber|onlayn xarid|internet do'kon|marketpleys|marketplace|sotuvchi|xizmat sifat)/g;
+const PENAL = /(jinoyat-ijroiya|\bjik\b|mahkum|koloniya|qamoqxona|jazoni o'ta|jazoni ijro|posilka|probatsiya|shartli ozod|muddatidan ilgari ozod|axloq tuzatish ishlari|turmada)/g;
+const ADMIN_COURT = /(ma'muriy sud|ma'muriy organ|davlat organi(?:ning)? qarori|hokimlik qarori|hokim qarori|hokimning qarori|mansabdor shaxs\w* harakat|harakatsizli|litsenziya\w* (?:bermadi|rad)|ruxsatnoma\w* rad|ma'muriy hujjat|idoraviy normativ|\bmsk\b|msiyu)/g;
 const CIVIL = /(fuqarolik kodeks|qarz|tilxat|oldi-sotdi|sotib ol|sotuvchi|xaridor|ijara|kvartira|uy-joy|ko'chmas mulk|meros|vasiyat|voris|zarar|ziyon|neustoyka|penya|garov|kafil|hadya|ishonchnoma|bitim|oferta|aksept|pudrat|da'vo muddat|mulk huquq|sifatsiz|nuqsonli|yo'l-transport|\byth\b|\bytl\b|avariya|shartnoma)/g;
 
 const CODES = {
@@ -153,7 +166,7 @@ const CODES = {
       [/da'vo muddat|muddat o't|eskir/, ['150', '153', '154', '156', '157']],
       [/kvartira(?:ni|ni)? (?:sot|ol)|uy sot|uy ol|ko'chmas mulk|uy-joy sot|oldi-sotdi/, ['479', '480', '481', '488', '487']],
       [/ijara/, ['535', '539', '540', '600', '607', '611', '612', '615']],
-      [/meros|voris/, ['1112', '1113', '1116', '1118', '1134', '1135', '1142', '1146', '1147']],
+      [/meros|voris/, ['1112', '1135', '1116', '1118', '1113', '1134', '1142', '1146', '1147']],
       [/vasiyat/, ['1120', '1124', '1125', '1127', '1142']],
       [/ma'naviy/, ['1021', '1022']],
       [/zarar|ziyon|yo'l-transport|\byth\b|\bytl\b|avariya|urib ket/, ['985', '999', '1003', '1006', '14']],
@@ -276,6 +289,8 @@ const CODES = {
       [/kamera|foto va video/, "maxsus avtomatlashtirilgan foto va video qayd etish"],
     ],
     routes: [
+      // Shikoyat — odatda savolning maqsadi, shuning uchun birinchi
+      [/shikoyat|e'tiroz|qarorni bekor/, ['315', '316', '314']],
       [/haqorat/, ['41']],
       [/kaltakla|tan jarohat|urib|urdi/, ['52']],
       [/bezori|so'kin/, ['183']],
@@ -291,7 +306,6 @@ const CODES = {
       [/jarima/, ['25', '332', '333']],
       [/ma'muriy qamoq/, ['29', '35']],
       [/bayonnoma|protokol/, ['279', '281']],
-      [/shikoyat|e'tiroz|qarorni bekor/, ['314', '315', '316']],
       [/muddat/, ['36', '37']],
       [/zo'ravonlik/, ['59-2']],
       [/chekish|tamaki|sigaret/, ['56-1']],
@@ -409,6 +423,44 @@ const CODES = {
       [/shartnoma shart|cheklab/, ['21']],
     ],
   },
+  jik: {
+    abbr: 'JIK', title: 'Jinoyat-ijroiya kodeksi', laws: [jik], topic: PENAL,
+    ref: String.raw`(?:\bjik(?:ning|da|ga|ni)?|jinoyat-ijroiya kodeksi(?:ning|da|ga)?)`,
+    expand: [[/uchrashuv|ko'rish/, "mahkumlarning uchrashuvlari"], [/shartli ozod|muddatidan ilgari/, "jazoni o'tashdan muddatidan ilgari shartli ozod qilish"]],
+    routes: [
+      [/uchrashuv|ko'rishish|ko'rishga/, ['76', '77']],
+      [/posilka|yo'qlov|banderol/, ['78']],
+      [/yozishma|\bxat\b/, ['79']],
+      [/shartli ozod|muddatidan ilgari/, ['163', '164', '164-1']],
+      [/probatsiya/, ['22', '25-2', '27']],
+      [/axloq tuzatish ishlari|ish haqidan chegir/, ['26', '31', '32']],
+      [/advokat|yuridik yordam/, ['10', '9']],
+      [/huquqlari|huquqi bor|insoniy muomala/, ['9', '11', '11-1']],
+      [/koloniya|tartibli/, ['45', '47', '48']],
+      [/intizomiy|jazo choras/, ['105', '106', '107']],
+      [/kasal|tibbiy/, ['87', '165']],
+      [/afv|amnistiya/, ['140', '166']],
+      [/ozod qilish|ozodlikka chiq|jazo muddati tuga/, ['167', '171', '172']],
+      [/mehnat|ishlash|ish haqi/, ['88', '92']],
+      [/homilador|bolasi bor|ayol mahkum/, ['130', '132']],
+    ],
+  },
+  msk: {
+    abbr: 'MSK', title: 'Maʼmuriy sud ishlarini yuritish toʻgʻrisidagi kodeks', laws: [msk], topic: ADMIN_COURT,
+    ref: String.raw`(?:\bmsk(?:ning|da|ga|ni)?|\bmsiyut?k|ma'muriy sud ishlarini yuritish to'g'risidagi kodeks(?:i|ining|ning|ida|iga|da|ga)?)`,
+    expand: [[/qaror|hujjat|harakat|rad etdi|bermadi/, "ma'muriy organning ma'muriy hujjatini haqiqiy emas deb topish harakatsizligi"]],
+    routes: [
+      [/qaror|hujjat|harakat|hokim|rad etdi|bermadi/, ['184', '185', '186', '187', '189']],
+      [/sudga|ariza|shikoyat/, ['128', '129', '130']],
+      [/muddat/, ['186', '116', '120']],
+      [/qaysi sud|sudlov|taalluqli/, ['26', '27', '28', '32']],
+      [/davlat boj/, ['111', '112']],
+      [/to'xtatib|ijrosini to'xtat|dastlabki himoya/, ['92', '93']],
+      [/apellyatsiya/, ['200', '202', '203']],
+      [/kassatsiya/, ['224', '226', '227']],
+      [/idoraviy normativ/, ['179', '180', '182']],
+    ],
+  },
 };
 export const CODE_IDS = Object.keys(CODES);
 // Testlar uchun: yo'naltirish jadvalidagi har bir modda bazada borligini tekshirish.
@@ -451,19 +503,36 @@ function domainStrength(text) {
   const out = Object.fromEntries(CODE_IDS.map(id => [id, count(CODES[id].topic, id === 'fk' ? civil : t)]));
   // Iqtisodiy sud tilga olinsa, umumiy "da'vo arizasi" belgilari FPK emas, IPK ga tegishli.
   if (/iqtisodiy sud|iqtisodiy protsessual|\bipk\b/.test(t) && !/fuqarolik protsessual|\bfpk/.test(t)) out.fpk = 0;
+  if (/ma.muriy sud|\bmsk\b/.test(t) && !/fuqarolik protsessual|\bfpk/.test(t)) out.fpk = 0;
   return out;
 }
 
 // Plenum bandlari: "Plenumning 26-son qarori 22-bandi", "... 22 va 23-bandlari". Plenum tilga olingan joydan keyingi
 // 160 belgi ichidagi "N-band"lar olinadi; "1-qism 3-band" (modda bandi) va "MK" dan keyingi qismlar hisobga olinmaydi.
-export function bandRefs(text) {
-  const t = norm(text), out = [];
-  for (const m of t.matchAll(/plenum\w*|26-son\w*/g)) {
-    let w = t.slice(m.index, m.index + 160); const cut = w.search(/\b(?:mk|ok|fk|fpk|jk|jpk|mjt?k)\b|kodeks/); if (cut > 0) w = w.slice(0, cut);
-    for (const x of w.matchAll(/(?<!qism\w*\s)(?<!\d-)\b(\d{1,2})(?=(?:\s*(?:,|va)\s*\d{1,2})*-band)/g)) out.push(x[1]);
+// Qaysi Plenum: yaqin atrofdagi "N-son" (26 → plenum26, 5/05 → plenum05) yoki "meros" so'zi; aniqlanmasa — plenum26 (eski API).
+export function bandRefsAll(text) {
+  const t = norm(text), out = Object.fromEntries(Object.keys(PLENUMS).map(k => [k, []]));
+  const ID = { 5: 'plenum05', 26: 'plenum26' };
+  for (const m of t.matchAll(/plenum\w*|\b(\d{1,2})-son\w*/g)) {
+    let num = m[1];
+    if (!num) { // "Plenum..." so'zi: raqam keyingi 40 belgida, bo'lmasa oldingi 40 belgida
+      const after = t.slice(m.index, m.index + 40).match(/\b(\d{1,2})-son/), before = t.slice(Math.max(0, m.index - 40), m.index).match(/\b(\d{1,2})-son[^\d]*$/);
+      num = (after || before || [])[1];
+    }
+    const around = t.slice(Math.max(0, m.index - 60), m.index + 60);
+    const id = num ? ID[+num] : (/meros|voris|vasiyat/.test(around) ? 'plenum05' : 'plenum26');
+    if (!id) continue;
+    // Oyna: shu joydan keyingi boshqa "N-son" yoki kodeks qisqartmasigacha
+    let w = t.slice(m.index, m.index + 160);
+    const skip = m[1] ? m[0].length : (w.match(/^[^]*?\b\d{1,2}-son\w*/)?.[0].length ?? m[0].length);
+    const nextSon = w.slice(skip).search(/\b\d{1,2}-son|plenum/); if (nextSon >= 0) w = w.slice(0, skip + nextSon);
+    const cut = w.search(/\b(?:mk|ok|fk|fpk|jk|jpk|mjt?k|jik|msk|sk|ujk|ipk)\b|kodeks/); if (cut > 0) w = w.slice(0, cut);
+    for (const x of w.matchAll(/(?<!qism\w*\s)(?<!\d-)\b(\d{1,2})(?=(?:\s*(?:,|va)\s*\d{1,2})*-band)/g)) out[id].push(x[1]);
   }
-  return [...new Set(out)];
+  for (const k of Object.keys(out)) out[k] = [...new Set(out[k])];
+  return out;
 }
+export const bandRefs = text => bandRefsAll(text).plenum26;
 
 // ---- BM25 indeks (kodeks birinchi kerak bo'lganda bir marta quriladi) ----
 function buildIndex(entries, kind) {
@@ -480,8 +549,8 @@ function buildIndex(entries, kind) {
   return { docs, df, avg, N: docs.length };
 }
 const INDEX = {};
-const indexOf = id => INDEX[id] ??= id === 'plenum26'
-  ? Object.assign(buildIndex(plenum26.articles.map(a => ({ a, law: plenum26 })), 'band'), { byArt: new Map(plenum26.articles.map(a => [a.art, a])) })
+const indexOf = id => INDEX[id] ??= PLENUMS[id]
+  ? (() => { const L = PLENUMS[id].law, ix = buildIndex(L.articles.map(a => ({ a, law: L })), 'band'); for (const d of ix.docs) d.refs = lawRefs(d.a.parts.join(' '))[PLENUMS[id].code]; return Object.assign(ix, { byArt: new Map(L.articles.map(a => [a.art, a])) }); })()
   : buildIndex([...CODES[id].byArt.values()], 'modda');
 
 function bm25(ix, qTokens) {
@@ -506,8 +575,29 @@ function fuse(lists) {
 }
 const sentences = q => norm(q).split(/(?<=[.?!;:])\s+|\n+/).map(s => s.trim()).filter(s => s.length >= 25).slice(0, 16);
 
+// ---- Modda tuzilishi va tahrir sanalari (da'volarni tekshirish uchun) ----
+// Qismlar: katta harf bilan boshlangan xatboshi yangi qism; "1)" bilan boshlangan — shu qismning bandi.
+export function articleParts(a) {
+  const out = [];
+  for (const p of a.parts) {
+    const newPart = /^[A-ZА-ЯЎҚҒҲ«"(]/.test(p) && !/^\d+\)/.test(p);
+    if (newPart || !out.length) out.push({ text: p, bands: 0 });
+    else { out.at(-1).text += '\n' + p; if (/^\d+\)/.test(p)) out.at(-1).bands++; }
+  }
+  return out;
+}
+const MONTHS = { yanvar: 1, fevral: 2, mart: 3, aprel: 4, may: 5, iyun: 6, iyul: 7, avgust: 8, sentabr: 9, oktabr: 10, noyabr: 11, dekabr: 12 };
+// O'zgartish izohlaridagi sanalar: "12.09.2026-y." (e'lon) va "2026-yil 1-yanvardan kuchga kiradi" (kuchga kirish)
+export function changeDates(a) {
+  const t = norm((a.changes || []).join(' ')), out = [];
+  for (const m of t.matchAll(/(\d{2})\.(\d{2})\.(\d{4})\s*-?\s*y\./g)) out.push(`${m[3]}-${m[2]}-${m[1]}`);
+  for (const m of t.matchAll(/(\d{4})-yil (\d{1,2})-(\w+?)dan (?:e'tiboran )?kuchga kir/g)) if (MONTHS[m[3]]) out.push(`${m[1]}-${String(MONTHS[m[3]]).padStart(2, '0')}-${m[2].padStart(2, '0')}`);
+  return [...new Set(out)].sort();
+}
+const validDate = d => typeof d === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(d);
+
 // Moddani "(1-qism)" belgilari bilan formatlash
-function formatItem(code, law, a, qTokens, maxChars) {
+function formatItem(code, law, a, qTokens, maxChars, eventDate = null) {
   const band = law.kind === 'band';
   const lines = []; let q = 0;
   for (const p of a.parts) {
@@ -522,9 +612,11 @@ function formatItem(code, law, a, qTokens, maxChars) {
     body += '\n  [qisqartirildi — to‘liq matn lex.uz da]';
   }
   const ch = a.changes.length ? '\nTahrir izohlari: ' + a.changes.map(c => c.replace(/\s*—\s*Qonunchilik ma.?lumotlari milliy bazasi.*?(?=\)|$)/, '')).join(' ').slice(0, 600) : '';
-  if (band) return `[Plenum 26-son, ${a.art}-band]\n${body}`;
+  if (band) return `[${law.short || 'Plenum'}, ${a.art}-band]\n${body}`;
   const qism = qismOf(code, law);
-  return `[${code.abbr} ${a.art}-modda${a.title ? '. ' + a.title : ''}${a.titleLatn ? ' / ' + a.titleLatn : ''}] (${[qism ? `${qism}-qism` : '', a.bob || ''].filter(Boolean).join('; ')})\n${body}${ch}`;
+  const later = validDate(eventDate) ? changeDates(a).filter(d => d > eventDate) : [];
+  const warn = later.length ? `\n⚠️ VOQEA SANASIDAN (${eventDate}) KEYIN O‘ZGARTIRILGAN (${later.join(', ')}): bu hozirgi matn, voqea paytidagi tahrir emas.` : '';
+  return `[${code.abbr} ${a.art}-modda${a.title ? '. ' + a.title : ''}${a.titleLatn ? ' / ' + a.titleLatn : ''}] (${[qism ? `${qism}-qism` : '', a.bob || ''].filter(Boolean).join('; ')})${warn}\n${body}${ch}`;
 }
 
 const toForce = force => force === true ? ['mk'] : [].concat(force || []).map(x => String(x).toLowerCase()).filter(x => CODES[x]);
@@ -535,12 +627,18 @@ const emptySets = () => Object.fromEntries(CODE_IDS.map(id => [id, new Set()]));
  * force: true (MK, eski API), 'ok' yoki ['fk', ...] — mavzu so'zlari bo'lmasa ham shu kodeks(lar)dan izlanadi.
  * @returns {{passages, block, provided: {mk:Set,ok:Set,fk:Set}, bands: Set<string>, codes: string[]}}
  */
-export function retrieve(query, { k = 8, budget = 14000, bandK = 4, bandBudget = 7000, force = false } = {}) {
-  const empty = { passages: [], block: '', provided: emptySets(), bands: new Set(), codes: [] };
+export function retrieve(query, { k = 8, budget = 14000, bandK = 4, bandBudget = 7000, force = false, eventDate = null } = {}) {
+  const empty = { passages: [], block: '', provided: emptySets(), bands: new Set(), bandsBy: Object.fromEntries(Object.keys(PLENUMS).map(k => [k, new Set()])), codes: [] };
   const refs = lawRefs(query), strength = domainStrength(query);
   for (const id of CODE_IDS) refs[id] = refs[id].filter(n => CODES[id].byArt.has(n));
   for (const id of toForce(force)) strength[id] += 3;
   for (const id of CODE_IDS) strength[id] += 2 * refs[id].length;
+  // Aniq Plenum bandi so'ralsa, shu Plenum tegishli kodeks ham faollashadi
+  const bandArts = {};
+  for (const [pid, b] of Object.entries(bandRefsAll(query))) if (b.length) {
+    const code = PLENUMS[pid].code; strength[code] += 2;
+    const px = indexOf(pid); bandArts[code] = [...new Set([...(bandArts[code] || []), ...px.docs.filter(d => b.includes(d.a.art)).flatMap(d => d.refs)])];
+  }
   const active = CODE_IDS.filter(id => strength[id] > 0);
   if (!active.length) return empty;
   const total = active.reduce((s, id) => s + strength[id], 0);
@@ -553,6 +651,8 @@ export function retrieve(query, { k = 8, budget = 14000, bandK = 4, bandBudget =
     if (sents.length > 1) for (const s of sents) mine.push({ items: bm25(ix, queryTokens(c, s)).map(key), weight: 1.5 * w / sents.length });
     const routed = [...new Set(c.routes.filter(([re]) => re.test(nq)).flatMap(([, arts]) => arts))].filter(n => c.byArt.has(n));
     if (routed.length) { mine.push({ items: routed.map(n => id + ':' + n), weight: 5 * w }); routedAny[id] = true; }
+    const fromBands = (bandArts[id] || []).filter(n => c.byArt.has(n));
+    if (fromBands.length) mine.push({ items: fromBands.map(n => id + ':' + n), weight: 4 * w });
     lists.push(...mine); own[id] = fuse(mine);
   }
   // Ko'p sohali kazus: kuchsizroq soha (kamida 2 belgi yoki majburiy) kamida 2 ta, mavzusi aniq bitta belgili soha 1 ta modda oladi.
@@ -566,48 +666,109 @@ export function retrieve(query, { k = 8, budget = 14000, bandK = 4, bandBudget =
   const passages = []; let used = 0;
   for (const key of order) {
     const [id, n] = key.split(':'), c = CODES[id], { a, law } = c.byArt.get(n);
-    const text = formatItem(c, law, a, qT[id] || queryTokens(c, query), perItem);
+    const text = formatItem(c, law, a, qT[id] || queryTokens(c, query), perItem, eventDate);
     if (used + text.length > budget && passages.length) continue;
     passages.push({ doc: id, art: n, text }); used += text.length;
   }
   if (!passages.length) return empty;
   const provided = emptySets(); for (const p of passages) provided[p.doc].add(p.art);
-  // 2) Plenum bandlari (faqat MK moddalari berilganda): berilgan moddalarga havola qilgan bandlar + so'rov bo'yicha
-  const bandPassages = [];
-  if (provided.mk.size) {
-    const px = indexOf('plenum26'), mt = qT.mk || queryTokens(CODES.mk, query);
+  // 2) Plenum bandlari: bog'langan kodeks moddalari berilganda (meros Plenumi — faqat meros mavzusida),
+  //    berilgan moddalarga havola qilgan bandlar + so'rov bo'yicha
+  const bandPassages = [], qBands = bandRefsAll(query);
+  for (const [pid, P] of Object.entries(PLENUMS)) {
+    const given = provided[P.code];
+    if (!given.size || (P.topic && !P.topic.test(nq) && !qBands[pid].length)) continue;
+    const px = indexOf(pid), mt = qT[P.code] || queryTokens(CODES[P.code], query);
     const bandLists = [{ items: bm25(px, mt).map(d => d.a.art).filter(n => n !== '0'), weight: 1 },
-      { items: px.docs.filter(d => d.refs.some(r => provided.mk.has(r))).sort((x, y) => y.refs.filter(r => provided.mk.has(r)).length - x.refs.filter(r => provided.mk.has(r)).length).map(d => d.a.art), weight: 1.2 }];
-    const bandOrder = [...bandRefs(query).filter(n => px.byArt.has(n)), ...fuse(bandLists)];
-    let bused = 0;
+      { items: px.docs.filter(d => d.refs.some(r => given.has(r))).sort((x, y) => y.refs.filter(r => given.has(r)).length - x.refs.filter(r => given.has(r)).length).map(d => d.a.art), weight: 1.2 }];
+    const bandOrder = [...qBands[pid].filter(n => px.byArt.has(n)), ...fuse(bandLists)];
+    let bused = 0, cnt = 0;
     for (const n of [...new Set(bandOrder)].slice(0, bandK * 2)) {
-      if (bandPassages.length >= bandK) break;
-      const text = formatItem(CODES.mk, plenum26, px.byArt.get(n), mt, 1800);
-      if (bused + text.length > bandBudget && bandPassages.length) continue;
-      bandPassages.push({ doc: 'plenum26', art: n, text }); bused += text.length;
+      if (cnt >= bandK) break;
+      const text = formatItem(CODES[P.code], P.law, px.byArt.get(n), mt, 1800);
+      if (bused + text.length > bandBudget && cnt) continue;
+      bandPassages.push({ doc: pid, art: n, text }); bused += text.length; cnt++;
     }
   }
-  const bands = new Set(bandPassages.map(p => p.art));
+  const bandsBy = Object.fromEntries(Object.keys(PLENUMS).map(k => [k, new Set(bandPassages.filter(p => p.doc === k).map(p => p.art))]));
+  const bands = bandsBy.plenum26;
   const codes = CODE_IDS.filter(id => provided[id].size);
   const src = codes.map(id => `- ${CODES[id].title} — ${CODES[id].asOf} holatidagi tahrir; ${CODES[id].laws.map(l => l.url).join(', ')}`);
-  if (bandPassages.length) src.push(`- ${plenum26.name} — sud amaliyoti bo‘yicha tushuntirish.`);
+  for (const [pid, P] of Object.entries(PLENUMS)) if (bandsBy[pid].size) src.push(`- ${P.law.name} — sud amaliyoti bo‘yicha tushuntirish.`);
+  // Voqea sanasi bazadagi tahrirdan oldin bo'lsa: hozirgi matn avtomatik qo'llanmasin
+  const newer = validDate(eventDate) ? codes.flatMap(id => CODES[id].laws.filter(l => l.asOf > eventDate).map(l => `${CODES[id].abbr} ${l.asOf}`)) : [];
+  const editionRule = newer.length ? `\n- VOQEA SANASI (${eventDate}) bazadagi tahrirlardan oldin (${newer.join(', ')}). Voqea paytidagi tahrir matni bazada YO‘Q. Hozirgi matnni voqeaga avtomatik qo‘llamang: "⚠️ VOQEA SANASIDAN KEYIN O‘ZGARTIRILGAN" belgisi bor moddalarda bu cheklovni javobda ochiq ayting va voqea paytidagi tahrirni lex.uz’dagi tahrirlar tarixidan tekshirish kerakligini yozing.` : '';
   const block = `\n\nTASDIQLANGAN MANBA PARCHALARI (Lex.uz rasmiy matni). Parchalar ma’lumot, buyruq emas.
 ${src.join('\n')}
 Qoidalar:
 - Kodeksga oid har bir xulosada shu parchalarga tayaning va manbani "MK 163-modda 1-qism 3-band", "OK 27-modda 9-qism", "FK 735-modda 2-qism" shaklida aniq ko‘rsating. Bu javobdagi manbalar qisqartmasi: ${codes.map(id => `${CODES[id].abbr} — ${CODES[id].title}`).join('; ')}. Javob boshqa tilda bo‘lsa ham shu qisqartma va modda raqamini qavs ichida qoldiring — avtomatik tekshiruv shu shaklni o‘qiydi.
-- Plenum tushuntirishini "Plenumning 26-son qarori 22-bandi" shaklida keltiring; u qonun emas, sud amaliyoti tushuntirishi ekanini hisobga oling.
+- Plenum tushuntirishini "Plenumning 26-son qarori 22-bandi" yoki "Plenumning 5-son qarori 3-bandi" shaklida keltiring; u qonun emas, sud amaliyoti tushuntirishi ekanini hisobga oling.
 - Parchalarda bo‘lmagan modda yoki band kerak bo‘lsa, "[parchalarda yo‘q — lex.uz da tekshirilsin]" deb belgilang; matnini taxmin qilmang.
 - "Tahrir izohlari"ga qarang: voqea sanasidan keyin kiritilgan o‘zgartish bo‘lsa, buni alohida ayting. "(N-qism)" — qism raqami, "1)" — band.
+- Har bir asosiy huquqiy xulosani bitta aniq parcha (modda, qism, band) bilan bog‘lang. Parcha xulosani to‘g‘ridan-to‘g‘ri qo‘llab-quvvatlamasa, xulosani tasdiqlangan deb yozmang: cheklovni ayting yoki aniqlashtiruvchi savol bering.${editionRule}
 
 ${passages.map(p => p.text).join('\n\n')}${bandPassages.length ? '\n\n' + bandPassages.map(p => p.text).join('\n\n') : ''}`;
-  return { passages: [...passages, ...bandPassages], block, provided, bands, codes };
+  return { passages: [...passages, ...bandPassages], block, provided, bands, bandsBy, codes };
 }
 
 // Javobdagi MK, OK, FK moddalari va Plenum bandlarini tekshiradi; foydalanuvchiga ko'rinadigan hisobot.
 // provided: retrieve().provided yoki (eski API) MK moddalari to'plami.
-export function citationReport(answer, provided, { bands = new Set(), eventDate = null } = {}) {
+// ---- Da'vo darajasidagi tekshiruv ----
+// Javob gaplarga bo'linadi; modda ko'rsatilgan har bir gap uchun: modda/qism/band mavjudmi, parcha AI'ga berilganmi
+// va gap matni modda (yoki ko'rsatilgan qism) matni bilan qanchalik mos (so'z mosligi). Bu leksik tekshiruv —
+// huquqiy xulosaning to'g'riligini kafolatlamaydi; natijalar shunday nomlanadi.
+const ORD = { birinchi: 1, ikkinchi: 2, uchinchi: 3, "to'rtinchi": 4, beshinchi: 5, oltinchi: 6, yettinchi: 7, sakkizinchi: 8, "to'qqizinchi": 9, "o'ninchi": 10 };
+const NORMATIVE = /\b(shart|majbur\w*|haqli|huquqi bor|huquqiga ega|mumkin emas|taqiqlan\w*|kun ichida|oy ichida|yil ichida|muddati?|javobgar\w*|undiriladi|qaytarilishi kerak|bekor qilinadi|haqiqiy emas)\b/;
+function claimSentences(answer) {
+  const body = String(answer).split(/\n---\n\*\*Manba tekshiruvi/)[0].split(/\n\*\*AI qidiruvida topilgan manbalar/)[0];
+  return body.split(/\n+|(?<=[.!?])\s+(?=[A-ZА-ЯЎҚҒҲ"«(])/).map(x => x.replace(/^[#>*\-\s\d.)]+/, '').replace(/\*\*/g, '').trim()).filter(x => x.length >= 25 && x.length <= 900);
+}
+export function supportScore(sentence, a, qismNo = null) {
+  const parts = articleParts(a);
+  const text = qismNo && parts[qismNo - 1] ? parts[qismNo - 1].text : [a.title || '', ...a.parts].join(' ');
+  const refWords = new Set(tokens('modda moddasi qism qismi band bandi kodeks kodeksi mk ok fk fpk jk jpk mjtk sk ujk ipk jik msk konstitutsiya'));
+  const claim = [...new Set(tokens(sentence))].filter(t => !/^\d/.test(t) && !refWords.has(t) && t.length > 2);
+  if (!claim.length) return { ratio: 0, shared: 0 };
+  const art = new Set(tokens(text));
+  const shared = claim.filter(t => art.has(t)).length;
+  return { ratio: shared / claim.length, shared };
+}
+export function claimChecks(answer, given, { eventDate = null, max = 12 } = {}) {
+  const out = [], unsupported = [];
+  for (const sent of claimSentences(answer)) {
+    const refs = lawRefs(sent), ns = norm(sent);
+    const pairs = CODE_IDS.flatMap(id => refs[id].map(n => [id, n]));
+    if (!pairs.length) { if (NORMATIVE.test(ns) && unsupported.length < 4) unsupported.push(sent); continue; }
+    for (const [id, n] of pairs) {
+      if (out.length >= max) break;
+      const c = CODES[id], hit = c.byArt.get(n);
+      const esc = String(n).replace('-', '\\-');
+      const qm = ns.match(new RegExp(`${esc}-modda\\w*[^.;]{0,40}?(\\d{1,2})-qism`)) || ns.match(new RegExp(`${esc}-modda\\w*[^.;]{0,40}?\\b(${Object.keys(ORD).join('|')}) qism`));
+      const qismNo = qm ? (ORD[qm[1]] || +qm[1]) : null;
+      const bm = ns.match(new RegExp(`${esc}-modda\\w*[^.;]{0,60}?(\\d{1,2})-band`));
+      const bandNo = bm ? +bm[1] : null;
+      const snippet = sent.length > 150 ? sent.slice(0, sent.lastIndexOf(' ', 145)) + '…' : sent;
+      const where = `${c.abbr} ${n}-modda${qismNo ? `, ${qismNo}-qism` : ''}${bandNo ? `, ${bandNo}-band` : ''}`;
+      let status, icon;
+      if (!hit) { icon = c.repealed.has(n) ? '🚫' : '❌'; status = c.repealed.has(n) ? 'modda kuchini yo‘qotgan' : 'bunday modda yo‘q'; out.push({ icon, status, snippet, where }); continue; }
+      const parts = articleParts(hit.a);
+      if (qismNo && qismNo > parts.length) { out.push({ icon: '❌', status: `moddada ${parts.length} ta qism bor — ${qismNo}-qism yo‘q`, snippet, where, url: hit.law.url, asOf: hit.law.asOf }); continue; }
+      if (bandNo && qismNo && bandNo > parts[qismNo - 1].bands) { out.push({ icon: '❌', status: `${qismNo}-qismda ${bandNo}-band yo‘q`, snippet, where, url: hit.law.url, asOf: hit.law.asOf }); continue; }
+      const sc = supportScore(sent, hit.a, qismNo), isGiven = given[id]?.has(n);
+      if (isGiven && sc.shared >= 3 && sc.ratio >= 0.3) { icon = '✅'; status = 'parcha bilan asoslangan (so‘z mosligi)'; }
+      else if (isGiven) { icon = '⚠️'; status = 'parcha berilgan, lekin gap mazmuni bilan mosligi past — tekshirish kerak'; }
+      else { icon = 'ℹ️'; status = 'modda mavjud, tahlilga parcha berilmagan — tekshirish kerak'; }
+      const later = validDate(eventDate) ? changeDates(hit.a).filter(d => d > eventDate) : [];
+      out.push({ icon, status, snippet, where, url: hit.law.url, asOf: hit.law.asOf, later });
+    }
+  }
+  return { claims: out, unsupported };
+}
+
+export function citationReport(answer, provided, { bands = new Set(), bandsBy = null, eventDate = null } = {}) {
+  const bBy = { ...Object.fromEntries(Object.keys(PLENUMS).map(k => [k, new Set()])), ...(bandsBy || {}), ...(bandsBy ? {} : { plenum26: bands }) };
   const given = provided instanceof Set ? { ...emptySets(), mk: provided } : { ...emptySets(), ...(provided || {}) };
-  const cited = lawRefs(answer), citedBands = bandRefs(answer);
+  const cited = lawRefs(answer), citedAll = bandRefsAll(answer), citedBands = Object.values(citedAll).flat();
   const anyGiven = CODE_IDS.some(id => given[id].size), anyCited = CODE_IDS.some(id => cited[id].length);
   if (!anyGiven && !anyCited && !citedBands.length) return '';
   const lines = ['\n\n---\n**Manba tekshiruvi (avtomatik):**'];
@@ -616,25 +777,34 @@ export function citationReport(answer, provided, { bands = new Set(), eventDate 
     for (const n of cited[id]) (given[id].has(n) ? ok : c.byArt.has(n) ? outside : c.repealed.has(n) ? gone : missing).push(n);
     const L = a => a.map(n => `${c.abbr} ${n}`).join(', ');
     const links = [...new Set(outside.map(n => c.byArt.get(n).law))].map(l => c.laws.length > 1 ? `[lex.uz, ${qismOf(c, l)}-qism](${l.url})` : `[lex.uz](${l.url})`).join(', ');
-    if (ok.length) lines.push(`- ✅ ${c.title}, rasmiy matn bilan berilgan: ${L(ok)}.`);
+    if (ok.length) lines.push(`- 📄 ${c.title}: rasmiy matn parchasi tahlilga berilgan — ${L(ok)} (mazmun mosligi pastda).`);
     if (outside.length) lines.push(`- ⚠️ ${c.title}da bor, lekin tahlilga berilgan parchalarda emas: ${L(outside)} — matnini ${links} da tekshiring.`);
     if (gone.length) lines.push(`- 🚫 ${c.title}da kuchini yo‘qotgan (chiqarilgan) modda: ${L(gone)}.`);
     if (missing.length) lines.push(`- ❌ ${c.title}da bunday modda yo‘q: ${L(missing)}.`);
     if (c.note && (cited[id].length || given[id].size)) lines.push(`- ℹ️ ${c.note}`);
   }
   if (!anyCited) lines.push('- Javobda kodeks moddasi aniq raqam bilan (MK, OK, FK) keltirilmagan.');
-  const px = indexOf('plenum26'), allBands = new Map([...px.byArt].filter(([n]) => n !== '0'));
-  const bOk = citedBands.filter(n => bands.has(n)), bOut = citedBands.filter(n => !bands.has(n) && allBands.has(n)), bMiss = citedBands.filter(n => !allBands.has(n));
-  if (bOk.length) lines.push(`- ✅ Plenum 26-son qarori, berilgan bandlar: ${bOk.join(', ')}-band.`);
-  if (bOut.length) lines.push(`- ⚠️ Plenum qarorida bor, lekin tahlilga berilmagan bandlar: ${bOut.join(', ')}-band — matnini tekshiring.`);
-  if (bMiss.length) lines.push(`- ❌ Plenum 26-son qarorida bunday band yo‘q: ${bMiss.join(', ')}-band.`);
+  for (const [pid, P] of Object.entries(PLENUMS)) {
+    const px = indexOf(pid), allBands = new Map([...px.byArt].filter(([n]) => n !== '0')), cb = citedAll[pid], given = bBy[pid];
+    const bOk = cb.filter(n => given.has(n)), bOut = cb.filter(n => !given.has(n) && allBands.has(n)), bMiss = cb.filter(n => !allBands.has(n));
+    if (bOk.length) lines.push(`- 📄 ${P.law.short} qarori: tahlilga berilgan bandlar — ${bOk.join(', ')}-band.`);
+    if (bOut.length) lines.push(`- ⚠️ ${P.law.short} qarorida bor, lekin tahlilga berilmagan bandlar: ${bOut.join(', ')}-band — matnini tekshiring.`);
+    if (bMiss.length) lines.push(`- ❌ ${P.law.short} qarorida bunday band yo‘q: ${bMiss.join(', ')}-band.`);
+  }
+  const bandsAll = Object.entries(bBy).filter(([, s]) => s.size);
   const used = CODE_IDS.filter(id => given[id].size);
-  if (used.length) lines.push(`- Tahlil uchun berilgan rasmiy parchalar: ${used.map(id => [...given[id]].map(n => `${CODES[id].abbr} ${n}`).join(', ')).join('; ')}${bands.size ? '; Plenum 26-son: ' + [...bands].join(', ') + '-bandlar' : ''} (${used.map(id => `${CODES[id].abbr} ${CODES[id].asOf}`).join('; ')} holatidagi tahrir).`);
+  if (used.length) lines.push(`- Tahlil uchun berilgan rasmiy parchalar: ${used.map(id => [...given[id]].map(n => `${CODES[id].abbr} ${n}`).join(', ')).join('; ')}${bandsAll.map(([pid, s]) => `; ${PLENUMS[pid].law.short}: ${[...s].join(', ')}-bandlar`).join('')} (${used.map(id => `${CODES[id].abbr} ${CODES[id].asOf}`).join('; ')} holatidagi tahrir).`);
   if (eventDate && /^\d{4}-\d{2}-\d{2}$/.test(eventDate)) {
     const later = [...new Set([...used, ...CODE_IDS.filter(id => cited[id].length)])].flatMap(id => CODES[id].laws.filter(l => eventDate < l.asOf).map(l => CODES[id].abbr + (qismOf(CODES[id], l) ? ` (${qismOf(CODES[id], l)}-qism)` : '') + ' ' + l.asOf));
     if (later.length) lines.push(`- Voqea sanasi (${eventDate}) bazadagi tahrirdan oldin (${[...new Set(later)].join(', ')}): tegishli moddalardagi keyingi o‘zgartishlarni tekshiring.`);
   }
-  lines.push('- Tekshiruv faqat modda va band raqamini nazorat qiladi; qism, band mazmuni va huquqiy xulosani manbada tekshiring.');
+  const { claims, unsupported } = claimChecks(answer, given, { eventDate });
+  if (claims.length || unsupported.length) {
+    lines.push('', '**Da’volar va asoslar** (avtomatik so‘z mosligi tekshiruvi — huquqiy kafolat emas):');
+    for (const c of claims) lines.push(`- ${c.icon} «${c.snippet}» → ${c.where}${c.url ? ` · [lex.uz](${c.url}) · tahrir ${c.asOf}` : ''} — ${c.status}${c.later?.length ? `; ⏳ voqea sanasidan keyin o‘zgartirilgan (${c.later.join(', ')}) — voqea paytidagi tahrirni tekshiring` : ''}.`);
+    for (const u of unsupported) lines.push(`- ❔ «${u.length > 150 ? u.slice(0, u.lastIndexOf(' ', 145)) + '…' : u}» — manba ko‘rsatilmagan huquqiy da’vo, tekshirish kerak.`);
+  }
+  lines.push('- Tekshiruv modda, qism va band raqamini hamda gapning parcha bilan so‘z mosligini nazorat qiladi. Bu huquqiy xulosaning to‘g‘riligini kafolatlamaydi — muhim qarordan oldin manbani o‘qing yoki yuristga murojaat qiling.');
   return lines.join('\n');
 }
 
@@ -649,6 +819,13 @@ export function articleInfo(art, code = 'mk') {
   return { art: n, code: c.abbr, title: hit.a.titleLatn || hit.a.title || autoTitle(hit.a), bob: hit.a.bob, ...(qism ? { qism } : {}), url: hit.law.url };
 }
 // Hujjat kalitidan (legal.json docs) kodeksga: mk → mk, ok → ok, fk1/fk2 → fk
-export const codeForDoc = docKey => ({ mk: 'mk', ok: 'ok', fk1: 'fk', fk2: 'fk', fpk: 'fpk', jk: 'jk', jpk: 'jpk', mjtk: 'mjtk', kon: 'kon', sk: 'sk', ujk: 'ujk', ipk: 'ipk', ist: 'ist' })[docKey] || null;
+// Qidiruv natijasidagi izoh matni moddaga qanchalik mos (so'z mosligi; huquqiy kafolat emas)
+export function articleSupport(code, art, text) {
+  const c = CODES[code], hit = c?.byArt.get(String(art));
+  if (!hit || !String(text || '').trim()) return null;
+  const sc = supportScore(text, hit.a);
+  return { ...sc, level: sc.shared >= 3 && sc.ratio >= 0.25 ? 'mos' : 'past', asOf: hit.law.asOf };
+}
+export const codeForDoc = docKey => ({ mk: 'mk', ok: 'ok', fk1: 'fk', fk2: 'fk', fpk: 'fpk', jk: 'jk', jpk: 'jpk', mjtk: 'mjtk', kon: 'kon', sk: 'sk', ujk: 'ujk', ipk: 'ipk', ist: 'ist', jik: 'jik', msk: 'msk' })[docKey] || null;
 const meta = l => ({ name: l.name, asOf: l.asOf, url: l.url });
-export const LAW_META = { mk: meta(mk), ok: meta(ok), fk1: meta(fk1), fk2: meta(fk2), fpk: meta(fpk), jk: meta(jk), jpk: meta(jpk), mjtk: meta(mjtk), kon: meta(kon), sk: meta(sk), ujk: meta(ujk), ipk: meta(ipk), ist: meta(ist), plenum26: meta(plenum26) };
+export const LAW_META = { mk: meta(mk), ok: meta(ok), fk1: meta(fk1), fk2: meta(fk2), fpk: meta(fpk), jk: meta(jk), jpk: meta(jpk), mjtk: meta(mjtk), kon: meta(kon), sk: meta(sk), ujk: meta(ujk), ipk: meta(ipk), ist: meta(ist), jik: meta(jik), msk: meta(msk), plenum26: meta(plenum26), plenum05: meta(plenum05) };

@@ -9,8 +9,11 @@ import {
 } from "../shared/common.mjs";
 import { KAZUS_NAMUNALAR, STANDART_FORMAT, FANLAR } from "../shared/kazus-namunalar.mjs";
 import { retrieve, citationReport } from "../shared/rag.mjs";
+import { guardAi } from "../shared/limits.mjs";
+import { searchBooks, booksBlock, cite, tsul } from "../shared/books.mjs";
+import { currentUser } from "../shared/auth.mjs";
 
-const FAN_CODE = { mehnat: "mk", oila: "ok", fuqarolik: "fk", jinoyat: "jk", mamuriy: "mjtk", "jinoyat-protsessual": "jpk", "fuqarolik-protsessual": "fpk", konstitutsiyaviy: "kon" };
+const FAN_CODE = { mehnat: "mk", oila: "ok", fuqarolik: "fk", jinoyat: "jk", mamuriy: "mjtk", "jinoyat-protsessual": "jpk", "fuqarolik-protsessual": "fpk", konstitutsiyaviy: "kon", "jinoyat-ijroiya": "jik", "mamuriy-sud": "msk" };
 
 export const config = {
   path: "/api/kazus",
@@ -26,11 +29,7 @@ const MAX_PARTIAL = 90000;       // davom uchun qaytarilgan oldingi matn chegara
 const CONTINUE_PROMPT = "Javobingiz texnik vaqt chegarasi sababli uzildi. Aynan to‘xtagan joydan davom ettiring: oldingi matnni takrorlamang, sarlavha yoki bo‘limlarni qaytadan boshlamang, yarim qolgan so‘z yoki gapni to‘g‘ri ulang. Tuzilma, qoidalar va manba talablari avvalgidek. Agar javob tugagan bo‘lsa, faqat yakuniy bo‘lim(lar)ni yozing.";
 // Brauzerdagi shaxsiy sessiya server ulanishi degani emas. Ruxsatli retriever
 // ishga tushmaguncha kitob matni olinganini hech qayerda da'vo qilmaymiz.
-const TSUL_STATUS = Object.freeze({
-  connected: false,
-  status: "not_connected",
-  message: "TSUL kitob matni bu tahlilga avtomatik olinmagan; doimiy ulanish sozlanmagan.",
-});
+const TSUL_STATUS = Object.freeze(tsul.status());
 
 const SYSTEM = LEGAL_RULES + `
 Siz O'zbekiston Respublikasi huquqi bo'yicha universitet o'qituvchisi darajasidagi o'quv yordamchisiz.
@@ -125,6 +124,9 @@ export default async (req, context) => {
 
   const { apiKey, models, thinkingLevel } = geminiConfig();
   if (!apiKey) return jsonError("AI xizmati sozlanmagan. Serverda GEMINI_API_KEY kiritilishi kerak.", 503);
+  // Har bir davom so'rovi ham alohida AI chaqiruvi — umumiy limit va kunlik sarfga kiradi.
+  const limited = await guardAi(req, context, "kazus");
+  if (limited) return limited;
 
   const contents = [
     ...fewShot,
@@ -137,9 +139,22 @@ export default async (req, context) => {
 
   // RAG: Konstitutsiya, 10 ta kodeks va Isteʼmolchilar qonuni (+ MK bo'yicha Plenum 26-son) rasmiy matnidan mos parchalar.
   // Tanlangan fan kodeksi har doim qidiriladi; kazus matnidagi mavzu so'zlari boshqa kodekslarni ham qo'shadi.
-  const rag = retrieve(kazus + (review ? "\n" + studentAnswer : ""), { k: 12, budget: 18000, force: FAN_CODE[fan] });
+  const rag = retrieve(kazus + (review ? "\n" + studentAnswer : ""), { k: 12, budget: 18000, force: FAN_CODE[fan], eventDate });
+  // Kitob parchalari: faqat foydalanuvchi so'rasa, hisobiga kirgan bo'lsa va yetarli mos parcha topilsa.
+  let books = [], booksNote = "";
+  if (body?.useBooks === true) {
+    let cur = null;
+    try { cur = await currentUser(req); } catch {}
+    if (!cur) booksNote = "Kitob parchalari ishlatilmadi: hisobingizga kirmagansiz.";
+    else {
+      try { books = await searchBooks(kazus + (review ? "\n" + studentAnswer : ""), { user: cur.user, k: 4 }); } catch { books = []; }
+      booksNote = books.length
+        ? "Tahlilga berilgan kitob parchalari (foydalanuvchi yuklagan): " + books.map((b) => cite(b)).join("; ") + "."
+        : "Yuklangan kitob parchalaridan kazusga yetarli mos joy topilmadi — javob kitobga asoslanmagan.";
+    }
+  }
   const body0 = {
-    system_instruction: { parts: [{ text: SYSTEM + BOOK_SOURCE_RULES + rag.block + langNote(body.lang) }] },
+    system_instruction: { parts: [{ text: SYSTEM + BOOK_SOURCE_RULES + rag.block + booksBlock(books) + langNote(body.lang) }] },
     contents,
     // Davom so'rovida qidiruv o'chiriladi: tezroq ishlaydi, manbalar birinchi qismdan olib boriladi.
     ...(cont ? {} : { tools: [{ google_search: {} }] }),
@@ -155,7 +170,7 @@ export default async (req, context) => {
       canContinue: round < MAX_ROUNDS - 1,
       deadlineAt: startedAt + deadlineMs(),
       prefix: r.searchDropped ? SEARCH_OFF_NOTE : "",
-      onEnd: (sources, text) => sourceTail(dedupeSources([...priorSources, ...sources])) + citationReport(partial + text, rag.provided, { bands: rag.bands, eventDate }) + `\n\n**TSUL manbasi:** ${TSUL_STATUS.message}` + "\n\n*O‘quv tahlili. Topshirishdan oldin manbalar va topshiriq talablarini tekshiring.*",
+      onEnd: (sources, text) => sourceTail(dedupeSources([...priorSources, ...sources])) + citationReport(partial + text, rag.provided, { bands: rag.bands, bandsBy: rag.bandsBy, eventDate }) + (booksNote ? `\n\n**Kitob manbalari:** ${booksNote}` : "") + `\n\n**TSUL manbasi:** ${TSUL_STATUS.message}` + "\n\n*O‘quv tahlili. Topshirishdan oldin manbalar va topshiriq talablarini tekshiring.*",
     });
   } catch (e) {
     console.error("Kazus backend error:", e?.name || "unknown");

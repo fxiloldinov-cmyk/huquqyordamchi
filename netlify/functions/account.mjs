@@ -2,7 +2,7 @@
 // Faqat foydalanuvchi o'zi "Saqlash" tugmasini bosganda saqlanadi; hisob o'chirilganda butunlay o'chadi.
 import { randomUUID } from "node:crypto";
 import { guardJsonPost, jsonError, jsonResponse } from "../shared/common.mjs";
-import { StoreUnavailable, openStore } from "../shared/store.mjs";
+import { StoreUnavailable, StoreConflict, openStore } from "../shared/store.mjs";
 import { currentUser } from "../shared/auth.mjs";
 
 export const config = { path: "/api/account/items" };
@@ -32,13 +32,17 @@ export default async (req, ctx) => {
     if (!cur) return jsonError("Avval hisobingizga kiring.", 401);
     const store = await openStore("items");
     const key = "i_" + cur.user.id;
-    const items = (await store.get(key)) || [];
 
+    // Parallel saqlash/o'chirish: compare-and-swap bilan, yozuvlar bir-birini o'chirib yubormaydi.
     if (body.op === "delete") {
-      const next = items.filter((x) => x.id !== body.id);
-      if (next.length === items.length) return jsonError("Topilmadi.", 404);
-      await store.set(key, next);
-      return jsonResponse({ ok: true });
+      let found = false;
+      await store.update(key, (items) => {
+        const list = items || [];
+        const next = list.filter((x) => x.id !== body.id);
+        found = next.length !== list.length;
+        return found ? next : undefined;
+      });
+      return found ? jsonResponse({ ok: true }) : jsonError("Topilmadi.", 404);
     }
     if (body.op === "add") {
       const type = TYPES.has(body.type) ? body.type : "";
@@ -47,14 +51,15 @@ export default async (req, ctx) => {
       if (text.trim().length < 20) return jsonError("Saqlash uchun matn yetarli emas.", 400);
       if (text.length > MAX_TEXT) return jsonError("Matn juda uzun — saqlab bo‘lmadi.", 413);
       const item = { id: randomUUID(), type, title: clean(body.title, MAX_TITLE).trim() || "Nomsiz", text, createdAt: new Date().toISOString() };
-      const next = [item, ...items].slice(0, MAX_ITEMS);
-      await store.set(key, next);
-      return jsonResponse({ item: { ...item, text: undefined, preview: text.slice(0, 220) }, trimmed: items.length + 1 > MAX_ITEMS }, 201);
+      let trimmed = false;
+      await store.update(key, (items) => { const list = items || []; trimmed = list.length + 1 > MAX_ITEMS; return [item, ...list].slice(0, MAX_ITEMS); });
+      return jsonResponse({ item: { ...item, text: undefined, preview: text.slice(0, 220) }, trimmed }, 201);
     }
     return jsonError("Noma’lum amal.", 400);
   } catch (e) {
     if (e instanceof StoreUnavailable) return jsonError("Hisob xizmati hozircha ulanmagan. Keyinroq urinib ko‘ring.", 503);
-    console.error("account error", e?.message);
+    if (e instanceof StoreConflict) return jsonError(e.message, 409);
+    console.error("account error", e?.name);
     return jsonError("Saqlashda xatolik yuz berdi.", 500);
   }
 };

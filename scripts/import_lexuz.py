@@ -60,8 +60,8 @@ for e in soup.find_all(class_=['TEXT_HEADER_DEFAULT', 'CLAUSE_DEFAULT', 'ACT_TEX
     if c == 'TEXT_HEADER_DEFAULT':
         # Fuqarolik kodeksida sarlavhalar har xil yozilgan: "1-BOB.", "IV boʻlim.", "2-kichik boʻlim", "IKKINCHI QISM"
         if re.match(r'^(UMUMIY|MAXSUS|BIRINCHI|IKKINCHI|UCHINCHI) QISM', lt, re.I): ctx.update(bolim=None, bob=None, par=None)
-        elif re.match(r'^([IVXLC]+(?:\s+\d+)?\.?\s+|\d+-kichik\s+)bo[ʻ‘\'’]lim', lt, re.I) or re.match(r'^(?:\S+\s){0,2}?\S*NCHI\.?\s+BO[ʻ‘\'’]LIM', lt, re.I): ctx.update(bolim=t, bob=None, par=None)
-        elif re.match(r'^\d+(?:[\s-]+\d+)?\s*-\s*bob', lt, re.I) or re.match(r'^[IVXLC]+(?:\s*\d+)?\.?\s+bob\b', lt, re.I): ctx.update(bob=t, par=None)
+        elif re.match(r'^([IVXLC]+(?:\s+\d+)?\.?\s+|(?:\d+|[IVXLC]+)[\s-]kichik\s+)bo[ʻ‘\'’]lim', lt, re.I) or re.match(r'^(?:\S+\s){0,2}?\S*NCHI\.?\s+BO[ʻ‘\'’]LIM', lt, re.I): ctx.update(bolim=t, bob=None, par=None)
+        elif re.match(r'^\d+(?:[\s-]+\d+)?\s*-?\s*bob\b', lt, re.I) or re.match(r'^[IVXLC]+(?:\s*\d+)?\.?\s+bob\b', lt, re.I): ctx.update(bob=t, par=None)
         elif re.match(r'^\d+(-\d+)?-§', lt): ctx['par'] = t
         else: problems.append(t[:80])
         continue
@@ -131,6 +131,8 @@ assert all(x['parts'] for x in arts), 'matnsiz qism'
 url = f'https://lex.uz/docs/{a.lex_id}' if a.lex_id else 'https://lex.uz/search/all?searchtitle=' + __import__('urllib.parse').parse.quote(re.sub(r'.*“|”', '', title))
 out = {'doc': a.doc, 'kind': kind, 'name': title, 'lexId': a.lex_id, 'url': url,
        'asOf': asof, 'importedAt': datetime.date.today().isoformat(), 'publication': pub, 'script': script, 'repealed': repealed, 'articles': arts}
+# asOf = so'nggi o'zgartish rasmiy e'lon qilingan sana (nashr), kuchga kirish sanasi emas; importedAt — bazaga import sanasi.
+out['publishedAt'] = asof
 json.dump(out, open(a.out, 'w', encoding='utf8'), ensure_ascii=False, separators=(',', ':'))
 print(f'{title}: {len(arts)} {kind}, holat {asof}, kuchini yoʻqotgan: {len(repealed)}, muammolar: {len(problems)}')
 for p_ in problems[:int(__import__('os').environ.get('SHOW', 20))]: print('  ?', p_)

@@ -3,9 +3,11 @@
 // ?search=1 — Google qidiruvi (grounding) ham sinab ko'riladi (oylik bepul limitdan 1 ta so'rov sarflaydi).
 import { jsonResponse, geminiConfig, callGemini, diagnoseProvider, isRateLimited, clientIp } from '../shared/common.mjs';
 import { LAW_META } from '../shared/rag.mjs';
+import { aiLimits } from '../shared/limits.mjs';
+import { mailConfigured } from '../shared/mail.mjs';
 
 export const config = { path: '/api/status', method: ['GET'], rateLimit: { windowLimit: 6, windowSize: 60, aggregateBy: ['ip', 'domain'] } };
-const VERSION = '11.4.0';
+const VERSION = '11.6.0';
 
 async function probe(apiKey, model, withSearch) {
   const body = { contents: [{ role: 'user', parts: [{ text: 'Faqat "ok" deb javob bering.' }] }], generationConfig: { maxOutputTokens: 16 }, ...(withSearch ? { tools: [{ google_search: {} }] } : {}) };
@@ -23,7 +25,9 @@ export default async (req, ctx) => {
   if (isRateLimited('status:' + clientIp(req, ctx), 6, 30)) return jsonResponse({ ok: false, xabar: 'Juda ko‘p tekshiruv. Bir daqiqadan keyin qayta oching.' }, 429);
   const { apiKey, models } = geminiConfig();
   const raw = process.env.GEMINI_API_KEY || process.env.API_KEY || '';
-  const base = { versiya: VERSION, vaqt: new Date().toISOString(), modellar: models, baza: LAW_META };
+  // Sozlamalar holati (qiymatlar emas): email xizmati, AI favqulodda o'chirilgani va limitlar
+  const L = aiLimits();
+  const base = { versiya: VERSION, vaqt: new Date().toISOString(), modellar: models, baza: LAW_META, sozlamalar: { email: mailConfigured(), aiOchirilgan: L.disabled, aiKunlikLimit: L.daily, aiIpSoatlik: L.ipHourly, aiFoydalanuvchiKunlik: L.userDaily, tsul: 'ulanmagan' } };
   if (!apiKey) return jsonResponse({ ...base, ok: false, sabab: 'kalit_yoq', xabar: 'Serverda GEMINI_API_KEY topilmadi. Netlify → Site configuration → Environment variables’da qo‘shing, "Scopes" da Functions belgilanganini tekshiring va saytni qayta deploy qiling (o‘zgaruvchi faqat yangi deploydan keyin ishlaydi).' }, 200);
   const kalit = { mavjud: true, uzunlik: apiKey.length, tozalangan: apiKey !== raw, odatiyFormat: /^AIza[0-9A-Za-z_-]{35}$/.test(apiKey) };
   const sinovlar = [];

@@ -176,3 +176,26 @@ Asosiy qayta tekshirish navbati: hostingda AI/RSS sinovi, qolgan katalogning huq
   - Xotira taxminan 160 MB.
   - Keyinchalik indekslarni build paytida oldindan hisoblash mumkin.
 - **Testlar: 53/53.**
+
+## v11.5 — tekshiruv va o‘zgarishlar
+
+**Kod tekshiruvida tasdiqlangan muammolar va yechimi:**
+
+| Muammo | Yechim |
+|---|---|
+| `citationReport` faqat raqam mavjudligini ko‘rardi | Da’vo darajasidagi tekshiruv qo‘shildi: qism/band soni, parcha bilan so‘z mosligi, voqeadan keyingi o‘zgartish. |
+| Limit xotiradagi `Map` da edi (har bir funksiya nusxasida alohida) | Netlify Blobs’da compare-and-swap hisoblagich (`limits.mjs`); xotiradagi limit birinchi qatlam bo‘lib qoladi. |
+| `saveUser` butun obyektni qayta yozardi (parallel kirish va parol almashtirish bir-birini o‘chirishi mumkin edi) | `updateUser` (CAS), `createUser` (onlyIfNew). |
+| Saqlangan materiallar o‘qi-o‘zgartir-yoz bo‘yicha poyga holatiga ega edi | `store.update`. |
+| "Yuklash" `.txt` berardi | Haqiqiy `.docx` (`zip.mjs`, `docx.mjs`, `/api/docx/*`). |
+| Parolni tiklash yo‘q edi | `/api/auth/reset-*`, `/api/auth/verify-*`. |
+| TSUL holati statik obyekt edi | `books.mjs` retriever interfeysi; TSUL adapteri ulanmagan. |
+
+**Cheklovlar (ochiq):**
+- So‘z mosligi semantik to‘g‘rilikni kafolatlamaydi (masalan, "mumkin emas" ↔ "mumkin" farqini sezmaydi). Shuning uchun ✅ "parcha bilan asoslangan (so‘z mosligi)" deb nomlanadi, "tasdiqlangan" deb emas.
+- Netlify Blobs’ning shartli yozishi (`onlyIfMatch`/`onlyIfNew`) mock ombor bilan tekshirildi. Jonli Netlify’da tekshirilmagan.
+- Resend email jo‘natish soxta `fetch` bilan tekshirildi. Haqiqiy xat yuborilmagan.
+- JPK kirill matnida `kuchga kiradi` sanalari (`pendingEffective`) aniqlanmaydi.
+- Oflayn baholash: manba topish 0,983 (29/30). E29 — fanlararo kazusda FK 1135 topilmadi. AI javoblarining jonli sifati o‘lchanmagan.
+
+**Testlar: 68/68** (`tests/regression.test.mjs` 53 ta + `tests/v115.test.mjs` 15 ta). Build muvaffaqiyatli.

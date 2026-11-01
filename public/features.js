@@ -125,6 +125,7 @@ function renderAiBlock(data) {
         ${r.rasmiyMatn === 'berilgan' ? `<span class="chip ok">Rasmiy matn bilan tekshirildi</span>` : r.rasmiyMatn === 'kodeksda' ? `<span class="chip mid">Kodeksda bor — matnini tekshiring</span>` : r.rasmiyMatn === 'bekor' ? `<span class="chip low">Modda kuchini yo‘qotgan</span>` : r.rasmiyMatn === 'yoq' ? `<span class="chip low">Kodeksda bunday modda yo‘q</span>` : verified ? `<span class="chip ok">Hujjat va modda raqami katalogga mos</span>` : `<span class="chip mid">AI taklifi — norma tekshirilsin</span>`}
       </div>
       ${r.moddaNomi ? `<div class="article-title">${escapeHtml(r.moddaNomi)}</div>` : ""}
+      ${r.asos ? `<div class="article-basis">${r.asos === 'mos' ? '<span class="chip ok">Izoh modda matni bilan mos (so‘z mosligi)</span>' : '<span class="chip low">Izoh modda matni bilan kam mos — tekshiring</span>'}${r.tahrir ? ` <span class="chip">Tahrir: ${escapeHtml(r.tahrir)}</span>` : ''}</div>` : ""}
       ${r.nimaUchun ? `<p class="article-why">${escapeHtml(r.nimaUchun)}</p>` : ""}
       <a class="article-link" href="${escapeHtml(r.url)}" target="_blank" rel="noopener">${r.hujjatTasdiqlangan ? "Hujjatni lex.uz da ochish ↗" : "lex.uz da qidirish ↗"}</a>
     </li>`;
@@ -216,9 +217,38 @@ function currentMode() {
   return document.querySelector('input[name="kazus-mode"]:checked')?.value || "standart";
 }
 
+// ---- Word (.docx) namunasi: format kodda (serverda) saqlanadi, AI'ga faqat bo'limlar tartibi beriladi ----
+let docxTemplate = null; // { b64, name, outline, format }
+const readB64 = (file) => new Promise((ok, bad) => { const r = new FileReader(); r.onload = () => ok(String(r.result).split(",")[1] || ""); r.onerror = () => bad(new Error("Faylni o‘qib bo‘lmadi.")); r.readAsDataURL(file); });
+$("#docx-file")?.addEventListener("change", async (e) => {
+  const file = e.target.files?.[0], info = $("#docx-info");
+  docxTemplate = null; info.innerHTML = "";
+  if (!file) return;
+  if (!/\.docx$/i.test(file.name)) { info.innerHTML = `<p class="kazus-error">Faqat .docx fayl. Eski .doc bo‘lsa, Word’da .docx qilib saqlang.</p>`; return; }
+  if (file.size > 2 * 1024 * 1024) { info.innerHTML = `<p class="kazus-error">Fayl 2 MB dan katta. Rasmlarsiz namuna yuboring.</p>`; return; }
+  info.innerHTML = `<p class="smart-muted">Namuna tahlil qilinmoqda…</p>`;
+  try {
+    const b64 = await readB64(file);
+    const res = await fetch("/api/docx/inspect", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ file: b64, name: file.name }) });
+    const d = await res.json();
+    if (!res.ok) throw new Error(d.error || "Namunani o‘qib bo‘lmadi.");
+    docxTemplate = { b64, name: file.name, outline: d.outline, format: d.format };
+    const f = d.format, m = f.marginsMm || {};
+    info.innerHTML = `<p><b>Format:</b> ${escapeHtml(f.font)}${f.sizePt ? ", " + f.sizePt + " pt" : ""}, interval ${escapeHtml(String(f.lineSpacing))}, tekislash: ${escapeHtml(({both:"kenglik bo‘yicha",justify:"kenglik bo‘yicha",center:"markazda",left:"chapda",start:"chapda",right:"o‘ngda",end:"o‘ngda"})[f.align]||f.align)}${f.firstLineMm ? ", xatboshi " + f.firstLineMm + " mm" : ""}; chegaralar (mm): yuqori ${m.top ?? "?"}, pastki ${m.bottom ?? "?"}, chap ${m.left ?? "?"}, o‘ng ${m.right ?? "?"}.</p>`
+      + (d.outline.length ? `<p><b>Bo‘limlar:</b> ${d.outline.map((o) => escapeHtml(o.text)).join(" → ")}</p>` : `<p>Namunada sarlavhalar topilmadi — standart bo‘limlar ishlatiladi, format saqlanadi.</p>`)
+      + (d.warnings.length ? `<ul class="docx-warn">${d.warnings.map((w) => `<li>${escapeHtml(w)}</li>`).join("")}</ul>` : "");
+  } catch (err) { info.innerHTML = `<p class="kazus-error">${escapeHtml(err.message)}</p>`; }
+});
+function docxFormatText() {
+  if (!docxTemplate) return "";
+  const parts = docxTemplate.outline.map((o) => `${"  ".repeat(o.level - 1)}- ${o.text}`).join("\n");
+  return `Javobni Word namunasidagi bo‘limlar tartibida yozing; har bir bo‘lim sarlavhasini markdown sarlavha (#, ##) bilan bering. Namunadagi shaxslar, faktlar, raqamlar va huquqiy xulosalarni ko‘chirmang — faqat tuzilmadan foydalaning.\nBo‘limlar:\n${parts || "- (namunada sarlavha yo‘q — standart tuzilma)"}`;
+}
+
 function syncModeUi() {
   const mode = currentMode();
   formatArea.hidden = mode !== "ozim";
+  if ($("#docx-box")) $("#docx-box").hidden = mode !== "docx";
   namunaSelect.hidden = mode !== "namuna" || !namunalar.length;
   if (mode === "namuna") filterNamunaByFan();
 }
@@ -279,6 +309,7 @@ kazusForm?.addEventListener("submit", async (e) => {
   if (kazus.length < 40) return showError("Kazus shartini to‘liqroq yozing.");
   if ($('#kazus-task').value==='review' && $('#kazus-student-answer').value.trim().length<40) return showError('Javobingizni to‘liqroq kiriting.');
   if (mode === "ozim" && format.length < 20) return showError("O'zingiz xohlagan javob shaklini kiriting.");
+  if (mode === "docx" && !docxTemplate) return showError("Word namunasini (.docx) tanlang yoki boshqa javob shaklini belgilang.");
 
   kazusBusy = true;
   kazusController = new AbortController();
@@ -293,9 +324,9 @@ kazusForm?.addEventListener("submit", async (e) => {
   // Server har ~50 soniyada (Netlify chegarasi) javobni xavfsiz to'xtatib, yashirin belgi yuboradi:
   // HK:CONT — davomi bor (manbalar bilan), HK:END — tugadi. Davomi avtomatik so'raladi va matn ulanadi.
   const base = {
-    kazus, mode, task: $("#kazus-task").value, studentAnswer: $("#kazus-student-answer").value, eventDate: $("#kazus-date").value, fan: $("#kazus-fan").value,
+    kazus, mode: mode === "docx" ? "ozim" : mode, useBooks: $("#kazus-books")?.checked || undefined, task: $("#kazus-task").value, studentAnswer: $("#kazus-student-answer").value, eventDate: $("#kazus-date").value, fan: $("#kazus-fan").value,
     namunaId: mode === "namuna" ? namunaSelect.value : undefined,
-    format: mode === "ozim" ? format : undefined,
+    format: mode === "ozim" ? format : mode === "docx" ? docxFormatText() : undefined,
   };
   const MAX_ROUNDS = 4;
   let sources = [];
@@ -364,4 +395,14 @@ $('#smart-stop').addEventListener('click',()=>smartController?.abort());
 $('#kazus-stop').addEventListener('click',()=>kazusController?.abort());
 $('#kazus-task').addEventListener('change',()=>$('#kazus-review-field').hidden=$('#kazus-task').value!=='review');
 $('#kazus-examples').addEventListener('click',e=>{const b=e.target.closest('[data-kazus-example]');if(!b)return;if(b.dataset.kazusFan){$('#kazus-fan').value=b.dataset.kazusFan;autoPickMode();}kazusText.value=b.dataset.kazusExample;kazusText.dispatchEvent(new Event('input'));});
-$('#kazus-download').addEventListener('click',()=>{if(!kazusAnswer)return;const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([kazusAnswer],{type:'text/plain;charset=utf-8'}));a.download='kazus-tahlili.txt';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);});
+// Haqiqiy .docx: namuna tanlangan bo'lsa uning formatida, aks holda standart (TNR 14, 1,5 interval) formatda.
+$('#kazus-download').addEventListener('click',async()=>{
+ if(!kazusAnswer)return;const btn=$('#kazus-download');btn.disabled=true;
+ try{const tpl=currentMode()==='docx'&&docxTemplate?{template:docxTemplate.b64,templateName:docxTemplate.name}:{};
+  const res=await fetch('/api/docx/build',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:kazusAnswer,title:(kazusText.value.trim().slice(0,80)||'Kazus yechimi'),...tpl})});
+  if(!res.ok){let m='Word faylini yaratib bo‘lmadi.';try{m=(await res.json()).error||m}catch{}throw new Error(m);}
+  const blob=await res.blob();const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='kazus-yechim.docx';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),4000);
+ }catch(err){kazusOut.insertAdjacentHTML('beforeend',`<p class="kazus-error">⚠️ ${escapeHtml(err.message)} Matnni “Nusxa olish” orqali saqlashingiz mumkin.</p>`);}
+ finally{btn.disabled=false;}
+});
+$('#kazus-download-txt')?.addEventListener('click',()=>{if(!kazusAnswer)return;const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([kazusAnswer],{type:'text/plain;charset=utf-8'}));a.download='kazus-tahlili.txt';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);});

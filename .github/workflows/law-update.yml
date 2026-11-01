@@ -1,0 +1,108 @@
+# Har hafta lex.uz'dagi Mehnat, Oila va Fuqarolik kodekslarining tahrir sanasini tekshiradi.
+#  - Yangi tahrir bo'lsa va LEX_WORD_URL_TEMPLATE (repo → Settings → Secrets and variables → Actions → Variables)
+#    berilgan bo'lsa: Word eksportini yuklaydi, import qiladi, build + testlarni ishga tushiradi va PR ochadi.
+#  - Shablon berilmagan bo'lsa: "qo'lda yuklash kerak" degan issue ochadi.
+#  - TELEGRAM_BOT_TOKEN va TELEGRAM_CHAT_ID (Secrets) berilsa, natija Telegram'ga ham yuboriladi.
+# Talab: Settings → Actions → General → Workflow permissions: "Read and write permissions"
+#        va "Allow GitHub Actions to create and approve pull requests" belgilangan bo'lsin.
+# Bu workflow GEMINI_API_KEY ga muhtoj emas va uni ishlatmaydi.
+name: Qonunlar bazasini yangilash
+
+on:
+  schedule:
+    - cron: '37 3 * * 1'   # har dushanba 08:37 (Toshkent, UTC+5)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: law-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Kutubxonalar
+        run: pip install beautifulsoup4
+
+      - name: lex.uz bilan solishtirish va import
+        id: upd
+        env:
+          LEX_WORD_URL_TEMPLATE: ${{ vars.LEX_WORD_URL_TEMPLATE }}
+        run: node scripts/check-law-updates.mjs
+
+      - name: Build va testlar
+        id: tests
+        if: steps.upd.outputs.changed == 'true'
+        continue-on-error: true
+        run: |
+          npm install --no-audit --no-fund
+          npm run build
+          npm test 2>&1 | tee test-output.txt
+          test "${PIPESTATUS[0]}" -eq 0
+
+      - name: Test natijasini hisobotga qo'shish
+        if: steps.upd.outputs.changed == 'true'
+        run: |
+          if [ "${{ steps.tests.outcome }}" = "success" ]; then
+            printf '\n✅ Barcha testlar o‘tdi (yo‘riqnomalardagi MK/OK/FK havolalari yangi matnda bor).\n' >> law-update-report.md
+          else
+            printf '\n⚠️ **Testlar o‘tmadi** — yo‘riqnomalardagi havolalarni yangi tahrir bilan solishtiring:\n\n```\n' >> law-update-report.md
+            grep -E '^not ok|AssertionError|rasmiy matnda' test-output.txt | head -40 >> law-update-report.md || true
+            printf '```\n' >> law-update-report.md
+          fi
+
+      - name: Pull request ochish
+        if: steps.upd.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: law-update
+          delete-branch: true
+          commit-message: "Qonunlar bazasi yangilandi: ${{ steps.upd.outputs.summary }}"
+          title: "Qonunlar bazasi yangilandi: ${{ steps.upd.outputs.summary }}"
+          body-path: law-update-report.md
+          add-paths: |
+            data/laws/*.json
+            data/laws/archive/**
+            public/legal-data.js
+            public/vaziyat/**
+            public/sitemap.xml
+
+      - name: Qo'lda yuklash kerakligi haqida issue
+        if: steps.upd.outputs.pending == 'true' || steps.upd.outputs.failed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="Qonunlar bazasi: e'tibor kerak (${{ steps.upd.outputs.summary }})"
+          if gh issue list --state open --search "in:title \"Qonunlar bazasi: e'tibor kerak\"" --json number --jq '.[0].number' | grep -q .; then
+            n=$(gh issue list --state open --search "in:title \"Qonunlar bazasi: e'tibor kerak\"" --json number --jq '.[0].number')
+            gh issue comment "$n" --body-file law-update-report.md
+          else
+            gh issue create --title "$title" --body-file law-update-report.md
+          fi
+
+      - name: Telegram xabari
+        if: steps.upd.outputs.changed == 'true' || steps.upd.outputs.pending == 'true' || steps.upd.outputs.failed == 'true'
+        env:
+          TG_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TG_CHAT: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          if [ -z "$TG_TOKEN" ] || [ -z "$TG_CHAT" ]; then echo "Telegram sozlanmagan — o'tkazib yuborildi"; exit 0; fi
+          text="HuquqYordamchi: qonunlar bazasi tekshiruvi — ${{ steps.upd.outputs.summary }}. Batafsil: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          curl -sS -o /dev/null -w "%{http_code}\n" "https://api.telegram.org/bot${TG_TOKEN}/sendMessage" \
+            --data-urlencode "chat_id=${TG_CHAT}" --data-urlencode "text=${text}"

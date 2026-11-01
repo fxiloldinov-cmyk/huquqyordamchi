@@ -1,4 +1,4 @@
-# HuquqYordamchi v11.4
+# HuquqYordamchi v11.6
 
 O‘zbekiston qonunchiligi bo‘yicha mustaqil axborot loyihasi. Ko‘k-oq portal dizayni, huquqiy mavzudagi rasm, aqlli qidiruv, ariza generatori, kodekslarning sodda izohi va kazus ustaxonasi.
 
@@ -222,3 +222,65 @@ Bosh sahifada guruh filtri va dastlab 12 ta kartochka ("Barcha 32 ta vaziyatni k
   - qaytarish xarajatlari sotuvchi zimmasida;
   - pul kechiktirilsa, har kun uchun 1 % penya;
   - sifatli tovarni 10 kunda almashtirish shartlari.
+
+## v11.6: yangi manbalar
+
+- **Jinoyat-ijroiya kodeksi** (`data/laws/jik.json`, lex.uz -163629, 2026-10-15 tahriri, 1–197-moddalar, 19 ta kuchini yo‘qotgan modda belgilangan) — RAG kodi `JIK`: muddatidan oldin shartli ozod qilish, uchrashuvlar, posilkalar, mahkumlarning huquqlari, intizomiy jazo va h.k.
+- **Ma’muriy sud ishlarini yuritish to‘g‘risidagi kodeks** (`msk.json`, -3527353, 2026-08-14 tahriri, 1–288) — RAG kodi `MSK`: davlat organi qarori/harakati ustidan shikoyat, muddatlar, sudlovlilik, dalillar, apellyatsiya. Ma’muriy sud so‘ralganda FPK aralashmaydi.
+- **Oliy sud Plenumining 2011-yil 20-iyuldagi 5-son qarori** (meros ishlari, `plenum05.json`, -2414320) — faqat meros/vasiyat mavzusida yoki "5-son qarori N-bandi" aniq so‘ralganda FK moddalari bilan birga beriladi. Avtomatik yangilanmaydi (qo‘lda).
+- **JPK** endi lotin yozuvidagi rasmiy matndan (moddalar va kuchini yo‘qotganlar ro‘yxati kirill nusxa bilan bir xil).
+- Plenumlar umumiy mexanizmga o‘tkazildi (`PLENUMS`, `bandRefsAll`, `retrieve().bandsBy`); manba tekshiruvi har bir Plenum bo‘yicha alohida: mavjud bo‘lmagan band ❌.
+- Katalogda JIK va MSK kartalari, kazus ustaxonasida 2 ta yangi soha; `manifest.json` va haftalik yangilash ro‘yxati yangilandi.
+- Testlar 72/72; oflayn baholash 33 ta holat, manba topish 0.985 (E29 da FK 1135 hali topilmaydi).
+
+## v11.5: manba ishonchliligi, Word namunasi, hisobni tiklash, limitlar
+
+Sozlash: `SOZLASH_UZ.md`. TSUL: `TSUL_INTEGRATION_UZ.md`.
+
+- **Manba tekshiruvi endi da’vo darajasida** (`rag.mjs` → `claimChecks`).
+  - Javobdagi har bir moddali gap uchun modda, qism va band mavjudligi, lex.uz havolasi va tahrir sanasi ko‘rsatiladi.
+  - Gap AI’ga berilgan parcha bilan so‘z bo‘yicha qanchalik mosligi tekshiriladi. Holatlar:
+    - ✅ parcha bilan asoslangan;
+    - ⚠️ parcha berilgan, lekin mosligi past;
+    - ℹ️ modda bor, parcha berilmagan;
+    - ❌ qism yoki modda yo‘q;
+    - 🚫 modda kuchini yo‘qotgan;
+    - ❔ manba ko‘rsatilmagan huquqiy da’vo.
+  - "Parcha berilgan" endi ✅ emas, 📄 bilan belgilanadi.
+  - Hisobotda "huquqiy kafolat emas" deb yoziladi.
+- **Voqea sanasi** bazadagi tahrirdan oldin bo‘lsa:
+  - AI’ga hozirgi matnni avtomatik qo‘llamaslik buyuriladi;
+  - voqeadan keyin o‘zgargan moddalar ⚠️ bilan belgilanadi;
+  - hisobotda ⏳ ko‘rsatiladi.
+- **Aqlli qidiruv** natijasida izohning modda matni bilan mosligi va tahrir sanasi chiqadi.
+- **Word (.docx):**
+  - Kazus ustaxonasida "Word namunasi" tanlanadi. Shrift, o‘lcham, interval, tekislash, xatboshi, sahifa chegaralari, sarlavha uslublari va raqamlash namunadan **kod orqali** olinadi.
+  - AI’ga faqat bo‘limlar tartibi beriladi.
+  - "Word (.docx)" tugmasi haqiqiy OOXML fayl yaratadi; namuna tanlanmasa — standart format (TNR 14, 1,5 interval, 30/15/20/20 mm).
+  - Namuna matni, muallifi va matnli kolontituli ko‘chirilmaydi. Jadval, rasm, footnote va bir nechta bo‘lim haqida ogohlantiriladi.
+  - Cheklovlar: 2 MB; .doc va .docm rad etiladi; zip-bomba va xavfli nomlardan himoya bor; fayl xotirada ishlanadi, saqlanmaydi.
+- **Hisob:**
+  - emailni tasdiqlash va "Parolni unutdim";
+  - tokenlar bir martalik, muddatli (1 soat / 24 soat), serverda xeshlangan;
+  - parol tiklanganda barcha sessiyalar bekor qilinadi;
+  - javob email bor-yo‘qligini oshkor qilmaydi;
+  - email xizmati sozlanmagan bo‘lsa, ochiq aytiladi.
+  - Ro‘yxatdan o‘tish va saqlash atomar (parallel so‘rovlarda ustiga yozilmaydi).
+- **Limit va AI sarfi:**
+  - umumiy atomar limit: IP — soatlik, hisob — kunlik, sayt — kunlik;
+  - `HK_AI_DISABLED=1` bilan favqulodda o‘chirish;
+  - kazus davomi ham hisoblanadi;
+  - logdagi kalitga o‘xshash qatorlar `[maxfiy]` bilan almashtiriladi.
+- **Kitob parchalari:**
+  - retriever interfeysi (`books.mjs`);
+  - foydalanuvchi o‘zi yuklagan parchalar (sahifa, muallif, yil, kelib chiqishi bilan) faqat yetarli mos kelganda ishlatiladi;
+  - TSUL adapteri — "ulanmagan".
+- **Baza yangilash:**
+  - import vaqtinchalik papkada tekshiriladi: bo‘sh matn, takroriy va yo‘qolgan modda, keskin kamayish;
+  - oldingi tahrir `data/laws/archive/` ga saqlanadi, `--rollback` bilan qaytariladi;
+  - `data/laws/manifest.json` da e’lon sanasi, import sanasi va sha256;
+  - hali kuchga kirmagan o‘zgartishlar hisobotda ko‘rsatiladi;
+  - Plenum avtomatik kuzatilmasligi ochiq aytiladi.
+- **Baholash:**
+  - `eval/cases.json` — 12 sohadan 30 ta kazus (oddiy, murakkab, fanlararo, eski sana, ma’lumot yetishmaydigan). Kutilgan manbalar, zarur savollar va taqiqlangan xulosalar yurist tasdig‘ini kutmoqda;
+  - `npm run eval` — oflayn, `npm run eval:live` — jonli API.

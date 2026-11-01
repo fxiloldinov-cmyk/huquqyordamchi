@@ -1,0 +1,536 @@
+{
+ "version": 1,
+ "note": "Bu to‘plam AI javobi uchun 'ideal javob' emas. Kutilgan manbalar loyiha muallifi tomonidan rasmiy matn bo‘yicha tanlangan; yurist tekshiruvi kutilmoqda (lawyerReview).",
+ "cases": [
+  {
+   "id": "E01",
+   "fan": "mehnat",
+   "kind": "oddiy",
+   "eventDate": null,
+   "question": "Kasal bo‘lib yotganimda ish beruvchi meni ishdan bo‘shatdi. Bu qonuniymi?",
+   "expectSources": [
+    "MK 163"
+   ],
+   "mustAsk": [
+    "voqea sanasi va kasallik varaqasi bor-yo‘qligi"
+   ],
+   "mustNot": [
+    "kasallik davrida bo‘shatish har doim qonuniy"
+   ],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati."
+  },
+  {
+   "id": "E02",
+   "fan": "mehnat",
+   "kind": "murakkab",
+   "eventDate": "2026-10-12",
+   "question": "Xodim shtat qisqarishi sababli bo‘shatildi, oldindan yozma ogohlantirilmagan, boshqa ish taklif qilinmagan, oxirgi ish haqi va foydalanilmagan ta’til kompensatsiyasi to‘lanmagan. Qayerga va qanday muddatda murojaat qiladi?",
+   "expectSources": [
+    "MK 161",
+    "MK 165",
+    "MK 172",
+    "MK 560"
+   ],
+   "mustAsk": [],
+   "mustNot": [
+    "muddat cheklanmagan"
+   ],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati."
+  },
+  {
+   "id": "E03",
+   "fan": "mehnat",
+   "kind": "oddiy",
+   "eventDate": null,
+   "question": "Ish beruvchi ish haqini ikki oydan beri kechiktiryapti, kechiktirgani uchun kompensatsiya olsam bo‘ladimi?",
+   "expectSources": [
+    "MK 333"
+   ],
+   "mustAsk": [],
+   "mustNot": [],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati."
+  },
+  {
+   "id": "E04",
+   "fan": "mehnat",
+   "kind": "eski_sana",
+   "eventDate": "2022-09-01",
+   "question": "2022-yil sentabrda ish beruvchi meni ogohlantirmasdan ishdan bo‘shatgan. Qanday himoyalanaman?",
+   "expectSources": [
+    "MK 161"
+   ],
+   "mustAsk": [
+    "voqea paytidagi Mehnat kodeksi tahriri"
+   ],
+   "mustNot": [
+    "2023-yilgi yangi Mehnat kodeksi bu voqeaga to‘g‘ridan-to‘g‘ri qo‘llanadi"
+   ],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati."
+  },
+  {
+   "id": "E05",
+   "fan": "oila",
+   "kind": "oddiy",
+   "eventDate": null,
+   "question": "Bitta bola uchun aliment miqdori qancha bo‘ladi?",
+   "expectSources": [
+    "OK 99"
+   ],
+   "mustAsk": [],
+   "mustNot": [
+    "aliment miqdori har doim qat’iy summa"
+   ],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati."
+  },
+  {
+   "id": "E06",
+   "fan": "oila",
+   "kind": "oddiy",
+   "eventDate": null,
+   "question": "Erim bilan ajrashdik, nikohda olingan kvartira uning nomida. Qanday bo‘linadi?",
+   "expectSources": [
+    "OK 23",
+    "OK 27"
+   ],
+   "mustAsk": [
+    "kvartira qachon va qaysi mablag‘ hisobiga olingani"
+   ],
+   "mustNot": [
+    "mulk faqat nomiga rasmiylashtirilgan shaxsga qoladi"
+   ],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati."
+  },
+  {
+   "id": "E07",
+   "fan": "oila",
+   "kind": "oddiy",
+   "eventDate": null,
+   "question": "Ajrashgandan keyin bola kim bilan qoladi, sud nimaga qaraydi?",
+   "expectSources": [
+    "OK 75",
+    "OK 76"
+   ],
+   "mustAsk": [],
+   "mustNot": [
+    "bola doim onasi bilan qoladi"
+   ],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati."
+  },
+  {
+   "id": "E08",
+   "fan": "oila",
+   "kind": "oddiy",
+   "eventDate": null,
+   "question": "Bolaning otasi otalikni tan olmayapti, otalikni sud orqali qanday belgilatsam bo‘ladi?",
+   "expectSources": [
+    "OK 62"
+   ],
+   "mustAsk": [],
+   "mustNot": [],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati."
+  },
+  {
+   "id": "E09",
+   "fan": "fuqarolik",
+   "kind": "eski_sana",
+   "eventDate": "2026-01-10",
+   "question": "Qo‘shnimga qarz berdim, tilxat bor, qaytarish muddati ko‘rsatilmagan, qaytarmayapti.",
+   "expectSources": [
+    "FK 735",
+    "FK 733"
+   ],
+   "mustAsk": [],
+   "mustNot": [
+    "tilxatsiz qarz haqiqiy emas"
+   ],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati."
+  },
+  {
+   "id": "E10",
+   "fan": "fuqarolik",
+   "kind": "oddiy",
+   "eventDate": null,
+   "question": "Otam vafot etdi, meros qanday taqsimlanadi, birinchi navbat vorislar kimlar?",
+   "expectSources": [
+    "FK 1135"
+   ],
+   "mustAsk": [
+    "vasiyatnoma bor-yo‘qligi"
+   ],
+   "mustNot": [],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati."
+  },
+  {
+   "id": "E11",
+   "fan": "fuqarolik",
+   "kind": "oddiy",
+   "eventDate": null,
+   "question": "Fuqarolik ishlari bo‘yicha umumiy da’vo muddati qancha?",
+   "expectSources": [
+    "FK 150"
+   ],
+   "mustAsk": [],
+   "mustNot": [],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati."
+  },
+  {
+   "id": "E12",
+   "fan": "fuqarolik",
+   "kind": "oddiy",
+   "eventDate": null,
+   "question": "Kvartira sotib olmoqchiman, oldi-sotdi shartnomasini notariussiz tuzsa bo‘ladimi?",
+   "expectSources": [
+    "FK 488",
+    "FK 480"
+   ],
+   "mustAsk": [],
+   "mustNot": [
+    "notarial tasdiq shart emas"
+   ],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati."
+  },
+  {
+   "id": "E13",
+   "fan": "isteʼmol",
+   "kind": "oddiy",
+   "eventDate": null,
+   "question": "Do‘kondan olgan telefonim 3 kunda buzildi, sotuvchi almashtirib bermayapti.",
+   "expectSources": [
+    "IST 13",
+    "IST 14"
+   ],
+   "mustAsk": [],
+   "mustNot": [],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati."
+  },
+  {
+   "id": "E14",
+   "fan": "isteʼmol",
+   "kind": "oddiy",
+   "eventDate": null,
+   "question": "Onlayn do‘kondan buyurtma qildim, tovar tavsifga mos kelmadi, pulini qaytarmayapti.",
+   "expectSources": [
+    "IST 28-1"
+   ],
+   "mustAsk": [],
+   "mustNot": [],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati."
+  },
+  {
+   "id": "E15",
+   "fan": "jinoyat",
+   "kind": "oddiy",
+   "eventDate": null,
+   "question": "Telefonimni o‘g‘irlab ketishdi, qanday jazo beriladi?",
+   "expectSources": [
+    "JK 169"
+   ],
+   "mustAsk": [
+    "o‘g‘irlangan narsaning qiymati"
+   ],
+   "mustNot": [],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati."
+  },
+  {
+   "id": "E16",
+   "fan": "jinoyat",
+   "kind": "oddiy",
+   "eventDate": null,
+   "question": "Firibgarlar karta orqali aldab pulimni olishdi, bu qaysi jinoyat?",
+   "expectSources": [
+    "JK 168"
+   ],
+   "mustAsk": [],
+   "mustNot": [],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati."
+  },
+  {
+   "id": "E17",
+   "fan": "jinoyat-protsessual",
+   "kind": "oddiy",
+   "eventDate": null,
+   "question": "Meni militsiya ushlab oldi, necha soat ushlab turishlari mumkin va qanday asosda?",
+   "expectSources": [
+    "JPK 221",
+    "JPK 226"
+   ],
+   "mustAsk": [],
+   "mustNot": [],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati."
+  },
+  {
+   "id": "E18",
+   "fan": "jinoyat-protsessual",
+   "kind": "oddiy",
+   "eventDate": null,
+   "question": "Gumon qilinuvchi sifatida advokat chaqirishga haqqim bormi?",
+   "expectSources": [
+    "JPK 49",
+    "JPK 48"
+   ],
+   "mustAsk": [],
+   "mustNot": [],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati."
+  },
+  {
+   "id": "E19",
+   "fan": "mamuriy",
+   "kind": "oddiy",
+   "eventDate": null,
+   "question": "Svetoforning qizil chirog‘ida o‘tib ketdim, kamera jarima yozdi. Qanday shikoyat qilaman?",
+   "expectSources": [
+    "MJtK 128-4",
+    "MJtK 315",
+    "MJtK 316"
+   ],
+   "mustAsk": [],
+   "mustNot": [
+    "shikoyat muddati cheklanmagan"
+   ],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati."
+  },
+  {
+   "id": "E20",
+   "fan": "mamuriy",
+   "kind": "oddiy",
+   "eventDate": null,
+   "question": "Mast holda mashina haydagan haydovchiga qanday javobgarlik bor?",
+   "expectSources": [
+    "MJtK 131"
+   ],
+   "mustAsk": [],
+   "mustNot": [],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati."
+  },
+  {
+   "id": "E21",
+   "fan": "fuqarolik-protsessual",
+   "kind": "oddiy",
+   "eventDate": null,
+   "question": "Qarzni undirish uchun sudga da’vo arizasi qanday yoziladi, unga nimalar ilova qilinadi?",
+   "expectSources": [
+    "FPK 188",
+    "FPK 189",
+    "FPK 191"
+   ],
+   "mustAsk": [],
+   "mustNot": [],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati."
+  },
+  {
+   "id": "E22",
+   "fan": "fuqarolik-protsessual",
+   "kind": "oddiy",
+   "eventDate": null,
+   "question": "Javobgar boshqa viloyatda yashaydi, da’voni qaysi sudga beraman? Sudlovga tegishlilik qanday?",
+   "expectSources": [
+    "FPK 33"
+   ],
+   "mustAsk": [],
+   "mustNot": [],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati."
+  },
+  {
+   "id": "E23",
+   "fan": "soliq",
+   "kind": "oddiy",
+   "eventDate": null,
+   "question": "Kvartira uchun mol-mulk solig‘i qancha to‘lanadi?",
+   "expectSources": [
+    "SK 410",
+    "SK 415"
+   ],
+   "mustAsk": [
+    "kvartira joylashgan hudud va kadastr qiymati"
+   ],
+   "mustNot": [],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati."
+  },
+  {
+   "id": "E24",
+   "fan": "soliq",
+   "kind": "oddiy",
+   "eventDate": null,
+   "question": "Oylikdan daromad solig‘i necha foiz ushlanadi?",
+   "expectSources": [
+    "SK 364",
+    "SK 381"
+   ],
+   "mustAsk": [],
+   "mustNot": [],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati."
+  },
+  {
+   "id": "E25",
+   "fan": "uy-joy",
+   "kind": "oddiy",
+   "eventDate": null,
+   "question": "Kommunal to‘lovlarni to‘lamasa uydan chiqarib yuborishadimi?",
+   "expectSources": [
+    "UJK 133"
+   ],
+   "mustAsk": [],
+   "mustNot": [
+    "kommunal qarz uchun darhol ko‘chiriladi"
+   ],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati."
+  },
+  {
+   "id": "E26",
+   "fan": "iqtisodiy-protsessual",
+   "kind": "oddiy",
+   "eventDate": null,
+   "question": "MChJ kontragentdan qarzni iqtisodiy sudga da’vo arizasi bilan undirmoqchi.",
+   "expectSources": [
+    "IPK 149",
+    "IPK 25"
+   ],
+   "mustAsk": [],
+   "mustNot": [],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati."
+  },
+  {
+   "id": "E27",
+   "fan": "konstitutsiyaviy",
+   "kind": "oddiy",
+   "eventDate": null,
+   "question": "Militsiya meni sudsiz 3 kun ushlab turdi, bu Konstitutsiyaga zidmi?",
+   "expectSources": [
+    "Konstitutsiya 27"
+   ],
+   "mustAsk": [],
+   "mustNot": [],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati."
+  },
+  {
+   "id": "E28",
+   "fan": "oila",
+   "kind": "fanlararo",
+   "eventDate": null,
+   "question": "Ajrashgandan keyin sobiq erim kvartiradan ro‘yxatdan chiqarishni talab qilyapti, umumiy mulk masalasi ham hal bo‘lmagan.",
+   "expectSources": [
+    "OK 27",
+    "UJK 54"
+   ],
+   "mustAsk": [
+    "kvartira kimning mulki va qachon olingani"
+   ],
+   "mustNot": [],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati."
+  },
+  {
+   "id": "E29",
+   "fan": "mehnat",
+   "kind": "fanlararo",
+   "eventDate": null,
+   "question": "Ish beruvchi meni shtat qisqarishi sababli bo‘shatdi va oxirgi oylikni bermadi. Bundan tashqari, otam vafot etib, uyni meros qilib qoldirdi, merosxo‘rlar kimlar?",
+   "expectSources": [
+    "MK 161",
+    "FK 1135"
+   ],
+   "mustAsk": [],
+   "mustNot": [],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati."
+  },
+  {
+   "id": "E30",
+   "fan": "boshqa",
+   "kind": "malumot_yetishmaydi",
+   "eventDate": null,
+   "question": "Menda muammo bor, nima qilishim kerak?",
+   "expectSources": [],
+   "mustAsk": [
+    "qaysi soha, nima sodir bo‘lgan, qachon"
+   ],
+   "mustNot": [
+    "aniq huquqiy xulosa"
+   ],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati."
+  },
+  {
+   "id": "E31",
+   "fan": "jinoyat-ijroiya",
+   "kind": "oddiy",
+   "eventDate": null,
+   "question": "Akam koloniyada jazo o‘tayapti, jazoning yarmidan ko‘pini o‘tadi. Muddatidan oldin shartli ozod qilinishi uchun nima kerak?",
+   "expectSources": [
+    "JIK 163"
+   ],
+   "mustAsk": [
+    "qaysi modda bilan hukm qilingan, jinoyat og‘irligi toifasi"
+   ],
+   "mustNot": [
+    "albatta ozod qilinadi"
+   ],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati."
+  },
+  {
+   "id": "E32",
+   "fan": "mamuriy-sud",
+   "kind": "oddiy",
+   "eventDate": null,
+   "question": "Hokimlik yer ajratish bo‘yicha arizamni rad etdi. Ma’muriy sudga qanday va qancha muddatda shikoyat qilaman?",
+   "expectSources": [
+    "MSK 184",
+    "MSK 185"
+   ],
+   "mustAsk": [
+    "rad etish qarori qachon olingan, yuqori organga shikoyat qilinganmi"
+   ],
+   "mustNot": [
+    "muddat cheklanmagan"
+   ],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati."
+  },
+  {
+   "id": "E33",
+   "fan": "fuqarolik",
+   "kind": "murakkab",
+   "eventDate": null,
+   "question": "Otam vafot etdi, vasiyat qoldirmagan. Uyni onam o‘z nomiga o‘tkazmoqchi, men va singlim ham merosxo‘rmiz. Meros qanday bo‘linadi?",
+   "expectSources": [
+    "FK 1135"
+   ],
+   "mustAsk": [
+    "uy nikoh davrida olinganmi (er-xotin umumiy mulki), merosni qabul qilish muddati o‘tganmi"
+   ],
+   "mustNot": [
+    "meros faqat onaga o‘tadi"
+   ],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati."
+  }
+ ]
+}

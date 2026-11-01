@@ -34,37 +34,72 @@ export async function verifyPassword(password, stored) {
 }
 
 export const userKey = (email) => "u_" + sha256(normEmail(email));
-export const publicUser = (u) => ({ id: u.id, email: u.email, name: u.name || "", createdAt: u.createdAt });
+export const publicUser = (u) => ({ id: u.id, email: u.email, name: u.name || "", createdAt: u.createdAt, emailVerified: Boolean(u.emailVerified) });
 
 export async function findUser(email) { return (await openStore("users")).get(userKey(email)); }
 export async function saveUser(u) { await (await openStore("users")).set(userKey(u.email), u); }
+// Yangi hisob: kalit band bo'lsa (parallel ro'yxatdan o'tish) false qaytaradi — ustiga yozilmaydi.
+export async function createUser(u) { return (await openStore("users")).setIf(userKey(u.email), u, null); }
+// Foydalanuvchini atomar o'zgartirish (parallel kirish/parol almashtirishda yozuvlar bir-birini o'chirmaydi).
+// fn(user) obyektni o'zgartiradi; false qaytarsa yozilmaydi. Natija — yangilangan user yoki null.
+export async function updateUser(email, fn) {
+  const r = await (await openStore("users")).update(userKey(email), (u) => {
+    if (!u) return undefined;
+    return fn(u) === false ? undefined : u;
+  });
+  return r.written ? r.value : r.value || null;
+}
 
 export function isLocked(u, now = Date.now()) { return u.lockUntil && u.lockUntil > now; }
 export async function registerFailure(u) {
-  u.fails = (u.fails || 0) + 1;
-  if (u.fails >= MAX_FAILS) { u.lockUntil = Date.now() + LOCK_MINUTES * 60000; u.fails = 0; }
-  await saveUser(u);
+  await updateUser(u.email, (x) => {
+    x.fails = (x.fails || 0) + 1;
+    if (x.fails >= MAX_FAILS) { x.lockUntil = Date.now() + LOCK_MINUTES * 60000; x.fails = 0; }
+  });
 }
-export async function clearFailures(u) { if (u.fails || u.lockUntil) { u.fails = 0; u.lockUntil = 0; await saveUser(u); } }
+export async function clearFailures(u) {
+  if (u.fails || u.lockUntil) await updateUser(u.email, (x) => { if (!x.fails && !x.lockUntil) return false; x.fails = 0; x.lockUntil = 0; });
+}
+
+// ---- Bir martalik tokenlar (email tasdiqlash, parolni tiklash) ----
+// Foydalanuvchiga faqat tasodifiy token boradi; omborda uning SHA-256 xeshi, turi, egasi va muddati saqlanadi.
+// consumeToken atomar: bir token faqat bir marta ishlaydi.
+export const TOKEN_TTL = { verify: 24 * 3600000, reset: 3600000 };
+export async function issueToken(type, user) {
+  const token = randomBytes(32).toString("base64url");
+  await (await openStore("tokens")).set("t_" + sha256(token), { type, uid: user.id, email: user.email, exp: Date.now() + TOKEN_TTL[type], used: false });
+  return token;
+}
+export async function consumeToken(type, token) {
+  if (typeof token !== "string" || token.length < 20 || token.length > 100) return null;
+  let rec = null;
+  await (await openStore("tokens")).update("t_" + sha256(token), (t) => {
+    if (!t || t.used || t.type !== type || t.exp < Date.now()) return undefined;
+    rec = t; return { ...t, used: true, usedAt: Date.now() };
+  });
+  return rec;
+}
 
 // ---- Sessiyalar: cookie'da tasodifiy token, omborda faqat uning xeshi ----
 export async function createSession(user) {
   const token = randomBytes(32).toString("base64url");
   const exp = Date.now() + SESSION_DAYS * 86400000;
   await (await openStore("sessions")).set("s_" + sha256(token), { uid: user.id, email: user.email, exp });
-  const sessions = new Set(user.sessions || []);
-  sessions.add(sha256(token));
-  user.sessions = [...sessions].slice(-10);
-  await saveUser(user);
+  const add = (u) => { const set = new Set(u.sessions || []); set.add(sha256(token)); u.sessions = [...set].slice(-10); };
+  add(user);
+  await updateUser(user.email, add);
   return token;
 }
 export async function destroySession(token) {
   if (token) await (await openStore("sessions")).delete("s_" + sha256(token));
 }
+// Barcha sessiyalarni bekor qiladi (parol almashtirilganda/tiklanganda, hisob o'chirilganda).
 export async function destroyAllSessions(user) {
   const s = await openStore("sessions");
-  for (const h of user.sessions || []) await s.delete("s_" + h);
+  const fresh = (await findUser(user.email)) || user;
+  for (const h of new Set([...(user.sessions || []), ...(fresh.sessions || [])])) await s.delete("s_" + h);
   user.sessions = [];
+  await updateUser(user.email, (u) => { u.sessions = []; });
 }
 
 export function readCookie(req, name = SESSION_COOKIE) {

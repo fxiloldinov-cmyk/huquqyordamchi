@@ -1412,6 +1412,18 @@
       "Jinoyat-protsessual kodeksi",
       "Ariza, tekshiruv, tergov, dalillar va himoya huquqi.",
       "-111460"
+    ],
+    [
+      "JIK",
+      "Jinoyat-ijroiya kodeksi",
+      "Jazoni ijro etish, mahkumlarning huquqlari, muddatidan oldin ozod qilish.",
+      "-163629"
+    ],
+    [
+      "MSK",
+      "Ma’muriy sud ishlarini yuritish to‘g‘risidagi kodeks",
+      "Davlat organlari qarori va harakatlari ustidan ma’muriy sudga shikoyat.",
+      "-3527353"
     ]
   ],
   "docs": {
@@ -1487,6 +1499,24 @@
       "aliases": [
         "JPK",
         "Jinoyat protsessual kodeksi"
+      ]
+    },
+    "jik": {
+      "name": "Jinoyat-ijroiya kodeksi",
+      "id": "-163629",
+      "aliases": [
+        "jik",
+        "JIK",
+        "Jinoyat-ijroiya kodeksi"
+      ]
+    },
+    "msk": {
+      "name": "Ma’muriy sud ishlarini yuritish to‘g‘risidagi kodeks",
+      "id": "-3527353",
+      "aliases": [
+        "msk",
+        "MSK",
+        "Ma'muriy sud ishlarini yuritish to'g'risidagi kodeks"
       ]
     }
   },

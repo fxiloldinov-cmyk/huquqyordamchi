@@ -2,12 +2,12 @@ import {readFile,writeFile,mkdir,rm} from 'node:fs/promises';
 const data=JSON.parse(await readFile(new URL('../data/legal.json',import.meta.url),'utf8'));
 // Bazadagi rasmiy matn holati (lex.uz ID → tahrir sanasi): kodeks kartochkalarida ko'rsatiladi.
 const lawBase={};
-for(const f of ['kon','mk','ok','fk1','fk2','fpk','jk','jpk','mjtk','sk','ujk','ipk','ist']){try{const l=JSON.parse(await readFile(new URL(`../data/laws/${f}.json`,import.meta.url),'utf8'));if(l.lexId&&l.asOf)lawBase[l.lexId]=l.asOf;}catch{}}
+for(const f of ['kon','mk','ok','fk1','fk2','fpk','jk','jpk','mjtk','sk','ujk','ipk','ist','jik','msk','plenum05']){try{const l=JSON.parse(await readFile(new URL(`../data/laws/${f}.json`,import.meta.url),'utf8'));if(l.lexId&&l.asOf)lawBase[l.lexId]=l.asOf;}catch{}}
 await writeFile(new URL('../public/legal-data.js',import.meta.url),'// Generated from data/legal.json — run npm run build after edits.\nglobalThis.HK_LEGAL = '+JSON.stringify(data)+';\nglobalThis.HK_LAWBASE = '+JSON.stringify(lawBase)+';\n');
 
 // ---- SEO: har bir vaziyat uchun statik sahifa, ro'yxat sahifasi, sitemap.xml va robots.txt ----
 // Netlify build paytida URL ni o'zi beradi; lokal buildda asosiy manzil ishlatiladi.
-const SITE=(process.env.SITE_URL||process.env.URL||'https://huquqyordamchi.netlify.app').replace(/\/+$/,'');
+const SITE=(process.env.SITE_URL||process.env.URL||'https://huquqyordamchiuz.netlify.app').replace(/\/+$/,'');
 const slugOf=s=>s.slug||s.id.replace(/_/g,'-');
 const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Tashkent'}).format(new Date());
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -112,4 +112,9 @@ Disallow: /api/
 
 Sitemap: ${SITE}/sitemap.xml
 `);
+// Bosh sahifadagi canonical, og:url va JSON-LD manzillari sayt domeniga moslanadi (boshqa domenga ishora qilsa, Google sahifani indekslamaydi)
+const indexUrl=new URL('../public/index.html',import.meta.url);
+const indexHtml=await readFile(indexUrl,'utf8');
+const oldOrigin=(/<link rel="canonical" href="(https?:\/\/[^"/]+)\//.exec(indexHtml)||[])[1];
+if(oldOrigin&&oldOrigin!==SITE)await writeFile(indexUrl,indexHtml.replaceAll(oldOrigin+'/',SITE+'/'));
 console.log(`SEO: ${pages.length} ta vaziyat sahifasi, sitemap (${urls.length} URL), robots.txt — ${SITE}`);
