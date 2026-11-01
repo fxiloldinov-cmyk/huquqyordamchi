@@ -7,6 +7,8 @@ import search, {normalizeResult} from '../netlify/functions/search.mjs';
 import chat from '../netlify/functions/chat.mjs';
 import kazus from '../netlify/functions/kazus.mjs';
 import {parseRss} from '../netlify/functions/news.mjs';
+// AI chegaralari hisoblagichi ombor talab qiladi (ombor ishlamasa AI so'rovi xavfsiz rad etiladi) — testlarda xotiradagi mock ombor.
+process.env.HK_DEV_MEMORY_STORE='1';
 const root=new URL('../',import.meta.url);
 const read=p=>fs.readFileSync(new URL(p,root),'utf8');
 const ctx=vm.createContext({HK_LEGAL:legal,HKCore,URL,localDate:()=> '2026-10-29',norm:HKCore.norm,SITUATIONS:legal.situations});
@@ -462,9 +464,9 @@ test('v11: Hidoya logo, Kazus ustaxonasi menu, language switcher, motion and pub
  const html = read('public/index.html');
  assert.ok(!html.includes('<span class="brand-icon">§</span>'), 'eski § logotipi qolmasin');
  assert.match(html, /class="hidoya"/); assert.match(read('public/assets/favicon.svg'), /M17 59V33C17 22 25 15 32 11/);
- assert.match(html, /data-view="kazus">Kazus ustaxonasi<\/a><\/nav>/);
+ assert.match(html, /data-view="kazus">Kazus ustaxonasi<\/a><a href="#ish" data-view="ish">Ishlarim<\/a><\/nav>/);
  for (const l of ['uz', 'cy', 'ru', 'en']) assert.match(html, new RegExp(`data-lang="${l}"`));
- assert.match(html, /<script src="motion\.js"><\/script><script src="consent\.js"><\/script><script src="accounts\.js"><\/script><script src="i18n\.js"><\/script>/);
+ assert.match(html, /<script src="motion\.js"><\/script><script src="consent\.js"><\/script><script src="workspace\.js"><\/script><script src="coverage\.js"><\/script><script src="accounts\.js"><\/script><script src="i18n\.js"><\/script><script src="pwa\.js"><\/script>/);
  assert.match(html, /href="\/oferta\/">Ommaviy oferta<\/a>/);
  const oferta = read('public/oferta/index.html');
  assert.match(oferta, /369-modda/); assert.match(oferta, /370-modda/); assert.match(oferta, /Ijrochi rekvizitlari/);
@@ -533,7 +535,7 @@ test('v11.1: cookie consent gates remembered language and theme; banner and acco
  assert.match(read('public/consent.js'), /Hammasini qabul qilish/);
  assert.match(read('public/i18n.js'), /HK_CONSENT\.allowed\("prefs"\)[^\n]*localStorage\.setItem\("hk-lang"/);
  assert.match(read('public/ui.js'), /HK_CONSENT\.allowed\("prefs"\)[^\n]*localStorage\.setItem\("hk-theme"/);
- assert.match(read('public/app.js'), /\['chat','kazus','explain','account'\]/);
+ assert.match(read('public/app.js'), /\['chat','kazus','explain','account','ish','qamrov'\]/);
  assert.match(read('public/vaziyat/otalikni-belgilash/index.html'), /consent\.js/);
 });
 

@@ -541,14 +541,16 @@ async function ask(text) {
 
     const reader = res.body.getReader();
     const dec = new TextDecoder();
+    // Oxiridagi yashirin manbalar belgisi (HK:SRC) matnda ko'rsatilmaydi
+    const strip = (t) => t.replace(/⁣HK:SRC:[^⁣]*⁣/g, "").replace(/⁣HK:[^⁣]*$/, "");
     for (;;) {
       const { done, value } = await reader.read();
       if (done) break;
       answer += dec.decode(value, { stream: true });
-      bubble.innerHTML = md(answer);
+      bubble.innerHTML = md(strip(answer));
       $("#messages").scrollTop = $("#messages").scrollHeight;
     }
-    answer += dec.decode();
+    answer = strip(answer + dec.decode());
     if (!answer.trim()) throw new Error("AI bo'sh javob qaytardi.");
     bubble.innerHTML = md(answer);
     history.push({ role: "assistant", content: answer });
@@ -594,5 +596,5 @@ function escapeHtml(value) {
 }
 
 $('#chat-stop').addEventListener('click',()=>chatController?.abort());
-function routeHash(){const key=location.hash.slice(1);if(['chat','kazus','explain','account'].includes(key))show(key,false);else {show('home',false);if(key)document.getElementById(key)?.scrollIntoView();}}
+function routeHash(){const key=location.hash.slice(1);if(['chat','kazus','explain','account','ish','qamrov'].includes(key))show(key,false);else {show('home',false);if(key)document.getElementById(key)?.scrollIntoView();}}
 window.addEventListener('hashchange',routeHash);routeHash();

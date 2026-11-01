@@ -46,6 +46,10 @@ async function liveAnswer(c, rag) {
 }
 
 async function main() {
+  if (live && !(await import('../netlify/shared/common.mjs')).geminiConfig().apiKey) {
+    console.error('GEMINI_API_KEY yo‘q — jonli baholash ishga tushmadi. Oflayn natija uchun: npm run eval');
+    process.exit(2);
+  }
   const rows = [];
   const limit = live ? Number(process.env.HK_EVAL_LIMIT) || cases.length : cases.length;
   for (const c of cases.slice(0, limit)) {
@@ -60,9 +64,11 @@ async function main() {
         Object.assign(row, {
           answerMs: a.ms, model: a.model, inTok: a.inTok, outTok: a.outTok,
           citedCount: Object.values(cited).flat().length,
-          badCitations: claims.filter((x) => x.icon === '❌' || x.icon === '🚫').length,
-          weakCitations: claims.filter((x) => x.icon === '⚠️' || x.icon === 'ℹ️').length,
-          groundedCitations: claims.filter((x) => x.icon === '✅').length,
+          // Citation accuracy: keltirilgan modda/qism/band bazada bormi (huquqiy to'g'rilik emas)
+          claims: claims.length,
+          badCitations: claims.filter((x) => x.exists === false).length,
+          riskyCitations: claims.filter((x) => x.level === 'xavf').length,
+          quoteVerified: claims.filter((x) => x.quote?.found).length,
           uncitedClaims: unsupported.length,
           asksQuestion: /\?/.test(a.text),
           mustNotHits: c.mustNot.filter((p) => low.includes(p.toLowerCase())), // taxminiy; yurist tekshiradi
@@ -74,12 +80,20 @@ async function main() {
     rows.push(row);
   }
   const avg = (f) => rows.length ? rows.reduce((s, r) => s + f(r), 0) / rows.length : 0;
+  const kinds = [...new Set(rows.map((r) => r.kind))];
   const summary = {
-    mode: live ? 'live' : 'offline', at: new Date().toISOString(), cases: rows.length,
+    mode: live ? 'live' : 'offline', aiCalled: live, at: new Date().toISOString(), cases: rows.length,
+    // 1) Manba topish (retrieval) — AI'siz, rasmiy bazadan
     retrievalRecall: +avg((r) => r.recall).toFixed(3),
     fullHits: rows.filter((r) => r.recall === 1).length,
+    recallByKind: Object.fromEntries(kinds.map((k) => { const g = rows.filter((r) => r.kind === k); return [k, `${+(g.reduce((s, r) => s + r.recall, 0) / g.length).toFixed(3)} (${g.length})`]; })),
     editionWarnings: `${rows.filter((r) => r.editionWarning === true).length}/${rows.filter((r) => r.editionWarning !== null).length}`,
     avgRetrievalMs: Math.round(avg((r) => r.ms)),
+    // 2) Iqtiboslar aniqligi — faqat jonli rejimda (AI javobi kerak)
+    citationAccuracy: live ? null : 'o‘lchanmadi (oflayn rejimda AI javobi yo‘q)',
+    // 3) Huquqiy xulosa bahosi — avtomatik o'lchanmaydi
+    legalConclusion: 'baholanmagan — kutilgan natijalar yurist tomonidan tasdiqlanmagan (lawyerReview: kutilmoqda)',
+    lawyerReviewed: rows.length ? cases.slice(0, rows.length).filter((c) => c.lawyerReview !== 'kutilmoqda').length : 0,
   };
   if (live) {
     const inT = rows.reduce((s, r) => s + (r.inTok || 0), 0), outT = rows.reduce((s, r) => s + (r.outTok || 0), 0);
@@ -90,6 +104,9 @@ async function main() {
       badCitations: rows.reduce((s, r) => s + (r.badCitations || 0), 0), uncitedClaims: rows.reduce((s, r) => s + (r.uncitedClaims || 0), 0),
       errors: rows.filter((r) => r.liveError).length,
     });
+    const totalClaims = rows.reduce((s, r) => s + (r.claims || 0), 0);
+    summary.citationAccuracy = totalClaims ? { existing: +(1 - summary.badCitations / totalClaims).toFixed(3), risky: rows.reduce((s, r) => s + (r.riskyCitations || 0), 0), quoteVerified: rows.reduce((s, r) => s + (r.quoteVerified || 0), 0), claims: totalClaims, note: 'Bazada mavjudlik — huquqiy to‘g‘rilik emas' } : 'iqtibos yo‘q yoki API xatosi';
+    if (summary.errors === rows.length) { summary.aiCalled = false; summary.liveNote = 'Jonli AI ishlamadi (barcha so‘rovlar xato) — natija AI sifati haqida hech narsa demaydi.'; }
   }
   fs.mkdirSync(new URL('eval/', ROOT), { recursive: true });
   const file = new URL(`eval/results-${summary.mode}-${summary.at.slice(0, 10)}.json`, ROOT);
@@ -97,4 +114,5 @@ async function main() {
   console.log(JSON.stringify(summary, null, 1));
   for (const r of rows) if (r.recall < 1) console.log(`  ${r.id} (${r.kind}): topilmadi ${r.missing.join(', ') || '(bo‘sh bo‘lishi kerak edi)'}; olindi: ${r.codes.join(',') || '—'}`);
 }
-if (process.argv[1] && import.meta.url.endsWith(process.argv[1].split('/').pop())) await main();
+// Windows yo'llari (backslash) uchun ham: to'g'ridan-to'g'ri ishga tushirilganda
+if (process.argv[1] && import.meta.url === (await import('node:url')).pathToFileURL(process.argv[1]).href) await main();

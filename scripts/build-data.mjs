@@ -118,3 +118,55 @@ const indexHtml=await readFile(indexUrl,'utf8');
 const oldOrigin=(/<link rel="canonical" href="(https?:\/\/[^"/]+)\//.exec(indexHtml)||[])[1];
 if(oldOrigin&&oldOrigin!==SITE)await writeFile(indexUrl,indexHtml.replaceAll(oldOrigin+'/',SITE+'/'));
 console.log(`SEO: ${pages.length} ta vaziyat sahifasi, sitemap (${urls.length} URL), robots.txt — ${SITE}`);
+
+// ---- Baza qamrovi: raqamlar data/ dagi haqiqiy fayllardan hisoblanadi (public/coverage.json, #qamrov) ----
+{
+  const { readdir } = await import('node:fs/promises');
+  const { courtStatus } = await import('../netlify/shared/court.mjs');
+  const manifest = JSON.parse(await readFile(new URL('../data/laws/manifest.json', import.meta.url), 'utf8'));
+  const lawDir = new URL('../data/laws/', import.meta.url);
+  let archive = [];
+  try { archive = await readdir(new URL('archive/', lawDir)); } catch {}
+  const docs = [];
+  for (const f of (await readdir(lawDir)).filter(f => f.endsWith('.json') && f !== 'manifest.json').sort()) {
+    const law = JSON.parse(await readFile(new URL(f, lawDir), 'utf8'));
+    const key = Object.keys(manifest).find(k => manifest[k].file === f);
+    const m = manifest[key] || {};
+    docs.push({ doc: key || f.replace('.json', ''), name: law.name, kind: law.kind === 'band' ? 'plenum' : 'qonun', unit: law.kind === 'band' ? 'band' : 'modda',
+      units: law.articles.length, repealed: (law.repealed || []).length, asOf: law.asOf, importedAt: law.importedAt || m.importedAt || null,
+      autoUpdate: m.autoUpdate !== false && law.kind !== 'band', url: law.url, archivedEditions: archive.filter(a => a.startsWith((key || '') + '-') || a.startsWith((key || '') + '_')).length });
+  }
+  const court = courtStatus();
+  const coverage = {
+    generatedAt: today, site: SITE,
+    totals: { documents: docs.length, laws: docs.filter(d => d.kind === 'qonun').length, plenums: docs.filter(d => d.kind === 'plenum').length,
+      articles: docs.filter(d => d.kind === 'qonun').reduce((s, d) => s + d.units, 0), bands: docs.filter(d => d.kind === 'plenum').reduce((s, d) => s + d.units, 0),
+      courtDecisions: court.decisions, situations: data.situations.length, reviewedSituations: data.situations.filter(s => s.reviewedAt).length },
+    lastImport: docs.map(d => d.importedAt).filter(Boolean).sort().at(-1) || null,
+    docs,
+    notConnected: [
+      ...court.notConnected.map(s => ({ name: s.name, why: s.note })),
+      { name: 'TSUL elektron kutubxonasi', why: 'Rasmiy API va ruxsat yo‘q; kitob matni avtomatik olinmaydi.' },
+      { name: 'Qonunlarning tarixiy tahrirlari', why: 'Bazada amaldagi tahrir saqlanadi; voqea sanasidagi eski tahrir matni yo‘q (faqat o‘zgartish izohlari va importdagi so‘nggi 3 arxiv nusxa).' },
+      { name: 'Boshqa qonun va qarorlar', why: 'Bazada yuqoridagi hujjatlar bor; qolgan normativ hujjatlar faqat lex.uz havolasi orqali.' },
+    ],
+    note: 'Sana — bazadagi tahrir (lex.uz e’lon sanasi) va import sanasi. Haftalik avtomatik tekshiruv natijasi GitHub Actions jurnalida; bazaga faqat yangi tahrir topilganda yoziladi.',
+  };
+  await writeFile(new URL('../public/coverage.json', import.meta.url), JSON.stringify(coverage, null, 1));
+  console.log(`Qamrov: ${coverage.totals.documents} hujjat, ${coverage.totals.articles} modda, ${coverage.totals.bands} band, ${court.decisions} sud qarori`);
+}
+
+// ---- Service worker versiyasi: statik fayllar mazmunidan (o'zgarsa — yangi kesh, foydalanuvchiga yangilash taklifi) ----
+{
+  const { readdir } = await import('node:fs/promises');
+  const { createHash } = await import('node:crypto');
+  const pub = new URL('../public/', import.meta.url);
+  const files = (await readdir(pub)).filter(f => /\.(js|css|html|json|webmanifest)$/.test(f) && f !== 'sw.js').sort();
+  const h = createHash('sha256');
+  for (const f of files) h.update(f).update(await readFile(new URL(f, pub)));
+  const pkg = JSON.parse(await readFile(new URL('../package.json', import.meta.url), 'utf8'));
+  const swUrl = new URL('sw.js', pub), sw = await readFile(swUrl, 'utf8');
+  const version = `hk-v${pkg.version}-${h.digest('hex').slice(0, 10)}`;
+  await writeFile(swUrl, sw.replace(/const SW_VERSION = '[^']*';/, `const SW_VERSION = '${version}';`));
+  console.log(`Service worker: ${version}`);
+}

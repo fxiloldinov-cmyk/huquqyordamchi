@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "note": "Sud qarorlari manbalari ro‘yxati. Manba faqat egasi ochiq foydalanish va qayta tarqatish shartlarini tekshirib, permission maydonini to‘ldirgandan keyin 'ruxsat-berilgan' holatiga o‘tkaziladi. Hozircha hech qaysi manba ulanmagan.",
+  "sources": [
+    {
+      "id": "oliy-sud-ochiq",
+      "name": "Sud qarorlarining ochiq bazasi (O‘zbekiston Respublikasi sudlari)",
+      "hosts": [],
+      "status": "ulanmagan",
+      "permission": null,
+      "checkedAt": null,
+      "note": "Rasmiy ochiq manba manzili, foydalanish shartlari va ruxsat hali tekshirilmagan. Tekshirilgach, hosts va permission maydonlarini to‘ldiring."
+    }
+  ]
+}

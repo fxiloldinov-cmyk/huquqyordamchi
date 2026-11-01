@@ -297,7 +297,7 @@ async function loadNamunalar() {
 
 // Server yuborgan yashirin boshqaruv belgilarini matndan olib tashlaydi.
 function cleanKazus(text) {
-  return String(text).replace(/\u2063HK:(?:CONT:[^\u2063]*|END)\u2063/g, "").replace(/\u2063HK:[^\u2063]*$/, "");
+  return String(text).replace(/\u2063HK:(?:CONT:[^\u2063]*|SRC:[^\u2063]*|END)\u2063/g, "").replace(/\u2063HK:[^\u2063]*$/, "");
 }
 kazusForm?.addEventListener("submit", async (e) => {
   e.preventDefault();

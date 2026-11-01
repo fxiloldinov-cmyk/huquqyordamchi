@@ -1,4 +1,4 @@
-# HuquqYordamchi v11.6
+# HuquqYordamchi v11.7
 
 O‘zbekiston qonunchiligi bo‘yicha mustaqil axborot loyihasi. Ko‘k-oq portal dizayni, huquqiy mavzudagi rasm, aqlli qidiruv, ariza generatori, kodekslarning sodda izohi va kazus ustaxonasi.
 
@@ -222,6 +222,19 @@ Bosh sahifada guruh filtri va dastlab 12 ta kartochka ("Barcha 32 ta vaziyatni k
   - qaytarish xarajatlari sotuvchi zimmasida;
   - pul kechiktirilsa, har kun uchun 1 % penya;
   - sifatli tovarni 10 kunda almashtirish shartlari.
+
+## v11.7: manba ishonchliligi, yagona ish oynasi, PWA
+
+Batafsil: [docs/V11_7_HISOBOT_UZ.md](docs/V11_7_HISOBOT_UZ.md). Sozlash va ko‘chirish: [docs/SOZLASH_VA_KOCHIRISH_UZ.md](docs/SOZLASH_VA_KOCHIRISH_UZ.md).
+
+- **Da’vo ↔ manba:** so‘zlar mosligi tasdiq emas; “manba mavjud”, “so‘zlar mosligi”, “iqtibos manbada”, “yurist tekshirgan” alohida. Iqtibos rasmiy matnda kod orqali tekshiriladi; inkor, istisno, subyekt, muddat va tahrir xavflari belgilanadi.
+- **Ombor:** shartli yozish tasdiqlanmasa — xavfsiz 503 (AI limitlari va hisoblar). `@netlify/blobs` lockfile bilan mahkamlangan.
+- **Ishlarim (`#ish`):** chapda ishlar va materiallar, markazda savol/kazus/hujjat, o‘ngda manbalar; mobil’da tablar. `/api/account/cases`, hisoblar qat’iy ajratilgan.
+- **Ikki boshlanish:** “Huquqiy vaziyatim bor” / “Kazus ustida ishlayapman”; talaba uchun bosqichma-bosqich maslahat.
+- **DOCX:** namunadagi yashirin ma’lumot (kolontitul, footnote, mualliflar, customXml, eskiz, shablon yo‘li) eksportga o‘tmaydi.
+- **Sud amaliyoti moduli** (bo‘sh, ruxsatli import), **Baza qamrovi** (`#qamrov`).
+- **Baholash:** 46 holat (so‘zlashuv, kirill, ruscha, fanlararo); E29 tuzatildi; metrikalar alohida.
+- **PWA:** manifest, ikonalar, service worker (faqat statik kesh), yangilash taklifi, pastki navigatsiya.
 
 ## v11.6: yangi manbalar
 

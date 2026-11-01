@@ -1,0 +1,25 @@
+{
+  "name": "HuquqYordamchi — O‘zbekiston qonunchiligi bo‘yicha yordamchi",
+  "short_name": "HuquqYordamchi",
+  "description": "Manbalari tekshiriladigan huquqiy ma’lumot: qidiruv, kazus tahlili, ariza namunalari va kodekslar.",
+  "lang": "uz",
+  "dir": "ltr",
+  "id": "/",
+  "start_url": "/?source=pwa#ish",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f5f7fa",
+  "theme_color": "#123a66",
+  "categories": ["education", "productivity"],
+  "icons": [
+    { "src": "/assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "/assets/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ],
+  "shortcuts": [
+    { "name": "Kazus", "url": "/?source=pwa#ish", "icons": [{ "src": "/assets/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Qidiruv", "url": "/?source=pwa#qidiruv", "icons": [{ "src": "/assets/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

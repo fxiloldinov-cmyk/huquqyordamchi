@@ -38,10 +38,12 @@ export function rankChunks(query, chunks, { k = 4, minShared = 3, minRatio = 0.2
 export const userUploads = {
   id: "user", name: "Foydalanuvchi yuklagan parchalar",
   status: () => ({ connected: true, status: "user_uploads", message: "Faqat foydalanuvchi o‘zi yuklagan va foydalanishga haqli ekanini tasdiqlagan parchalar." }),
-  async search(query, { user, k = 4 } = {}) {
+  // bookIds berilsa — faqat foydalanuvchi kazusda tanlagan kitoblardan (boshqa hisob kitobi hech qachon o'qilmaydi)
+  async search(query, { user, k = 4, bookIds = null } = {}) {
     if (!user) return [];
-    const books = (await (await openStore("books")).get("b_" + user.id)) || [];
-    const chunks = books.flatMap((b) => splitPages(b.text, b.firstPage).map((p, i) => ({ source: "user", bookId: b.id, title: b.title, author: b.author, year: b.year, edition: b.edition, origin: b.origin, page: p.page, text: p.text, idx: i })));
+    let books = (await (await openStore("books")).get("b_" + user.id)) || [];
+    if (Array.isArray(bookIds)) books = books.filter((b) => bookIds.includes(b.id));
+    const chunks = books.flatMap((b) => splitPages(b.text, b.firstPage).map((p, i) => ({ source: "user", verified: false, kind: "foydalanuvchi yuklagan", bookId: b.id, title: b.title, author: b.author, year: b.year, edition: b.edition, origin: b.origin, page: p.page, text: p.text, idx: i })));
     return rankChunks(query, chunks, { k });
   },
 };
@@ -56,9 +58,9 @@ export const tsul = {
 
 export const SOURCES = [userUploads, tsul];
 
-export async function searchBooks(query, { user, k = 4 } = {}) {
+export async function searchBooks(query, { user, k = 4, bookIds = null } = {}) {
   const res = [];
-  for (const s of SOURCES) if (s.status().connected) res.push(...(await s.search(query, { user, k })));
+  for (const s of SOURCES) if (s.status().connected) res.push(...(await s.search(query, { user, k, bookIds })));
   return res.sort((a, b) => b.score - a.score).slice(0, k);
 }
 

@@ -3,7 +3,7 @@
 ## The business
 
 **HuquqYordamchi** ("Legal Assistant") is an independent, free legal-information website for **Uzbekistan law**.
-Live site: https://huquqyordamchiuz.netlify.app/ (Netlify). Current version: **v11.6** (`package.json`).
+Live site: https://huquqyordamchiuz.netlify.app/ (Netlify). Current version: **v11.7** (`package.json`; live site may still run an older deploy). Latest change report: `docs/V11_7_HISOBOT_UZ.md`.
 
 - **Tagline (hero):** "Huquqingizni biling. Yechimni toping." — *Know your rights. Find the solution.*
   Kicker: "Huquqiy ma'lumot. Amaliy yechim." Motto under the hero: "Har bir qaror — asos bilan" (Law • Explanation • Practical step).
@@ -38,15 +38,21 @@ Live site: https://huquqyordamchiuz.netlify.app/ (Netlify). Current version: **v
 | Yangiliklar | Lex.uz RSS news (laws, decrees, resolutions, orders) with fallback | `/api/news`, `public/data/news.json` |
 | Accounts | Register/login, email verify, password reset, saved items, uploaded book excerpts | `/api/auth/*`, `/api/account/*` |
 | Ommaviy oferta, cookie consent | `/oferta/`, `public/consent.js` | |
+| Ishlarim (unified workspace) | Cases with question, date, field, answers, structured sources, book excerpts, doc versions; left/center/right panes, mobile tabs | `#ish`, `public/workspace.js`, `/api/account/cases` |
+| Two starts + student hint mode | "Huquqiy vaziyatim bor" / "Kazus ustida ishlayapman"; `task:"hint"` gives guidance, not a finished answer | home `.start-paths`, `/api/kazus` |
+| Baza qamrovi | Coverage computed from data files at build | `#qamrov`, `public/coverage.json` |
+| PWA | Manifest, icons, `sw.js` (static cache only, never `/api/*`), update prompt, bottom nav | `public/pwa.js`, `public/sw.js` |
 
 ## Architecture
 
 - **Frontend:** plain static HTML/CSS/vanilla JS in `public/` — no framework, no bundler.
 - **Backend:** Netlify Functions (Node 22, ESM `.mjs`) in `netlify/functions/`; routes declared via `export const config = { path: ... }` in each file (not in `netlify.toml`). Shared logic in `netlify/shared/`:
-  - `rag.mjs` — retrieval (BM25, Uzbek suffix stripping, Cyrillic→Latin, topic routing to the right code) and claim-level source checking (✅ 📄 ⚠️ ℹ️ ❌ 🚫 ❔).
+  - `rag.mjs` — retrieval (BM25, Uzbek suffix stripping, Cyrillic→Latin, topic routing, per-field focus in multi-field questions, colloquial synonyms, Russian glossary) and structured claim ↔ source checks (🔎 📄 ℹ️ ⚠️ ❌ 🚫 ❔ — lexical overlap is **never** a green confirmation). Answers end with a hidden `⁣HK:SRC:<json>⁣` marker for the sources panel. Topic regexes are global: always use `topicIn()` (resets `lastIndex`).
+  - `court.mjs` — separate document kind for individual court decisions (empty; import via `scripts/import-court.mjs` only from permitted sources in `data/court/sources.json`).
   - `common.mjs` — Gemini calls, model fallback, streaming, CORS/origin checks, log redaction.
   - `limits.mjs` — AI quotas (IP hourly / user daily / site daily, `HK_AI_DISABLED` kill switch).
-  - `auth.mjs`, `store.mjs` (Netlify Blobs; in-memory locally), `mail.mjs` (Resend), `docx.mjs`, `zip.mjs`, `books.mjs`, `kazus-namunalar.mjs`.
+  - `store.mjs` — Netlify Blobs (in-memory locally/tests). Conditional writes must return `modified:boolean`, else `StoreNotAtomic`; AI limits then fail **closed** (503). `@netlify/blobs` pinned in `package-lock.json`.
+  - `auth.mjs`, `mail.mjs` (Resend), `docx.mjs`, `zip.mjs`, `books.mjs`, `kazus-namunalar.mjs`.
 - **AI provider:** Google **Gemini** (`GEMINI_API_KEY`, default `gemini-3.8-flash` with fallbacks). Keys live only in Netlify env vars — never in code, frontend, ZIPs or chat.
 - **Law database:** `data/laws/*.json` — official lex.uz texts of 15 documents (Constitution `kon`, Labour `mk`, Family `ok`, Civil `fk1`/`fk2`, Civil Procedure `fpk`, Criminal `jk`, Criminal Procedure `jpk`, Admin Liability `mjtk`, Tax `sk`, Housing `ujk`, Economic Procedure `ipk`, Consumer Rights `ist`, Penal Enforcement `jik`, Administrative Court Procedure `msk`) + Supreme Court Plenum resolutions. `manifest.json` tracks edition dates and sha256.
 - **Weekly law-update check:** `.github/workflows/law-update.yml` (Mondays 08:37 Tashkent) → opens a PR or issue.
@@ -58,11 +64,18 @@ Live site: https://huquqyordamchiuz.netlify.app/ (Netlify). Current version: **v
 npm run build      # data/legal.json -> public/legal-data.js, /vaziyat pages, sitemap, oferta
 npm test           # node --test tests/*.test.mjs (regression + v115 + v116)
 npm run dev        # local server on http://localhost:3000 (no extra deps)
-npm run eval       # offline RAG eval over eval/cases.json
+node scripts/dev-mock.mjs --port 4174   # local preview with MOCK Gemini answers (no key needed)
+npm run eval       # offline RAG eval over eval/cases.json (46 cases; never calls AI)
 npm run law:update -- --file ok=<file.doc>   # import a new lex.uz edition (needs python + beautifulsoup4)
 ```
 
-Windows note: this machine uses PowerShell; `server.ps1` exists as an alternative local server.
+Windows note: this machine uses PowerShell; `server.ps1` exists as an alternative local server. Node.js, Git, GitHub CLI are installed portably in `%LOCALAPPDATA%\Programs` (on user PATH); Netlify CLI via npm global. In the agent sandbox, run Netlify CLI through a Terminal tab (`powershell -ExecutionPolicy Bypass -File …`) — the sandbox cannot see the Netlify login config.
+
+## Deployment state (2026-11-01)
+
+- GitHub repo: `fxiloldinov-cmyk/huquqyordamchi` (public), branch `main`; local folder is a git checkout of it.
+- Netlify site `huquqyordamchiuz` lives in team "huquqchilar" (owner account farrukhbekfarruxfx@gmail.com). Builds from GitHub pushes are being **skipped** by Netlify; the connected account fxiloldinov@gmail.com cannot deploy it. Deploy needs that owner account (or an invite).
+- v11.7 work is not committed/pushed yet; user asked to deliver a ZIP for review before any deploy.
 
 ## Rules when working here
 

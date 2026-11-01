@@ -7,6 +7,7 @@ import { randomUUID } from "node:crypto";
 import oferta from "../../data/oferta.json" with { type: "json" };
 import { guardJsonPost, jsonError, JSON_HEADERS } from "../shared/common.mjs";
 import { StoreUnavailable, StoreConflict, openStore } from "../shared/store.mjs";
+import { deleteAllCases } from "./cases.mjs";
 import { mailConfigured, sendMail } from "../shared/mail.mjs";
 import {
   sha256, normEmail, validEmail, passwordProblem, hashPassword, verifyPassword, findUser, userKey, createUser, updateUser,
@@ -153,6 +154,7 @@ export default async (req, ctx) => {
       await destroyAllSessions(user);
       await (await openStore("items")).delete("i_" + user.id);
       await (await openStore("books")).delete("b_" + user.id);
+      await deleteAllCases(user.id);
       await (await openStore("users")).delete(userKey(user.email));
       return reply({ ok: true }, 200, clearCookie(req));
     }

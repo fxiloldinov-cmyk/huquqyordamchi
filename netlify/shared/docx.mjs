@@ -189,7 +189,50 @@ export function buildDocx(templateBuf, markdown, { title = "Kazus yechimi" } = {
   if (out.has("docProps/app.xml")) out.set("docProps/app.xml", Buffer.from(APP));
   if (out.has("word/comments.xml")) out.set("word/comments.xml", Buffer.from(`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:comments xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>`));
   if (out.has("docProps/custom.xml")) out.set("docProps/custom.xml", Buffer.from(`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/custom-properties" xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes"/>`));
+  scrubPackage(out, proto);
   return { buffer: writeZip(out), warnings };
+}
+
+// Namuna paketidagi yashirin ma'lumotni tozalaydi: yangi hujjat tanasi almashtirilgani bilan quyidagilar
+// zip ichida qolib ketardi — matnli kolontitullar, footnote/endnote matni, izoh mualliflari (people.xml),
+// customXml (masalan, adabiyotlar ro'yxati), birinchi sahifa eskizi (thumbnail), shablon yo'li va rsid izlari,
+// tana ishlatgan rasmlar/ob'ektlar.
+const rootOnly = (xml) => { const m = xml.match(/^(<\?xml[^>]*\?>)?\s*<([\w:]+)([^>]*)>/); return m ? `${m[1] || ""}<${m[2]}${m[3].replace(/\/$/, "")}/>` : xml; };
+export function scrubPackage(out, proto) {
+  const str = (n) => out.get(n)?.toString("utf8");
+  for (const n of [...out.keys()]) {
+    if (/^word\/(header|footer)\d*\.xml$/.test(n) && proto.hfText) {
+      const tag = n.includes("header") ? "hdr" : "ftr", x = str(n);
+      const open = x.match(new RegExp(`<w:${tag}\\b[^>]*>`))?.[0] || `<w:${tag} xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">`;
+      out.set(n, Buffer.from(`<?xml version="1.0" encoding="UTF-8" standalone="yes"?>${open}<w:p/></w:${tag}>`));
+    } else if (/^word\/(footnotes|endnotes)\.xml$/.test(n)) {
+      // Faqat ajratuvchi (separator) yozuvlar qoladi — namunadagi izoh matni o'chadi
+      const x = str(n), tag = n.includes("foot") ? "footnote" : "endnote";
+      out.set(n, Buffer.from(x.replace(new RegExp(`<w:${tag}\\b(?![^>]*w:type="(?:separator|continuationSeparator|continuationNotice)")[^>]*>[\\s\\S]*?<\\/w:${tag}>`, "g"), "")));
+    } else if (/^word\/(people|comments(Extended|Ids|Extensible)?)\.xml$/.test(n) || /^customXml\/item\d+\.xml$/.test(n)) {
+      out.set(n, Buffer.from(rootOnly(str(n))));
+    } else if (n === "word/settings.xml") {
+      out.set(n, Buffer.from(str(n).replace(/<w:attachedTemplate\b[^>]*\/>/g, "").replace(/<w:rsids>[\s\S]*?<\/w:rsids>/g, "")));
+      // Shablon fayl yo'li (masalan, C:/Users/<ism>/...) munosabatlarda ham qoladi
+      const sr = str("word/_rels/settings.xml.rels");
+      if (sr) out.set("word/_rels/settings.xml.rels", Buffer.from(sr.replace(/<Relationship\b[^>]*Type="[^"]*\/attachedTemplate"[^>]*\/>/g, "")));
+    } else if (/^docProps\/thumbnail\.\w+$/.test(n)) {
+      out.delete(n);
+      const rels = str("_rels/.rels"); if (rels) out.set("_rels/.rels", Buffer.from(rels.replace(/<Relationship\b[^>]*Target="\/?docProps\/thumbnail\.\w+"[^>]*\/>/g, "")));
+    }
+  }
+  // Yangi tana rasm/ob'ektga murojaat qilmaydi: hujjat munosabatlaridan olib tashlanadi; boshqa joyda ishlatilmagan media o'chiriladi
+  const dr = str("word/_rels/document.xml.rels");
+  if (dr) out.set("word/_rels/document.xml.rels", Buffer.from(dr.replace(/<Relationship\b[^>]*Type="[^"]*\/(image|oleObject|package|chart|diagram\w*|video|audio)"[^>]*\/>/g, "")));
+  const used = [...out.keys()].filter((n) => /_rels\/.*\.rels$/.test(n)).map(str).join(" ");
+  for (const n of [...out.keys()]) if (/^word\/(media|embeddings)\//.test(n) && !used.includes(n.slice(5))) out.delete(n);
+  // Raqamlash: tana numPr ishlatsa, numbering.xml hujjatga ulangan bo'lishi shart (aks holda Word raqamlarni ko'rsatmaydi)
+  if (out.has("word/numbering.xml") && /<w:numPr>/.test(str("word/document.xml"))) {
+    const rels = str("word/_rels/document.xml.rels") || "";
+    if (!/Target="numbering\.xml"/.test(rels)) out.set("word/_rels/document.xml.rels", Buffer.from(rels.replace("</Relationships>", `<Relationship Id="rIdHkNum" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/numbering" Target="numbering.xml"/></Relationships>`)));
+    const ct = str("[Content_Types].xml") || "";
+    if (!/PartName="\/word\/numbering\.xml"/.test(ct)) out.set("[Content_Types].xml", Buffer.from(ct.replace("</Types>", `<Override PartName="/word/numbering.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.numbering+xml"/></Types>`)));
+  }
 }
 
 // ---- Standart shablon: Times New Roman 14, 1,5 interval, kenglik bo'yicha, xatboshi 1,25 sm; A4, chap 30, o'ng 15, yuqori/past 20 mm ----

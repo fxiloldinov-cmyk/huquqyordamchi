@@ -28,6 +28,8 @@
     accBtn.textContent = user ? "Hisobim" : "Kirish";
     accBtn.title = user ? user.email : "";
     accBtn.classList.toggle("signed-in", !!user);
+    // Ish oynasi va PWA: kirish/chiqishni bilib, shaxsiy lokal ma'lumotni tozalaydi
+    document.dispatchEvent(new CustomEvent("hk:auth", { detail: { user } }));
   }
   accBtn?.addEventListener("click", () => (user ? goAccount() : openAuth("login")));
 
@@ -259,7 +261,8 @@
   async function handleLinkToken() {
     const m = location.hash.match(/^#(verify|reset)=([A-Za-z0-9_-]{20,100})$/);
     if (!m) return;
-    history.replaceState(null, "", location.pathname + location.search);
+    // window.history: app.js dagi global `history` (suhbat tarixi massivi) bilan adashmaslik uchun
+    window.history.replaceState(null, "", location.pathname + location.search);
     if (m[1] === "reset") { resetToken = m[2]; openAuth("reset", "Yangi parol kiriting. Havola bir marta ishlaydi."); return; }
     try { const d = await api("/api/auth/verify-confirm", { body: { token: m[2] } }); if (user) user = d.user; toast("Email tasdiqlandi."); }
     catch (err) { toast(err.message); }

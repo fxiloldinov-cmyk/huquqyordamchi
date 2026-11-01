@@ -8,7 +8,7 @@ import {
   callGeminiResilient, safeSources, dedupeSources, SEARCH_OFF_NOTE,
 } from "../shared/common.mjs";
 import { KAZUS_NAMUNALAR, STANDART_FORMAT, FANLAR } from "../shared/kazus-namunalar.mjs";
-import { retrieve, citationReport } from "../shared/rag.mjs";
+import { retrieve, citationReport, sourcesMarker } from "../shared/rag.mjs";
 import { guardAi } from "../shared/limits.mjs";
 import { searchBooks, booksBlock, cite, tsul } from "../shared/books.mjs";
 import { currentUser } from "../shared/auth.mjs";
@@ -58,6 +58,14 @@ Kitob manbalari bo'yicha qo'shimcha qat'iy qoidalar:
 - Darslikdagi qoidani voqea sanasida amal qilgan qonun tahriri bilan solishtiring. Nashr yili amaldagi tahrir isboti emas. Manba yoki tahrir yetishmasa, buni ochiq ayting.
 - Login, parol yoki sessiya tokenini so'ramang va javobga yozmang.`;
 
+const HINT_TASK = `BOSQICHMA-BOSQICH MASLAHAT (talaba o‘zi yechishi uchun). Tayyor yechim, yakuniy xulosa yoki to‘liq javob YOZMANG.
+Tuzilma:
+1) Masala — kazusdagi huquqiy savol(lar)ni aniqlashga yordam beruvchi 2–3 ta yo‘naltiruvchi savol.
+2) Tegishli norma — qaysi kodeks va bobga qarash kerakligi; modda raqamini faqat berilgan rasmiy parchalarda bo‘lsa ayting, mazmunini talabaning o‘zi o‘qishi uchun qoldiring.
+3) Dalillar va faktlar — qaysi faktlar hal qiluvchi, qaysilari yetishmaydi.
+4) O‘zingizni tekshiring — talaba javob yozgach o‘ziga beradigan 3 ta savol.
+Oxirida: "Javobingizni yozib, «Javobimni tekshirish» rejimida yuboring." Bu AI maslahati; o‘qituvchi yoki universitet bahosi emas.`;
+
 function sanitize(s, n) {
   return typeof s === "string" ? redactPII(s.replace(/\r\n/g, "\n").trim()).slice(0, n) : "";
 }
@@ -94,6 +102,8 @@ export default async (req, context) => {
   const studentAnswer = sanitize(body?.studentAnswer, 8001);
   if (studentAnswer.length > 8000) return jsonError('Talaba javobi 8000 belgidan oshmasin.', 400);
   const review = body?.task === 'review';
+  // Talaba uchun bosqichma-bosqich maslahat: tayyor yechim emas, masala → norma → dalillar bo'yicha yo'naltiruvchi savollar
+  const hint = body?.task === 'hint';
   if (review && studentAnswer.length < 40) return jsonError('Tekshirish uchun javobingizni kiriting (kamida 40 belgi).', 400);
   const eventDate = /^\d{4}-\d{2}-\d{2}$/.test(body?.eventDate || '') ? body.eventDate : 'ko‘rsatilmagan';
   if (kazus.length < 40) return jsonError("Kazus shartini to'liq yozing (kamida 40 belgi).", 400);
@@ -130,7 +140,7 @@ export default async (req, context) => {
 
   const contents = [
     ...fewShot,
-    { role: "user", parts: [{ text: `Fan: ${FANLAR[fan]}\nVoqea sanasi: ${eventDate}\nVazifa: ${review ? "Talaba javobini baholang: to‘g‘ri jihatlar, xato normalar, yetishmagan dalillar, asoslangan yaxshilangan yechim. Ball yoki bahoni o‘qituvchi bahosi deb bermang. Talaba javobi: " + studentAnswer : "Kazusni asoslantirib tahlil qiling"}\n\n${formatBlock}\n\nYechilishi kerak bo'lgan kazus:\n"""\n${kazus}\n"""` }] },
+    { role: "user", parts: [{ text: `Fan: ${FANLAR[fan]}\nVoqea sanasi: ${eventDate}\nVazifa: ${review ? "Talaba javobini baholang: to‘g‘ri jihatlar, xato normalar, yetishmagan dalillar, asoslangan yaxshilangan yechim. Ball yoki bahoni o‘qituvchi yoki universitet bahosi deb bermang — bu AI fikri ekanini ayting. Talaba javobi: " + studentAnswer : hint ? HINT_TASK : "Kazusni asoslantirib tahlil qiling"}\n\n${hint ? "" : formatBlock}\n\nYechilishi kerak bo'lgan kazus:\n"""\n${kazus}\n"""` }] },
   ];
   if (cont) contents.push(
     { role: "model", parts: [{ text: partial }] },
@@ -147,7 +157,8 @@ export default async (req, context) => {
     try { cur = await currentUser(req); } catch {}
     if (!cur) booksNote = "Kitob parchalari ishlatilmadi: hisobingizga kirmagansiz.";
     else {
-      try { books = await searchBooks(kazus + (review ? "\n" + studentAnswer : ""), { user: cur.user, k: 4 }); } catch { books = []; }
+      const bookIds = Array.isArray(body.bookIds) ? body.bookIds.filter((x) => typeof x === "string").slice(0, 40) : null;
+      try { books = await searchBooks(kazus + (review ? "\n" + studentAnswer : ""), { user: cur.user, k: 4, bookIds }); } catch { books = []; }
       booksNote = books.length
         ? "Tahlilga berilgan kitob parchalari (foydalanuvchi yuklagan): " + books.map((b) => cite(b)).join("; ") + "."
         : "Yuklangan kitob parchalaridan kazusga yetarli mos joy topilmadi — javob kitobga asoslanmagan.";
@@ -170,7 +181,7 @@ export default async (req, context) => {
       canContinue: round < MAX_ROUNDS - 1,
       deadlineAt: startedAt + deadlineMs(),
       prefix: r.searchDropped ? SEARCH_OFF_NOTE : "",
-      onEnd: (sources, text) => sourceTail(dedupeSources([...priorSources, ...sources])) + citationReport(partial + text, rag.provided, { bands: rag.bands, bandsBy: rag.bandsBy, eventDate }) + (booksNote ? `\n\n**Kitob manbalari:** ${booksNote}` : "") + `\n\n**TSUL manbasi:** ${TSUL_STATUS.message}` + "\n\n*O‘quv tahlili. Topshirishdan oldin manbalar va topshiriq talablarini tekshiring.*",
+      onEnd: (sources, text) => sourceTail(dedupeSources([...priorSources, ...sources])) + citationReport(partial + text, rag.provided, { bands: rag.bands, bandsBy: rag.bandsBy, eventDate }) + (booksNote ? `\n\n**Kitob manbalari:** ${booksNote}` : "") + `\n\n**TSUL manbasi:** ${TSUL_STATUS.message}` + "\n\n*O‘quv tahlili. Topshirishdan oldin manbalar va topshiriq talablarini tekshiring.*" + sourcesMarker(partial + text, rag, { eventDate, books }),
     });
   } catch (e) {
     console.error("Kazus backend error:", e?.name || "unknown");

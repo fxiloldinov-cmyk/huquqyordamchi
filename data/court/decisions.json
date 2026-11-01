@@ -1,0 +1,6 @@
+{
+  "schema": 1,
+  "kind": "sud-qarori",
+  "note": "Individual sud qarorlari. Qonun va Plenum tushuntirishidan alohida. Faqat sources.json da ruxsati tasdiqlangan ochiq manbadan import qilinadi (scripts/import-court.mjs). Hozircha bo‘sh — demo qaror yo‘q.",
+  "decisions": []
+}

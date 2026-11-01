@@ -53,14 +53,18 @@ function stem(w) {
   }
   return w;
 }
+// So'zlashuv atamasi → rasmiy matndagi atama (o'zak darajasida). Kodekslar rasmiy so'zni ishlatadi, foydalanuvchi esa
+// kundalik so'zni ("merosxo'r" — rasmiy matnda "voris"). Kalit — tokens() o'zagi. Faqat ma'nosi bir xil juftliklar;
+// yangisini qo'shganda eval/cases.json dagi so'zlashuv savollari bilan tekshiring (npm run eval).
+const SYNONYM = { "merosxo'r": 'voris', 'merosxor': 'voris' };
 export function tokens(text) {
-  return norm(text).replace(/[^a-z0-9'\s-]/g, ' ').split(/[\s-]+/).map(t => t.replace(/^'+|'+$/g, '')).filter(t => t.length > 1 && !STOP.has(t)).map(stem);
+  return norm(text).replace(/[^a-z0-9'\s-]/g, ' ').split(/[\s-]+/).map(t => t.replace(/^'+|'+$/g, '')).filter(t => t.length > 1 && !STOP.has(t)).map(stem).map(t => SYNONYM[t] || t);
 }
 
 // ---- Kodekslar: mavzu belgilari, so'rovni kengaytirish va mavzu → modda yo'naltirish ----
 // ROUTES dagi raqamlar rasmiy sarlavhalar bo'yicha tekshirilgan (MK 2026-10-15, OK 2026-09-12, FK 2026-09-12 / 2026-06-23 tahrirlari);
 // testlar har bir raqam bazada borligini tekshiradi.
-const LABOR = /\b(mehnat|ish ?beruvchi|xodim|ishchi|maosh|ish haqi|oylik|ta'til|bo'shat|ishdan|ishga|shtat|qisqar|kasallik varaqa|ish vaqt|dam olish|xizmat safar|sinov muddat|mehnat daftarcha|kasaba|progul|ogohlantir|lavozim|smena|intizomiy|hayfsan|o'rindosh|mk)/g;
+const LABOR = /\b(mehnat|ish ?beruvchi|xodim|ishchi|maosh|ish haqi|oylik|zarplat|xo'jayin|bolnichn|ta'til|bo'shat|ishdan|ishga|shtat|qisqar|kasallik varaqa|ish vaqt|dam olish|xizmat safar|sinov muddat|mehnat daftarcha|kasaba|progul|ogohlantir|lavozim|smena|intizomiy|hayfsan|o'rindosh|mk)/g;
 const FAMILY = /(oila kodeks|nikoh|ajrash|ajral|taloq|aliment|er-xotin|er va xotin|erim\b|xotinim|turmush o'rtog|otalik|onalik|nasl-nasab|farzandlikka|vasiy(?!at)|homiy|ota-ona|qaynona|kelin\b|kuyov|fhdyo|bolam\b|bolamni|bolamiz|bolani\b|bolaning|bolalar)/g;
 // Protsessual va jazo sohalari. "haqorat", "bezorilik", "tan jarohati" — ham MJtK, ham JK (birinchi marta — odatda maʼmuriy);
 // "apellyatsiya", "dalil", "ekspertiza" — ham FPK, ham JPK: ikkala soha qo'shiladi, ulushni boshqa so'zlar hal qiladi.
@@ -492,7 +496,7 @@ export function lawRefs(text) {
   return out;
 }
 export const explicitRefs = text => lawRefs(text).mk;
-export const isLaborQuery = text => { LABOR.lastIndex = 0; return LABOR.test(norm(text)); };
+export const isLaborQuery = text => { LABOR.lastIndex = 0; const r = LABOR.test(norm(text)); LABOR.lastIndex = 0; return r; };
 
 // Savol qaysi kodekslarga tegishli: mavzu so'zlari soni (+ aniq havolalar va majburiy kodeks).
 function domainStrength(text) {
@@ -619,7 +623,9 @@ function formatItem(code, law, a, qTokens, maxChars, eventDate = null) {
   return `[${code.abbr} ${a.art}-modda${a.title ? '. ' + a.title : ''}${a.titleLatn ? ' / ' + a.titleLatn : ''}] (${[qism ? `${qism}-qism` : '', a.bob || ''].filter(Boolean).join('; ')})${warn}\n${body}${ch}`;
 }
 
-const toForce = force => force === true ? ['mk'] : [].concat(force || []).map(x => String(x).toLowerCase()).filter(x => CODES[x]);
+// Mavzu regex'lari global (/g): .test() lastIndex'ni o'zgartiradi, keyingi matchAll esa shu holatdan boshlaydi — har doim tozalanadi.
+const topicIn = (c, s) => { c.topic.lastIndex = 0; const r = c.topic.test(s); c.topic.lastIndex = 0; return r; };
+const toForce = force =>force === true ? ['mk'] : [].concat(force || []).map(x => String(x).toLowerCase()).filter(x => CODES[x]);
 const emptySets = () => Object.fromEntries(CODE_IDS.map(id => [id, new Set()]));
 
 /**
@@ -627,7 +633,24 @@ const emptySets = () => Object.fromEntries(CODE_IDS.map(id => [id, new Set()]));
  * force: true (MK, eski API), 'ok' yoki ['fk', ...] — mavzu so'zlari bo'lmasa ham shu kodeks(lar)dan izlanadi.
  * @returns {{passages, block, provided: {mk:Set,ok:Set,fk:Set}, bands: Set<string>, codes: string[]}}
  */
+// Ruscha savollar: bazadagi rasmiy matn o'zbekcha, shuning uchun asosiy huquqiy atamalar o'zbekcha ekvivalenti bilan
+// so'rovga qo'shiladi. Bu to'liq tarjima emas — faqat lug'atdagi mavzular uchun manba topishni yaxshilaydi.
+const RU_GLOSS = [
+  [/уволи|увольнен|сократ/, "ishdan bo'shatish mehnat shartnomasini bekor qilish ish beruvchi"], [/больничн|болезн|болел/, 'kasallik vaqtincha mehnatga qobiliyatsizlik'],
+  [/зарплат|заработн|оклад/, 'ish haqi'], [/отпуск/, "mehnat ta'tili"], [/работодател|начальник/, 'ish beruvchi'],
+  [/алимент/, 'aliment'], [/развод|расторжен\w* брак/, 'nikohni bekor qilish ajrashish'], [/отцовств/, 'otalikni belgilash'],
+  [/наследств|наследник/, 'meros voris vorislik'], [/завещан/, 'vasiyatnoma'], [/долг|займ|расписк/, 'qarz tilxat qarz shartnomasi'],
+  [/кража|украл|похитил/, "o'g'irlik"], [/мошенни/, 'firibgarlik'], [/задержа|арест/, 'ushlab turish'], [/адвокат|защитник/, 'himoyachi advokat'],
+  [/штраф/, 'jarima'], [/пьян|нетрезв/, 'mast holda'], [/светофор|красный свет/, "svetofor qizil chiroq"], [/суд\b|иск/, "sudga da'vo arizasi"],
+  [/налог/, "soliq"], [/коммунал/, "kommunal to'lov"], [/аренд/, 'ijara'], [/некачествен|брак\w* товар|возврат\w* товар/, "sifatsiz tovar iste'molchi"],
+];
+// \b kirill harflarida ishlamaydi — chegaralar qo'lda
+const isRussian = q => /[ыэщъ]|(?:^|[^а-яёўқғҳ])(что|как|меня|мне|какой|какое|какая|это|если|можно|ли)(?![а-яёўқғҳ])/i.test(q);
+export const ruGloss = q => isRussian(q) ? RU_GLOSS.filter(([re]) => re.test(q.toLowerCase())).map(([, uz]) => uz).join('. ') : '';
+
 export function retrieve(query, { k = 8, budget = 14000, bandK = 4, bandBudget = 7000, force = false, eventDate = null } = {}) {
+  const gloss = ruGloss(String(query || ''));
+  if (gloss) query = `${query}\n${gloss}.`;
   const empty = { passages: [], block: '', provided: emptySets(), bands: new Set(), bandsBy: Object.fromEntries(Object.keys(PLENUMS).map(k => [k, new Set()])), codes: [] };
   const refs = lawRefs(query), strength = domainStrength(query);
   for (const id of CODE_IDS) refs[id] = refs[id].filter(n => CODES[id].byArt.has(n));
@@ -645,10 +668,20 @@ export function retrieve(query, { k = 8, budget = 14000, bandK = 4, bandBudget =
   const qT = Object.fromEntries(active.map(id => [id, queryTokens(CODES[id], query)]));
   // 1) Moddalar: har bir kodeksda butun so'rov + har bir gap + mavzu yo'naltirish; kodeks ulushi mavzu kuchiga mutanosib
   const nq = norm(query), sents = sentences(query), lists = [], own = {}, routedAny = {};
+  const leadId = active.reduce((a, b) => strength[b] > strength[a] ? b : a);
+  // So'roq qismi: so'roq belgisi bilan tugaydigan gapning oxirgi bo'lagi ("…, merosxo'rlar kimlar?") — foydalanuvchi aynan nimani so'rayapti
+  const asked = norm(query).split(/(?<=[.!?])\s+|\n+/).filter(s => /\?\s*$/.test(s)).map(s => s.split(/,\s*|\bva\b/).at(-1)).filter(s => tokens(s).length >= 1);
   for (const id of active) {
     const c = CODES[id], ix = indexOf(id), w = strength[id] / total, key = d => id + ':' + d.a.art, mine = [];
-    mine.push({ items: bm25(ix, qT[id]).map(key), weight: 1.5 * w });
-    if (sents.length > 1) for (const s of sents) mine.push({ items: bm25(ix, queryTokens(c, s)).map(key), weight: 1.5 * w / sents.length });
+    // Ko'p sohali savol: soha faqat o'z gaplari bo'yicha qidiriladi. Butun savol bo'yicha BM25 boshqa soha lug'ati
+    // bilan "ifloslanadi" (masalan, mehnat + meros savolida meros moddalari mehnat so'zlari bo'yicha saralanardi).
+    const focus = sents.length > 1 && active.length > 1 && id !== leadId ? sents.filter(s => topicIn(c, s)) : [];
+    const focused = focus.length > 0 && focus.length < sents.length;
+    const fText = focused ? focus.join(' ') : null;
+    mine.push({ items: bm25(ix, focused ? queryTokens(c, fText) : qT[id]).map(key), weight: 1.5 * w });
+    if (sents.length > 1) for (const s of (focused ? focus : sents)) mine.push({ items: bm25(ix, queryTokens(c, s)).map(key), weight: 1.5 * w / (focused ? focus.length : sents.length) });
+    // Ko'p sohali savolda ikkinchi darajali soha: so'roq qismi shu sohaga tegishli bo'lsa — alohida ro'yxat (savol niyati)
+    if (focused) for (const a of asked) if (topicIn(c, a)) mine.push({ items: bm25(ix, queryTokens(c, a)).map(key), weight: 1.2 * w / asked.length });
     const routed = [...new Set(c.routes.filter(([re]) => re.test(nq)).flatMap(([, arts]) => arts))].filter(n => c.byArt.has(n));
     if (routed.length) { mine.push({ items: routed.map(n => id + ':' + n), weight: 5 * w }); routedAny[id] = true; }
     const fromBands = (bandArts[id] || []).filter(n => c.byArt.has(n));
@@ -733,8 +766,64 @@ export function supportScore(sentence, a, qismNo = null) {
   const shared = claim.filter(t => art.has(t)).length;
   return { ratio: shared / claim.length, shared };
 }
+// ---- Da'vo ↔ manba: strukturali yozuv ----
+// Har bir da'vo uchun alohida, aralashtirilmaydigan belgilar:
+//   exists   — modda/qism/band rasmiy bazada bormi (kod tekshiradi);
+//   given    — shu parcha AI'ga berilganmi;
+//   overlap  — so'zlar mosligi (leksik, faqat ma'lumot uchun; hech qachon "tasdiqlandi" emas);
+//   quote    — javobdagi iqtibos manba matnida so'zma-so'z bormi (bor bo'lsa ham xulosa to'g'riligini kafolatlamaydi);
+//   risks    — inkor, istisno, boshqa subyekt, muddat/miqdor, tahrir bo'yicha shubhalar;
+//   reviewed — yurist tekshirgan (AI javobida hech qachon true emas);
+//   model    — ikkinchi model bahosi (ulangan bo'lsa ham "avtomatik baho" deb belgilanadi).
+const NEG = /\b(emas|mumkin emas|taqiqlan\w*|man etil\w*|yo'q|ruxsat etilmaydi|huquqi yo'q|haqli emas|majbur emas|qo'llanilmaydi|qo'llanmaydi|tatbiq etilmaydi)\b/;
+const EXC = /(bundan mustasno|istisno|bundan tashqari|bundan holi|boshqacha nazarda tutil|boshqacha tartib|qonunda boshqacha|shartnomada boshqacha|hollar bundan|nazarda tutilgan hollar(?:da)? bundan)/;
+const SUBJECTS = ["ish beruvchi", "xodim", "qarz beruvchi", "qarz oluvchi", "sotuvchi", "xaridor", "iste'molchi", "ijaraga beruvchi", "ijarachi", "pudratchi", "buyurtmachi", "voris", "vasiyat qiluvchi", "notarius", "prokuror", "tergovchi", "surishtiruvchi", "advokat", "himoyachi", "gumon qilinuvchi", "ayblanuvchi", "sudlanuvchi", "jabrlanuvchi", "mahkum", "haydovchi", "soliq to'lovchi", "soliq organi", "kafil", "garovga qo'yuvchi", "garovga oluvchi", "ota-ona", "vasiy", "homiy", "mulkdor", "da'vogar", "javobgar"];
+const NUM_WORDS = [["to'qson", 90], ["sakson", 80], ["yetmish", 70], ["oltmish", 60], ["ellik", 50], ["qirq", 40], ["o'ttiz", 30], ["yigirma", 20], ["o'n", 10], ["to'qqiz", 9], ["sakkiz", 8], ["yetti", 7], ["olti", 6], ["besh", 5], ["to'rt", 4], ["uch", 3], ["ikki", 2], ["bir", 1]];
+const UNIT = "(kun|kalendar kun|ish kun|hafta|oy|yil|soat|baravar|foiz|%|eng kam ish haqi|bazaviy hisoblash miqdori|bhm)";
+// "o'n besh kun" → "15 kun", "uch oy" → "3 oy" (taqqoslash uchun)
+function numify(t) {
+  let s = ' ' + t.replace(/[«»"“”„()]/g, ' ') + ' ';
+  s = s.replace(/\byuz\b/g, ' 100 ');
+  for (const [w, n] of NUM_WORDS) s = s.replace(new RegExp(`(?<![a-z'])${w}(?![a-z'])`, 'g'), ` ${n} `);
+  // "10 5" → 15, "30 2" → 32
+  s = s.replace(/\b([1-9]0)\s+([1-9])\b/g, (_, a, b) => String(+a + +b)).replace(/\b100\s+([1-9]\d?)\b/g, (_, b) => String(100 + +b));
+  return s.replace(/\s+/g, ' ');
+}
+const amounts = t => [...numify(t).matchAll(new RegExp(`\\b(\\d+(?:[.,]\\d+)?)\\s*(?:-|–)?\\s*${UNIT}`, 'g'))].map(m => `${m[1].replace(',', '.')} ${m[2].replace(/^kalendar |^ish /, '')}`);
+const flat = t => numify(norm(t)).replace(/[^a-z0-9'%\s]/g, ' ').replace(/\s+/g, ' ').trim();
+// Javobdagi iqtibos: «...», "...", “...” ichidagi kamida 4 so'zli matn
+function quotesIn(sentence) {
+  return [...String(sentence).matchAll(/[«"“„]([^«»"“”„]{12,400})[»"”“]/g)].map(m => m[1].trim()).filter(q => q.split(/\s+/).length >= 4);
+}
+export function quoteFound(quote, sourceText) {
+  const q = flat(quote);
+  if (!q) return false;
+  const src = flat(sourceText);
+  // "…" bilan qisqartirilgan iqtibos: har bir bo'lagi tartib bilan topilishi kerak
+  const pieces = String(quote).split(/…|\.\.\.|\[\.\.\.\]/).map(flat).filter(x => x.split(' ').length >= 2);
+  if (pieces.length > 1) { let at = 0; for (const p of pieces) { const i = src.indexOf(p, at); if (i < 0) return false; at = i + p.length; } return true; }
+  return src.includes(q);
+}
+export function claimRisks(sentence, sourceText, { later = [], eventDate = null, asOf = null } = {}) {
+  const c = norm(sentence), s = norm(sourceText), risks = [];
+  const cNeg = NEG.test(c), sNeg = NEG.test(s);
+  if (cNeg && !sNeg) risks.push({ type: 'inkor', note: 'da’voda inkor bor, ko‘rsatilgan manba qismida yo‘q' });
+  if (EXC.test(s) && !EXC.test(c)) risks.push({ type: 'istisno', note: 'manbada istisno yoki “boshqacha tartib” sharti bor, da’voda aytilmagan' });
+  const srcAmounts = new Set(amounts(s));
+  const missing = amounts(c).filter(a => !srcAmounts.has(a));
+  if (missing.length) risks.push({ type: 'muddat', note: `muddat yoki miqdor manbada topilmadi: ${[...new Set(missing)].join(', ')}` });
+  const has = (t, x) => new RegExp(`(?<![a-z'])${x.replace(/[-]/g, '\\-')}`).test(t);
+  const subj = SUBJECTS.filter(x => has(c, x) && !has(s, x));
+  if (subj.length) risks.push({ type: 'subyekt', note: `manbada tilga olinmagan subyekt: ${subj.join(', ')}` });
+  if (later.length) risks.push({ type: 'tahrir', note: `voqea sanasidan (${eventDate}) keyin o‘zgartirilgan (${later.join(', ')}) — voqea paytidagi tahrir bazada yo‘q` });
+  else if (validDate(eventDate) && asOf && eventDate < asOf) risks.push({ type: 'tahrir-noma’lum', note: `voqea sanasi (${eventDate}) bazadagi tahrirdan (${asOf}) oldin; voqea paytidagi matn bazada saqlanmagan` });
+  return risks;
+}
+const levelIcon = { 'yo‘q': '❌', 'kuchini yo‘qotgan': '🚫', 'xavf': '⚠️', 'iqtibos topildi': '🔎', 'parcha berilgan': '📄', 'parcha berilmagan': 'ℹ️' };
+
 export function claimChecks(answer, given, { eventDate = null, max = 12 } = {}) {
   const out = [], unsupported = [];
+  let seq = 0;
   for (const sent of claimSentences(answer)) {
     const refs = lawRefs(sent), ns = norm(sent);
     const pairs = CODE_IDS.flatMap(id => refs[id].map(n => [id, n]));
@@ -749,21 +838,67 @@ export function claimChecks(answer, given, { eventDate = null, max = 12 } = {}) 
       const bandNo = bm ? +bm[1] : null;
       const snippet = sent.length > 150 ? sent.slice(0, sent.lastIndexOf(' ', 145)) + '…' : sent;
       const where = `${c.abbr} ${n}-modda${qismNo ? `, ${qismNo}-qism` : ''}${bandNo ? `, ${bandNo}-band` : ''}`;
-      let status, icon;
-      if (!hit) { icon = c.repealed.has(n) ? '🚫' : '❌'; status = c.repealed.has(n) ? 'modda kuchini yo‘qotgan' : 'bunday modda yo‘q'; out.push({ icon, status, snippet, where }); continue; }
+      const base = { claimId: `c${++seq}`, text: sent, snippet, where, sourceId: `${c.abbr}:${n}`, doc: c.title, code: c.abbr, art: n, qism: qismNo, band: bandNo, reviewed: false, model: null };
+      const push = (level, status, extra = {}) => out.push({ ...base, ...extra, level, icon: levelIcon[level], status });
+      if (!hit) { const gone = c.repealed.has(n); push(gone ? 'kuchini yo‘qotgan' : 'yo‘q', gone ? 'modda kuchini yo‘qotgan' : 'bunday modda yo‘q', { exists: false, given: false, method: 'raqam bazada tekshirildi' }); continue; }
+      const meta = { url: hit.law.url, asOf: hit.law.asOf, edition: hit.law.asOf };
       const parts = articleParts(hit.a);
-      if (qismNo && qismNo > parts.length) { out.push({ icon: '❌', status: `moddada ${parts.length} ta qism bor — ${qismNo}-qism yo‘q`, snippet, where, url: hit.law.url, asOf: hit.law.asOf }); continue; }
-      if (bandNo && qismNo && bandNo > parts[qismNo - 1].bands) { out.push({ icon: '❌', status: `${qismNo}-qismda ${bandNo}-band yo‘q`, snippet, where, url: hit.law.url, asOf: hit.law.asOf }); continue; }
-      const sc = supportScore(sent, hit.a, qismNo), isGiven = given[id]?.has(n);
-      if (isGiven && sc.shared >= 3 && sc.ratio >= 0.3) { icon = '✅'; status = 'parcha bilan asoslangan (so‘z mosligi)'; }
-      else if (isGiven) { icon = '⚠️'; status = 'parcha berilgan, lekin gap mazmuni bilan mosligi past — tekshirish kerak'; }
-      else { icon = 'ℹ️'; status = 'modda mavjud, tahlilga parcha berilmagan — tekshirish kerak'; }
+      if (qismNo && qismNo > parts.length) { push('yo‘q', `moddada ${parts.length} ta qism bor — ${qismNo}-qism yo‘q`, { ...meta, exists: false, given: false, method: 'qism soni bazada tekshirildi' }); continue; }
+      if (bandNo && qismNo && bandNo > parts[qismNo - 1].bands) { push('yo‘q', `${qismNo}-qismda ${bandNo}-band yo‘q`, { ...meta, exists: false, given: false, method: 'band soni bazada tekshirildi' }); continue; }
+      const sourceText = qismNo ? parts[qismNo - 1].text : [hit.a.title || '', ...hit.a.parts].join('\n');
+      const sc = supportScore(sent, hit.a, qismNo), isGiven = Boolean(given[id]?.has(n));
+      const overlap = { level: sc.shared >= 3 && sc.ratio >= 0.3 ? 'yuqori' : 'past', ratio: Math.round(sc.ratio * 100) / 100, shared: sc.shared, method: 'leksik (so‘zlar mosligi)' };
+      const qs = quotesIn(sent);
+      const quote = qs.length ? { text: qs[0], found: qs.every(q => quoteFound(q, sourceText) || quoteFound(q, hit.a.parts.join('\n'))), method: 'matnda so‘zma-so‘z qidirildi' } : null;
       const later = validDate(eventDate) ? changeDates(hit.a).filter(d => d > eventDate) : [];
-      out.push({ icon, status, snippet, where, url: hit.law.url, asOf: hit.law.asOf, later });
+      const risks = claimRisks(sent, sourceText, { later, eventDate, asOf: hit.law.asOf });
+      if (quote && !quote.found) risks.unshift({ type: 'iqtibos', note: 'iqtibos ko‘rsatilgan manba matnida topilmadi' });
+      const excerpt = sourceText.length > 700 ? sourceText.slice(0, sourceText.lastIndexOf(' ', 690)) + '…' : sourceText;
+      let level, status;
+      if (risks.some(r => r.type !== 'tahrir-noma’lum')) { level = 'xavf'; status = 'tekshirish kerak: ' + risks.filter(r => r.type !== 'tahrir-noma’lum').map(r => r.note).join('; '); }
+      else if (quote?.found) { level = 'iqtibos topildi'; status = 'iqtibos manba matnida bor — bu xulosaning to‘g‘riligini kafolatlamaydi'; }
+      else if (isGiven) { level = 'parcha berilgan'; status = `manba mavjud, parcha tahlilga berilgan; so‘z mosligi ${overlap.level} — mazmun avtomatik tasdiqlanmagan`; }
+      else { level = 'parcha berilmagan'; status = 'modda mavjud, tahlilga parcha berilmagan — tekshirish kerak'; }
+      push(level, status, { ...meta, exists: true, given: isGiven, overlap, quote, risks, later, excerpt, method: quote ? 'raqam + iqtibos + leksik' : 'raqam + leksik' });
     }
   }
   return { claims: out, unsupported };
 }
+
+// Ikkinchi model natijasini qo'shish (ulangan bo'lsa). Har doim "avtomatik baho" — yurist xulosasi emas.
+export function applyModelVerdicts(claims, verdicts = {}) {
+  for (const c of claims) if (verdicts[c.claimId]) c.model = { verdict: String(verdicts[c.claimId]).slice(0, 200), label: 'avtomatik baho (ikkinchi model)' };
+  return claims;
+}
+
+// Manba yetishmaganda: aniq cheklov va aniqlashtiruvchi savollar
+export function clarifyingQuestions(answer, provided) {
+  const n = norm(answer), qs = [];
+  const anyGiven = provided && CODE_IDS.some(id => provided[id]?.size);
+  if (!anyGiven) qs.push('Bazadagi rasmiy matndan mos parcha topilmadi: savolga tegishli soha yoki kodeksni aniqlashtiring.');
+  if (!/\b(19|20)\d{2}\b/.test(n)) qs.push('Voqea qachon sodir bo‘lgan (sana)? Qo‘llanadigan tahrir shunga bog‘liq.');
+  if (!/(shartnoma|tilxat|buyruq|qaror|bayonnoma|chek|kvitansiya|ariza|hujjat)/.test(n)) qs.push('Qanday hujjatlar bor (shartnoma, tilxat, buyruq, qaror, chek)?');
+  qs.push('Taraflar kim (jismoniy shaxs, tadbirkor yoki tashkilot) va siz qaysi tarafdasiz?');
+  return qs.slice(0, 4);
+}
+
+// Frontend uchun strukturali manbalar: tahlilga berilgan parchalar + da'volar. Marker orqali oqim oxiriga qo'shiladi.
+export const HK_SRC = '⁣HK:SRC:';
+export function sourcesPayload(answer, rag, { eventDate = null, books = [] } = {}) {
+  const given = { ...emptySets(), ...(rag?.provided || {}) };
+  const passages = (rag?.passages || []).map(p => {
+    const plenum = PLENUMS[p.doc];
+    const c = plenum ? null : CODES[p.doc], hit = c?.byArt.get(p.art);
+    return plenum
+      ? { sourceId: `${plenum.law.short}:${p.art}`, kind: 'plenum', doc: plenum.law.name, code: plenum.law.short, art: p.art, label: `${plenum.law.short}, ${p.art}-band`, url: plenum.law.url, asOf: plenum.law.asOf, text: p.text.slice(0, 4000) }
+      : { sourceId: `${c.abbr}:${p.art}`, kind: 'qonun', doc: c.title, code: c.abbr, art: p.art, label: `${c.abbr} ${p.art}-modda${hit?.a.title ? '. ' + (hit.a.titleLatn || hit.a.title) : ''}`, url: hit?.law.url, asOf: hit?.law.asOf, text: p.text.slice(0, 4000) };
+  });
+  // Kitob parchalari: foydalanuvchi yuklagan — rasmiy tekshirilgan manba emas
+  for (const [i, b] of books.entries()) passages.push({ sourceId: `K${i + 1}`, kind: 'kitob', verified: false, doc: b.title, author: b.author || '', year: b.year || null, page: b.page ?? null, origin: b.origin || 'foydalanuvchi yuklagan', label: `[K${i + 1}] ${b.author ? b.author + '. ' : ''}${b.title}${b.year ? ', ' + b.year : ''}${b.page != null ? ', ' + b.page + '-bet' : ''}`, text: String(b.text || '').slice(0, 1400) });
+  const { claims, unsupported } = claimChecks(answer, given, { eventDate });
+  return { v: 1, passages, claims: claims.map(({ text, ...c }) => c), unsupported, clarify: claims.length ? [] : clarifyingQuestions(answer, given), note: 'Avtomatik tekshiruv: raqam, iqtibos va so‘zlar mosligi. Yurist tekshiruvi emas.' };
+}
+export const sourcesMarker = (answer, rag, opts) => HK_SRC + encodeURIComponent(JSON.stringify(sourcesPayload(answer, rag, opts))) + '⁣';
 
 export function citationReport(answer, provided, { bands = new Set(), bandsBy = null, eventDate = null } = {}) {
   const bBy = { ...Object.fromEntries(Object.keys(PLENUMS).map(k => [k, new Set()])), ...(bandsBy || {}), ...(bandsBy ? {} : { plenum26: bands }) };
@@ -800,11 +935,23 @@ export function citationReport(answer, provided, { bands = new Set(), bandsBy = 
   }
   const { claims, unsupported } = claimChecks(answer, given, { eventDate });
   if (claims.length || unsupported.length) {
-    lines.push('', '**Da’volar va asoslar** (avtomatik so‘z mosligi tekshiruvi — huquqiy kafolat emas):');
-    for (const c of claims) lines.push(`- ${c.icon} «${c.snippet}» → ${c.where}${c.url ? ` · [lex.uz](${c.url}) · tahrir ${c.asOf}` : ''} — ${c.status}${c.later?.length ? `; ⏳ voqea sanasidan keyin o‘zgartirilgan (${c.later.join(', ')}) — voqea paytidagi tahrirni tekshiring` : ''}.`);
+    lines.push('', '**Da’volar va asoslar** (avtomatik tekshiruv — huquqiy kafolat emas):');
+    for (const c of claims) {
+      const tags = c.exists === false ? [] : [
+        `manba mavjud: ${c.exists ? 'ha' : 'yo‘q'}${c.given ? ' (parcha berilgan)' : ''}`,
+        c.overlap ? `so‘zlar mosligi: ${c.overlap.level}` : '',
+        c.quote ? `iqtibos: ${c.quote.found ? 'manbada topildi' : 'manbada topilmadi'}` : '',
+        'yurist tekshirgan: yo‘q'].filter(Boolean);
+      lines.push(`- ${c.icon} «${c.snippet}» → ${c.where}${c.url ? ` · [lex.uz](${c.url}) · tahrir ${c.asOf}` : ''} — ${c.status}${tags.length ? ` [${tags.join(' · ')}]` : ''}.`);
+    }
     for (const u of unsupported) lines.push(`- ❔ «${u.length > 150 ? u.slice(0, u.lastIndexOf(' ', 145)) + '…' : u}» — manba ko‘rsatilmagan huquqiy da’vo, tekshirish kerak.`);
   }
-  lines.push('- Tekshiruv modda, qism va band raqamini hamda gapning parcha bilan so‘z mosligini nazorat qiladi. Bu huquqiy xulosaning to‘g‘riligini kafolatlamaydi — muhim qarordan oldin manbani o‘qing yoki yuristga murojaat qiling.');
+  if (!claims.length) {
+    const qs = clarifyingQuestions(answer, given);
+    lines.push('', '**Manba yetishmadi.** Javobdagi xulosalar aniq modda bilan bog‘lanmagan, shuning uchun ularni tasdiqlangan deb bo‘lmaydi. Aniqlashtirish uchun:', ...qs.map(q => `- ${q}`));
+  }
+  lines.push('- Belgilar: 🔎 iqtibos manbada so‘zma-so‘z topildi · 📄 parcha berilgan · ℹ️ parcha berilmagan · ⚠️ inkor/istisno/subyekt/muddat/tahrir bo‘yicha shubha · ❌/🚫 manba yo‘q yoki kuchini yo‘qotgan.');
+  lines.push('- Tekshiruv modda, qism va band raqamini, iqtibosning manbada borligini va so‘zlar mosligini nazorat qiladi. So‘zlar mosligi yoki iqtibosning mavjudligi xulosaning to‘g‘riligini kafolatlamaydi; yurist tekshiruvi o‘tkazilmagan. Muhim qarordan oldin manbani o‘qing yoki yuristga murojaat qiling.');
   return lines.join('\n');
 }
 

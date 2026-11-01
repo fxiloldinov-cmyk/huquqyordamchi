@@ -1,0 +1,257 @@
+{
+ "generatedAt": "2026-11-01",
+ "site": "https://huquqyordamchiuz.netlify.app",
+ "totals": {
+  "documents": 17,
+  "laws": 15,
+  "plenums": 2,
+  "articles": 6103,
+  "bands": 100,
+  "courtDecisions": 0,
+  "situations": 32,
+  "reviewedSituations": 22
+ },
+ "lastImport": "2026-10-31",
+ "docs": [
+  {
+   "doc": "fk1",
+   "name": "Oʻzbekiston Respublikasining Fuqarolik kodeksi (1-qism)",
+   "kind": "qonun",
+   "unit": "modda",
+   "units": 386,
+   "repealed": 9,
+   "asOf": "2026-09-12",
+   "importedAt": "2026-10-31",
+   "autoUpdate": true,
+   "url": "https://lex.uz/docs/-111189",
+   "archivedEditions": 0
+  },
+  {
+   "doc": "fk2",
+   "name": "Oʻzbekiston Respublikasining Fuqarolik kodeksi (2-qism)",
+   "kind": "qonun",
+   "unit": "modda",
+   "units": 811,
+   "repealed": 10,
+   "asOf": "2026-06-23",
+   "importedAt": "2026-10-31",
+   "autoUpdate": true,
+   "url": "https://lex.uz/docs/-180552",
+   "archivedEditions": 0
+  },
+  {
+   "doc": "fpk",
+   "name": "Oʻzbekiston Respublikasining Fuqarolik protsessual kodeksi",
+   "kind": "qonun",
+   "unit": "modda",
+   "units": 513,
+   "repealed": 37,
+   "asOf": "2026-09-12",
+   "importedAt": "2026-10-31",
+   "autoUpdate": true,
+   "url": "https://lex.uz/docs/-3517337",
+   "archivedEditions": 0
+  },
+  {
+   "doc": "ipk",
+   "name": "Oʻzbekiston Respublikasining Iqtisodiy protsessual kodeksi",
+   "kind": "qonun",
+   "unit": "modda",
+   "units": 390,
+   "repealed": 3,
+   "asOf": "2026-10-21",
+   "importedAt": "2026-10-31",
+   "autoUpdate": true,
+   "url": "https://lex.uz/docs/-3523891",
+   "archivedEditions": 0
+  },
+  {
+   "doc": "ist",
+   "name": "“Isteʼmolchilarning huquqlarini himoya qilish toʻgʻrisida”gi Oʻzbekiston Respublikasi Qonuni",
+   "kind": "qonun",
+   "unit": "modda",
+   "units": 33,
+   "repealed": 0,
+   "asOf": "2025-10-18",
+   "importedAt": "2026-10-31",
+   "autoUpdate": true,
+   "url": "https://lex.uz/docs/-4704",
+   "archivedEditions": 0
+  },
+  {
+   "doc": "jik",
+   "name": "Oʻzbekiston Respublikasining Jinoyat-ijroiya kodeksi",
+   "kind": "qonun",
+   "unit": "modda",
+   "units": 200,
+   "repealed": 19,
+   "asOf": "2026-10-15",
+   "importedAt": "2026-10-31",
+   "autoUpdate": true,
+   "url": "https://lex.uz/docs/-163629",
+   "archivedEditions": 0
+  },
+  {
+   "doc": "jk",
+   "name": "Oʻzbekiston Respublikasining Jinoyat kodeksi",
+   "kind": "qonun",
+   "unit": "modda",
+   "units": 406,
+   "repealed": 15,
+   "asOf": "2026-10-15",
+   "importedAt": "2026-10-31",
+   "autoUpdate": true,
+   "url": "https://lex.uz/docs/-111453",
+   "archivedEditions": 0
+  },
+  {
+   "doc": "jpk",
+   "name": "Oʻzbekiston Respublikasining Jinoyat-protsessual kodeksi",
+   "kind": "qonun",
+   "unit": "modda",
+   "units": 773,
+   "repealed": 47,
+   "asOf": "2026-10-15",
+   "importedAt": "2026-10-31",
+   "autoUpdate": true,
+   "url": "https://lex.uz/docs/-111460",
+   "archivedEditions": 0
+  },
+  {
+   "doc": "kon",
+   "name": "Oʻzbekiston Respublikasi Konstitutsiyasi",
+   "kind": "qonun",
+   "unit": "modda",
+   "units": 155,
+   "repealed": 0,
+   "asOf": "2026-07-14",
+   "importedAt": "2026-10-31",
+   "autoUpdate": true,
+   "url": "https://lex.uz/docs/-6445145",
+   "archivedEditions": 0
+  },
+  {
+   "doc": "mjtk",
+   "name": "Oʻzbekiston Respublikasining Maʼmuriy javobgarlik toʻgʻrisidagi kodeksi",
+   "kind": "qonun",
+   "unit": "modda",
+   "units": 673,
+   "repealed": 21,
+   "asOf": "2026-10-15",
+   "importedAt": "2026-10-31",
+   "autoUpdate": true,
+   "url": "https://lex.uz/docs/-97664",
+   "archivedEditions": 0
+  },
+  {
+   "doc": "mk",
+   "name": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+   "kind": "qonun",
+   "unit": "modda",
+   "units": 593,
+   "repealed": 0,
+   "asOf": "2026-10-15",
+   "importedAt": "2026-10-31",
+   "autoUpdate": true,
+   "url": "https://lex.uz/docs/-6257288",
+   "archivedEditions": 0
+  },
+  {
+   "doc": "msk",
+   "name": "Oʻzbekiston Respublikasining Maʼmuriy sud ishlarini yuritish toʻgʻrisidagi kodeksi",
+   "kind": "qonun",
+   "unit": "modda",
+   "units": 309,
+   "repealed": 7,
+   "asOf": "2026-08-14",
+   "importedAt": "2026-10-31",
+   "autoUpdate": true,
+   "url": "https://lex.uz/docs/-3527353",
+   "archivedEditions": 0
+  },
+  {
+   "doc": "ok",
+   "name": "Oʻzbekiston Respublikasining Oila kodeksi",
+   "kind": "qonun",
+   "unit": "modda",
+   "units": 220,
+   "repealed": 20,
+   "asOf": "2026-09-12",
+   "importedAt": "2026-10-31",
+   "autoUpdate": true,
+   "url": "https://lex.uz/docs/-104720",
+   "archivedEditions": 0
+  },
+  {
+   "doc": "plenum26",
+   "name": "Oʻzbekiston Respublikasi Oliy sudi plenumining 2023-yil 20-noyabr 26-son Qarori “Sudlar tomonidan mehnat shartnomasini bekor qilishni tartibga soluvchi qonunchilikni qoʻllash amaliyoti toʻgʻrisida”",
+   "kind": "plenum",
+   "unit": "band",
+   "units": 75,
+   "repealed": 0,
+   "asOf": "2023-11-20",
+   "importedAt": "2026-10-30",
+   "autoUpdate": false,
+   "url": "https://lex.uz/search/all?searchtitle=Sudlar%20tomonidan%20mehnat%20shartnomasini%20bekor%20qilishni%20tartibga%20soluvchi%20qonunchilikni%20qo%CA%BBllash%20amaliyoti%20to%CA%BBg%CA%BBrisida",
+   "archivedEditions": 0
+  },
+  {
+   "doc": "plenum05",
+   "name": "Oʻzbekiston Respublikasi Oliy sudi Plenumining 2011-yil 20-iyul 05-son Qarori “Sudlar tomonidan meros huquqiga oid qonunchilikning qoʻllanilishi toʻgʻrisida”",
+   "kind": "plenum",
+   "unit": "band",
+   "units": 25,
+   "repealed": 0,
+   "asOf": "2011-07-20",
+   "importedAt": "2026-10-31",
+   "autoUpdate": false,
+   "url": "https://lex.uz/docs/-2414320",
+   "archivedEditions": 0
+  },
+  {
+   "doc": "sk",
+   "name": "Oʻzbekiston Respublikasining Soliq kodeksi",
+   "kind": "qonun",
+   "unit": "modda",
+   "units": 500,
+   "repealed": 6,
+   "asOf": "2026-10-21",
+   "importedAt": "2026-10-31",
+   "autoUpdate": true,
+   "url": "https://lex.uz/docs/-4674902",
+   "archivedEditions": 0
+  },
+  {
+   "doc": "ujk",
+   "name": "Oʻzbekiston Respublikasining Uy-joy kodeksi",
+   "kind": "qonun",
+   "unit": "modda",
+   "units": 141,
+   "repealed": 1,
+   "asOf": "2026-09-12",
+   "importedAt": "2026-10-31",
+   "autoUpdate": true,
+   "url": "https://lex.uz/docs/-106134",
+   "archivedEditions": 0
+  }
+ ],
+ "notConnected": [
+  {
+   "name": "Sud qarorlarining ochiq bazasi (O‘zbekiston Respublikasi sudlari)",
+   "why": "Rasmiy ochiq manba manzili, foydalanish shartlari va ruxsat hali tekshirilmagan. Tekshirilgach, hosts va permission maydonlarini to‘ldiring."
+  },
+  {
+   "name": "TSUL elektron kutubxonasi",
+   "why": "Rasmiy API va ruxsat yo‘q; kitob matni avtomatik olinmaydi."
+  },
+  {
+   "name": "Qonunlarning tarixiy tahrirlari",
+   "why": "Bazada amaldagi tahrir saqlanadi; voqea sanasidagi eski tahrir matni yo‘q (faqat o‘zgartish izohlari va importdagi so‘nggi 3 arxiv nusxa)."
+  },
+  {
+   "name": "Boshqa qonun va qarorlar",
+   "why": "Bazada yuqoridagi hujjatlar bor; qolgan normativ hujjatlar faqat lex.uz havolasi orqali."
+  }
+ ],
+ "note": "Sana — bazadagi tahrir (lex.uz e’lon sanasi) va import sanasi. Haftalik avtomatik tekshiruv natijasi GitHub Actions jurnalida; bazaga faqat yangi tahrir topilganda yoziladi."
+}

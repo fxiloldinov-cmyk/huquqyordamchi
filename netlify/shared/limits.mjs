@@ -7,7 +7,7 @@
 //   HK_AI_DAILY_LIMIT=600     — butun sayt bo'yicha bir kunlik AI so'rovlari (kazus davomi ham hisoblanadi)
 //   HK_AI_IP_HOURLY=40        — bitta IP uchun soatlik AI so'rovlari
 //   HK_AI_USER_DAILY=150      — bitta hisob uchun kunlik AI so'rovlari
-import { openStore, StoreUnavailable } from "./store.mjs";
+import { openStore, StoreConflict } from "./store.mjs";
 import { jsonError, clientIp } from "./common.mjs";
 import { currentUser, sha256 } from "./auth.mjs";
 
@@ -34,7 +34,8 @@ export async function hit(bucket, limit, windowMs, now = Date.now()) {
 }
 
 // AI so'rovidan oldin: favqulodda o'chirish, IP, foydalanuvchi va kunlik umumiy chegara.
-// Ombor ishlamasa, xotiradagi limit (guardJsonPost) himoyasi qoladi va so'rov o'tkaziladi — xato logga yoziladi.
+// Ombor ishlamasa yoki shartli yozish tasdiqlanmasa, chegarani hisoblab bo'lmaydi — AI so'rovi o'tkazilmaydi
+// (nazoratsiz xarajat bo'lmasligi uchun). Foydalanuvchiga sodda xabar, administratorga — logdagi sabab.
 export async function guardAi(req, ctx, scope) {
   const L = aiLimits();
   if (L.disabled) return jsonError("AI xizmati administrator tomonidan vaqtincha o‘chirilgan. Katalog, yo‘riqnomalar va hujjat namunalari ishlaydi.", 503);
@@ -52,7 +53,8 @@ export async function guardAi(req, ctx, scope) {
     if (!day.allowed) return jsonError("Saytning bugungi AI sarf chegarasi tugadi. Katalog va yo‘riqnomalardan foydalanishingiz mumkin; AI ertaga qayta ishlaydi.", 429);
     return null;
   } catch (e) {
-    if (!(e instanceof StoreUnavailable)) console.error("limits:", e?.name || "error", "scope", scope);
-    return null;
+    console.error("limits: hisoblagich ishlamadi —", e?.constructor?.name || e?.name || "error", "scope", scope);
+    if (e instanceof StoreConflict) return jsonError("Hozir so‘rovlar juda ko‘p. Bir necha soniyadan keyin qayta urinib ko‘ring.", 429);
+    return jsonError("AI xizmati vaqtincha ishlamayapti (so‘rovlar hisoblagichi ulanmagan). Katalog, yo‘riqnomalar va hujjat namunalari ishlaydi.", 503);
   }
 }

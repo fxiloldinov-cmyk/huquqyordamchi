@@ -26,14 +26,18 @@ test('claim checks link each legal claim to a passage, part and band; weak and u
     'Qarzdor 10 kun ichida qaytarishi shart.'].join('\n');
   const { claims, unsupported } = rag.claimChecks(ans, r.provided);
   const by = (s) => claims.find((c) => c.where.startsWith(s));
-  assert.equal(by('FK 735').icon, '✅'); assert.match(by('FK 735').where, /2-qism/); assert.match(by('FK 735').url, /-180552/); assert.equal(by('FK 735').asOf, '2026-06-23');
+  // v11.7: so'zlar mosligi hech qachon yashil tasdiq bermaydi
+  assert.ok(claims.every((c) => c.icon !== '✅'));
+  assert.match(by('FK 735').where, /2-qism/); assert.match(by('FK 735').url, /-180552/); assert.equal(by('FK 735').asOf, '2026-06-23');
+  assert.equal(by('FK 735').exists, true); assert.equal(by('FK 735').given, true); assert.equal(by('FK 735').overlap.level, 'yuqori'); assert.equal(by('FK 735').reviewed, false);
   assert.equal(by('FK 733').icon, '❌'); assert.match(by('FK 733').status, /9-qism yo‘q/);
   assert.equal(by('FK 734').icon, '⚠️', 'parcha berilgan, lekin da’vo mazmuni mos emas');
   assert.equal(by('FK 150').icon, 'ℹ️', 'modda bor, lekin parcha berilmagan');
   assert.equal(unsupported.length, 1);
   const rep = rag.citationReport(ans, r.provided);
   assert.match(rep, /Da’volar va asoslar/); assert.match(rep, /huquqiy kafolat emas/); assert.match(rep, /❔ «Qarzdor 10 kun ichida qaytarishi shart\.»/);
-  assert.ok(!/✅[^\n]*734/.test(rep), 'asossiz xulosa tasdiqlangan deb ko‘rsatilmaydi');
+  assert.match(rep, /so‘zlar mosligi: yuqori/); assert.match(rep, /yurist tekshirgan: yo‘q/);
+  assert.ok(!/✅/.test(rep), 'leksik moslik tasdiq sifatida ko‘rsatilmaydi');
 });
 
 test('event date before the stored edition: prompt forbids applying current text automatically and marks later-amended articles', () => {

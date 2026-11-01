@@ -3,8 +3,10 @@
 // omborga hech qachon o'tilmaydi: Blobs ulanmasa, so'rov 503 bilan rad etiladi.
 //
 // Parallel yozishdan himoya: update(key, fn) — "o'qi → o'zgartir → faqat o'zgarmagan bo'lsa yoz" (compare-and-swap).
-// Netlify Blobs'da bu getWithMetadata().etag va setJSON(..., { onlyIfMatch | onlyIfNew }) orqali ishlaydi
-// (@netlify/blobs 8.2+). Kutubxona shartli yozishni qo'llamasa, atomarlik yo'qligi bir marta logga yoziladi.
+// Netlify Blobs'da bu getWithMetadata().etag va setJSON(..., { onlyIfMatch | onlyIfNew }) orqali ishlaydi.
+// Atomarlik faqat yozish natijasi `modified: boolean` qaytarganda isbotlangan hisoblanadi. getWithMetadata
+// mavjudligi yoki setJSON xatosiz tugagani dalil emas: natijada `modified` bo'lmasa, StoreNotAtomic tashlanadi
+// va hisob/limit yozuvi "muvaffaqiyatli" deb qaytarilmaydi.
 const memory = new Map();
 
 function memoryStore(name) {
@@ -28,25 +30,36 @@ function memoryStore(name) {
 
 export class StoreUnavailable extends Error {}
 export class StoreConflict extends Error {}
+// Shartli yozish ishlashi tasdiqlanmadi — hisob va limitlar uchun xavfsiz emas. StoreUnavailable'dan meros oladi,
+// shuning uchun barcha hisob API'lari uni 503 "xizmat ulanmagan" sifatida qaytaradi (yozuv bajarilgan deb aytilmaydi).
+export class StoreNotAtomic extends StoreUnavailable {}
 
 let warnedNonAtomic = false;
-function blobsStore(blobs, name) {
-  const s = blobs.getStore({ name, consistency: "strong" });
-  const conditional = typeof s.getWithMetadata === "function";
+function notAtomic(why) {
+  if (!warnedNonAtomic) { warnedNonAtomic = true; console.error("store: shartli yozish tasdiqlanmadi —", why, "— @netlify/blobs versiyasini tekshiring (package-lock.json)"); }
+  return new StoreNotAtomic("Ombor shartli yozishni tasdiqlamadi.");
+}
+
+// blobs — @netlify/blobs moduli yoki testdagi soxta adapter ({ getStore }).
+export function blobsStore(blobs, name) {
+  let s;
+  try { s = blobs.getStore({ name, consistency: "strong" }); }
+  catch (e) { throw new StoreUnavailable("Netlify Blobs muhiti topilmadi: " + (e?.name || "xato")); }
+  const canRead = typeof s.getWithMetadata === "function";
   return {
-    atomic: conditional,
+    atomic: canRead,
     async get(key) { return (await s.get(key, { type: "json" })) ?? null; },
     async getWithEtag(key) {
-      if (!conditional) return { value: (await s.get(key, { type: "json" })) ?? null, etag: null };
+      if (!canRead) throw notAtomic("getWithMetadata yo'q");
       const r = await s.getWithMetadata(key, { type: "json" });
+      if (r && r.data != null && typeof r.etag !== "string") throw notAtomic("etag qaytmadi");
       return r ? { value: r.data ?? null, etag: r.etag ?? null } : { value: null, etag: null };
     },
     async set(key, value) { await s.setJSON(key, value); },
     async setIf(key, value, etag) {
       const r = await s.setJSON(key, value, etag === null ? { onlyIfNew: true } : { onlyIfMatch: etag });
       if (r && typeof r.modified === "boolean") return r.modified;
-      if (!warnedNonAtomic) { warnedNonAtomic = true; console.warn("store: shartli yozish qo'llanmadi — @netlify/blobs versiyasini yangilang (>=8.2)"); }
-      return true;
+      throw notAtomic("setJSON natijasida modified yo'q");
     },
     async delete(key) { await s.delete(key); },
   };
@@ -67,7 +80,12 @@ function withUpdate(st) {
   return st;
 }
 
+let adapterOverride = null;
+// Testlar uchun: haqiqiy SDK shaklidagi adapterni ulash (null — odatiy holat).
+export function setBlobsAdapterForTests(adapter) { adapterOverride = adapter; }
+
 export async function openStore(name) {
+  if (adapterOverride) return withUpdate(blobsStore(adapterOverride, name));
   if (process.env.HK_DEV_MEMORY_STORE === "1") return withUpdate(memoryStore(name));
   let blobs;
   try {

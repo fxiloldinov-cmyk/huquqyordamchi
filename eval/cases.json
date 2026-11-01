@@ -1,6 +1,6 @@
 {
- "version": 1,
- "note": "Bu to‘plam AI javobi uchun 'ideal javob' emas. Kutilgan manbalar loyiha muallifi tomonidan rasmiy matn bo‘yicha tanlangan; yurist tekshiruvi kutilmoqda (lawyerReview).",
+ "version": 2,
+ "note": "Bu to‘plam AI javobi uchun “ideal javob” emas. Kutilgan manbalar loyiha muallifi tomonidan rasmiy matn bo‘yicha tanlangan; yurist tekshiruvi kutilmoqda (lawyerReview). v2: so‘zlashuv, kirill, ruscha va fanlararo variantlar (variantOf — asl holat; manbalar o‘sha holatdagidek).",
  "cases": [
   {
    "id": "E01",
@@ -529,6 +529,201 @@
    "mustNot": [
     "meros faqat onaga o‘tadi"
    ],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati."
+  },
+  {
+   "id": "E34",
+   "fan": "mehnat",
+   "kind": "sozlashuv",
+   "eventDate": null,
+   "question": "Bolnichniy olib uyda yotgan edim, xo‘jayin meni ishdan haydab yubordi. To‘g‘rimi bu?",
+   "expectSources": [
+    "MK 163"
+   ],
+   "mustAsk": [],
+   "mustNot": [],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati.",
+   "variantOf": "E01"
+  },
+  {
+   "id": "E35",
+   "fan": "mehnat",
+   "kind": "sozlashuv",
+   "eventDate": null,
+   "question": "Zarplatani ikki oydan beri bermayapti, kechikkani uchun ustiga pul so‘rasam bo‘ladimi?",
+   "expectSources": [
+    "MK 333"
+   ],
+   "mustAsk": [],
+   "mustNot": [],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati.",
+   "variantOf": "E03"
+  },
+  {
+   "id": "E36",
+   "fan": "oila",
+   "kind": "sozlashuv",
+   "eventDate": null,
+   "question": "Erim bilan ajrashsak, bitta bolamiz bor, u qancha aliment to‘laydi?",
+   "expectSources": [
+    "OK 99"
+   ],
+   "mustAsk": [],
+   "mustNot": [],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati.",
+   "variantOf": "E05"
+  },
+  {
+   "id": "E37",
+   "fan": "fuqarolik",
+   "kind": "sozlashuv",
+   "eventDate": null,
+   "question": "Dadam o‘lib qoldi, uy kimlarga qoladi, merosxo‘rlar kim?",
+   "expectSources": [
+    "FK 1135"
+   ],
+   "mustAsk": [],
+   "mustNot": [],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati.",
+   "variantOf": "E10"
+  },
+  {
+   "id": "E38",
+   "fan": "mehnat",
+   "kind": "kirill",
+   "eventDate": null,
+   "question": "Касал бўлиб ётганимда иш берувчи мени ишдан бўшатди. Бу қонуниймi?",
+   "expectSources": [
+    "MK 163"
+   ],
+   "mustAsk": [],
+   "mustNot": [],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati.",
+   "variantOf": "E01"
+  },
+  {
+   "id": "E39",
+   "fan": "oila",
+   "kind": "kirill",
+   "eventDate": null,
+   "question": "Битта бола учун алимент миқдори қанча бўлади?",
+   "expectSources": [
+    "OK 99"
+   ],
+   "mustAsk": [],
+   "mustNot": [],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati.",
+   "variantOf": "E05"
+  },
+  {
+   "id": "E40",
+   "fan": "jinoyat",
+   "kind": "kirill",
+   "eventDate": null,
+   "question": "Телефонимни ўғирлаб кетишди, қандай жазо берилади?",
+   "expectSources": [
+    "JK 169"
+   ],
+   "mustAsk": [],
+   "mustNot": [],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati.",
+   "variantOf": "E15"
+  },
+  {
+   "id": "E41",
+   "fan": "mehnat",
+   "kind": "ruscha",
+   "eventDate": null,
+   "question": "Меня уволили, когда я был на больничном. Это законно?",
+   "expectSources": [
+    "MK 163"
+   ],
+   "mustAsk": [],
+   "mustNot": [],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati.",
+   "variantOf": "E01"
+  },
+  {
+   "id": "E42",
+   "fan": "oila",
+   "kind": "ruscha",
+   "eventDate": null,
+   "question": "Какой размер алиментов на одного ребенка?",
+   "expectSources": [
+    "OK 99"
+   ],
+   "mustAsk": [],
+   "mustNot": [],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati.",
+   "variantOf": "E05"
+  },
+  {
+   "id": "E43",
+   "fan": "jinoyat",
+   "kind": "ruscha",
+   "eventDate": null,
+   "question": "У меня украли телефон, какое наказание за кражу?",
+   "expectSources": [
+    "JK 169"
+   ],
+   "mustAsk": [],
+   "mustNot": [],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati.",
+   "variantOf": "E15"
+  },
+  {
+   "id": "E44",
+   "fan": "oila",
+   "kind": "fanlararo",
+   "eventDate": null,
+   "question": "Sobiq erim aliment to‘lamayapti, ustiga uyimdan telefonimni o‘g‘irlab ketdi. Bitta bolamiz bor, aliment qancha bo‘lishi kerak?",
+   "expectSources": [
+    "OK 99",
+    "JK 169"
+   ],
+   "mustAsk": [],
+   "mustNot": [],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati."
+  },
+  {
+   "id": "E45",
+   "fan": "isteʼmol",
+   "kind": "fanlararo",
+   "eventDate": null,
+   "question": "Do‘kondan olgan telefonim 3 kunda buzildi, sotuvchi almashtirib bermayapti. Sudga da’vo arizasini qanday yozaman, nimalar ilova qilinadi?",
+   "expectSources": [
+    "IST 13",
+    "FPK 188"
+   ],
+   "mustAsk": [],
+   "mustNot": [],
+   "lawyerReview": "kutilmoqda",
+   "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati."
+  },
+  {
+   "id": "E46",
+   "fan": "konstitutsiyaviy",
+   "kind": "fanlararo",
+   "eventDate": null,
+   "question": "Militsiya meni sudsiz 3 kun ushlab turdi va mast holda mashina haydaganlikda aybladi. Bu Konstitutsiyaga zidmi, qanday javobgarlik bor?",
+   "expectSources": [
+    "Konstitutsiya 27",
+    "MJtK 131"
+   ],
+   "mustAsk": [],
+   "mustNot": [],
    "lawyerReview": "kutilmoqda",
    "lawyerCriteria": "Yurist tasdiqlashi kerak: kutilgan manbalar to‘liqligi, zarur savollar va taqiqlangan xulosalar ro‘yxati."
   }

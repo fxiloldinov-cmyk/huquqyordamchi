@@ -37,8 +37,9 @@ Tekshirish: `https://<sayt>/api/status`. U kalit borligini, ishlagan modelni va 
 ## 4. Netlify Blobs
 
 - Hisoblar, sessiyalar, saqlangan materiallar, kitob parchalari va limit hisoblagichlari Netlify Blobs’da saqlanadi.
-- `@netlify/blobs` (>= 8.2) build vaqtida `package.json` orqali o‘rnatiladi; alohida sozlash kerak emas.
-- 8.2 dan eski versiyada shartli yozish (parallel yozuvlardan himoya) ishlamaydi va logda ogohlantirish chiqadi.
+- `@netlify/blobs` 11.1.7 `package-lock.json` bilan mahkamlangan (`npm ci`); alohida sozlash kerak emas.
+- v11.7: shartli yozish (`modified: true/false`) tasdiqlanmasa, hisob va limit yozuvlari bajarilgan deb aytilmaydi — 503 qaytariladi, AI so‘rovlari rad etiladi; logda `store: shartli yozish tasdiqlanmadi`.
+- Ishlar (`cases`) ham shu omborda; batafsil: `docs/SOZLASH_VA_KOCHIRISH_UZ.md`.
 
 ## 5. Qonunlar bazasini yangilash (GitHub Actions)
 
