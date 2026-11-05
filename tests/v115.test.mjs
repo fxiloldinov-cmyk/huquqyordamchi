@@ -248,7 +248,7 @@ test('book excerpts: rights confirmation required, search needs enough overlap, 
     const out = await r.text();
     assert.match(sys, /FOYDALANUVCHI YUKLAGAN KITOB PARCHALARI[\s\S]*Muallif A\. Fuqarolik huquqi\. Darslik, 2020, 45-bet/);
     assert.match(out, /Kitob manbalari:\*\* Tahlilga berilgan kitob parchalari[^\n]*45-bet/); assert.match(out, /TSUL manbasi:\*\* TSUL kitob matni bu tahlilga avtomatik olinmagan/);
-    const r2 = await kazus(R('/api/kazus', 'POST', { kazus: 'Haydovchi svetoforning qizil chirog‘ida o‘tdi, kamera jarima yozdi, shikoyat qilmoqchi.', fan: 'mamuriy', useBooks: true }, ck), { ip: 'b2' });
+    const r2 = await kazus(R('/api/kazus', 'POST', { kazus: 'Yakka tartibdagi tadbirkor soliq hisobotini topshirish va bank hisobini yuritish tartibini so‘ramoqchi.', fan: 'mamuriy', useBooks: true }, ck), { ip: 'b2' });
     assert.match(await r2.text(), /yetarli mos joy topilmadi — javob kitobga asoslanmagan/);
   });
 });

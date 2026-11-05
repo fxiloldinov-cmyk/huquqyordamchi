@@ -1,8 +1,8 @@
 {
- "generatedAt": "2026-11-01",
+ "generatedAt": "2026-11-06",
  "site": "https://huquqyordamchiuz.netlify.app",
  "totals": {
-  "documents": 17,
+  "documents": 19,
   "laws": 15,
   "plenums": 2,
   "articles": 6103,
@@ -11,7 +11,7 @@
   "situations": 32,
   "reviewedSituations": 22
  },
- "lastImport": "2026-10-31",
+ "lastImport": "2026-11-05",
  "docs": [
   {
    "doc": "fk1",
@@ -232,6 +232,32 @@
    "importedAt": "2026-10-31",
    "autoUpdate": true,
    "url": "https://lex.uz/docs/-106134",
+   "archivedEditions": 0
+  },
+  {
+   "doc": "yhq",
+   "name": "Yoʻl harakati qoidalari (172-son qaror, asosiy qoidalar)",
+   "kind": "qoida",
+   "unit": "band",
+   "units": 191,
+   "repealed": 0,
+   "asOf": "2026-10-30",
+   "importedAt": "2026-11-05",
+   "autoUpdate": false,
+   "url": "https://lex.uz/docs/-5953883",
+   "archivedEditions": 0
+  },
+  {
+   "doc": "ypx975",
+   "name": "YPX xodimlarining yoʻl harakati qatnashchilari bilan oʻzaro munosabatlari toʻgʻrisidagi nizom (975-son qaror)",
+   "kind": "qoida",
+   "unit": "band",
+   "units": 62,
+   "repealed": 1,
+   "asOf": "2024-07-17",
+   "importedAt": "2026-11-05",
+   "autoUpdate": false,
+   "url": "https://lex.uz/docs/-4089917",
    "archivedEditions": 0
   }
  ],

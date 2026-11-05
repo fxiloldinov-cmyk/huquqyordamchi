@@ -1,8 +1,9 @@
+import {internationalEnabled} from '../netlify/shared/features.mjs';
 import {readFile,writeFile,mkdir,rm} from 'node:fs/promises';
 const data=JSON.parse(await readFile(new URL('../data/legal.json',import.meta.url),'utf8'));
 // Bazadagi rasmiy matn holati (lex.uz ID → tahrir sanasi): kodeks kartochkalarida ko'rsatiladi.
 const lawBase={};
-for(const f of ['kon','mk','ok','fk1','fk2','fpk','jk','jpk','mjtk','sk','ujk','ipk','ist','jik','msk','plenum05']){try{const l=JSON.parse(await readFile(new URL(`../data/laws/${f}.json`,import.meta.url),'utf8'));if(l.lexId&&l.asOf)lawBase[l.lexId]=l.asOf;}catch{}}
+for(const f of ['kon','mk','ok','fk1','fk2','fpk','jk','jpk','mjtk','sk','ujk','ipk','ist','jik','msk','plenum05','yhq','ypx975']){try{const l=JSON.parse(await readFile(new URL(`../data/laws/${f}.json`,import.meta.url),'utf8'));if(l.lexId&&l.asOf)lawBase[l.lexId]=l.asOf;}catch{}}
 await writeFile(new URL('../public/legal-data.js',import.meta.url),'// Generated from data/legal.json — run npm run build after edits.\nglobalThis.HK_LEGAL = '+JSON.stringify(data)+';\nglobalThis.HK_LAWBASE = '+JSON.stringify(lawBase)+';\n');
 
 // ---- SEO: har bir vaziyat uchun statik sahifa, ro'yxat sahifasi, sitemap.xml va robots.txt ----
@@ -100,7 +101,7 @@ ${oferta.sections.map(s=>`<section><h2>${esc(s.h)}</h2>${s.p.map(t=>`<p>${esc(t)
 await mkdir(new URL('../public/oferta/',import.meta.url),{recursive:true});
 await writeFile(new URL('../public/oferta/index.html',import.meta.url),page({path:'/oferta/',title:'Ommaviy oferta — HuquqYordamchi xizmatlaridan foydalanish shartlari',description:'HuquqYordamchi veb-sayti va xizmatlaridan foydalanish shartlari: shartnoma predmeti, taraflarning majburiyatlari, javobgarlik, shaxsga doir ma’lumotlar va nizolarni hal qilish.',body:ofertaBody,jsonld:[crumbs([['Bosh sahifa','/'],[oferta.title,'/oferta/']])]}));
 
-const urls=['/','/vaziyat/',...pages,'/oferta/'];
+const urls=['/','/vaziyat/',...pages,'/oferta/',...(internationalEnabled()?['/international.html']:[])];
 await writeFile(new URL('../public/sitemap.xml',import.meta.url),`<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map(u=>`  <url><loc>${SITE}${u}</loc><lastmod>${today}</lastmod></url>`).join('\n')}
@@ -132,7 +133,7 @@ console.log(`SEO: ${pages.length} ta vaziyat sahifasi, sitemap (${urls.length} U
     const law = JSON.parse(await readFile(new URL(f, lawDir), 'utf8'));
     const key = Object.keys(manifest).find(k => manifest[k].file === f);
     const m = manifest[key] || {};
-    docs.push({ doc: key || f.replace('.json', ''), name: law.name, kind: law.kind === 'band' ? 'plenum' : 'qonun', unit: law.kind === 'band' ? 'band' : 'modda',
+    docs.push({ doc: key || f.replace('.json', ''), name: law.name, kind: ['yhq','ypx975'].includes(key)?'qoida':law.kind === 'band' ? 'plenum' : 'qonun', unit: law.kind === 'band' ? 'band' : 'modda',
       units: law.articles.length, repealed: (law.repealed || []).length, asOf: law.asOf, importedAt: law.importedAt || m.importedAt || null,
       autoUpdate: m.autoUpdate !== false && law.kind !== 'band', url: law.url, archivedEditions: archive.filter(a => a.startsWith((key || '') + '-') || a.startsWith((key || '') + '_')).length });
   }
@@ -145,6 +146,7 @@ console.log(`SEO: ${pages.length} ta vaziyat sahifasi, sitemap (${urls.length} U
     lastImport: docs.map(d => d.importedAt).filter(Boolean).sort().at(-1) || null,
     docs,
     notConnected: [
+      ...(!docs.some(d=>d.doc==='yhq')?[{name:'Yo‘l harakati qoidalari',why:'YHQ matni bazaga kiritilmagan. Egasi Word/HTML eksportini beradi.'}]:[]),
       ...court.notConnected.map(s => ({ name: s.name, why: s.note })),
       { name: 'TSUL elektron kutubxonasi', why: 'Rasmiy API va ruxsat yo‘q; kitob matni avtomatik olinmaydi.' },
       { name: 'Qonunlarning tarixiy tahrirlari', why: 'Bazada amaldagi tahrir saqlanadi; voqea sanasidagi eski tahrir matni yo‘q (faqat o‘zgartish izohlari va importdagi so‘nggi 3 arxiv nusxa).' },

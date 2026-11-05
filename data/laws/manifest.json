@@ -202,5 +202,27 @@
     "pendingEffective": 0,
     "autoUpdate": true,
     "problems": []
+  },
+  "yhq": {
+    "file": "yhq.json",
+    "name": "Yoʻl harakati qoidalari (172-son qaror, asosiy qoidalar)",
+    "kind": "band",
+    "status": "imported",
+    "articles": 191,
+    "publishedAt": "2026-10-30",
+    "importedAt": "2026-11-05",
+    "autoUpdate": false,
+    "lexId": "-5953883"
+  },
+  "ypx975": {
+    "file": "ypx975.json",
+    "name": "YPX xodimlarining yoʻl harakati qatnashchilari bilan oʻzaro munosabatlari toʻgʻrisidagi nizom (975-son qaror)",
+    "kind": "band",
+    "status": "imported",
+    "articles": 62,
+    "publishedAt": "2024-07-17",
+    "importedAt": "2026-11-05",
+    "autoUpdate": false,
+    "lexId": "-4089917"
   }
 }

@@ -1,3 +1,19 @@
+# v11.11 ko‘rib chiqish tuzatishlari
+
+Tariflar havolasi `HK_KAZUS_PLANS_ENABLED=1` bo‘lmaguncha yashirin; YHQ belgilar ilovasi cheklovi javobda aytiladi; Coach "sinov" deb belgilandi; ovoz ogohlantirishi aniqlashtirildi; bosh sahifa yangi bloki ru/en tarjima qilindi. [Hisobot](docs/V11_11_HISOBOT_UZ.md). Deploy bajarilmadi.
+
+# v11.10 manbalar va diktovka
+
+172-son YHQning asosiy bandlari va 975-son nizom foydalanuvchi yuklagan eksportlardan bazaga qo‘shildi. Ixtiyoriy diktovka standartda o‘chiq (`HK_VOICE_ENABLED=0`). [Hisobot](docs/V11_10_HISOBOT_UZ.md), [ovozli kiritish](docs/VOICE_UZ.md), [import chegaralari](docs/YHQ_IMPORT_UZ.md). Deploy bajarilmadi.
+
+# v11.9 tuzatishlari
+
+Amaldagi xatti-harakat va cheklovlar: [hisobot](docs/V11_9_HISOBOT_UZ.md). Xalqaro modul standartda o‘chiq. Grantlar Blobs’da; email tasdig‘i majburiy. Quyidagi v11.8 yozuvlari oldingi relizga tegishli.
+
+# v11.8 funksional kengaytma
+
+Yangi Travel Legal, Business Legal, Kazus Learning Coach va ixtiyoriy pilot tariflari: [V11_8_HISOBOT_UZ.md](docs/V11_8_HISOBOT_UZ.md). Haqiqiy to‘lov va ommaviy deploy yoqilmagan. Quyidagi eski hisobotlar v11.7 asosiga tegishli.
+
 # HuquqYordamchi v11.7
 
 O‘zbekiston qonunchiligi bo‘yicha mustaqil axborot loyihasi. Ko‘k-oq portal dizayni, huquqiy mavzudagi rasm, aqlli qidiruv, ariza generatori, kodekslarning sodda izohi va kazus ustaxonasi.

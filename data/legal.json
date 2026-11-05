@@ -1424,6 +1424,18 @@
       "Ma’muriy sud ishlarini yuritish to‘g‘risidagi kodeks",
       "Davlat organlari qarori va harakatlari ustidan ma’muriy sudga shikoyat.",
       "-3527353"
+    ],
+    [
+      "YHQ",
+      "Yoʻl harakati qoidalari (172-son qaror, asosiy qoidalar)",
+      "Foydalanuvchi yuklagan Word/HTML eksportidan olingan matn.",
+      "-5953883"
+    ],
+    [
+      "YPX975",
+      "YPX xodimlarining yoʻl harakati qatnashchilari bilan oʻzaro munosabatlari toʻgʻrisidagi nizom (975-son qaror)",
+      "Foydalanuvchi yuklagan Word/HTML eksportidan olingan matn.",
+      "-4089917"
     ]
   ],
   "docs": {
@@ -1517,6 +1529,22 @@
         "msk",
         "MSK",
         "Ma'muriy sud ishlarini yuritish to'g'risidagi kodeks"
+      ]
+    },
+    "yhq": {
+      "name": "Yoʻl harakati qoidalari (172-son qaror, asosiy qoidalar)",
+      "id": "-5953883",
+      "aliases": [
+        "YHQ",
+        "yhq"
+      ]
+    },
+    "ypx975": {
+      "name": "YPX xodimlarining yoʻl harakati qatnashchilari bilan oʻzaro munosabatlari toʻgʻrisidagi nizom (975-son qaror)",
+      "id": "-4089917",
+      "aliases": [
+        "YPX975",
+        "ypx975"
       ]
     }
   },

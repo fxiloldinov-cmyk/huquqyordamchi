@@ -3,7 +3,7 @@
 ## The business
 
 **HuquqYordamchi** ("Legal Assistant") is an independent, free legal-information website for **Uzbekistan law**.
-Live site: https://huquqyordamchiuz.netlify.app/ (Netlify). Current version: **v11.7** (`package.json`; live site may still run an older deploy). Latest change report: `docs/V11_7_HISOBOT_UZ.md`.
+Live site: https://huquqyordamchiuz.netlify.app/ (Netlify). Current version: **v11.11** (`package.json`; live site may still run an older deploy). Latest change report: `docs/V11_11_HISOBOT_UZ.md`.
 
 - **Tagline (hero):** "Huquqingizni biling. Yechimni toping." — *Know your rights. Find the solution.*
   Kicker: "Huquqiy ma'lumot. Amaliy yechim." Motto under the hero: "Har bir qaror — asos bilan" (Law • Explanation • Practical step).
@@ -71,11 +71,13 @@ npm run law:update -- --file ok=<file.doc>   # import a new lex.uz edition (need
 
 Windows note: this machine uses PowerShell; `server.ps1` exists as an alternative local server. Node.js, Git, GitHub CLI are installed portably in `%LOCALAPPDATA%\Programs` (on user PATH); Netlify CLI via npm global. In the agent sandbox, run Netlify CLI through a Terminal tab (`powershell -ExecutionPolicy Bypass -File …`) — the sandbox cannot see the Netlify login config.
 
-## Deployment state (2026-11-01)
+## Deployment state (2026-11-06)
 
 - GitHub repo: `fxiloldinov-cmyk/huquqyordamchi` (public), branch `main`; local folder is a git checkout of it.
 - Netlify site `huquqyordamchiuz` lives in team "huquqchilar" (owner account farrukhbekfarruxfx@gmail.com). Builds from GitHub pushes are being **skipped** by Netlify; the connected account fxiloldinov@gmail.com cannot deploy it. Deploy needs that owner account (or an invite).
-- v11.7 work is not committed/pushed yet; user asked to deliver a ZIP for review before any deploy.
+- **Root cause (confirmed 2026-11-02 on the Deploys page):** "Production deploys are paused because your team has used all of its available credits for this billing cycle." Free plan = 300 credits/month. Usage period resets **2026-11-28**. CLI deploys return 403 for the same reason. Batch changes into one deploy.
+- v11.8–v11.10 arrived as ZIPs (`Downloads\HuquqYordamchi_v11_10.zip`); v11.11 = v11.10 + review fixes, committed locally on `main`, **not pushed**. Live site still runs main@1e8f5b6.
+- Correct domain is `huquqyordamchiuz.netlify.app` (no hyphen). A stray local build once produced `huquqyordamchi-uz` — never ship that.
 
 ## Rules when working here
 
@@ -86,3 +88,31 @@ Windows note: this machine uses PowerShell; `server.ps1` exists as an alternativ
 - Privacy: the site masks phone/email/passport/card/JSHSHIR in user input before sending to AI — don't weaken this.
 - Deploy = push the whole folder to the repo; Netlify builds it. Uploading only `public/` breaks the API.
 - Further docs: `README.md` (changelog per version), `SOZLASH_UZ.md` (env setup), `TECHNICAL_REVIEW_UZ.md` (known limitations), `TSUL_INTEGRATION_UZ.md`.
+
+## v11.8 extension
+
+New standalone pages: `international.html`, `coach.html`, `plans.html`. Existing v11.7 flows remain. Pilot quota enabled only with HK_KAZUS_PLANS_ENABLED=1; no real payments. See docs/V11_8_HISOBOT_UZ.md for actual scope and deferred work. Do not treat this build as completed v12.0 or lawyer-reviewed.
+
+## v11.9 current behavior
+
+- See docs/V11_9_HISOBOT_UZ.md for changes and verification limits. Older deployment notes describe earlier releases.
+- Paid pilot entitlement requires emailVerified === true. Read the entitlements Blobs store first. HK_PILOT_ENTITLEMENTS is a deprecated fallback only for absent records. Use scripts/grant-entitlement.mjs from an administrator terminal with environment credentials.
+- HK_FREE_REQUESTS sets the free monthly request count, default 2.
+- International is off by default (HK_INTERNATIONAL_ENABLED=0). When enabled it uses local sources only, without google_search. Limited topics without dedicated sources do not call AI.
+- coach.html is an IRAC structure worksheet. Its presence check does not assess substantive correctness. AI feedback uses separate existing Kazus actions.
+- YHQ has a pending manifest entry and no source text. Do not fabricate or fetch its text. The owner supplies a Word/HTML export, source ID and exact section boundary. See docs/YHQ_IMPORT_UZ.md. Traffic queries return a local coverage notice before AI when YHQ is missing.
+- PR CI only installs, builds, tests and runs offline eval. No deployment or automatic merge.
+- This release has no independent legal expert evaluation. Do not turn software or retrieval test counts into legal accuracy claims.
+
+## v11.10: manbalar va diktovka
+
+Egasi yuklagan 172-son YHQ: 191 asosiy band (`data/laws/yhq.json`); 975-son nizom: 62 band (`data/laws/ypx975.json`). Asl eksportlar `data/sources/`da. Belgilar rasmlari va keyingi ilovalar indekslanmagan; ularni taxminan talqin qilmang. `docs/YHQ_IMPORT_UZ.md`ga qarang.
+
+`HK_VOICE_ENABLED=0` standart. `/api/voice` faqat diktovka: rozilik → yozish → alohida matnga aylantirish → tahrirlash → maydonga qo‘shish. Savol avtomatik yuborilmaydi. Audio disk/Blobs/kesh/jurnalga yozilmaydi; Gemini audio bilan ishlaydi, uning saqlash siyosati ilova nazoratida emas. Formatlar WebM/Ogg/WAV, brauzerda 30 soniya, serverda 750000 bayt; 20 soniyalik so‘rov chegarasi, daqiqasiga 4. `docs/VOICE_UZ.md`ga qarang. TTS va maxsus YPX tezkor rejimi ushbu relizda qo‘shilmagan. Jonli provider, haqiqiy mikrofon va telefon sinovi bajarilmagan.
+
+## v11.11: ko‘rib chiqish tuzatishlari
+
+- Tariflar havolasi (`data-plans`) va `/plans.html` narx kartalari faqat `HK_KAZUS_PLANS_ENABLED=1` bo‘lsa ko‘rinadi (`/api/features` → `plans`). Oferta "bepul" deb turguncha flagni yoqmang; yoqishdan oldin Resend (email tasdig‘i) va oferta rekvizitlari kerak.
+- YHQ belgilar/chiziqlar haqidagi savolda `trafficAnnexNotice()` (traffic.mjs) cheklovni RAG blokiga va qidiruv `cheklovlar`iga qo‘shadi.
+- Yangi frontend/funksiya fayllari ixcham yozilgan va testlar ularning manba matnini regex bilan tekshiradi — avtomatik formatlash (prettier) testlarni buzadi.
+- Python’ga bog‘liq 2 test python3 bo‘lmasa skip bo‘ladi (CI’da ishlaydi). `docs/V11_11_HISOBOT_UZ.md`.

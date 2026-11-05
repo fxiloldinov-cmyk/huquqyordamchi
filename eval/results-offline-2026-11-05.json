@@ -1,0 +1,643 @@
+{
+ "summary": {
+  "mode": "offline",
+  "aiCalled": false,
+  "at": "2026-11-05T20:10:08.249Z",
+  "cases": 46,
+  "retrievalRecall": 1,
+  "fullHits": 46,
+  "recallByKind": {
+   "oddiy": "1 (26)",
+   "murakkab": "1 (2)",
+   "eski_sana": "1 (2)",
+   "fanlararo": "1 (5)",
+   "malumot_yetishmaydi": "1 (1)",
+   "sozlashuv": "1 (4)",
+   "kirill": "1 (3)",
+   "ruscha": "1 (3)"
+  },
+  "editionWarnings": "3/3",
+  "avgRetrievalMs": 39,
+  "citationAccuracy": "o‘lchanmadi (oflayn rejimda AI javobi yo‘q)",
+  "legalConclusion": "baholanmagan — kutilgan natijalar yurist tomonidan tasdiqlanmagan (lawyerReview: kutilmoqda)",
+  "lawyerReviewed": 0
+ },
+ "rows": [
+  {
+   "id": "E01",
+   "kind": "oddiy",
+   "ms": 173,
+   "codes": [
+    "mk"
+   ],
+   "expected": 1,
+   "found": 1,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E02",
+   "kind": "murakkab",
+   "ms": 22,
+   "codes": [
+    "mk"
+   ],
+   "expected": 4,
+   "found": 4,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": true
+  },
+  {
+   "id": "E03",
+   "kind": "oddiy",
+   "ms": 15,
+   "codes": [
+    "mk"
+   ],
+   "expected": 1,
+   "found": 1,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E04",
+   "kind": "eski_sana",
+   "ms": 23,
+   "codes": [
+    "mk"
+   ],
+   "expected": 1,
+   "found": 1,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": true
+  },
+  {
+   "id": "E05",
+   "kind": "oddiy",
+   "ms": 25,
+   "codes": [
+    "ok"
+   ],
+   "expected": 1,
+   "found": 1,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E06",
+   "kind": "oddiy",
+   "ms": 157,
+   "codes": [
+    "ok"
+   ],
+   "expected": 2,
+   "found": 2,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E07",
+   "kind": "oddiy",
+   "ms": 5,
+   "codes": [
+    "ok"
+   ],
+   "expected": 2,
+   "found": 2,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E08",
+   "kind": "oddiy",
+   "ms": 3,
+   "codes": [
+    "ok"
+   ],
+   "expected": 1,
+   "found": 1,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E09",
+   "kind": "eski_sana",
+   "ms": 6,
+   "codes": [
+    "fk"
+   ],
+   "expected": 2,
+   "found": 2,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": true
+  },
+  {
+   "id": "E10",
+   "kind": "oddiy",
+   "ms": 16,
+   "codes": [
+    "fk"
+   ],
+   "expected": 1,
+   "found": 1,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E11",
+   "kind": "oddiy",
+   "ms": 3,
+   "codes": [
+    "fk"
+   ],
+   "expected": 1,
+   "found": 1,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E12",
+   "kind": "oddiy",
+   "ms": 8,
+   "codes": [
+    "fk"
+   ],
+   "expected": 2,
+   "found": 2,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E13",
+   "kind": "oddiy",
+   "ms": 22,
+   "codes": [
+    "fk",
+    "ist"
+   ],
+   "expected": 2,
+   "found": 2,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E14",
+   "kind": "oddiy",
+   "ms": 18,
+   "codes": [
+    "ist"
+   ],
+   "expected": 1,
+   "found": 1,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E15",
+   "kind": "oddiy",
+   "ms": 182,
+   "codes": [
+    "jk",
+    "mjtk"
+   ],
+   "expected": 1,
+   "found": 1,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E16",
+   "kind": "oddiy",
+   "ms": 9,
+   "codes": [
+    "jk"
+   ],
+   "expected": 1,
+   "found": 1,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E17",
+   "kind": "oddiy",
+   "ms": 132,
+   "codes": [
+    "jpk"
+   ],
+   "expected": 2,
+   "found": 2,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E18",
+   "kind": "oddiy",
+   "ms": 11,
+   "codes": [
+    "jpk"
+   ],
+   "expected": 2,
+   "found": 2,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E19",
+   "kind": "oddiy",
+   "ms": 86,
+   "codes": [
+    "mjtk"
+   ],
+   "expected": 3,
+   "found": 3,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E20",
+   "kind": "oddiy",
+   "ms": 14,
+   "codes": [
+    "mjtk"
+   ],
+   "expected": 1,
+   "found": 1,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E21",
+   "kind": "oddiy",
+   "ms": 171,
+   "codes": [
+    "fk",
+    "fpk"
+   ],
+   "expected": 3,
+   "found": 3,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E22",
+   "kind": "oddiy",
+   "ms": 20,
+   "codes": [
+    "fpk"
+   ],
+   "expected": 1,
+   "found": 1,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E23",
+   "kind": "oddiy",
+   "ms": 180,
+   "codes": [
+    "fk",
+    "sk"
+   ],
+   "expected": 2,
+   "found": 2,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E24",
+   "kind": "oddiy",
+   "ms": 38,
+   "codes": [
+    "mk",
+    "sk"
+   ],
+   "expected": 2,
+   "found": 2,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E25",
+   "kind": "oddiy",
+   "ms": 26,
+   "codes": [
+    "ujk"
+   ],
+   "expected": 1,
+   "found": 1,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E26",
+   "kind": "oddiy",
+   "ms": 69,
+   "codes": [
+    "fk",
+    "ipk"
+   ],
+   "expected": 2,
+   "found": 2,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E27",
+   "kind": "oddiy",
+   "ms": 27,
+   "codes": [
+    "jpk",
+    "kon"
+   ],
+   "expected": 1,
+   "found": 1,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E28",
+   "kind": "fanlararo",
+   "ms": 15,
+   "codes": [
+    "ok",
+    "fk",
+    "ujk"
+   ],
+   "expected": 2,
+   "found": 2,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E29",
+   "kind": "fanlararo",
+   "ms": 36,
+   "codes": [
+    "mk",
+    "fk"
+   ],
+   "expected": 2,
+   "found": 2,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E30",
+   "kind": "malumot_yetishmaydi",
+   "ms": 0,
+   "codes": [],
+   "expected": 0,
+   "found": 0,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E31",
+   "kind": "oddiy",
+   "ms": 30,
+   "codes": [
+    "jik"
+   ],
+   "expected": 1,
+   "found": 1,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E32",
+   "kind": "oddiy",
+   "ms": 45,
+   "codes": [
+    "msk"
+   ],
+   "expected": 2,
+   "found": 2,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E33",
+   "kind": "murakkab",
+   "ms": 10,
+   "codes": [
+    "fk"
+   ],
+   "expected": 1,
+   "found": 1,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E34",
+   "kind": "sozlashuv",
+   "ms": 20,
+   "codes": [
+    "mk",
+    "jk",
+    "mjtk"
+   ],
+   "expected": 1,
+   "found": 1,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E35",
+   "kind": "sozlashuv",
+   "ms": 24,
+   "codes": [
+    "mk"
+   ],
+   "expected": 1,
+   "found": 1,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E36",
+   "kind": "sozlashuv",
+   "ms": 3,
+   "codes": [
+    "ok"
+   ],
+   "expected": 1,
+   "found": 1,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E37",
+   "kind": "sozlashuv",
+   "ms": 5,
+   "codes": [
+    "fk"
+   ],
+   "expected": 1,
+   "found": 1,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E38",
+   "kind": "kirill",
+   "ms": 18,
+   "codes": [
+    "mk"
+   ],
+   "expected": 1,
+   "found": 1,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E39",
+   "kind": "kirill",
+   "ms": 4,
+   "codes": [
+    "ok"
+   ],
+   "expected": 1,
+   "found": 1,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E40",
+   "kind": "kirill",
+   "ms": 21,
+   "codes": [
+    "jk",
+    "mjtk"
+   ],
+   "expected": 1,
+   "found": 1,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E41",
+   "kind": "ruscha",
+   "ms": 35,
+   "codes": [
+    "mk"
+   ],
+   "expected": 1,
+   "found": 1,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E42",
+   "kind": "ruscha",
+   "ms": 5,
+   "codes": [
+    "ok"
+   ],
+   "expected": 1,
+   "found": 1,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E43",
+   "kind": "ruscha",
+   "ms": 8,
+   "codes": [
+    "jk",
+    "mjtk"
+   ],
+   "expected": 1,
+   "found": 1,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E44",
+   "kind": "fanlararo",
+   "ms": 13,
+   "codes": [
+    "ok",
+    "jk",
+    "mjtk"
+   ],
+   "expected": 2,
+   "found": 2,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E45",
+   "kind": "fanlararo",
+   "ms": 34,
+   "codes": [
+    "fk",
+    "fpk",
+    "ist"
+   ],
+   "expected": 2,
+   "found": 2,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  },
+  {
+   "id": "E46",
+   "kind": "fanlararo",
+   "ms": 29,
+   "codes": [
+    "jpk",
+    "mjtk",
+    "kon"
+   ],
+   "expected": 2,
+   "found": 2,
+   "missing": [],
+   "recall": 1,
+   "editionWarning": null
+  }
+ ]
+}

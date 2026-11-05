@@ -9,3 +9,6 @@ node_modules/
 law-update-report.md
 tests/out/
 .claude/
+*.zip
+
+.work-v119/

@@ -6,6 +6,10 @@ Talab:      pip install beautifulsoup4
 Natija:     modda bo'yicha JSON — sarlavha, bo'lim/bob/§, qismlar (xatboshilar) va o'zgartish izohlari.
 """
 import sys, re, json, argparse, datetime
+# YHQ alohida band adapteridan foydalanadi; qo‘shimcha Python paketi kerak emas.
+if any('--doc='+doc in sys.argv for doc in ['yhq','ypx975']) or ('--doc' in sys.argv and sys.argv[sys.argv.index('--doc')+1:sys.argv.index('--doc')+2] in [['yhq'],['ypx975']]):
+    from import_yhq import main
+    main(sys.argv[1:]);sys.exit(0)
 from bs4 import BeautifulSoup
 
 ap = argparse.ArgumentParser()
@@ -42,7 +46,9 @@ def clean(t):
     return re.sub(r'([(«“])\s+', r'\1', t)
 
 soup = BeautifulSoup(open(a.src, encoding='utf8').read(), 'html.parser')
-title = clean(soup.find(class_='ACT_TITLE').get_text(' ', strip=True))
+title_el=soup.find(class_='ACT_TITLE')
+if not title_el: raise ValueError('ACT_TITLE topilmadi. Word/HTML eksporti kerak.')
+title = clean(title_el.get_text(' ', strip=True))
 po = soup.find(class_='PUBLICATION_ORIGIN'); pub = clean(po.get_text(' ', strip=True)) if po else ''
 dates = re.findall(r'(\d{2})\.(\d{2})\.(\d{4})\s*-?\s*y\.', lat(pub))
 asof = max((f'{y}-{m}-{d}' for d, m, y in dates), default=None)
@@ -85,7 +91,7 @@ if not arts:
     for e in soup.find_all(class_='ACT_TEXT'):
         t = clean(e.get_text(' ', strip=True))
         if not t: continue
-        m = re.match(r'^(\d{1,3})\.\s+(.*)$', t)
+        m = re.match(r'^(\d+(?:\.\d+)*)\.\s+(.*)$', t)
         if m:
             cur = {'art': m.group(1), 'title': (m.group(2)[:140] + ('…' if len(m.group(2)) > 140 else '')), 'bolim': None, 'bob': None, 'par': None, 'parts': [t], 'changes': []}
             arts.append(cur)

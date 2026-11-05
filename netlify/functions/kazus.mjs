@@ -1,3 +1,4 @@
+import {trafficCoverageNotice} from '../shared/traffic.mjs';
 // Kazus ustaxonasi: talaba kazus yuboradi, AI uni loyihaga kiritilgan namuna shaklida,
 // talabaning o'z shaklida yoki standart tuzilmada yechadi.
 //   GET  /api/kazus  -> namunalar ro'yxati (faqat nomlari)
@@ -10,6 +11,7 @@ import {
 import { KAZUS_NAMUNALAR, STANDART_FORMAT, FANLAR } from "../shared/kazus-namunalar.mjs";
 import { retrieve, citationReport, sourcesMarker } from "../shared/rag.mjs";
 import { guardAi } from "../shared/limits.mjs";
+import { guardKazusPlan } from "../shared/plans.mjs";
 import { searchBooks, booksBlock, cite, tsul } from "../shared/books.mjs";
 import { currentUser } from "../shared/auth.mjs";
 
@@ -132,11 +134,14 @@ export default async (req, context) => {
     formatBlock = `JAVOB SHAKLI (standart tuzilma):\n${STANDART_FORMAT}`;
   }
 
+  const trafficNotice=trafficCoverageNotice(kazus);if(trafficNotice)return new Response(trafficNotice,{headers:{'Content-Type':'text/plain; charset=utf-8','Cache-Control':'no-store'}});
   const { apiKey, models, thinkingLevel } = geminiConfig();
   if (!apiKey) return jsonError("AI xizmati sozlanmagan. Serverda GEMINI_API_KEY kiritilishi kerak.", 503);
   // Har bir davom so'rovi ham alohida AI chaqiruvi — umumiy limit va kunlik sarfga kiradi.
   const limited = await guardAi(req, context, "kazus");
   if (limited) return limited;
+  const planGate = await guardKazusPlan(req, kazus.length);
+  if (planGate.error) return planGate.error;
 
   const contents = [
     ...fewShot,
@@ -169,7 +174,7 @@ export default async (req, context) => {
     contents,
     // Davom so'rovida qidiruv o'chiriladi: tezroq ishlaydi, manbalar birinchi qismdan olib boriladi.
     ...(cont ? {} : { tools: [{ google_search: {} }] }),
-    generationConfig: { temperature: 0.2, maxOutputTokens: 12000 },
+    generationConfig: { temperature: 0.2, maxOutputTokens: planGate.maxOutputTokens },
   };
 
   try {

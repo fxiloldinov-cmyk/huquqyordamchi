@@ -1,0 +1,906 @@
+{
+  "schema": 1,
+  "purpose": "Question-only review corpus. Not expert-reviewed, not included in scored evaluation, and not evidence of legal accuracy.",
+  "cases": [
+    {
+      "id": "INT001",
+      "domain": "tourism",
+      "question": "A visitor has two nationalities and is unsure which passport to use for entry. What facts and official rules must be checked?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT002",
+      "domain": "tourism",
+      "question": "A visitor plans to extend a stay but cannot find the applicable registration rule. What should be verified before acting?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT003",
+      "domain": "tourism",
+      "question": "A hotel charged for a room that was unavailable on arrival. What evidence and complaint options should be considered?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT004",
+      "domain": "tourism",
+      "question": "A tour operator cancelled a prepaid excursion without offering a refund. Which contract and consumer facts matter?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT005",
+      "domain": "tourism",
+      "question": "A visitor lost a passport outside Tashkent and has a flight soon. What information and official assistance must be identified?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT006",
+      "domain": "tourism",
+      "question": "An airline rescheduled a flight connected to a hotel booking. How should responsibility and evidence be separated?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT007",
+      "domain": "tourism",
+      "question": "A taxi charged more than the price displayed in an app. What documents and applicable terms should be reviewed?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT008",
+      "domain": "tourism",
+      "question": "A traveller received a traffic penalty in a rental car and disputes the driver identity. What facts and review routes need checking?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT009",
+      "domain": "tourism",
+      "question": "A shop refused to discuss a faulty purchase because the buyer is a foreign visitor. Which sources and purchase evidence are relevant?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT010",
+      "domain": "tourism",
+      "question": "An accommodation host asks for a passport image through an unfamiliar chat account. What privacy and registration issues need clarification?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT011",
+      "domain": "tourism",
+      "question": "A tourist booked accommodation through a foreign platform, but the local host cancelled. Which parties and contract terms matter?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT012",
+      "domain": "tourism",
+      "question": "A traveller paid a deposit for a rental bicycle that was later alleged to be damaged. What evidence is needed?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT013",
+      "domain": "tourism",
+      "question": "A visitor needs a medicine prescription refill and asks whether a foreign prescription is enough. What official verification is required?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT014",
+      "domain": "tourism",
+      "question": "A tourist says a museum used a different price from the advertised price. How should the claim be documented?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT015",
+      "domain": "tourism",
+      "question": "A visitor wants to bring professional equipment for a short assignment. Which customs and work-status questions must be clarified?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT016",
+      "domain": "tourism",
+      "question": "A hotel says an additional fee is mandatory but provides no explanation. How can a visitor request the basis without assuming illegality?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT017",
+      "domain": "tourism",
+      "question": "A traveller bought a SIM card through a reseller and service stopped. What contract, identity and complaint facts matter?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT018",
+      "domain": "tourism",
+      "question": "A visitor entered for tourism and was offered short paid work. Which immigration and employment questions require separate checks?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT019",
+      "domain": "tourism",
+      "question": "A group tour includes a minor travelling with one parent. Which nationality, document and consent facts must be established?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT020",
+      "domain": "tourism",
+      "question": "A traveller asks for emergency help but provides no city or type of danger. What can safely be asked or suggested without inventing contact numbers?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT021",
+      "domain": "corporate",
+      "question": "Two foreign founders want to create a company in Uzbekistan. What ownership, management and activity facts are needed?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT022",
+      "domain": "corporate",
+      "question": "A proposed director will work remotely outside Uzbekistan. What corporate, employment and tax issues require separate checks?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT023",
+      "domain": "corporate",
+      "question": "A founder wants to contribute software instead of cash to capital. What valuation and intellectual-property documents matter?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT024",
+      "domain": "corporate",
+      "question": "Shareholders disagree about appointing a director. Which charter provisions and corporate records should be reviewed?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT025",
+      "domain": "corporate",
+      "question": "An investor asks whether a signed term sheet guarantees ownership. Which conditions and definitive documents need examination?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT026",
+      "domain": "corporate",
+      "question": "A minority shareholder cannot access meeting documents. What corporate status and request evidence should be collected?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT027",
+      "domain": "corporate",
+      "question": "A company intends to open a branch rather than a subsidiary. Which legal and operational distinctions must be verified?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT028",
+      "domain": "corporate",
+      "question": "A founder wants to transfer a share to an unrelated foreign investor. What restrictions and approvals may need source checking?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT029",
+      "domain": "corporate",
+      "question": "A company plans to change its business activity to a regulated service. Which licensing questions remain unresolved?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT030",
+      "domain": "corporate",
+      "question": "A foreign parent wants to appoint a local representative with limited authority. What power-of-attorney and contract issues matter?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT031",
+      "domain": "corporate",
+      "question": "A startup uses code written by a founder before incorporation. Which ownership and licence questions need clarification?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT032",
+      "domain": "corporate",
+      "question": "A shareholder wants to exit but the charter contains an unclear valuation mechanism. What evidence and options should be discussed?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT033",
+      "domain": "corporate",
+      "question": "A foreign investor seeks a promise that no taxes will change. How should uncertainty and investment protections be distinguished?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT034",
+      "domain": "corporate",
+      "question": "A company wants to distribute profits while it has outstanding debts. Which financial and corporate documents are needed?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT035",
+      "domain": "corporate",
+      "question": "A founder signs a lease personally before company registration. Which party and assumption-of-obligations issues arise?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT036",
+      "domain": "corporate",
+      "question": "A company changes its beneficial owner and asks whether any filing is needed. Which official requirements must be checked?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT037",
+      "domain": "corporate",
+      "question": "A foreign-owned employer wants to pay salaries in another currency. Which employment, currency and tax rules need checking?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT038",
+      "domain": "corporate",
+      "question": "A board meeting is held online and a shareholder disputes notice. Which charter and proof-of-notification facts matter?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT039",
+      "domain": "corporate",
+      "question": "A company wants to sell assets to its director’s relative. What conflict-of-interest and approval issues should be investigated?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT040",
+      "domain": "corporate",
+      "question": "A startup advertises government approval without a document. What evidence is required before making that statement?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT041",
+      "domain": "contracts",
+      "question": "A supplier contract states a price but no payment date. Which clauses and facts affect the payment analysis?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT042",
+      "domain": "contracts",
+      "question": "A buyer refuses payment because goods arrived late but accepted delivery. What evidence and alternative interpretations matter?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT043",
+      "domain": "contracts",
+      "question": "A service agreement allows only one party to terminate. How can the clause be explained without automatically calling it invalid?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT044",
+      "domain": "contracts",
+      "question": "A contract draft has a governing-law clause but no dispute forum. What distinct risks should be described?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT045",
+      "domain": "contracts",
+      "question": "A vendor asks for a broad limitation of liability. Which excluded losses and mandatory rules require scrutiny?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT046",
+      "domain": "contracts",
+      "question": "A contract refers to external terms available only through a broken URL. What incorporation and evidence issues arise?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT047",
+      "domain": "contracts",
+      "question": "A customer signed an English version but the supplier relies on an Uzbek version. Which language-priority provisions matter?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT048",
+      "domain": "contracts",
+      "question": "A distributor promises exclusivity without specifying territory or duration. What clarification questions should be asked?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT049",
+      "domain": "contracts",
+      "question": "A contract sets penalties but no cap. How should potential exposure and the need for source verification be explained?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT050",
+      "domain": "contracts",
+      "question": "A consultant invoices extra work allegedly requested in messages. Which variation and acceptance provisions matter?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT051",
+      "domain": "contracts",
+      "question": "A purchase order conflicts with a master agreement. What document hierarchy and acceptance facts should be examined?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT052",
+      "domain": "contracts",
+      "question": "A seller relies on force majeure but provides no causal evidence. What factual and contractual questions matter?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT053",
+      "domain": "contracts",
+      "question": "A business wants to use customer data for marketing beyond the original service. What contractual permissions and legal checks are missing?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT054",
+      "domain": "contracts",
+      "question": "A lease deposit clause says all deposits are non-refundable. What facts and applicable rules need examination?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT055",
+      "domain": "contracts",
+      "question": "A party claims an electronic signature was used without authority. What evidence and authorization questions need investigation?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT056",
+      "domain": "contracts",
+      "question": "A buyer wants a refund for partial performance of a service. What deliverables and acceptance records matter?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT057",
+      "domain": "contracts",
+      "question": "A software contract does not state who owns custom features. What intellectual-property and licence questions should be raised?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT058",
+      "domain": "contracts",
+      "question": "An agreement includes arbitration in one section and exclusive courts in another. How should the inconsistency be presented?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT059",
+      "domain": "contracts",
+      "question": "A vendor asks to change bank details at the last minute through email. What fraud checks and contract controls are prudent?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT060",
+      "domain": "contracts",
+      "question": "A party requests a complaint letter before confirming the contract date or alleged breach. Which placeholders and caveats are needed?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT061",
+      "domain": "private-international-law",
+      "question": "An Uzbek seller and German buyer disagree about the governing law. What connecting factors and contract terms need checking?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT062",
+      "domain": "private-international-law",
+      "question": "A contract selects foreign law but performance occurs in Uzbekistan. Which mandatory-law and forum questions require separate analysis?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT063",
+      "domain": "private-international-law",
+      "question": "A foreign company has no local office but sold goods to a local buyer. What jurisdiction and service facts matter?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT064",
+      "domain": "private-international-law",
+      "question": "A foreign arbitral award names a company that later changed its name. Which identity and enforcement documents are relevant?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT065",
+      "domain": "private-international-law",
+      "question": "A bilingual contract has contradictory dispute clauses. Which consent and interpretation facts should be established?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT066",
+      "domain": "private-international-law",
+      "question": "A claimant wants to enforce a foreign judgment in Uzbekistan. What origin-country, finality and treaty questions need verification?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT067",
+      "domain": "private-international-law",
+      "question": "A company asks whether CISG applies automatically to a cross-border sale. Which party locations, exclusions and applicable instruments must be checked?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT068",
+      "domain": "private-international-law",
+      "question": "An online marketplace chooses a foreign forum for a local consumer dispute. Which party status and mandatory protections need scrutiny?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT069",
+      "domain": "private-international-law",
+      "question": "An inheritance includes property in two countries. What nationality, domicile, asset and date facts are required?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT070",
+      "domain": "private-international-law",
+      "question": "A foreign document has a translation but no information about legalization. Which document-use and authentication questions matter?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT071",
+      "domain": "private-international-law",
+      "question": "Two parties signed an arbitration clause through email. What agreement, identity and forum requirements should be researched?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT072",
+      "domain": "private-international-law",
+      "question": "A parent company says it guarantees a subsidiary’s debt without a signed document. Which entity and applicable-law issues arise?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT073",
+      "domain": "private-international-law",
+      "question": "A foreign investor confuses treaty arbitration with contractual arbitration. What instruments and consent must be distinguished?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT074",
+      "domain": "private-international-law",
+      "question": "A sale contract omits delivery terms and a shipment crossed several borders. Which performance and risk facts are needed?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT075",
+      "domain": "private-international-law",
+      "question": "A worker is employed abroad but temporarily assigned to Uzbekistan. What employment and immigration law questions require separate checks?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT076",
+      "domain": "private-international-law",
+      "question": "A party relies on an old treaty summary found online. How should the authentic treaty, status and temporal application be verified?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT077",
+      "domain": "private-international-law",
+      "question": "A business asks to sue abroad and locally at once. What parallel-proceeding and jurisdiction facts need investigation?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT078",
+      "domain": "private-international-law",
+      "question": "A contract has no choice-of-law clause and both parties use different standard terms. Which formation and conflict rules matter?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT079",
+      "domain": "private-international-law",
+      "question": "A foreign judgment was issued without the defendant appearing. What service and procedural fairness documents may matter?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT080",
+      "domain": "private-international-law",
+      "question": "A foreign-law clause is cited as proof that local licences are unnecessary. What distinction between contract law and public requirements should be investigated?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT081",
+      "domain": "procedure",
+      "question": "A claimant is unsure whether a dispute belongs in civil or economic court. Which party and dispute facts are decisive?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT082",
+      "domain": "procedure",
+      "question": "A defendant received a claim but does not know when service occurred. What records and deadlines require verification?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT083",
+      "domain": "procedure",
+      "question": "A claimant wants an interim measure before assets are transferred. What urgency, evidence and procedural requirements need checking?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT084",
+      "domain": "procedure",
+      "question": "A company received a default decision and disputes service. Which documents and possible review routes should be identified?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT085",
+      "domain": "procedure",
+      "question": "A consumer seeks a refund and damages from several defendants. What claim structure and jurisdiction facts matter?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT086",
+      "domain": "procedure",
+      "question": "A creditor has a signed debt acknowledgment but no clear repayment date. Which substantive and procedural issues should be separated?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT087",
+      "domain": "procedure",
+      "question": "A litigant seeks to restore an expired filing period after hospitalization. What dates and supporting evidence are required?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT088",
+      "domain": "procedure",
+      "question": "A foreign witness cannot attend a local hearing. Which evidence and cross-border assistance mechanisms need research?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT089",
+      "domain": "procedure",
+      "question": "A party wants the court to obtain a document held by a bank. What relevance and request requirements should be checked?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT090",
+      "domain": "procedure",
+      "question": "A lawyer asks for a statement of claim without client authority documents. Which representation questions must be resolved?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT091",
+      "domain": "procedure",
+      "question": "A claimant wants to submit screenshots with no metadata. What authenticity and evidence-preservation issues arise?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT092",
+      "domain": "procedure",
+      "question": "An appeal challenges findings based on a disputed translation. Which procedural record and translation evidence matter?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT093",
+      "domain": "procedure",
+      "question": "A party has both a court clause and a possible arbitration agreement. What objections and timing issues require source checking?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT094",
+      "domain": "procedure",
+      "question": "A company wants to enforce a settlement reached by email. What consent, form and procedural approval facts are missing?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT095",
+      "domain": "procedure",
+      "question": "A creditor asks whether an enforcement document is still usable. Which dates and prior enforcement actions should be collected?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT096",
+      "domain": "procedure",
+      "question": "A defendant argues a limitation period expired but the contract was amended. Which timeline and acknowledgment evidence matter?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT097",
+      "domain": "procedure",
+      "question": "A claimant paid a fee under an outdated online calculator. How should the official fee basis and current applicability be checked?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT098",
+      "domain": "procedure",
+      "question": "A party seeks a hearing in another language. Which party rights and interpreter arrangements need verification?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT099",
+      "domain": "procedure",
+      "question": "A document draft names a court based only on the claimant’s address. What jurisdiction facts must be obtained first?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    },
+    {
+      "id": "INT100",
+      "domain": "procedure",
+      "question": "A litigant asks an AI to guarantee a winning outcome. How should legal uncertainty, evidence gaps and expert review be communicated?",
+      "lawyerReview": "pending",
+      "expectedArticles": null,
+      "expectedConclusion": null,
+      "usedForScoring": false
+    }
+  ]
+}

@@ -155,6 +155,7 @@ export default async (req, ctx) => {
       await (await openStore("items")).delete("i_" + user.id);
       await (await openStore("books")).delete("b_" + user.id);
       await deleteAllCases(user.id);
+      await (await openStore("kazus-usage")).delete("u_" + user.id);
       await (await openStore("users")).delete(userKey(user.email));
       return reply({ ok: true }, 200, clearCookie(req));
     }

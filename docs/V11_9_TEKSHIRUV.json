@@ -1,0 +1,52 @@
+{
+  "version": "11.9.0",
+  "build": "passed",
+  "tests": {
+    "total": 138,
+    "passed": 138,
+    "failed": 0,
+    "newTestsSinceV118": 18
+  },
+  "offlineRetrieval": {
+    "cases": 46,
+    "beforeFullHits": 44,
+    "afterFullHits": 46,
+    "regressedCases": [],
+    "aiCalled": false,
+    "meaning": "Unreviewed source-candidate fixtures, not substantive legal evaluation"
+  },
+  "lawTextIntegrity": {
+    "unchangedFiles": {
+      "data/laws/jpk.json": "b8bba445713639d1e8a5a39a0757f9658d8b8a70fe66050ed7f232a74e6f4658",
+      "data/laws/jk.json": "b4c67ecc473aeb69557904f1255eb3906330579c30d674ec45d63f5316b01490",
+      "data/laws/msk.json": "50f6c2bd71599f9f5f208d487ee8eb9111de281a1b6064a410f9abea6639fdb0",
+      "data/laws/ok.json": "0f92878b4d4822a0ee0cf3a2b9fdbcbd1195c55497e2c5c2a97e7dd585fd947a",
+      "data/laws/kon.json": "2ca22454bd8f4e819f2e320c99db4c21c661efc9a41f5b5592203841368a33b0",
+      "data/laws/fk1.json": "03123147732a59706f01d67b45c2a97e23266bf6932f2346408ff10170c7195d",
+      "data/laws/fk2.json": "5b744242721936352751785aecb626d2b0dcc3dd8c2290bbe555ddcf14f71405",
+      "data/laws/jik.json": "2bf1d61a409f35aaba30742a6f9f7d551ef1012a658bf1c8b20f9b41720ead85",
+      "data/laws/fpk.json": "e24ab516702f682f9ea723655dc23d9e61af83b02a967ac9c8080b85ac39478a",
+      "data/laws/plenum-26-2023.json": "f8eb93c74fc4e67670cdefe34e3339cb6d2b9548ae6b296b527e175416106927",
+      "data/laws/plenum05.json": "7069e207ef82eea51c21f4af46fba258afcdee99c757f837923753e06a85c119",
+      "data/laws/ist.json": "cce423334c827c8d20674d192b7c06e0c5e151c7c98d205dc7c1d845a9b7103f",
+      "data/laws/ujk.json": "60cc7595333165c606853bbe10ebca5d9e65dd34c3ffd11bd19e78d09d4bd36c",
+      "data/laws/mjtk.json": "2493d1b1b908647dd2f19581b00de2468ec53a572aa12928e573e8af49909875",
+      "data/laws/ipk.json": "c711fc49a7cf225bd77099d987c3dd8fca929b1972665b989baa8e10f4071241",
+      "data/laws/mk.json": "39f76ae155f6adf3623c6e79942bd8554d43bd280b302859becc8f9bbc2c4b89",
+      "data/laws/sk.json": "bda8206ca7adbf6a358c07b19f2ee72d7c2ec98c42f23333317c2b6f10dae97e"
+    },
+    "changedMetadataFiles": [
+      "data/laws/manifest.json"
+    ],
+    "yhqTextPresent": false
+  },
+  "notExecuted": [
+    "production Blobs writes",
+    "email delivery",
+    "live Gemini or payment",
+    "GitHub Actions execution",
+    "production YHQ bundling",
+    "real YHQ Word import",
+    "v11.9 browser QA"
+  ]
+}

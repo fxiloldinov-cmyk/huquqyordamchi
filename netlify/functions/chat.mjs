@@ -1,8 +1,9 @@
+import {trafficCoverageNotice} from '../shared/traffic.mjs';
 import {redactPII,guardJsonPost,jsonError,geminiConfig,callGeminiResilient,providerError,pipeGeminiStream,LEGAL_RULES,langNote,SEARCH_OFF_NOTE,sourceTail,legal} from '../shared/common.mjs';
 import {retrieve,citationReport,sourcesMarker} from '../shared/rag.mjs';
 import {guardAi} from '../shared/limits.mjs';
 // Katalogda tanlangan kodeks → RAG bazasi (bazada bor kodekslar)
-const CODE_FOR_CATALOG={K:'kon',MK:'mk',OK:'ok',FK:'fk','FK-2':'fk',FPK:'fpk',JK:'jk',JPK:'jpk',MJ:'mjtk',SK:'sk',UK:'ujk',IPK:'ipk',JIK:'jik',MSK:'msk'};
+const CODE_FOR_CATALOG={K:'kon',MK:'mk',OK:'ok',FK:'fk','FK-2':'fk',FPK:'fpk',JK:'jk',JPK:'jpk',MJ:'mjtk',SK:'sk',UK:'ujk',IPK:'ipk',JIK:'jik',MSK:'msk',YHQ:'yhq',YPX975:'ypx975'};
 export const config={path:'/api/chat',rateLimit:{windowLimit:10,windowSize:60,aggregateBy:['ip','domain']}};
 export default async(req,ctx)=>{
  const startedAt=Date.now();
@@ -11,6 +12,7 @@ export default async(req,ctx)=>{
  let count=0;const contents=[];
  for(const item of body.messages){if(!item||!['user','assistant'].includes(item.role)||typeof item.content!=='string'||!item.content.trim()||item.content.length>8000)return jsonError('Xabar formati yoki hajmi noto‘g‘ri.',400);count+=item.content.length;if(count>30000)return jsonError('Suhbat juda uzun. Yangi suhbat boshlang.',400);contents.push({role:item.role==='assistant'?'model':'user',parts:[{text:redactPII(item.content.trim())}]});}
  if(contents[0].role!=='user'||contents.at(-1).role!=='user'||contents.some((m,i)=>i>0&&m.role===contents[i-1].role))return jsonError('Suhbat rollari navbatma-navbat kelishi kerak.',400);
+ const trafficNotice=trafficCoverageNotice(contents.filter(m=>m.role==='user').map(m=>m.parts[0].text).join('\n'));if(trafficNotice)return new Response(trafficNotice,{headers:{'Content-Type':'text/plain; charset=utf-8','Cache-Control':'no-store'}});
  const {apiKey,models,thinkingLevel}=geminiConfig();if(!apiKey)return jsonError('AI xizmati hozir ulanmagan. Katalog va hujjat namunalari ishlaydi.',503);
  const limited=await guardAi(req,ctx,'chat');if(limited)return limited;
  const selected=legal.codes.find(c=>c[3]===body.codeId);
