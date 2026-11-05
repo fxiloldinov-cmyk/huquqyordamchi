@@ -2,10 +2,10 @@
 // HECH QACHON keshlanmaydi: /api/* (AI, hisob, sessiya, ishlar, kitoblar), POST so'rovlar, boshqa domenlar.
 // Shaxsiy kazuslar va AI javoblari faqat foydalanuvchi "qurilmada saqlash"ni tanlasa localStorage'da (workspace.js), SW'da emas.
 // Versiya build paytida yangilanadi (scripts/build-data.mjs → SW_VERSION).
-const SW_VERSION = 'hk-v11.11.0-526b85c1cc';
+const SW_VERSION = 'hk-v11.12.0-4b22239705';
 const STATIC = `hk-static-${SW_VERSION}`;
 const SHELL = [
-  '/', '/index.html', '/offline.html', '/styles.css', '/premium.css', '/suite.js', '/voice.js', '/voice-core.js', '/voice.css', '/manifest.webmanifest',
+  '/', '/index.html', '/offline.html', '/styles.css', '/premium.css', '/suite.js', '/voice.js', '/voice-core.js', '/voice.css', '/alphabet.html', '/alphabet.js', '/alphabet-core.js', '/alphabet.css', '/manifest.webmanifest',
   '/legal-data.js', '/legal-core.js', '/templates.js', '/app.js', '/features.js', '/explain.js', '/ui.js', '/motion.js',
   '/consent.js', '/workspace.js', '/coverage.js', '/accounts.js', '/i18n.js', '/pwa.js', '/coverage.json',
   '/assets/favicon.svg', '/assets/icon-192.png', '/assets/icon-512.png', '/assets/icon-maskable-512.png',

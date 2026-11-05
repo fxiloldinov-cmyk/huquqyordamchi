@@ -3,7 +3,7 @@
 ## The business
 
 **HuquqYordamchi** ("Legal Assistant") is an independent, free legal-information website for **Uzbekistan law**.
-Live site: https://huquqyordamchiuz.netlify.app/ (Netlify). Current version: **v11.11** (`package.json`; live site may still run an older deploy). Latest change report: `docs/V11_11_HISOBOT_UZ.md`.
+Live site: https://huquqyordamchiuz.netlify.app/ (Netlify). Current version: **v11.12** (`package.json`; live site may still run an older deploy). Latest change report: `docs/V11_12_HISOBOT_UZ.md`.
 
 - **Tagline (hero):** "Huquqingizni biling. Yechimni toping." — *Know your rights. Find the solution.*
   Kicker: "Huquqiy ma'lumot. Amaliy yechim." Motto under the hero: "Har bir qaror — asos bilan" (Law • Explanation • Practical step).
@@ -116,3 +116,9 @@ Egasi yuklagan 172-son YHQ: 191 asosiy band (`data/laws/yhq.json`); 975-son nizo
 - YHQ belgilar/chiziqlar haqidagi savolda `trafficAnnexNotice()` (traffic.mjs) cheklovni RAG blokiga va qidiruv `cheklovlar`iga qo‘shadi.
 - Yangi frontend/funksiya fayllari ixcham yozilgan va testlar ularning manba matnini regex bilan tekshiradi — avtomatik formatlash (prettier) testlarni buzadi.
 - Python’ga bog‘liq 2 test python3 bo‘lmasa skip bo‘ladi (CI’da ishlaydi). `docs/V11_11_HISOBOT_UZ.md`.
+
+## v11.12: alifbo paneli
+
+- `/alphabet.html` + `/api/alphabet-import`, `/api/alphabet-translate` (`HK_TRANSLATION_ENABLED=0` standart). O‘RQ–1184 (Ö Ğ Ş Ç), kuchga kirish 2027-04-22. `docs/ALIFBO_UZ.md`.
+- Alohida tayyorlangan ZIP ("v11.11 (1)", v11.10 asosida) bizning v11.11 bilan 3 tomonlama birlashtirildi. Tashqi ZIP’lar ko‘pincha v11.10 asosida keladi — ularni to‘g‘ridan-to‘g‘ri ustiga yozmang, v11.10 ni asos qilib birlashtiring.
+- Xalqaro bo‘lim `HK_INTERNATIONAL_ENABLED=1` bo‘lmaguncha yashirin (viza/registratsiya matnlari bazada yo‘q).

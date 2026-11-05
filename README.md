@@ -1,3 +1,7 @@
+# v11.12 yangi alifbo paneli
+
+`/alphabet.html`: o‘zbek lotin/kirill matnini O‘RQ–1184 bo‘yicha yangi alifboga o‘tkazish, DOCX import/eksport, ixtiyoriy ruscha tarjima (`HK_TRANSLATION_ENABLED=0`). v11.11 tuzatishlari saqlangan. [Hisobot](docs/V11_12_HISOBOT_UZ.md), [panel](docs/ALIFBO_UZ.md). Deploy bajarilmadi.
+
 # v11.11 ko‘rib chiqish tuzatishlari
 
 Tariflar havolasi `HK_KAZUS_PLANS_ENABLED=1` bo‘lmaguncha yashirin; YHQ belgilar ilovasi cheklovi javobda aytiladi; Coach "sinov" deb belgilandi; ovoz ogohlantirishi aniqlashtirildi; bosh sahifa yangi bloki ru/en tarjima qilindi. [Hisobot](docs/V11_11_HISOBOT_UZ.md). Deploy bajarilmadi.

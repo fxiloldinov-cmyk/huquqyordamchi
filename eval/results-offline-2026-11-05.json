@@ -2,7 +2,7 @@
  "summary": {
   "mode": "offline",
   "aiCalled": false,
-  "at": "2026-11-05T20:10:08.249Z",
+  "at": "2026-11-05T20:19:59.943Z",
   "cases": 46,
   "retrievalRecall": 1,
   "fullHits": 46,
@@ -17,7 +17,7 @@
    "ruscha": "1 (3)"
   },
   "editionWarnings": "3/3",
-  "avgRetrievalMs": 39,
+  "avgRetrievalMs": 67,
   "citationAccuracy": "o‘lchanmadi (oflayn rejimda AI javobi yo‘q)",
   "legalConclusion": "baholanmagan — kutilgan natijalar yurist tomonidan tasdiqlanmagan (lawyerReview: kutilmoqda)",
   "lawyerReviewed": 0
@@ -26,7 +26,7 @@
   {
    "id": "E01",
    "kind": "oddiy",
-   "ms": 173,
+   "ms": 396,
    "codes": [
     "mk"
    ],
@@ -39,7 +39,7 @@
   {
    "id": "E02",
    "kind": "murakkab",
-   "ms": 22,
+   "ms": 41,
    "codes": [
     "mk"
    ],
@@ -52,7 +52,7 @@
   {
    "id": "E03",
    "kind": "oddiy",
-   "ms": 15,
+   "ms": 28,
    "codes": [
     "mk"
    ],
@@ -65,7 +65,7 @@
   {
    "id": "E04",
    "kind": "eski_sana",
-   "ms": 23,
+   "ms": 40,
    "codes": [
     "mk"
    ],
@@ -78,7 +78,7 @@
   {
    "id": "E05",
    "kind": "oddiy",
-   "ms": 25,
+   "ms": 53,
    "codes": [
     "ok"
    ],
@@ -91,7 +91,7 @@
   {
    "id": "E06",
    "kind": "oddiy",
-   "ms": 157,
+   "ms": 375,
    "codes": [
     "ok"
    ],
@@ -104,7 +104,7 @@
   {
    "id": "E07",
    "kind": "oddiy",
-   "ms": 5,
+   "ms": 11,
    "codes": [
     "ok"
    ],
@@ -117,7 +117,7 @@
   {
    "id": "E08",
    "kind": "oddiy",
-   "ms": 3,
+   "ms": 2,
    "codes": [
     "ok"
    ],
@@ -143,7 +143,7 @@
   {
    "id": "E10",
    "kind": "oddiy",
-   "ms": 16,
+   "ms": 25,
    "codes": [
     "fk"
    ],
@@ -156,7 +156,7 @@
   {
    "id": "E11",
    "kind": "oddiy",
-   "ms": 3,
+   "ms": 7,
    "codes": [
     "fk"
    ],
@@ -169,7 +169,7 @@
   {
    "id": "E12",
    "kind": "oddiy",
-   "ms": 8,
+   "ms": 13,
    "codes": [
     "fk"
    ],
@@ -182,7 +182,7 @@
   {
    "id": "E13",
    "kind": "oddiy",
-   "ms": 22,
+   "ms": 28,
    "codes": [
     "fk",
     "ist"
@@ -196,7 +196,7 @@
   {
    "id": "E14",
    "kind": "oddiy",
-   "ms": 18,
+   "ms": 33,
    "codes": [
     "ist"
    ],
@@ -209,7 +209,7 @@
   {
    "id": "E15",
    "kind": "oddiy",
-   "ms": 182,
+   "ms": 368,
    "codes": [
     "jk",
     "mjtk"
@@ -223,7 +223,7 @@
   {
    "id": "E16",
    "kind": "oddiy",
-   "ms": 9,
+   "ms": 14,
    "codes": [
     "jk"
    ],
@@ -236,7 +236,7 @@
   {
    "id": "E17",
    "kind": "oddiy",
-   "ms": 132,
+   "ms": 272,
    "codes": [
     "jpk"
    ],
@@ -249,7 +249,7 @@
   {
    "id": "E18",
    "kind": "oddiy",
-   "ms": 11,
+   "ms": 14,
    "codes": [
     "jpk"
    ],
@@ -262,7 +262,7 @@
   {
    "id": "E19",
    "kind": "oddiy",
-   "ms": 86,
+   "ms": 61,
    "codes": [
     "mjtk"
    ],
@@ -275,7 +275,7 @@
   {
    "id": "E20",
    "kind": "oddiy",
-   "ms": 14,
+   "ms": 11,
    "codes": [
     "mjtk"
    ],
@@ -288,7 +288,7 @@
   {
    "id": "E21",
    "kind": "oddiy",
-   "ms": 171,
+   "ms": 110,
    "codes": [
     "fk",
     "fpk"
@@ -302,7 +302,7 @@
   {
    "id": "E22",
    "kind": "oddiy",
-   "ms": 20,
+   "ms": 18,
    "codes": [
     "fpk"
    ],
@@ -315,7 +315,7 @@
   {
    "id": "E23",
    "kind": "oddiy",
-   "ms": 180,
+   "ms": 306,
    "codes": [
     "fk",
     "sk"
@@ -329,7 +329,7 @@
   {
    "id": "E24",
    "kind": "oddiy",
-   "ms": 38,
+   "ms": 56,
    "codes": [
     "mk",
     "sk"
@@ -343,7 +343,7 @@
   {
    "id": "E25",
    "kind": "oddiy",
-   "ms": 26,
+   "ms": 57,
    "codes": [
     "ujk"
    ],
@@ -356,7 +356,7 @@
   {
    "id": "E26",
    "kind": "oddiy",
-   "ms": 69,
+   "ms": 113,
    "codes": [
     "fk",
     "ipk"
@@ -370,7 +370,7 @@
   {
    "id": "E27",
    "kind": "oddiy",
-   "ms": 27,
+   "ms": 42,
    "codes": [
     "jpk",
     "kon"
@@ -384,7 +384,7 @@
   {
    "id": "E28",
    "kind": "fanlararo",
-   "ms": 15,
+   "ms": 16,
    "codes": [
     "ok",
     "fk",
@@ -399,7 +399,7 @@
   {
    "id": "E29",
    "kind": "fanlararo",
-   "ms": 36,
+   "ms": 70,
    "codes": [
     "mk",
     "fk"
@@ -413,7 +413,7 @@
   {
    "id": "E30",
    "kind": "malumot_yetishmaydi",
-   "ms": 0,
+   "ms": 1,
    "codes": [],
    "expected": 0,
    "found": 0,
@@ -424,7 +424,7 @@
   {
    "id": "E31",
    "kind": "oddiy",
-   "ms": 30,
+   "ms": 44,
    "codes": [
     "jik"
    ],
@@ -437,7 +437,7 @@
   {
    "id": "E32",
    "kind": "oddiy",
-   "ms": 45,
+   "ms": 88,
    "codes": [
     "msk"
    ],
@@ -450,7 +450,7 @@
   {
    "id": "E33",
    "kind": "murakkab",
-   "ms": 10,
+   "ms": 24,
    "codes": [
     "fk"
    ],
@@ -463,7 +463,7 @@
   {
    "id": "E34",
    "kind": "sozlashuv",
-   "ms": 20,
+   "ms": 54,
    "codes": [
     "mk",
     "jk",
@@ -478,7 +478,7 @@
   {
    "id": "E35",
    "kind": "sozlashuv",
-   "ms": 24,
+   "ms": 75,
    "codes": [
     "mk"
    ],
@@ -491,7 +491,7 @@
   {
    "id": "E36",
    "kind": "sozlashuv",
-   "ms": 3,
+   "ms": 9,
    "codes": [
     "ok"
    ],
@@ -504,7 +504,7 @@
   {
    "id": "E37",
    "kind": "sozlashuv",
-   "ms": 5,
+   "ms": 13,
    "codes": [
     "fk"
    ],
@@ -517,7 +517,7 @@
   {
    "id": "E38",
    "kind": "kirill",
-   "ms": 18,
+   "ms": 30,
    "codes": [
     "mk"
    ],
@@ -530,7 +530,7 @@
   {
    "id": "E39",
    "kind": "kirill",
-   "ms": 4,
+   "ms": 6,
    "codes": [
     "ok"
    ],
@@ -543,7 +543,7 @@
   {
    "id": "E40",
    "kind": "kirill",
-   "ms": 21,
+   "ms": 23,
    "codes": [
     "jk",
     "mjtk"
@@ -557,7 +557,7 @@
   {
    "id": "E41",
    "kind": "ruscha",
-   "ms": 35,
+   "ms": 58,
    "codes": [
     "mk"
    ],
@@ -570,7 +570,7 @@
   {
    "id": "E42",
    "kind": "ruscha",
-   "ms": 5,
+   "ms": 7,
    "codes": [
     "ok"
    ],
@@ -583,7 +583,7 @@
   {
    "id": "E43",
    "kind": "ruscha",
-   "ms": 8,
+   "ms": 13,
    "codes": [
     "jk",
     "mjtk"
@@ -597,7 +597,7 @@
   {
    "id": "E44",
    "kind": "fanlararo",
-   "ms": 13,
+   "ms": 18,
    "codes": [
     "ok",
     "jk",
@@ -612,7 +612,7 @@
   {
    "id": "E45",
    "kind": "fanlararo",
-   "ms": 34,
+   "ms": 30,
    "codes": [
     "fk",
     "fpk",
@@ -627,7 +627,7 @@
   {
    "id": "E46",
    "kind": "fanlararo",
-   "ms": 29,
+   "ms": 19,
    "codes": [
     "jpk",
     "mjtk",

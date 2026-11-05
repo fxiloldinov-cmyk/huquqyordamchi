@@ -101,7 +101,7 @@ ${oferta.sections.map(s=>`<section><h2>${esc(s.h)}</h2>${s.p.map(t=>`<p>${esc(t)
 await mkdir(new URL('../public/oferta/',import.meta.url),{recursive:true});
 await writeFile(new URL('../public/oferta/index.html',import.meta.url),page({path:'/oferta/',title:'Ommaviy oferta — HuquqYordamchi xizmatlaridan foydalanish shartlari',description:'HuquqYordamchi veb-sayti va xizmatlaridan foydalanish shartlari: shartnoma predmeti, taraflarning majburiyatlari, javobgarlik, shaxsga doir ma’lumotlar va nizolarni hal qilish.',body:ofertaBody,jsonld:[crumbs([['Bosh sahifa','/'],[oferta.title,'/oferta/']])]}));
 
-const urls=['/','/vaziyat/',...pages,'/oferta/',...(internationalEnabled()?['/international.html']:[])];
+const urls=['/','/alphabet.html','/vaziyat/',...pages,'/oferta/',...(internationalEnabled()?['/international.html']:[])];
 await writeFile(new URL('../public/sitemap.xml',import.meta.url),`<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map(u=>`  <url><loc>${SITE}${u}</loc><lastmod>${today}</lastmod></url>`).join('\n')}
