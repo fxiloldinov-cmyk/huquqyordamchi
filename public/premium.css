@@ -1,8 +1,7 @@
 /* v11.8: mavjud komponentlar ustidagi umumiy vizual qatlam. */
-:root{--blue:#102a43;--deep:#102a43;--accent:#167d8d;--bg:#f8fafc;--soft:#e7f5f5;--gold:#d4a75c;--radius:16px}
-:root[data-theme=dark]{--blue:#9edce4;--deep:#102a43;--accent:#64c4cf;--bg:#0c1c2a;--soft:#15333e}
+:root{--radius:16px}
 .header{border-bottom:1px solid var(--line);background:var(--card)}
-.btn-primary{background:#167d8d;border-color:#167d8d;color:#fff}.btn-primary:hover{background:#126571;border-color:#126571}
+.btn-primary{background:var(--gold);border-color:var(--gold);color:#0f2a4a}.btn-primary:hover{background:#d8b563;border-color:#d8b563}
 .hero-photo{border-radius:24px;overflow:hidden}.hero h1{letter-spacing:-.04em}.hero-copy>.eyebrow{color:var(--accent)}
 .product-suite{margin:24px 0 36px;padding:26px;border:1px solid var(--line);border-radius:20px;background:var(--card)}
 .suite-heading{display:flex;justify-content:space-between;gap:16px;align-items:start;margin-bottom:20px}.suite-heading h2{font-size:25px;margin:5px 0}.suite-heading p{color:var(--muted);margin:0;max-width:580px}
@@ -14,3 +13,34 @@
 @media(prefers-reduced-motion:reduce){.suite-card{transition:none}.suite-card:hover{transform:none}}
 
 [data-international][hidden],[data-plans][hidden]{display:none!important}
+
+/* v12: 60/30/10 rang qoidasi — krem fon (60%), to‘q ko‘k bloklar (30%), oltin urg‘u (10%) */
+:root{--serif:Georgia,"Times New Roman",serif;--navy-2:#0a1d35}
+body,main{overflow-x:clip}
+.btn{border-radius:999px}.btn-ghost{background:transparent;color:var(--text)}.btn-ghost:hover{background:var(--soft)}
+.header{background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:saturate(1.3) blur(12px);-webkit-backdrop-filter:saturate(1.3) blur(12px)}
+.hero h1,.section-head h2,.suite-heading h2,.student-banner h2,.faq h2,.console-top h2,.workspace-heading h1,.detail-header h1,.ws-head-row h1,.plans-hero h1,.static-article h1{font-family:var(--serif);font-weight:400;letter-spacing:-.02em}
+.section-head h2,.faq h2{font-size:34px}
+/* bosh qism: to‘q ko‘k nurli fon, markazdagi serif sarlavha */
+.hero{position:relative;isolation:isolate;display:block;text-align:center;color:#f4efe6;padding:104px 0 128px;margin-bottom:32px}
+.hero::before{content:"";position:absolute;z-index:-2;top:0;bottom:0;left:calc(50% - 50vw);right:calc(50% - 50vw);background:radial-gradient(55% 65% at 50% 108%,#c9a24b40,transparent 70%),radial-gradient(45% 55% at 12% -5%,#2c5d9455,transparent 70%),radial-gradient(40% 50% at 92% 10%,#1d4a7a44,transparent 70%),linear-gradient(180deg,var(--navy-2),#0f2a4a)}
+.hero-copy{max-width:880px;margin:auto}
+.hero-copy>.eyebrow{color:var(--gold)}
+.hero h1{font-size:clamp(40px,6.4vw,82px);line-height:1.04;margin:14px 0 26px;color:#f8f3ea}
+.hero h1 em{font-style:italic;color:var(--gold)}.hero h1 .ln{padding-bottom:.14em;margin-bottom:-.14em}
+.hero-copy>p{margin:0 auto;max-width:600px;color:#c3ccd8;font-size:17px}
+.hero-question{max-width:640px;margin:32px auto 0;padding:6px;border-radius:999px;background:#ffffff10;border-color:#ffffff2e;box-shadow:0 24px 60px #0007;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.hero-question input{color:#fff;padding-left:18px}.hero-question input::placeholder{color:#aebbc9;opacity:1}
+.hero-links{justify-content:center}
+.hero .btn-ghost{color:#f4efe6;border-color:#ffffff38;background:#ffffff0a}.hero .btn-ghost:hover{background:#ffffff1c}
+.hero-facts{justify-content:center;margin-top:46px;color:#9fadbd}.hero-facts span{border-color:#ffffff22;max-width:230px;text-align:left}.hero-facts b{color:#f4efe6;font:400 21px/1.3 var(--serif)}
+.hero-photo{position:absolute;z-index:-1;top:0;bottom:0;left:calc(50% - 50vw);right:calc(50% - 50vw);min-height:0;border-radius:0!important;background:none;overflow:hidden}
+.hero-photo img{opacity:.16;filter:grayscale(.4);-webkit-mask:linear-gradient(180deg,#000 10%,#0000 90%);mask:linear-gradient(180deg,#000 10%,#0000 90%)}
+.photo-caption{left:0;right:0;bottom:28px;margin:auto;width:max-content;max-width:calc(100% - 32px);padding:9px 18px 9px 10px;border-radius:999px;background:#0a1d35b3;border-color:#ffffff24;color:#f4efe6;text-align:left;box-shadow:none;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.photo-caption small{color:#aebbc9}.caption-mark{width:28px;height:28px}
+/* to‘q ko‘k bloklar va oltin urg‘u */
+.search-console{border-top-color:var(--gold)}
+.student-banner{background:var(--navy)}.student-banner .eyebrow{color:var(--gold)}.student-banner h2{font-size:36px}
+.ws-tabs button[aria-selected=true]{color:var(--card)}
+footer{background:var(--navy-2);border-top:0;color:#d8dee6}footer .brand,footer a{color:#f4efe6}footer .brand small,.footer-main p,.footer-bottom{color:#93a2b4}.footer-main p a{color:var(--gold)}.footer-bottom{border-color:#ffffff1a}
+@media(max-width:700px){.hero{padding:60px 0 116px}.hero-photo{height:auto}.photo-caption{bottom:22px;left:0;right:0}.hero-copy>p{font-size:15px}.hero-question{border-radius:20px}.hero-question input{padding-left:10px}.hero-facts{flex-wrap:wrap;justify-content:center;gap:14px}.hero-facts span{border:0;padding:0;text-align:center;flex:1 1 40%}.section-head h2,.faq h2{font-size:27px}.student-banner h2{font-size:28px}}
