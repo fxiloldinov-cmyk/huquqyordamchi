@@ -76,7 +76,13 @@ Windows note: this machine uses PowerShell; `server.ps1` exists as an alternativ
 - GitHub repo: `fxiloldinov-cmyk/huquqyordamchi` (public), branch `main`; local folder is a git checkout of it.
 - Netlify site `huquqyordamchiuz` lives in team "huquqchilar" (owner account farrukhbekfarruxfx@gmail.com). Builds from GitHub pushes are being **skipped** by Netlify; the connected account fxiloldinov@gmail.com cannot deploy it. Deploy needs that owner account (or an invite).
 - **Root cause (confirmed 2026-11-02 on the Deploys page):** "Production deploys are paused because your team has used all of its available credits for this billing cycle." Free plan = 300 credits/month. Usage period resets **2026-11-28**. CLI deploys return 403 for the same reason. Batch changes into one deploy.
-- v11.8–v11.10 arrived as ZIPs (`Downloads\HuquqYordamchi_v11_10.zip`); v11.11 = v11.10 + review fixes, committed locally on `main`, **not pushed**. Live site still runs main@1e8f5b6.
+- v11.8–v11.10 arrived as ZIPs (`Downloads\HuquqYordamchi_v11_10.zip`). As of 2026-11-23 everything through v11.13 + Germaniya is **pushed** (main@891f780); the live site still runs an older deploy until Netlify credits reset.
+- `data/sources/**` is `-text` in `.gitattributes` (hash-checked originals). Heavy audit artefacts in `data/review/{snapshots,candidate-history,comparison-history,yhq-assets}` are git-ignored and stay local.
+
+## Germaniya bo‘limi (2026-11-23)
+
+- Static pages in `public/germaniya/` (no AI, always visible): Anmeldung, yashash ruxsati, talaba ishi, ijara. Home `.suite-card` links to `/germaniya/`; URLs listed in `scripts/build-data.mjs` sitemap.
+- Sources only gesetze-im-internet.de, minijob-zentrale.de, bmas.de (checked by `tests/germaniya.test.mjs`). Figures (Minijob 603 €, Mindestlohn 13,90 €) are 2026 values — update after 2027-01-01.
 - Correct domain is `huquqyordamchiuz.netlify.app` (no hyphen). A stray local build once produced `huquqyordamchi-uz` — never ship that.
 
 ## Rules when working here
