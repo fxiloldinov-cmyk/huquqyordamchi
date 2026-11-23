@@ -1,0 +1,68 @@
+{
+  "generatedAt": "2026-11-08T06:46:35.269Z",
+  "items": [
+    {
+      "doc": "iiv502",
+      "reason": "identity-unverified",
+      "status": "technical-evidence-pending",
+      "lawyerReview": "source-text-confirmed-by-user",
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi.",
+        "doc": "iiv502",
+        "approvedContentSha256": "6fbeee6e2a821a79428da069c98bdc9e7609dac4690326aa5d293db175978c0c"
+      },
+      "remotePublishedAt": null,
+      "checkedAt": "2026-11-08T06:46:34.873Z"
+    },
+    {
+      "doc": "plenum05",
+      "reason": "publication-unknown",
+      "status": "technical-evidence-pending",
+      "lawyerReview": "source-text-confirmed-by-user",
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi.",
+        "doc": "plenum05",
+        "approvedContentSha256": "a0cfae77752c4df171494afd00b6fe2d846327887291875d30fd401ab9dbbad2"
+      },
+      "remotePublishedAt": null,
+      "checkedAt": "2026-11-08T06:46:33.623Z"
+    },
+    {
+      "doc": "plenum26",
+      "reason": "publication-unknown",
+      "status": "technical-evidence-pending",
+      "lawyerReview": "source-text-confirmed-by-user",
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi.",
+        "doc": "plenum26",
+        "approvedContentSha256": "4e255325fe5bcebc49e721b0beb3b9453f2f8602065a3fe545a4109800029768"
+      },
+      "remotePublishedAt": null,
+      "checkedAt": "2026-11-08T06:46:33.724Z"
+    }
+  ]
+}

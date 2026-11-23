@@ -46,6 +46,10 @@ def clean(t):
     return re.sub(r'([(«“])\s+', r'\1', t)
 
 soup = BeautifulSoup(open(a.src, encoding='utf8').read(), 'html.parser')
+# Live Lex.uz pages include action toolbars inside every text block.
+# Their labels are interface text, never part of the legal act.
+for toolbar in soup.select('.lx_elem2'):
+    toolbar.decompose()
 title_el=soup.find(class_='ACT_TITLE')
 if not title_el: raise ValueError('ACT_TITLE topilmadi. Word/HTML eksporti kerak.')
 title = clean(title_el.get_text(' ', strip=True))

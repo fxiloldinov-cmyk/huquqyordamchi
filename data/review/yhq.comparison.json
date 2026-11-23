@@ -1,0 +1,497 @@
+{
+  "doc": "yhq",
+  "status": "pending",
+  "lawyerReview": "kutilmoqda",
+  "source": "https://lex.uz/docs/-5953883",
+  "sourceSha256": "91a5f5da6afb2e81150e45d3d1fe0296836850ba920fe7ba7bd9cf35e8120679",
+  "checkedAt": "2026-11-08T06:47:33.586652+00:00",
+  "localAsOf": "2026-10-30",
+  "textCompared": true,
+  "effectiveDateVerified": false,
+  "candidateSha256": "cb1a9a18e715472e87191f881a22ad7686d7a44a2e96e67d96da96f2adc6a9f1",
+  "result": "indexed-text-matches",
+  "candidateAsOf": "2026-10-30",
+  "added": [],
+  "removed": [],
+  "changed": [],
+  "problems": [],
+  "candidate": null,
+  "amendments": [
+    {
+      "art": "3",
+      "sourceNote": "(3-band Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 30-noyabrdagi 806-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 05.12.2024-y., 09/24/806/1002-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "4",
+      "sourceNote": "(4-band Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 30-noyabrdagi 806-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 05.12.2024-y., 09/24/806/1002-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "6",
+      "sourceNote": "(6-band Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2026-yil 30-martdagi 125-sonli qaroriga asosan oʻttiz toʻrtinchi xatboshi bilan toʻldirilgan — Qonunchilik maʼlumotlari milliy bazasi, 01.04.2026-y., 09/26/125/0297-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "6",
+      "sourceNote": "(6-bandning qirq birinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2026-yil 30-martdagi 125-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 01.04.2026-y., 09/26/125/0297-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "6",
+      "sourceNote": "(6-band Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2025-yil 12-apreldagi 224-sonli qaroriga asosan yetmish yettinchi xatboshi bilan toʻldirilgan — Qonunchilik maʼlumotlari milliy bazasi, 15.04.2025-y., 09/25/224/0338-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "6",
+      "sourceNote": "(6-band Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 30-noyabrdagi 806-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 05.12.2024-y., 09/24/806/1002-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "7",
+      "sourceNote": "(7-bandning toʻrtinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 17-iyuldagi 429-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 17.07.2024-y., 09/24/429/0517-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "7",
+      "sourceNote": "(7-bandning beshinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2025-yil 23-iyuldagi 458-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 24.07.2025-y., 09/25/458/0648-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "8",
+      "sourceNote": "(8-band Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2026-yil 30-martdagi 125-sonli qaroriga asosan ikkinchi xatboshi bilan toʻldirilgan — Qonunchilik maʼlumotlari milliy bazasi, 01.04.2026-y., 09/26/125/0297-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "8",
+      "sourceNote": "(8-bandning uchinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2026-yil 30-martdagi 125-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 01.04.2026-y., 09/26/125/0297-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "8",
+      "sourceNote": "(8-bandning oʻn birinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2025-yil 23-iyuldagi 458-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 24.07.2025-y., 09/25/458/0648-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "9",
+      "sourceNote": "(9-bandning yettinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2026-yil 30-martdagi 125-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 01.04.2026-y., 09/26/125/0297-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "11",
+      "sourceNote": "(11-bandning “g” kichik bandi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 30-noyabrdagi 806-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 05.12.2024-y., 09/24/806/1002-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "11",
+      "sourceNote": "(11-band “d” kichik bandining uchinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2026-yil 30-martdagi 125-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 01.04.2026-y., 09/26/125/0297-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "12",
+      "sourceNote": "(12-bandning toʻqqizinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2026-yil 30-martdagi 125-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 01.04.2026-y., 09/26/125/0297-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "12",
+      "sourceNote": "(12-band Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 17-iyuldagi 429-sonli qaroriga asosan toʻqqizinchi — oʻninchi xatboshilar bilan toʻldirilgan — Qonunchilik maʼlumotlari milliy bazasi, 17.07.2024-y., 09/24/429/0517-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "12-3",
+      "sourceNote": "(12¹, 12² va 12³-bandlar Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 17-iyuldagi 429-sonli qaroriga asosan kiritilgan — Qonunchilik maʼlumotlari milliy bazasi, 17.07.2024-y., 09/24/429/0517-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "15",
+      "sourceNote": "(15-bandning uchinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2026-yil 30-martdagi 125-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 01.04.2026-y., 09/26/125/0297-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "23",
+      "sourceNote": "(23-bandning ikkinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 30-noyabrdagi 806-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 05.12.2024-y., 09/24/806/1002-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "23",
+      "sourceNote": "(23-bandning uchinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2026-yil 30-martdagi 125-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 01.04.2026-y., 09/26/125/0297-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "25",
+      "sourceNote": "(25-bandning ikkinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 30-noyabrdagi 806-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 05.12.2024-y., 09/24/806/1002-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "28",
+      "sourceNote": "(28-bandning oltinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 30-noyabrdagi 806-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 05.12.2024-y., 09/24/806/1002-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "34",
+      "sourceNote": "(34-band Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 17-iyuldagi 429-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 17.07.2024-y., 09/24/429/0517-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "37",
+      "sourceNote": "(37-bandning ikkinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 30-noyabrdagi 806-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 05.12.2024-y., 09/24/806/1002-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "40",
+      "sourceNote": "(40-band Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 30-noyabrdagi 806-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 05.12.2024-y., 09/24/806/1002-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "43",
+      "sourceNote": "(43-bandning birinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 17-iyuldagi 429-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 17.07.2024-y., 09/24/429/0517-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "46",
+      "sourceNote": "(46-bandning ikkinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 30-noyabrdagi 806-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 05.12.2024-y., 09/24/806/1002-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "50",
+      "sourceNote": "(50-bandning sakkizinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 30-noyabrdagi 806-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 05.12.2024-y., 09/24/806/1002-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "53",
+      "sourceNote": "(53-band Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 30-noyabrdagi 806-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 05.12.2024-y., 09/24/806/1002-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "63",
+      "sourceNote": "(63-bandning birinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 30-noyabrdagi 806-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 05.12.2024-y., 09/24/806/1002-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "72",
+      "sourceNote": "(72-bandning birinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 30-noyabrdagi 806-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 05.12.2024-y., 09/24/806/1002-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "77",
+      "sourceNote": "(77-bandning uchinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 30-noyabrdagi 806-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 05.12.2024-y., 09/24/806/1002-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "78",
+      "sourceNote": "(78-bandning ikkinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2023-yil 3-apreldagi 140-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 05.04.2023-y., 09/23/140/0191-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "79",
+      "sourceNote": "(79-bandning toʻrtinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 17-iyuldagi 429-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 17.07.2024-y., 09/24/429/0517-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "80",
+      "sourceNote": "(80-bandning oltinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2025-yil 21-oktabrdagi 662-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 22.10.2025-y., 09/25/662/0964-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "82",
+      "sourceNote": "(82-bandning ikkinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 30-noyabrdagi 806-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 05.12.2024-y., 09/24/806/1002-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "89",
+      "sourceNote": "(89-bandning birinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 30-noyabrdagi 806-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 05.12.2024-y., 09/24/806/1002-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "89",
+      "sourceNote": "(89-bandning ikkinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 30-noyabrdagi 806-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 05.12.2024-y., 09/24/806/1002-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "89",
+      "sourceNote": "(89-bandning uchinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2026-yil 30-martdagi 125-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 01.04.2026-y., 09/26/125/0297-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "92",
+      "sourceNote": "(92-band Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2026-yil 30-martdagi 125-sonli qaroriga asosan oltinchi xatboshi bilan toʻldirilgan — Qonunchilik maʼlumotlari milliy bazasi, 01.04.2026-y., 09/26/125/0297-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "94",
+      "sourceNote": "(94-band Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 30-noyabrdagi 806-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 05.12.2024-y., 09/24/806/1002-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "96",
+      "sourceNote": "(96-band Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 17-iyuldagi 429-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 17.07.2024-y., 09/24/429/0517-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "115-2",
+      "sourceNote": "(17¹-bob Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 10-oktabrdagi 658-sonli qaroriga asosan kiritilgan — Qonunchilik maʼlumotlari milliy bazasi, 11.10.2024-y., 09/24/658/0807-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "121",
+      "sourceNote": "(121-bandning ikkinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2026-yil 30-martdagi 125-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 01.04.2026-y., 09/26/125/0297-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "126",
+      "sourceNote": "(126-band Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 30-noyabrdagi 806-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 05.12.2024-y., 09/24/806/1002-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "134",
+      "sourceNote": "(134-bandning ikkinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 17-iyuldagi 429-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 17.07.2024-y., 09/24/429/0517-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "138",
+      "sourceNote": "(138-bandning sakkizinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 17-iyuldagi 429-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 17.07.2024-y., 09/24/429/0517-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "145",
+      "sourceNote": "(145-bandning oltinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2026-yil 30-martdagi 125-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 01.04.2026-y., 09/26/125/0297-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "150",
+      "sourceNote": "(150-band Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2022-yil 20-iyuldagi 393-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.07.2022-y., 09/22/393/0654-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "159",
+      "sourceNote": "(159-bandning toʻrtinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2026-yil 30-martdagi 125-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 01.04.2026-y., 09/26/125/0297-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "159",
+      "sourceNote": "(159-bandning beshinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2026-yil 30-martdagi 125-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 01.04.2026-y., 09/26/125/0297-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "159",
+      "sourceNote": "(159-bandning oltinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2026-yil 30-martdagi 125-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 01.04.2026-y., 09/26/125/0297-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "162",
+      "sourceNote": "(162-band Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2023-yil 21-avgustdagi 406-sonli qaroriga asosan beshinchi xatboshi bilan toʻldirilgan — Qonunchilik maʼlumotlari milliy bazasi, 22.08.2023-y., 09/23/406/0625-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "162",
+      "sourceNote": "(162-bandning sakkizinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 17-iyuldagi 429-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 17.07.2024-y., 09/24/429/0517-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "165",
+      "sourceNote": "(165-band Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2026-yil 30-martdagi 125-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 01.04.2026-y., 09/26/125/0297-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "166",
+      "sourceNote": "(166-band Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 17-iyuldagi 429-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 17.07.2024-y., 09/24/429/0517-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "167",
+      "sourceNote": "(167-bandning birinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 17-iyuldagi 429-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 17.07.2024-y., 09/24/429/0517-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "167",
+      "sourceNote": "(167-band Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 17-iyuldagi 429-sonli qaroriga asosan ikkinchi xatboshi bilan toʻldirilgan — Qonunchilik maʼlumotlari milliy bazasi, 17.07.2024-y., 09/24/429/0517-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "168",
+      "sourceNote": "(168-band Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 17-iyuldagi 429-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 17.07.2024-y., 09/24/429/0517-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "169",
+      "sourceNote": "(169-band Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 17-iyuldagi 429-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 17.07.2024-y., 09/24/429/0517-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "174",
+      "sourceNote": "(174-band Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 30-noyabrdagi 806-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 05.12.2024-y., 09/24/806/1002-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "175",
+      "sourceNote": "(175-bandning ikkinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 17-iyuldagi 429-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 17.07.2024-y., 09/24/429/0517-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "176",
+      "sourceNote": "(176-bandning oʻn oltinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2026-yil 30-martdagi 125-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 01.04.2026-y., 09/26/125/0297-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "179",
+      "sourceNote": "(179-bandning ikkinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2026-yil 30-martdagi 125-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 01.04.2026-y., 09/26/125/0297-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "181",
+      "sourceNote": "(181-bandning uchinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 30-noyabrdagi 806-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 05.12.2024-y., 09/24/806/1002-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "183",
+      "sourceNote": "(183-bandning ikkinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 30-noyabrdagi 806-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 05.12.2024-y., 09/24/806/1002-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "183",
+      "sourceNote": "(183-bandning toʻqqizinchi xatboshisi Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 30-noyabrdagi 806-sonli qarori tahririda — Qonunchilik maʼlumotlari milliy bazasi, 05.12.2024-y., 09/24/806/1002-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "183",
+      "sourceNote": "(183-band Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2024-yil 30-noyabrdagi 805-sonli qaroriga asosan oʻn beshinchi bilan toʻldirilgan — Qonunchilik maʼlumotlari milliy bazasi, 05.12.2024-y., 09/24/805/1001-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    }
+  ]
+}

@@ -9,7 +9,7 @@ test('feature API defaults off; homepage fails closed with hidden cards',async()
  try{assert.equal((await (await featureApi(new Request('https://example.test/api/features'))).json()).international,false);
  process.env.HK_INTERNATIONAL_ENABLED='1';assert.equal((await (await featureApi(new Request('https://example.test/api/features'))).json()).international,true);
  }finally{if(old===undefined)delete process.env.HK_INTERNATIONAL_ENABLED;else process.env.HK_INTERNATIONAL_ENABLED=old}
- const html=await fs.readFile(new URL('public/index.html',ROOT),'utf8');assert.equal((html.match(/data-international hidden/g)||[]).length,2);
+ const html=await fs.readFile(new URL('public/index.html',ROOT),'utf8');assert.equal((html.match(/data-international hidden/g)||[]).length,4);
  const css=await fs.readFile(new URL('public/premium.css',ROOT),'utf8');assert.match(css,/\[data-international\]\[hidden\].*display:none!important/);
  const js=await fs.readFile(new URL('public/suite.js',ROOT),'utf8');assert.match(js,/flags\?\.international===true/);
 });

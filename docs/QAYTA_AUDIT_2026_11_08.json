@@ -1,0 +1,203 @@
+{
+  "at": "2026-11-08T06:50:32.496675+00:00",
+  "tests": {
+    "total": 207,
+    "passed": 207,
+    "failed": 0
+  },
+  "remoteDocumentsCompared": 19,
+  "indexedTextMatches": 19,
+  "integrity": {
+    "at": "2026-11-08T06:48:07.947Z",
+    "issues": [],
+    "documents": [
+      {
+        "doc": "fk1",
+        "units": 386,
+        "hash": "d491becc96643de3c443e1c8ce1ae8cd64b9f06e63dedc4fe3c5eb28638f4842",
+        "textReview": "approved",
+        "freshness": "publication-date-matches",
+        "effectiveDateVerified": false
+      },
+      {
+        "doc": "fk2",
+        "units": 811,
+        "hash": "5b744242721936352751785aecb626d2b0dcc3dd8c2290bbe555ddcf14f71405",
+        "textReview": "approved",
+        "freshness": "publication-date-matches",
+        "effectiveDateVerified": false
+      },
+      {
+        "doc": "fpk",
+        "units": 513,
+        "hash": "e24ab516702f682f9ea723655dc23d9e61af83b02a967ac9c8080b85ac39478a",
+        "textReview": "approved",
+        "freshness": "publication-date-matches",
+        "effectiveDateVerified": false
+      },
+      {
+        "doc": "ipk",
+        "units": 390,
+        "hash": "c711fc49a7cf225bd77099d987c3dd8fca929b1972665b989baa8e10f4071241",
+        "textReview": "approved",
+        "freshness": "publication-date-matches",
+        "effectiveDateVerified": false
+      },
+      {
+        "doc": "ist",
+        "units": 33,
+        "hash": "cce423334c827c8d20674d192b7c06e0c5e151c7c98d205dc7c1d845a9b7103f",
+        "textReview": "approved",
+        "freshness": "publication-date-matches",
+        "effectiveDateVerified": false
+      },
+      {
+        "doc": "jik",
+        "units": 200,
+        "hash": "2bf1d61a409f35aaba30742a6f9f7d551ef1012a658bf1c8b20f9b41720ead85",
+        "textReview": "approved",
+        "freshness": "publication-date-matches",
+        "effectiveDateVerified": false
+      },
+      {
+        "doc": "jk",
+        "units": 406,
+        "hash": "824bcb09e843a59619ef19b841a3c4ca82a410900ffb4bb2695a8bf791ff341e",
+        "textReview": "approved",
+        "freshness": "publication-date-matches",
+        "effectiveDateVerified": false
+      },
+      {
+        "doc": "jpk",
+        "units": 773,
+        "hash": "b8bba445713639d1e8a5a39a0757f9658d8b8a70fe66050ed7f232a74e6f4658",
+        "textReview": "approved",
+        "freshness": "publication-date-matches",
+        "effectiveDateVerified": false
+      },
+      {
+        "doc": "kon",
+        "units": 155,
+        "hash": "2ca22454bd8f4e819f2e320c99db4c21c661efc9a41f5b5592203841368a33b0",
+        "textReview": "approved",
+        "freshness": "publication-date-matches",
+        "effectiveDateVerified": false
+      },
+      {
+        "doc": "mjtk",
+        "units": 673,
+        "hash": "2493d1b1b908647dd2f19581b00de2468ec53a572aa12928e573e8af49909875",
+        "textReview": "approved",
+        "freshness": "publication-date-matches",
+        "effectiveDateVerified": false
+      },
+      {
+        "doc": "mk",
+        "units": 593,
+        "hash": "39f76ae155f6adf3623c6e79942bd8554d43bd280b302859becc8f9bbc2c4b89",
+        "textReview": "approved",
+        "freshness": "publication-date-matches",
+        "effectiveDateVerified": false
+      },
+      {
+        "doc": "msk",
+        "units": 309,
+        "hash": "50f6c2bd71599f9f5f208d487ee8eb9111de281a1b6064a410f9abea6639fdb0",
+        "textReview": "approved",
+        "freshness": "publication-date-matches",
+        "effectiveDateVerified": false
+      },
+      {
+        "doc": "ok",
+        "units": 220,
+        "hash": "0f92878b4d4822a0ee0cf3a2b9fdbcbd1195c55497e2c5c2a97e7dd585fd947a",
+        "textReview": "approved",
+        "freshness": "publication-date-matches",
+        "effectiveDateVerified": false
+      },
+      {
+        "doc": "plenum05",
+        "units": 25,
+        "hash": "7069e207ef82eea51c21f4af46fba258afcdee99c757f837923753e06a85c119",
+        "textReview": "approved",
+        "freshness": "publication-unknown",
+        "effectiveDateVerified": false
+      },
+      {
+        "doc": "plenum26",
+        "units": 75,
+        "hash": "9465c9470e8edcd45fa5f928da3888a1494e9554f5a0f450a4e8a1f57834589a",
+        "textReview": "approved",
+        "freshness": "publication-unknown",
+        "effectiveDateVerified": false
+      },
+      {
+        "doc": "sk",
+        "units": 500,
+        "hash": "bda8206ca7adbf6a358c07b19f2ee72d7c2ec98c42f23333317c2b6f10dae97e",
+        "textReview": "approved",
+        "freshness": "publication-date-matches",
+        "effectiveDateVerified": false
+      },
+      {
+        "doc": "ujk",
+        "units": 141,
+        "hash": "c5ed1a221380edcfca5789c46b26caf46b616cda60fae8043bf1c9a3747e315c",
+        "textReview": "approved",
+        "freshness": "publication-date-matches",
+        "effectiveDateVerified": false
+      },
+      {
+        "doc": "yhq",
+        "units": 191,
+        "hash": "28d27b0cda73c35544025558c66b4111d27dc69776e312f860a37f2b0b462997",
+        "textReview": "approved",
+        "freshness": "publication-date-matches",
+        "effectiveDateVerified": false
+      },
+      {
+        "doc": "ypx975",
+        "units": 62,
+        "hash": "8f51a35a8d429a69a488d8bf40240ec428eced7f19fd9c3b1a79033763c5fa15",
+        "textReview": "approved",
+        "freshness": "publication-date-matches",
+        "effectiveDateVerified": false
+      },
+      {
+        "doc": "iiv502",
+        "units": 118,
+        "hash": "cbe877b9ba1f4fc25cc56552e157de0b7b5d1ac098a44927fbb51c3e580503a9",
+        "textReview": "approved",
+        "freshness": "identity-unverified",
+        "effectiveDateVerified": false
+      }
+    ],
+    "archivesChecked": 2,
+    "annexAssetsChecked": 18
+  },
+  "browser": [
+    {
+      "width": 1280,
+      "approvedTextVisible": true,
+      "newEditionVisible": true,
+      "dateUncertaintyVisible": true,
+      "pageErrors": []
+    },
+    {
+      "width": 390,
+      "approvedTextVisible": true,
+      "newEditionVisible": true,
+      "dateUncertaintyVisible": true,
+      "pageErrors": []
+    }
+  ],
+  "historicalMobileTest": "Mobile: historical text withheld; deterministic warning visible; no current-source passage displayed.",
+  "liveAiTested": false,
+  "deployed": false,
+  "remaining": [
+    "IIV 502 official link and effective date not established",
+    "Plenum publication dates unknown",
+    "Historical versions are not a verified event-date corpus",
+    "YHQ image interpretations not supplied"
+  ]
+}

@@ -1,0 +1,987 @@
+{
+  "doc": "ujk",
+  "status": "pending",
+  "lawyerReview": "kutilmoqda",
+  "source": "https://lex.uz/docs/-106136",
+  "sourceSha256": "07baac0afa1b50f14e032adb866294c6117c2e9baccf7bc1a7731a0008738bba",
+  "checkedAt": "2026-11-08T06:47:32.602993+00:00",
+  "localAsOf": "2026-09-12",
+  "textCompared": true,
+  "effectiveDateVerified": false,
+  "candidateSha256": "da4d13052f0941148142467eaee88c466dc84d1e8a067395391d911540e202fa",
+  "result": "indexed-text-matches",
+  "candidateAsOf": "2026-09-12",
+  "added": [],
+  "removed": [],
+  "changed": [],
+  "problems": [],
+  "candidate": null,
+  "amendments": [
+    {
+      "art": "1",
+      "sourceNote": "(1-modda Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "2",
+      "sourceNote": "(2-moddaning nomi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "2",
+      "sourceNote": "(2-modda birinchi qismining birinchi xatboshisi Oʻzbekiston Respublikasining 2025-yil 30-dekabrdagi OʻRQ-1109-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 30.12.2025-y., 03/25/1109/1241-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "2",
+      "sourceNote": "(2-moddaning ikkinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "2",
+      "sourceNote": "(2-moddaning uchinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "3",
+      "sourceNote": "(3-moddaning ikkinchi xatboshisi Oʻzbekiston Respublikasining 2001-yil 12-maydagi 220-II-son Qonuni tahririda — Oliy Majlis Axborotnomasi, 2001-y., 5-son, 89-modda)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "3",
+      "sourceNote": "(3-moddaning uchinchi xatboshisi Oʻzbekiston Respublikasining 2025-yil 30-dekabrdagi OʻRQ-1109-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 30.12.2025-y., 03/25/1109/1241-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "3",
+      "sourceNote": "(3-moddaning yettinchi xatboshisi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "3",
+      "sourceNote": "(4-modda Oʻzbekiston Respublikasining 2001-yil 12-maydagi 220-II-son Qonuniga muvofiq chiqarilgan — Oliy Majlis Axborotnomasi, 2001-y., 5-son, 89-modda)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "5",
+      "sourceNote": "(5-moddaning nomi Oʻzbekiston Respublikasining 2025-yil 30-dekabrdagi OʻRQ-1109-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 30.12.2025-y., 03/25/1109/1241-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "5",
+      "sourceNote": "(5-moddaning birinchi xatboshisi Oʻzbekiston Respublikasining 2025-yil 30-dekabrdagi OʻRQ-1109-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 30.12.2025-y., 03/25/1109/1241-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "5",
+      "sourceNote": "(5-moddaning ikkinchi xatboshisi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "5",
+      "sourceNote": "(5-moddaning oʻn birinchi xatboshisi Oʻzbekiston Respublikasining 2019-yil 14-noyabrdagi OʻRQ-584-sonli Qonuni tahririda — Qonun hujjatlari maʼlumotlari milliy bazasi, 15.11.2019-y., 03/19/584/4025-son — 2020-yil 1-avgustdan kuchga kiradi)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "5",
+      "sourceNote": "(5-moddaning oʻn toʻrtinchi xatboshisi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "6",
+      "sourceNote": "(6-moddaning uchinchi xatboshisi Oʻzbekiston Respublikasining 2014-yil 20-yanvardagi OʻRQ-365-sonli Qonuni tahririda — OʻR QHT, 2014-y., 4-son, 45-modda)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "6",
+      "sourceNote": "(6-moddaning toʻrtinchi xatboshisi Oʻzbekiston Respublikasining 2014-yil 20-yanvardagi OʻRQ-365-sonli Qonuni tahririda — OʻR QHT, 2014-y., 4-son, 45-modda)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "6",
+      "sourceNote": "(6-moddaning beshinchi xatboshisi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "8",
+      "sourceNote": "(8-modda ikkinchi qismining ikkinchi xatboshisi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "8",
+      "sourceNote": "(8-modda ikkinchi qismining uchinchi xatboshisi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "8",
+      "sourceNote": "(8-modda uchinchi qismining ikkinchi xatboshisi Oʻzbekiston Respublikasining 2025-yil 30-dekabrdagi OʻRQ-1109-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 30.12.2025-y., 03/25/1109/1241-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "8",
+      "sourceNote": "(8-modda uchinchi qismining uchinchi xatboshisi Oʻzbekiston Respublikasining 2025-yil 7-fevraldagi OʻRQ-1025-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 07.02.2025-y., 03/25/1025/0116-son. Kuchga kirish sanasi — 2025-yil 8-may)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "8",
+      "sourceNote": "(8-modda uchinchi qismining toʻrtinchi xatboshisi Oʻzbekiston Respublikasining 2025-yil 30-dekabrdagi OʻRQ-1109-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 30.12.2025-y., 03/25/1109/1241-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "9",
+      "sourceNote": "(9-modda Oʻzbekiston Respublikasining 2006-yil 21-iyundagi OʻRQ-36-sonli Qonuni asosida toʻrtinchi qism bilan toʻldirilgan — OʻR QHT, 2006-y., 25-26-son, 225-modda)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "11",
+      "sourceNote": "(11-moddaning birinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "11",
+      "sourceNote": "(11-moddaning uchinchi qismi Oʻzbekiston Respublikasining 2024-yil 29-avgustdagi OʻRQ-950-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 30.08.2024-y., 03/24/950/0672-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "11",
+      "sourceNote": "(11-moddaning beshinchi qismi Oʻzbekiston Respublikasining 2024-yil 29-avgustdagi OʻRQ-950-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 30.08.2024-y., 03/24/950/0672-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "12",
+      "sourceNote": "(12-moddaning matni Oʻzbekiston Respublikasining 2025-yil 30-dekabrdagi OʻRQ-1109-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 30.12.2025-y., 03/25/1109/1241-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "13",
+      "sourceNote": "(13-moddaning ikkinchi qismi Oʻzbekiston Respublikasining 2007-yil 5-apreldagi OʻRQ-83-sonli Qonuni tahririda — OʻR QHT, 2007-y., 14-son, 132-modda)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "14",
+      "sourceNote": "(14-moddaning beshinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "14",
+      "sourceNote": "(14-moddaning yettinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "14",
+      "sourceNote": "(14-moddaning oʻninchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "15",
+      "sourceNote": "(15-moddaning matni Oʻzbekiston Respublikasining 2004-yil 30-apreldagi 621-II-sonli Qonuni tahririda — Oʻzbekiston Respublikasi qonun hujjatlari toʻplami, 2004-y., 25-son, 287-modda)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "16",
+      "sourceNote": "(16-moddaning toʻrtinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "16-1",
+      "sourceNote": "(16 1 -moddaning beshinchi qismi Oʻzbekiston Respublikasining 2025-yil 30-dekabrdagi OʻRQ-1109-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 30.12.2025-y., 03/25/1109/1241-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "17",
+      "sourceNote": "(17-moddaning matni Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "18",
+      "sourceNote": "(18-moddaning ikkinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "21",
+      "sourceNote": "(21-moddaning matni Oʻzbekiston Respublikasining 2025-yil 30-dekabrdagi OʻRQ-1109-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 30.12.2025-y., 03/25/1109/1241-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "22",
+      "sourceNote": "(22-moddaning ikkinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "23",
+      "sourceNote": "(23-moddaning nomi Oʻzbekiston Respublikasining 2019-yil 14-noyabrdagi OʻRQ-584-sonli Qonuni tahririda — Qonun hujjatlari maʼlumotlari milliy bazasi, 15.11.2019-y., 03/19/584/4025-son — 2020-yil 1-avgustdan kuchga kiradi)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "23",
+      "sourceNote": "(23-moddaning birinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "23",
+      "sourceNote": "(23-moddaning uchinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "23",
+      "sourceNote": "(23-moddaning toʻrtinchi qismi Oʻzbekiston Respublikasining 2019-yil 14-noyabrdagi OʻRQ-584-sonli Qonuni tahririda — Qonun hujjatlari maʼlumotlari milliy bazasi, 15.11.2019-y., 03/19/584/4025-son — 2020-yil 1-avgustdan kuchga kiradi)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "24",
+      "sourceNote": "(24-moddaning beshinchi qismi Oʻzbekiston Respublikasining 2025-yil 30-dekabrdagi OʻRQ-1109-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 30.12.2025-y., 03/25/1109/1241-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "25",
+      "sourceNote": "(25-moddaning ikkinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "25",
+      "sourceNote": "(25-moddaning uchinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "25",
+      "sourceNote": "(25-moddaning toʻrtinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "27",
+      "sourceNote": "(27-moddaning birinchi qismi Oʻzbekiston Respublikasining 2022-yil 14-martdagi OʻRQ-759-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 14.03.2022-y., 03/22/759/0213-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "28",
+      "sourceNote": "(28-moddaning matni Oʻzbekiston Respublikasining 2018-yil 11-oktabrdagi OʻRQ-497-sonli Qonuni tahririda — Qonun hujjatlari maʼlumotlari milliy bazasi, 12.10.2018-y., 03/18/497/2044-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "31",
+      "sourceNote": "(31-moddaning matni Oʻzbekiston Respublikasining 2015-yil 20-avgustdagi OʻRQ-391-sonli Qonuni tahririda — OʻR QHT, 2015-y., 33-son, 439-modda)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "32",
+      "sourceNote": "(32-moddaning ikkinchi qismi Oʻzbekiston Respublikasining 2019-yil 4-apreldagi OʻRQ-533-sonli Qonuni tahririda — Qonun hujjatlari maʼlumotlari milliy bazasi, 05.04.2019-y., 03/19/533/2885-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "32",
+      "sourceNote": "(32-moddaning oltinchi qismi Oʻzbekiston Respublikasining 2018-yil 11-oktabrdagi OʻRQ-497-sonli Qonuni tahririda — Qonun hujjatlari maʼlumotlari milliy bazasi, 12.10.2018-y., 03/18/497/2044-son — 2019-yil 1-yanvardan kuchga kiradi)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "32",
+      "sourceNote": "(32-moddaning sakkizinchi qismi Oʻzbekiston Respublikasining 2025-yil 9-apreldagi OʻRQ-1053-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 09.04.2025-y., 03/25/1053/0317-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "35",
+      "sourceNote": "(35-moddaning birinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "35",
+      "sourceNote": "(35-modda toʻrtinchi qismi Oʻzbekiston Respublikasining 2007-yil 8-yanvardagi OʻRQ-77-sonli Qonuni tahririda — OʻR QHT, 2007-y., 1-2-son, 3-modda)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "35",
+      "sourceNote": "(35-moddaning beshinchi qismi Oʻzbekiston Respublikasining 2025-yil 30-dekabrdagi OʻRQ-1109-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 30.12.2025-y., 03/25/1109/1241-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "37",
+      "sourceNote": "(37-moddaning matni Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "41",
+      "sourceNote": "(41-moddaning matni Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "42",
+      "sourceNote": "(42-moddaning beshinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "43",
+      "sourceNote": "(43-moddaning matni Oʻzbekiston Respublikasining 2025-yil 30-dekabrdagi OʻRQ-1109-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 30.12.2025-y., 03/25/1109/1241-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "45",
+      "sourceNote": "(45-moddaning birinchi qismi Oʻzbekiston Respublikasining 2025-yil 30-dekabrdagi OʻRQ-1109-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 30.12.2025-y., 03/25/1109/1241-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "49",
+      "sourceNote": "(49-modda ikkinchi qismi Oʻzbekiston Respublikasining 2007-yil 8-yanvardagi OʻRQ-77-sonli Qonuni tahririda — OʻR QHT, 2007-y., 1-2-son, 3-modda)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "50",
+      "sourceNote": "(50-modda sakkizinchi qismining beshinchi xatboshisi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "50",
+      "sourceNote": "(50-modda sakkizinchi qismi Oʻzbekiston Respublikasining 2007-yil 8-yanvardagi OʻRQ-77-sonli Qonuni tahririda — OʻR QHT, 2007-y., 1-2-son, 3-modda)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "51",
+      "sourceNote": "(51-moddaning ikkinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "52",
+      "sourceNote": "(52-moddaning ikkinchi qismi toʻrtinchi xatboshisi Oʻzbekiston Respublikasining 2018-yil 3-yanvardagi OʻRQ-456-sonli Qonuni tahririda — Qonun hujjatlari maʼlumotlari milliy bazasi, 05.01.2018-y., 03/18/456/0512-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "56",
+      "sourceNote": "(56-moddaning matni Oʻzbekiston Respublikasining 2025-yil 30-dekabrdagi OʻRQ-1109-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 30.12.2025-y., 03/25/1109/1241-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "57",
+      "sourceNote": "(57-moddaning oltinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "61",
+      "sourceNote": "(61-moddaning toʻrtinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "65",
+      "sourceNote": "(65-moddaning uchinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "69",
+      "sourceNote": "(69-modda toʻrtinchi qismining toʻrtinchi xatboshisi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "71",
+      "sourceNote": "(71-moddaning uchinchi qismi Oʻzbekiston Respublikasining 2025-yil 30-dekabrdagi OʻRQ-1109-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 30.12.2025-y., 03/25/1109/1241-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "72",
+      "sourceNote": "(72-modda Oʻzbekiston Respublikasining 2021-yil 29-oktabrdagi OʻRQ-726-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 30.10.2021-y., 03/21/726/1001-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "73",
+      "sourceNote": "(73-modda Oʻzbekiston Respublikasining 2009-yil 22-dekabrdagi OʻRQ-238-sonli Qonuni tahririda — OʻR QHT, 2009-y., 52-son,553 -modda)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "75",
+      "sourceNote": "(75-moddaning ikkinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "79",
+      "sourceNote": "(79-moddaning birinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "81",
+      "sourceNote": "(81-moddaning birinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "82",
+      "sourceNote": "(82-moddaning uchinchi qismi Oʻzbekiston Respublikasining 2025-yil 30-dekabrdagi OʻRQ-1109-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 30.12.2025-y., 03/25/1109/1241-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "83",
+      "sourceNote": "(83-moddaning birinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "85",
+      "sourceNote": "(85-moddaning birinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "85",
+      "sourceNote": "(85-moddaning toʻrtinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "86",
+      "sourceNote": "(86-moddaning birinchi qismi Oʻzbekiston Respublikasining 2011-yil 30-dekabrdagi OʻRQ-313-sonli Qonuni tahririda — OʻR QHT, 2011-y., 52-son, 556-modda)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "86",
+      "sourceNote": "(86-moddaning ikkinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "86",
+      "sourceNote": "(86-moddaning uchinchi qismi Oʻzbekiston Respublikasining 2018-yil 11-oktabrdagi OʻRQ-497-sonli Qonuniga asosan chiqarilgan — Qonun hujjatlari maʼlumotlari milliy bazasi, 12.10.2018-y., 03/18/497/2044-son — 2019-yil 1-yanvardan kuchga kiradi)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "86",
+      "sourceNote": "(86-moddaning toʻrtinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "89",
+      "sourceNote": "(89-moddaning birinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "90",
+      "sourceNote": "(90-moddaning ikkinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "91",
+      "sourceNote": "(91-moddaning birinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "98",
+      "sourceNote": "(98-moddaning birinchi qismi Oʻzbekiston Respublikasining 2025-yil 30-dekabrdagi OʻRQ-1109-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 30.12.2025-y., 03/25/1109/1241-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "98",
+      "sourceNote": "(98-modda uchinchi qismining beshinchi xatboshisi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "98",
+      "sourceNote": "(98-modda beshinchi qismining uchinchi xatboshisi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "98",
+      "sourceNote": "(98-moddaning oltinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "99",
+      "sourceNote": "(99-moddaning ikkinchi qismi Oʻzbekiston Respublikasining 2025-yil 30-dekabrdagi OʻRQ-1109-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 30.12.2025-y., 03/25/1109/1241-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "100",
+      "sourceNote": "(100-moddaning birinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "100",
+      "sourceNote": "(100-moddaning uchinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "103",
+      "sourceNote": "(103-moddaning birinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "104",
+      "sourceNote": "(104-moddaning ikkinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "106",
+      "sourceNote": "(106-moddaning uchinchi qismi Oʻzbekiston Respublikasining 2025-yil 30-dekabrdagi OʻRQ-1109-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 30.12.2025-y., 03/25/1109/1241-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "106",
+      "sourceNote": "(106-moddaning beshinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "108",
+      "sourceNote": "(108-moddaning nomi Oʻzbekiston Respublikasining 2026-yil 11-sentabrdagi OʻRQ-1174-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 12.09.2026-y., 03/26/1174/0920-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "108",
+      "sourceNote": "(108-moddaning birinchi qismi Oʻzbekiston Respublikasining 2026-yil 11-sentabrdagi OʻRQ-1174-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 12.09.2026-y., 03/26/1174/0920-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "109",
+      "sourceNote": "(109-moddaning ikkinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "110",
+      "sourceNote": "(110-moddaning birinchi qismi Oʻzbekiston Respublikasining 2025-yil 30-dekabrdagi OʻRQ-1109-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 30.12.2025-y., 03/25/1109/1241-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "110",
+      "sourceNote": "(110-moddaning ikkinchi qismi Oʻzbekiston Respublikasining 2025-yil 30-dekabrdagi OʻRQ-1109-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 30.12.2025-y., 03/25/1109/1241-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "111",
+      "sourceNote": "(111-moddaning birinchi qismi Oʻzbekiston Respublikasining 2025-yil 30-dekabrdagi OʻRQ-1109-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 30.12.2025-y., 03/25/1109/1241-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "111",
+      "sourceNote": "(111-modda ikkinchi qismining uchinchi xatboshisi Oʻzbekiston Respublikasining 2020-yil 28-sentabrdagi OʻRQ-638-sonli Qonuniga asosan chiqarilgan — Qonun hujjatlari maʼlumotlari milliy bazasi, 28.09.2020-y., 03/20/638/1333-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "112",
+      "sourceNote": "(112-moddaning birinchi qismi Oʻzbekiston Respublikasining 2025-yil 30-dekabrdagi OʻRQ-1109-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 30.12.2025-y., 03/25/1109/1241-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "112",
+      "sourceNote": "(112-moddaning oltinchi qismi Oʻzbekiston Respublikasining 2025-yil 30-dekabrdagi OʻRQ-1109-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 30.12.2025-y., 03/25/1109/1241-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "117",
+      "sourceNote": "(117-modda ikkinchi qismining uchinchi xatboshisi Oʻzbekiston Respublikasining 2020-yil 28-sentabrdagi OʻRQ-638-sonli Qonuniga asosan chiqarilgan — Qonun hujjatlari maʼlumotlari milliy bazasi, 28.09.2020-y., 03/20/638/1333-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "123",
+      "sourceNote": "(VIII boʻlimning nomi Oʻzbekiston Respublikasining 2019-yil 14-noyabrdagi OʻRQ-584-sonli Qonuni tahririda — Qonun hujjatlari maʼlumotlari milliy bazasi, 15.11.2019-y., 03/19/584/4025-son — 2020-yil 1-avgustdan kuchga kiradi)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "124",
+      "sourceNote": "(124-moddaning beshinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "128",
+      "sourceNote": "(128-moddaning uchinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "128",
+      "sourceNote": "(VIII boʻlim Oʻzbekiston Respublikasining 2007-yil 8-yanvardagi OʻRQ-77-sonli Qonuni tahririda — OʻR QHT, 2007-y., 1-2-son, 3-modda)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "128",
+      "sourceNote": "(IX boʻlimning nomi Oʻzbekiston Respublikasining 2007-yil 8-yanvardagi OʻRQ-77-sonli Qonuni tahririda — OʻR QHT, 2007-y., 1-2-son, 3-modda)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "129",
+      "sourceNote": "(129-modda Oʻzbekiston Respublikasining 2007-yil 8-yanvardagi OʻRQ-77-sonli Qonuni tahririda — OʻR QHT, 2007-y., 1-2-son, 3-modda)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "132",
+      "sourceNote": "(132-modda Oʻzbekiston Respublikasining 2019-yil 14-noyabrdagi OʻRQ-584-sonli Qonuni tahririda — Qonun hujjatlari maʼlumotlari milliy bazasi, 15.11.2019-y., 03/19/584/4025-son — 2020-yil 1-avgustdan kuchga kiradi)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "133",
+      "sourceNote": "(133-moddaning birinchi qismi Oʻzbekiston Respublikasining 2024-yil 29-avgustdagi OʻRQ-951-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 30.08.2024-y., 03/24/951/0673-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "133",
+      "sourceNote": "(133-moddaning ikkinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "133",
+      "sourceNote": "(133-moddaning uchinchi qismi Oʻzbekiston Respublikasining 2024-yil 29-avgustdagi OʻRQ-951-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 30.08.2024-y., 03/24/951/0673-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "133",
+      "sourceNote": "(133-moddaning toʻrtinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "134",
+      "sourceNote": "(134-moddaning uchinchi qismi Oʻzbekiston Respublikasining 2024-yil 29-avgustdagi OʻRQ-951-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 30.08.2024-y., 03/24/951/0673-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "134",
+      "sourceNote": "(134-moddaning toʻrtinchi qismi Oʻzbekiston Respublikasining 2024-yil 29-avgustdagi OʻRQ-951-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 30.08.2024-y., 03/24/951/0673-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "134",
+      "sourceNote": "(134-moddaning oltinchi qismi Oʻzbekiston Respublikasining 2019-yil 14-noyabrdagi OʻRQ-584-sonli Qonuni tahririda — Qonun hujjatlari maʼlumotlari milliy bazasi, 15.11.2019-y., 03/19/584/4025-son — 2020-yil 1-avgustdan kuchga kiradi)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "134",
+      "sourceNote": "(134-moddaning yettinchi qismi Oʻzbekiston Respublikasining 2025-yil 7-martdagi OʻRQ-1044-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 07.03.2025-y., 03/25/1044/0224-son. Kuchga kirish sanasi — 2025-yil 8-iyun)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "134",
+      "sourceNote": "(134-moddaning sakkizinchi qismi Oʻzbekiston Respublikasining 2024-yil 29-avgustdagi OʻRQ-951-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 30.08.2024-y., 03/24/951/0673-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "134",
+      "sourceNote": "(134-modda Oʻzbekiston Respublikasining 2018-yil 16-oktabrdagi OʻRQ-500-sonli Qonuniga asosan sakkizinchi va toʻqqizinchi qismlar bilan toʻldirilgan — Qonun hujjatlari maʼlumotlari milliy bazasi, 17.10.2018-y., 03/18/500/2057-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "135",
+      "sourceNote": "(135-moddaning matni Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "136",
+      "sourceNote": "(136-moddaning matni Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "137",
+      "sourceNote": "(137-moddaning beshinchi qismi Oʻzbekiston Respublikasining 2025-yil 7-fevraldagi OʻRQ-1025-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 07.02.2025-y., 03/25/1025/0116-son. Kuchga kirish sanasi — 2025-yil 8-may)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "138",
+      "sourceNote": "(138-moddaning uchinchi qismi Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "138",
+      "sourceNote": "(138-modda Oʻzbekiston Respublikasining 2019-yil 14-noyabrdagi OʻRQ-584-sonli Qonuni tahririda — Qonun hujjatlari maʼlumotlari milliy bazasi, 15.11.2019-y., 03/19/584/4025-son — 2020-yil 1-avgustdan kuchga kiradi)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "139",
+      "sourceNote": "(139-moddaning ikkinchi qismi Oʻzbekiston Respublikasining 2019-yil 14-noyabrdagi OʻRQ-584-sonli Qonuni tahririda — Qonun hujjatlari maʼlumotlari milliy bazasi, 15.11.2019-y., 03/19/584/4025-son — 2020-yil 1-avgustdan kuchga kiradi)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "139",
+      "sourceNote": "(139-modda uchinchi qismining uchinchi xatboshisi Oʻzbekiston Respublikasining 2019-yil 14-noyabrdagi OʻRQ-584-sonli Qonuni tahririda — Qonun hujjatlari maʼlumotlari milliy bazasi, 15.11.2019-y., 03/19/584/4025-son — 2020-yil 1-avgustdan kuchga kiradi)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "139",
+      "sourceNote": "(139-modda uchinchi qismining toʻrtinchi xatboshisi Oʻzbekiston Respublikasining 2019-yil 14-noyabrdagi OʻRQ-584-sonli Qonuni tahririda — Qonun hujjatlari maʼlumotlari milliy bazasi, 15.11.2019-y., 03/19/584/4025-son — 2020-yil 1-avgustdan kuchga kiradi)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "139",
+      "sourceNote": "(139-modda uchinchi qismining oltinchi xatboshisi Oʻzbekiston Respublikasining 2019-yil 14-noyabrdagi OʻRQ-584-sonli Qonuni tahririda — Qonun hujjatlari maʼlumotlari milliy bazasi, 15.11.2019-y., 03/19/584/4025-son — 2020-yil 1-avgustdan kuchga kiradi)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "139",
+      "sourceNote": "(139-moddaning beshinchi qismi Oʻzbekiston Respublikasining 2019-yil 14-noyabrdagi OʻRQ-584-sonli Qonuni tahririda — Qonun hujjatlari maʼlumotlari milliy bazasi, 15.11.2019-y., 03/19/584/4025-son — 2020-yil 1-avgustdan kuchga kiradi)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "139",
+      "sourceNote": "(139-moddaning oltinchi qismi Oʻzbekiston Respublikasining 2019-yil 14-noyabrdagi OʻRQ-584-sonli Qonuni tahririda — Qonun hujjatlari maʼlumotlari milliy bazasi, 15.11.2019-y., 03/19/584/4025-son — 2020-yil 1-avgustdan kuchga kiradi)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "139",
+      "sourceNote": "(X boʻlim Oʻzbekiston Respublikasining 2007-yil 8-yanvardagi OʻRQ-77-sonli Qonuni tahririda — OʻR QHT, 2007-y., 1-2-son, 3-modda)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "141",
+      "sourceNote": "(141-modda Oʻzbekiston Respublikasining 2021-yil 21-apreldagi OʻRQ-683-sonli Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    }
+  ]
+}

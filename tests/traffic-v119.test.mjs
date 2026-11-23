@@ -36,8 +36,8 @@ test('importer requires section boundaries and preserves synthetic input bytes',
  const data=JSON.parse(await fs.readFile(out));assert.equal(data.kind,'band');assert.deepEqual(data.articles.map(a=>a.parts),[['1. IMPORT_TEST_ROW_A'],['2. IMPORT_TEST_ROW_B']]);
  assert.equal(loadTrafficRules(out).articles.length,2);
  await fs.mkdir(dir+'/data/laws',{recursive:true});await fs.copyFile(out,dir+'/data/laws/yhq.json');
- const check=execFileSync(process.execPath,['--input-type=module','-e',`import {retrieve,sourcesPayload} from ${JSON.stringify(new URL('netlify/shared/rag.mjs',ROOT).href)}; const r=retrieve('YHQ 1'); const p=sourcesPayload('YHQ 1-band',r);console.log(JSON.stringify({found:r.provided.yhq?.has('1'),label:p.passages.find(p=>p.code==='YHQ')?.label}));`],{cwd:dir,encoding:'utf8'});
- const loaded=JSON.parse(check);assert.equal(loaded.found,true);assert.match(loaded.label,/1-band/);
+ const check=execFileSync(process.execPath,['--input-type=module','-e',`import {retrieve,sourcesPayload} from ${JSON.stringify(new URL('netlify/shared/rag.mjs',ROOT).href)}; const r=retrieve('YHQ 1'); const p=sourcesPayload('YHQ 1-band',r);console.log(JSON.stringify({found:r.provided.yhq?.has('1'),withheld:r.withheld,label:p.passages.find(p=>p.code==='YHQ')?.label}));`],{cwd:dir,encoding:'utf8'});
+ const loaded=JSON.parse(check);assert.equal(loaded.found,false);assert.equal(loaded.label,undefined);assert.ok(loaded.withheld.some(w=>w.reason==='local-content-changed')); // A file from another working directory cannot inherit the audited document's trust.
  data.articles=[];await fs.writeFile(out,JSON.stringify(data));assert.equal(loadTrafficRules(out),null);
  }finally{await fs.rm(dir,{recursive:true,force:true})}
 });

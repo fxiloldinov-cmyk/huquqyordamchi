@@ -1,0 +1,63 @@
+{
+  "doc": "kon",
+  "status": "pending",
+  "lawyerReview": "kutilmoqda",
+  "source": "https://lex.uz/docs/-6445145",
+  "sourceSha256": "170d0fa7762793e89452735d309ced4c14a00266bd0ea11576fbad3042579735",
+  "checkedAt": "2026-11-08T06:47:15.698768+00:00",
+  "localAsOf": "2026-07-14",
+  "textCompared": true,
+  "effectiveDateVerified": false,
+  "candidateSha256": "004978d94113fcb8d88d71e07f4ddddffd65655d378b9fc7cb2b5ef1d22b96eb",
+  "result": "indexed-text-matches",
+  "candidateAsOf": "2026-07-14",
+  "added": [],
+  "removed": [],
+  "changed": [],
+  "problems": [],
+  "candidate": null,
+  "amendments": [
+    {
+      "art": "15",
+      "sourceNote": "(15-moddaning ikkinchi qismi Oʻzbekiston Respublikasining 2026-yil 13-iyuldagi OʻRQ-1158-sonli Konstitutsiyaviy Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 14.07.2026-y., 03/26/1158/0727-son. Kuchga kirish sanasi — 2026-yil 25-iyul)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "109",
+      "sourceNote": "(109-modda birinchi qismining 24-bandi Oʻzbekiston Respublikasining 2026-yil 13-iyuldagi OʻRQ-1158-sonli Konstitutsiyaviy Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 14.07.2026-y., 03/26/1158/0727-son. Kuchga kirish sanasi — 2026-yil 25-iyul)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "109",
+      "sourceNote": "(109-moddaning birinchi qismi Oʻzbekiston Respublikasining 2026-yil 13-iyuldagi OʻRQ-1158-sonli Konstitutsiyaviy Qonuniga asosan 24 1 -band bilan toʻldirilgan — Qonunchilik maʼlumotlari milliy bazasi, 14.07.2026-y., 03/26/1158/0727-son. Kuchga kirish sanasi — 2026-yil 25-iyul)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "131",
+      "sourceNote": "(131-modda Oʻzbekiston Respublikasining 2026-yil 13-iyuldagi OʻRQ-1158-sonli Konstitutsiyaviy Qonuniga asosan ikkinchi qism bilan toʻldirilgan — Qonunchilik maʼlumotlari milliy bazasi, 14.07.2026-y., 03/26/1158/0727-son. Kuchga kirish sanasi — 2026-yil 25-iyul)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "134",
+      "sourceNote": "(134-moddaning birinchi qismi Oʻzbekiston Respublikasining 2026-yil 13-iyuldagi OʻRQ-1158-sonli Konstitutsiyaviy Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 14.07.2026-y., 03/26/1158/0727-son. Kuchga kirish sanasi — 2026-yil 25-iyul)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    },
+    {
+      "art": "151",
+      "sourceNote": "(151-moddaning uchinchi qismi Oʻzbekiston Respublikasining 2026-yil 13-iyuldagi OʻRQ-1158-sonli Konstitutsiyaviy Qonuni tahririda — Qonunchilik maʼlumotlari milliy bazasi, 14.07.2026-y., 03/26/1158/0727-son. Kuchga kirish sanasi — 2026-yil 25-iyul)",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "dateReview": "kutilmoqda"
+    }
+  ]
+}

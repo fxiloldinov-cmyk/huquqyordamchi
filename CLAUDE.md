@@ -3,7 +3,7 @@
 ## The business
 
 **HuquqYordamchi** ("Legal Assistant") is an independent, free legal-information website for **Uzbekistan law**.
-Live site: https://huquqyordamchiuz.netlify.app/ (Netlify). Current version: **v11.12** (`package.json`; live site may still run an older deploy). Latest change report: `docs/V11_12_HISOBOT_UZ.md`.
+Live site: https://huquqyordamchiuz.netlify.app/ (Netlify). Current version: **v11.13** (`package.json`; live site may still run an older deploy). Latest change report: `docs/V11_13_HISOBOT_UZ.md`.
 
 - **Tagline (hero):** "Huquqingizni biling. Yechimni toping." — *Know your rights. Find the solution.*
   Kicker: "Huquqiy ma'lumot. Amaliy yechim." Motto under the hero: "Har bir qaror — asos bilan" (Law • Explanation • Practical step).
@@ -83,7 +83,7 @@ Windows note: this machine uses PowerShell; `server.ps1` exists as an alternativ
 
 - After editing `data/legal.json` or `data/oferta.json`, run `npm run build`; then `npm test`.
 - Any article reference added to a guide must exist in `data/laws/*.json` — tests verify this.
-- Don't hand-edit generated files: `public/legal-data.js`, `public/vaziyat/**`, `public/sitemap.xml`, `public/oferta/index.html`.
+- Don't hand-edit generated files: `public/legal-data.js`, `public/vaziyat/**`, `public/sitemap.xml`, `public/oferta/index.html`, `netlify/shared/calc-approved.json`.
 - Respect the honesty rules: no fabricated sources, show uncertainty, keep "not legal advice" disclaimers.
 - Privacy: the site masks phone/email/passport/card/JSHSHIR in user input before sending to AI — don't weaken this.
 - Deploy = push the whole folder to the repo; Netlify builds it. Uploading only `public/` breaks the API.
@@ -122,3 +122,22 @@ Egasi yuklagan 172-son YHQ: 191 asosiy band (`data/laws/yhq.json`); 975-son nizo
 - `/alphabet.html` + `/api/alphabet-import`, `/api/alphabet-translate` (`HK_TRANSLATION_ENABLED=0` standart). O‘RQ–1184 (Ö Ğ Ş Ç), kuchga kirish 2027-04-22. `docs/ALIFBO_UZ.md`.
 - Alohida tayyorlangan ZIP ("v11.11 (1)", v11.10 asosida) bizning v11.11 bilan 3 tomonlama birlashtirildi. Tashqi ZIP’lar ko‘pincha v11.10 asosida keladi — ularni to‘g‘ridan-to‘g‘ri ustiga yozmang, v11.10 ni asos qilib birlashtiring.
 - Xalqaro bo‘lim `HK_INTERNATIONAL_ENABLED=1` bo‘lmaguncha yashirin (viza/registratsiya matnlari bazada yo‘q).
+
+## v11.13: baho, ustoz-talaba, kalkulyator skeleti
+
+- Uchta flag, hammasi standart 0: `HK_FEEDBACK_ENABLED`, `HK_CLASSROOM_ENABLED`, `HK_CALC_ENABLED`. O‘chiq bo‘lsa API 503, havola yashirin (`/api/features`), sitemap va SW’da yo‘q. Batafsil `docs/RETENTION_UZ.md`, hisobot `docs/V11_13_HISOBOT_UZ.md`.
+- Baho: savol matni saqlanmaydi, faqat javob ID, baho, sabab, `redactPII` dan o‘tgan izoh va manba id'lari. Ustoz roli faqat `scripts/grant-teacher.mjs` va `emailVerified` bilan. AI baho qo‘ymaydi.
+- Kalkulyator: huquqiy mazmunni (formula, stavka, modda) faqat yurist `data/calc/` ga yozadi. Formula o‘z parserida, aniq kasrlarda hisoblanadi; `eval` va `new Function` taqiqlangan. `netlify/shared/calc-approved.json` — build natijasi, qo‘lda tahrirlanmaydi. Test ma’lumoti faqat `tests/` da "TEST ONLY" bilan.
+- De/fr tillari sayt i18n’ida yo‘q: sinf va kalkulyator sahifalari "faqat o‘zbekcha" deb belgilangan.
+
+## Manba nazorati (Codex qayta auditi + tuzatishlar, 2026-11-08)
+
+- `netlify/shared/source-integrity.mjs` va `data/source-status.json`: har bir hujjatning tekshirilgan xeshi, nashr sanasi va yangiligi. Qonun JSON’i o‘zgarsa, `npm run audit:sources` (yoki `review:approve`) ishga tushirilmaguncha `npm run build` to‘xtaydi.
+- Voqea sanasi bo‘yicha cheklov **modda darajasida**: faqat tahrir izohi voqeadan keyingi moddalar beriladi. Butun kodeksni yashirmang. `newer-publication` holatida parcha ogohlantirish bilan beriladi.
+- Egasining "hamma matnlarni yurist tekshirdi" degan umumiy tasdig‘i (`data/review/approvals/user-text-attestation.json`) saytda "yurist ko‘rigidan o‘tgan" deb ko‘rsatilmaydi (`publicSourceMetadata`). Haqiqiy ko‘rik yurist ismi va sanasi bilan `review:approve` orqali kiritiladi.
+- Skriptlarda fayl yo‘li uchun `URL.pathname` ishlatmang: Windows’da buziladi. `fileURLToPath` dan foydalaning.
+- Batafsil: `docs/MANBA_NAZORATI_UZ.md`, `docs/AUDIT_CODEX_ZIP_2026_11_08_UZ.md`.
+
+## IIV 502-son yo‘riqnoma (kutilmoqda)
+
+- Egasi bergan PDF (YHQ buzilishiga doir ma’muriy ishlar, 118 band) `data/pending/iiv502.json` faylida. lex.uz’da hali yo‘q, shuning uchun javoblarda ishlatilmaydi. Taxminan 2027-01-07 dan kuchga kiradi. `data/pending/` dagi hujjatlar faqat qamrov sahifasida "ulanmagan" deb ko‘rinadi. PDF importi `scripts/import-band-text.mjs` orqali. Faollashtirish tartibi `docs/IIV502_IMPORT_UZ.md` da.

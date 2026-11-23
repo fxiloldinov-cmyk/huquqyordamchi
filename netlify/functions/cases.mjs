@@ -30,9 +30,13 @@ const summary = (c) => ({ id: c.id, title: c.title, kind: c.kind, soha: c.soha, 
 function cleanSources(src) {
   if (!src || typeof src !== "object") return null;
   const pick = (o, keys) => Object.fromEntries(keys.filter((k) => o[k] != null).map((k) => [k, typeof o[k] === "string" ? o[k].slice(0, k === "text" || k === "excerpt" ? 4000 : 400) : o[k]]));
+  // v2 (manba nazorati): cheklov izohlari, berilmagan manbalar va tashqi qidiruv havolalari ham saqlanadi — ish qayta ochilganda yo‘qolmasin.
   const out = {
-    v: 1,
-    passages: (Array.isArray(src.passages) ? src.passages : []).slice(0, 30).map((p) => pick(p, ["sourceId", "kind", "verified", "doc", "code", "art", "label", "url", "asOf", "author", "year", "page", "origin", "text"])),
+    v: src.v === 2 ? 2 : 1,
+    ...(typeof src.eventDate === "string" && /^\d{4}-\d{2}-\d{2}$/.test(src.eventDate) ? { eventDate: src.eventDate } : {}),
+    withheld: (Array.isArray(src.withheld) ? src.withheld : []).slice(0, 30).filter((w) => w && typeof w === "object").map((w) => ({ name: clean(w.name, 300), reason: clean(w.reason, 60), ...(w.art != null ? { art: clean(w.art, 20) } : {}) })),
+    externalSources: (Array.isArray(src.externalSources) ? src.externalSources : []).slice(0, 10).filter((s) => s && typeof s === "object").map((s) => ({ title: clean(s.title, 300), url: clean(s.url, 400), origin: "external-search", verified: false })),
+    passages: (Array.isArray(src.passages) ? src.passages : []).slice(0, 30).map((p) => pick(p, ["sourceId", "kind", "verified", "doc", "code", "art", "label", "url", "asOf", "author", "year", "page", "origin", "integrityNote", "text"])),
     claims: (Array.isArray(src.claims) ? src.claims : []).slice(0, 20).map((c) => pick(c, ["claimId", "sourceId", "snippet", "where", "doc", "code", "art", "qism", "band", "level", "icon", "status", "exists", "given", "overlap", "quote", "risks", "reviewed", "model", "url", "asOf", "edition", "method", "excerpt"])),
     unsupported: (Array.isArray(src.unsupported) ? src.unsupported : []).slice(0, 6).map((u) => clean(u, 400)),
     clarify: (Array.isArray(src.clarify) ? src.clarify : []).slice(0, 6).map((u) => clean(u, 300)),

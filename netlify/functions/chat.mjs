@@ -1,13 +1,17 @@
+import {validLegalDate} from '../shared/source-integrity.mjs';
 import {trafficCoverageNotice} from '../shared/traffic.mjs';
 import {redactPII,guardJsonPost,jsonError,geminiConfig,callGeminiResilient,providerError,pipeGeminiStream,LEGAL_RULES,langNote,SEARCH_OFF_NOTE,sourceTail,legal} from '../shared/common.mjs';
-import {retrieve,citationReport,sourcesMarker} from '../shared/rag.mjs';
+import {retrieve,citationReport,sourcesMarker,retrievalNotice} from '../shared/rag.mjs';
 import {guardAi} from '../shared/limits.mjs';
+import {feedbackEnabled} from '../shared/features.mjs';
+import {newResponseId,issueResponse,sourceIds} from '../shared/feedback.mjs';
 // Katalogda tanlangan kodeks → RAG bazasi (bazada bor kodekslar)
-const CODE_FOR_CATALOG={K:'kon',MK:'mk',OK:'ok',FK:'fk','FK-2':'fk',FPK:'fpk',JK:'jk',JPK:'jpk',MJ:'mjtk',SK:'sk',UK:'ujk',IPK:'ipk',JIK:'jik',MSK:'msk',YHQ:'yhq',YPX975:'ypx975'};
+const CODE_FOR_CATALOG={K:'kon',MK:'mk',OK:'ok',FK:'fk','FK-2':'fk',FPK:'fpk',JK:'jk',JPK:'jpk',MJ:'mjtk',SK:'sk',UK:'ujk',IPK:'ipk',JIK:'jik',MSK:'msk',YHQ:'yhq',YPX975:'ypx975',IIV502:'iiv502'};
 export const config={path:'/api/chat',rateLimit:{windowLimit:10,windowSize:60,aggregateBy:['ip','domain']}};
 export default async(req,ctx)=>{
  const startedAt=Date.now();
  const {body,error}=await guardJsonPost(req,ctx,{scope:'chat',perMinute:10,perHour:60});if(error)return error;
+ const eventDate=body.eventDate || null;if(eventDate && !validLegalDate(eventDate))return jsonError('Voqea sanasi haqiqiy YYYY-MM-DD sana bo‘lishi kerak.',400);
  if(!Array.isArray(body.messages)||!body.messages.length||body.messages.length>20)return jsonError('1–20 ta xabar yuboring.',400);
  let count=0;const contents=[];
  for(const item of body.messages){if(!item||!['user','assistant'].includes(item.role)||typeof item.content!=='string'||!item.content.trim()||item.content.length>8000)return jsonError('Xabar formati yoki hajmi noto‘g‘ri.',400);count+=item.content.length;if(count>30000)return jsonError('Suhbat juda uzun. Yangi suhbat boshlang.',400);contents.push({role:item.role==='assistant'?'model':'user',parts:[{text:redactPII(item.content.trim())}]});}
@@ -17,7 +21,9 @@ export default async(req,ctx)=>{
  const limited=await guardAi(req,ctx,'chat');if(limited)return limited;
  const selected=legal.codes.find(c=>c[3]===body.codeId);
  const explain=body.task==='explain'&&selected?`\nQONUNNI SODDA TILDA TUSHUNTIRISH. Faqat ${selected[1]} (https://lex.uz/docs/${selected[3]}) doirasida ishlang. Tuzilma: 1)Oddiy ma’nosi; 2)Kimga tegishli; 3)Aniq modda/qism va manba; 4)Kundalik misol; 5)Amaliy qadamlar; 6)Istisno va aniqlashtirish. Foydalanuvchi qo‘ygan matnni rasmiy matn deb tekshirmasdan tasdiqlamang.`:'';
- const rag=retrieve(contents.at(-1).parts[0].text,{k:6,budget:10000,force:CODE_FOR_CATALOG[selected?.[0]]});
+ const rag=retrieve(contents.at(-1).parts[0].text,{k:6,budget:10000,force:CODE_FOR_CATALOG[selected?.[0]],eventDate});
  const prompt=LEGAL_RULES+rag.block+explain+(body.mode==='student'?'\nTalaba uchun masala, norma, tahlil, xulosa tartibida yozing.':'\nSodda tilda vaziyat, qonuniy asos, amaliy qadamlar, kerakli hujjatlar va ochiq savollarni tushuntiring.');
- try{const r=await callGeminiResilient({apiKey,models,thinkingLevel,allowNoSearch:true,stream:true,signal:req.signal,timeoutMs:58000,body:{system_instruction:{parts:[{text:prompt+langNote(body.lang)}]},contents,tools:[{google_search:{}}],generationConfig:{temperature:0.1,maxOutputTokens:6000}}});if(!r.ok)return providerError(r);if(!r.upstream.body)return jsonError('AI javobi kelmadi.',502);return pipeGeminiStream(r.upstream,{deadlineAt:startedAt+50000,prefix:r.searchDropped?SEARCH_OFF_NOTE:'',onEnd:(src,text)=>sourceTail(src)+citationReport(text,rag.provided,{bands:rag.bands,bandsBy:rag.bandsBy})+sourcesMarker(text,rag)});}catch(e){return jsonError(e.name==='TimeoutError'?'AI javobini kutish vaqti tugadi. Qayta urinib ko‘ring.':'AI bilan ulanish uzildi.',502);}
+ // Baholash yoqilgan bo‘lsa: tasodifiy javob ID (so‘rov matnidan hosil qilinmaydi). Yozib bo‘lmasa, chat to‘xtamaydi — faqat baho tugmasi chiqmaydi.
+ let responseId=null;if(feedbackEnabled()){try{const id=newResponseId();await issueResponse(id,{sources:sourceIds(rag.provided)});responseId=id;}catch{}}
+ try{const r=await callGeminiResilient({apiKey,models,thinkingLevel,allowNoSearch:true,stream:true,signal:req.signal,timeoutMs:58000,body:{system_instruction:{parts:[{text:prompt+langNote(body.lang)}]},contents,tools:[{google_search:{}}],generationConfig:{temperature:0.1,maxOutputTokens:6000}}});if(!r.ok)return providerError(r);if(!r.upstream.body)return jsonError('AI javobi kelmadi.',502);const res=pipeGeminiStream(r.upstream,{deadlineAt:startedAt+50000,prefix:retrievalNotice(rag)+(r.searchDropped?SEARCH_OFF_NOTE:''),onEnd:(src,text)=>sourceTail(src)+citationReport(text,rag.provided,{bands:rag.bands,bandsBy:rag.bandsBy,eventDate})+sourcesMarker(text,rag,{eventDate,externalSources:src})});if(responseId)res.headers.set('X-HK-Response-Id',responseId);return res;}catch(e){return jsonError(e.name==='TimeoutError'?'AI javobini kutish vaqti tugadi. Qayta urinib ko‘ring.':'AI bilan ulanish uzildi.',502);}
 };

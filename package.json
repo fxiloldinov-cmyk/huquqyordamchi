@@ -1,6 +1,6 @@
 {
   "name": "huquqyordamchi",
-  "version": "11.12.0",
+  "version": "11.13.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -14,7 +14,13 @@
     "import:law": "python3 scripts/import_lexuz.py",
     "law:update": "node scripts/check-law-updates.mjs",
     "eval": "node scripts/eval-rag.mjs",
-    "eval:live": "node scripts/eval-rag.mjs --live"
+    "eval:live": "node scripts/eval-rag.mjs --live",
+    "audit:sources": "node scripts/source-audit.mjs",
+    "review:export": "node scripts/export-legal-review.mjs",
+    "review:approve": "node scripts/approve-law-review.mjs",
+    "audit:compare": "python3 scripts/compare-law-texts.py",
+    "audit:annexes": "python3 scripts/inventory-yhq-annexes.py",
+    "review:approve-text": "node scripts/apply-text-attestation.mjs"
   },
   "dependencies": {
     "@netlify/blobs": "11.1.7"

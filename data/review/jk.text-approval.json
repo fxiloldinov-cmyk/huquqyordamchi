@@ -1,0 +1,14 @@
+{
+  "status": "approved",
+  "scope": "source-text",
+  "evidenceType": "user-attestation",
+  "evidence": "hamma matnlarni yurist tekshirdi bos",
+  "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+  "reviewer": null,
+  "reviewedAt": null,
+  "effectiveDatesSupplied": false,
+  "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi.",
+  "doc": "jk",
+  "candidateSha256": "a7cbfab6cd56c198c779200c1a0da9584ca0257dae39cf3057cf66c3ca7f481b",
+  "sourceSha256": "091fe27cbe92b4d6f94e3f0cc73edf1ae04426e919bef9cef455cd15bded9b36"
+}

@@ -1,0 +1,1364 @@
+{
+  "note": "Kutilgan manbalar tavsiya; yurist tasdig‘i emas. Bo‘sh kataklar noma’lum.",
+  "cases": [
+    {
+      "id": "E01",
+      "question": "Kasal bo‘lib yotganimda ish beruvchi meni ishdan bo‘shatdi. Bu qonuniymi?",
+      "eventDate": null,
+      "expectedSources": [
+        "MK 163"
+      ],
+      "exceptionsToCheck": [
+        "kasallik davrida bo‘shatish har doim qonuniy"
+      ],
+      "questionsToAsk": [
+        "voqea sanasi va kasallik varaqasi bor-yo‘qligi"
+      ],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E02",
+      "question": "Xodim shtat qisqarishi sababli bo‘shatildi, oldindan yozma ogohlantirilmagan, boshqa ish taklif qilinmagan, oxirgi ish haqi va foydalanilmagan ta’til kompensatsiyasi to‘lanmagan. Qayerga va qanday muddatda murojaat qiladi?",
+      "eventDate": "2026-10-12",
+      "expectedSources": [
+        "MK 161",
+        "MK 165",
+        "MK 172",
+        "MK 560"
+      ],
+      "exceptionsToCheck": [
+        "muddat cheklanmagan"
+      ],
+      "questionsToAsk": [],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E03",
+      "question": "Ish beruvchi ish haqini ikki oydan beri kechiktiryapti, kechiktirgani uchun kompensatsiya olsam bo‘ladimi?",
+      "eventDate": null,
+      "expectedSources": [
+        "MK 333"
+      ],
+      "exceptionsToCheck": [],
+      "questionsToAsk": [],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E04",
+      "question": "2022-yil sentabrda ish beruvchi meni ogohlantirmasdan ishdan bo‘shatgan. Qanday himoyalanaman?",
+      "eventDate": "2022-09-01",
+      "expectedSources": [
+        "MK 161"
+      ],
+      "exceptionsToCheck": [
+        "2023-yilgi yangi Mehnat kodeksi bu voqeaga to‘g‘ridan-to‘g‘ri qo‘llanadi"
+      ],
+      "questionsToAsk": [
+        "voqea paytidagi Mehnat kodeksi tahriri"
+      ],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E05",
+      "question": "Bitta bola uchun aliment miqdori qancha bo‘ladi?",
+      "eventDate": null,
+      "expectedSources": [
+        "OK 99"
+      ],
+      "exceptionsToCheck": [
+        "aliment miqdori har doim qat’iy summa"
+      ],
+      "questionsToAsk": [],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E06",
+      "question": "Erim bilan ajrashdik, nikohda olingan kvartira uning nomida. Qanday bo‘linadi?",
+      "eventDate": null,
+      "expectedSources": [
+        "OK 23",
+        "OK 27"
+      ],
+      "exceptionsToCheck": [
+        "mulk faqat nomiga rasmiylashtirilgan shaxsga qoladi"
+      ],
+      "questionsToAsk": [
+        "kvartira qachon va qaysi mablag‘ hisobiga olingani"
+      ],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E07",
+      "question": "Ajrashgandan keyin bola kim bilan qoladi, sud nimaga qaraydi?",
+      "eventDate": null,
+      "expectedSources": [
+        "OK 75",
+        "OK 76"
+      ],
+      "exceptionsToCheck": [
+        "bola doim onasi bilan qoladi"
+      ],
+      "questionsToAsk": [],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E08",
+      "question": "Bolaning otasi otalikni tan olmayapti, otalikni sud orqali qanday belgilatsam bo‘ladi?",
+      "eventDate": null,
+      "expectedSources": [
+        "OK 62"
+      ],
+      "exceptionsToCheck": [],
+      "questionsToAsk": [],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E09",
+      "question": "Qo‘shnimga qarz berdim, tilxat bor, qaytarish muddati ko‘rsatilmagan, qaytarmayapti.",
+      "eventDate": "2026-01-10",
+      "expectedSources": [
+        "FK 735",
+        "FK 733"
+      ],
+      "exceptionsToCheck": [
+        "tilxatsiz qarz haqiqiy emas"
+      ],
+      "questionsToAsk": [],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E10",
+      "question": "Otam vafot etdi, meros qanday taqsimlanadi, birinchi navbat vorislar kimlar?",
+      "eventDate": null,
+      "expectedSources": [
+        "FK 1135"
+      ],
+      "exceptionsToCheck": [],
+      "questionsToAsk": [
+        "vasiyatnoma bor-yo‘qligi"
+      ],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E11",
+      "question": "Fuqarolik ishlari bo‘yicha umumiy da’vo muddati qancha?",
+      "eventDate": null,
+      "expectedSources": [
+        "FK 150"
+      ],
+      "exceptionsToCheck": [],
+      "questionsToAsk": [],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E12",
+      "question": "Kvartira sotib olmoqchiman, oldi-sotdi shartnomasini notariussiz tuzsa bo‘ladimi?",
+      "eventDate": null,
+      "expectedSources": [
+        "FK 488",
+        "FK 480"
+      ],
+      "exceptionsToCheck": [
+        "notarial tasdiq shart emas"
+      ],
+      "questionsToAsk": [],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E13",
+      "question": "Do‘kondan olgan telefonim 3 kunda buzildi, sotuvchi almashtirib bermayapti.",
+      "eventDate": null,
+      "expectedSources": [
+        "IST 13",
+        "IST 14"
+      ],
+      "exceptionsToCheck": [],
+      "questionsToAsk": [],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E14",
+      "question": "Onlayn do‘kondan buyurtma qildim, tovar tavsifga mos kelmadi, pulini qaytarmayapti.",
+      "eventDate": null,
+      "expectedSources": [
+        "IST 28-1"
+      ],
+      "exceptionsToCheck": [],
+      "questionsToAsk": [],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E15",
+      "question": "Telefonimni o‘g‘irlab ketishdi, qanday jazo beriladi?",
+      "eventDate": null,
+      "expectedSources": [
+        "JK 169"
+      ],
+      "exceptionsToCheck": [],
+      "questionsToAsk": [
+        "o‘g‘irlangan narsaning qiymati"
+      ],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E16",
+      "question": "Firibgarlar karta orqali aldab pulimni olishdi, bu qaysi jinoyat?",
+      "eventDate": null,
+      "expectedSources": [
+        "JK 168"
+      ],
+      "exceptionsToCheck": [],
+      "questionsToAsk": [],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E17",
+      "question": "Meni militsiya ushlab oldi, necha soat ushlab turishlari mumkin va qanday asosda?",
+      "eventDate": null,
+      "expectedSources": [
+        "JPK 221",
+        "JPK 226"
+      ],
+      "exceptionsToCheck": [],
+      "questionsToAsk": [],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E18",
+      "question": "Gumon qilinuvchi sifatida advokat chaqirishga haqqim bormi?",
+      "eventDate": null,
+      "expectedSources": [
+        "JPK 49",
+        "JPK 48"
+      ],
+      "exceptionsToCheck": [],
+      "questionsToAsk": [],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E19",
+      "question": "Svetoforning qizil chirog‘ida o‘tib ketdim, kamera jarima yozdi. Qanday shikoyat qilaman?",
+      "eventDate": null,
+      "expectedSources": [
+        "MJtK 128-4",
+        "MJtK 315",
+        "MJtK 316"
+      ],
+      "exceptionsToCheck": [
+        "shikoyat muddati cheklanmagan"
+      ],
+      "questionsToAsk": [],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E20",
+      "question": "Mast holda mashina haydagan haydovchiga qanday javobgarlik bor?",
+      "eventDate": null,
+      "expectedSources": [
+        "MJtK 131"
+      ],
+      "exceptionsToCheck": [],
+      "questionsToAsk": [],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E21",
+      "question": "Qarzni undirish uchun sudga da’vo arizasi qanday yoziladi, unga nimalar ilova qilinadi?",
+      "eventDate": null,
+      "expectedSources": [
+        "FPK 188",
+        "FPK 189",
+        "FPK 191"
+      ],
+      "exceptionsToCheck": [],
+      "questionsToAsk": [],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E22",
+      "question": "Javobgar boshqa viloyatda yashaydi, da’voni qaysi sudga beraman? Sudlovga tegishlilik qanday?",
+      "eventDate": null,
+      "expectedSources": [
+        "FPK 33"
+      ],
+      "exceptionsToCheck": [],
+      "questionsToAsk": [],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E23",
+      "question": "Kvartira uchun mol-mulk solig‘i qancha to‘lanadi?",
+      "eventDate": null,
+      "expectedSources": [
+        "SK 410",
+        "SK 415"
+      ],
+      "exceptionsToCheck": [],
+      "questionsToAsk": [
+        "kvartira joylashgan hudud va kadastr qiymati"
+      ],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E24",
+      "question": "Oylikdan daromad solig‘i necha foiz ushlanadi?",
+      "eventDate": null,
+      "expectedSources": [
+        "SK 364",
+        "SK 381"
+      ],
+      "exceptionsToCheck": [],
+      "questionsToAsk": [],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E25",
+      "question": "Kommunal to‘lovlarni to‘lamasa uydan chiqarib yuborishadimi?",
+      "eventDate": null,
+      "expectedSources": [
+        "UJK 133"
+      ],
+      "exceptionsToCheck": [
+        "kommunal qarz uchun darhol ko‘chiriladi"
+      ],
+      "questionsToAsk": [],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E26",
+      "question": "MChJ kontragentdan qarzni iqtisodiy sudga da’vo arizasi bilan undirmoqchi.",
+      "eventDate": null,
+      "expectedSources": [
+        "IPK 149",
+        "IPK 25"
+      ],
+      "exceptionsToCheck": [],
+      "questionsToAsk": [],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E27",
+      "question": "Militsiya meni sudsiz 3 kun ushlab turdi, bu Konstitutsiyaga zidmi?",
+      "eventDate": null,
+      "expectedSources": [
+        "Konstitutsiya 27"
+      ],
+      "exceptionsToCheck": [],
+      "questionsToAsk": [],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E28",
+      "question": "Ajrashgandan keyin sobiq erim kvartiradan ro‘yxatdan chiqarishni talab qilyapti, umumiy mulk masalasi ham hal bo‘lmagan.",
+      "eventDate": null,
+      "expectedSources": [
+        "OK 27",
+        "UJK 54"
+      ],
+      "exceptionsToCheck": [],
+      "questionsToAsk": [
+        "kvartira kimning mulki va qachon olingani"
+      ],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E29",
+      "question": "Ish beruvchi meni shtat qisqarishi sababli bo‘shatdi va oxirgi oylikni bermadi. Bundan tashqari, otam vafot etib, uyni meros qilib qoldirdi, merosxo‘rlar kimlar?",
+      "eventDate": null,
+      "expectedSources": [
+        "MK 161",
+        "FK 1135"
+      ],
+      "exceptionsToCheck": [],
+      "questionsToAsk": [],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E30",
+      "question": "Menda muammo bor, nima qilishim kerak?",
+      "eventDate": null,
+      "expectedSources": [],
+      "exceptionsToCheck": [
+        "aniq huquqiy xulosa"
+      ],
+      "questionsToAsk": [
+        "qaysi soha, nima sodir bo‘lgan, qachon"
+      ],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E31",
+      "question": "Akam koloniyada jazo o‘tayapti, jazoning yarmidan ko‘pini o‘tadi. Muddatidan oldin shartli ozod qilinishi uchun nima kerak?",
+      "eventDate": null,
+      "expectedSources": [
+        "JIK 163"
+      ],
+      "exceptionsToCheck": [
+        "albatta ozod qilinadi"
+      ],
+      "questionsToAsk": [
+        "qaysi modda bilan hukm qilingan, jinoyat og‘irligi toifasi"
+      ],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E32",
+      "question": "Hokimlik yer ajratish bo‘yicha arizamni rad etdi. Ma’muriy sudga qanday va qancha muddatda shikoyat qilaman?",
+      "eventDate": null,
+      "expectedSources": [
+        "MSK 184",
+        "MSK 185"
+      ],
+      "exceptionsToCheck": [
+        "muddat cheklanmagan"
+      ],
+      "questionsToAsk": [
+        "rad etish qarori qachon olingan, yuqori organga shikoyat qilinganmi"
+      ],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E33",
+      "question": "Otam vafot etdi, vasiyat qoldirmagan. Uyni onam o‘z nomiga o‘tkazmoqchi, men va singlim ham merosxo‘rmiz. Meros qanday bo‘linadi?",
+      "eventDate": null,
+      "expectedSources": [
+        "FK 1135"
+      ],
+      "exceptionsToCheck": [
+        "meros faqat onaga o‘tadi"
+      ],
+      "questionsToAsk": [
+        "uy nikoh davrida olinganmi (er-xotin umumiy mulki), merosni qabul qilish muddati o‘tganmi"
+      ],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E34",
+      "question": "Bolnichniy olib uyda yotgan edim, xo‘jayin meni ishdan haydab yubordi. To‘g‘rimi bu?",
+      "eventDate": null,
+      "expectedSources": [
+        "MK 163"
+      ],
+      "exceptionsToCheck": [],
+      "questionsToAsk": [],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E35",
+      "question": "Zarplatani ikki oydan beri bermayapti, kechikkani uchun ustiga pul so‘rasam bo‘ladimi?",
+      "eventDate": null,
+      "expectedSources": [
+        "MK 333"
+      ],
+      "exceptionsToCheck": [],
+      "questionsToAsk": [],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E36",
+      "question": "Erim bilan ajrashsak, bitta bolamiz bor, u qancha aliment to‘laydi?",
+      "eventDate": null,
+      "expectedSources": [
+        "OK 99"
+      ],
+      "exceptionsToCheck": [],
+      "questionsToAsk": [],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E37",
+      "question": "Dadam o‘lib qoldi, uy kimlarga qoladi, merosxo‘rlar kim?",
+      "eventDate": null,
+      "expectedSources": [
+        "FK 1135"
+      ],
+      "exceptionsToCheck": [],
+      "questionsToAsk": [],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E38",
+      "question": "Касал бўлиб ётганимда иш берувчи мени ишдан бўшатди. Бу қонуниймi?",
+      "eventDate": null,
+      "expectedSources": [
+        "MK 163"
+      ],
+      "exceptionsToCheck": [],
+      "questionsToAsk": [],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E39",
+      "question": "Битта бола учун алимент миқдори қанча бўлади?",
+      "eventDate": null,
+      "expectedSources": [
+        "OK 99"
+      ],
+      "exceptionsToCheck": [],
+      "questionsToAsk": [],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E40",
+      "question": "Телефонимни ўғирлаб кетишди, қандай жазо берилади?",
+      "eventDate": null,
+      "expectedSources": [
+        "JK 169"
+      ],
+      "exceptionsToCheck": [],
+      "questionsToAsk": [],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E41",
+      "question": "Меня уволили, когда я был на больничном. Это законно?",
+      "eventDate": null,
+      "expectedSources": [
+        "MK 163"
+      ],
+      "exceptionsToCheck": [],
+      "questionsToAsk": [],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E42",
+      "question": "Какой размер алиментов на одного ребенка?",
+      "eventDate": null,
+      "expectedSources": [
+        "OK 99"
+      ],
+      "exceptionsToCheck": [],
+      "questionsToAsk": [],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E43",
+      "question": "У меня украли телефон, какое наказание за кражу?",
+      "eventDate": null,
+      "expectedSources": [
+        "JK 169"
+      ],
+      "exceptionsToCheck": [],
+      "questionsToAsk": [],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E44",
+      "question": "Sobiq erim aliment to‘lamayapti, ustiga uyimdan telefonimni o‘g‘irlab ketdi. Bitta bolamiz bor, aliment qancha bo‘lishi kerak?",
+      "eventDate": null,
+      "expectedSources": [
+        "OK 99",
+        "JK 169"
+      ],
+      "exceptionsToCheck": [],
+      "questionsToAsk": [],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E45",
+      "question": "Do‘kondan olgan telefonim 3 kunda buzildi, sotuvchi almashtirib bermayapti. Sudga da’vo arizasini qanday yozaman, nimalar ilova qilinadi?",
+      "eventDate": null,
+      "expectedSources": [
+        "IST 13",
+        "FPK 188"
+      ],
+      "exceptionsToCheck": [],
+      "questionsToAsk": [],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    },
+    {
+      "id": "E46",
+      "question": "Militsiya meni sudsiz 3 kun ushlab turdi va mast holda mashina haydaganlikda aybladi. Bu Konstitutsiyaga zidmi, qanday javobgarlik bor?",
+      "eventDate": null,
+      "expectedSources": [
+        "Konstitutsiya 27",
+        "MJtK 131"
+      ],
+      "exceptionsToCheck": [],
+      "questionsToAsk": [],
+      "lawyerReview": "kutilmoqda",
+      "reviewer": null,
+      "reviewedAt": null,
+      "confirmedSources": [],
+      "confirmedEffectiveDates": [],
+      "exceptions": null,
+      "lawyerNotes": null,
+      "sourceTextReview": {
+        "status": "approved",
+        "scope": "source-text",
+        "evidenceType": "user-attestation",
+        "evidence": "hamma matnlarni yurist tekshirdi bos",
+        "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+        "reviewer": null,
+        "reviewedAt": null,
+        "effectiveDatesSupplied": false,
+        "note": "Foydalanuvchi barcha matnlarni yurist tekshirganini tasdiqladi. Yurist shaxsi, ko‘rik sanasi va kuchga kirish sanalari alohida berilmadi."
+      }
+    }
+  ]
+}

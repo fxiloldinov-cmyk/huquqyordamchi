@@ -1,3 +1,4 @@
+import {validLegalDate} from '../shared/source-integrity.mjs';
 import {trafficCoverageNotice} from '../shared/traffic.mjs';
 // Kazus ustaxonasi: talaba kazus yuboradi, AI uni loyihaga kiritilgan namuna shaklida,
 // talabaning o'z shaklida yoki standart tuzilmada yechadi.
@@ -9,7 +10,7 @@ import {
   callGeminiResilient, safeSources, dedupeSources, SEARCH_OFF_NOTE,
 } from "../shared/common.mjs";
 import { KAZUS_NAMUNALAR, STANDART_FORMAT, FANLAR } from "../shared/kazus-namunalar.mjs";
-import { retrieve, citationReport, sourcesMarker } from "../shared/rag.mjs";
+import { retrieve, citationReport, sourcesMarker, retrievalNotice } from "../shared/rag.mjs";
 import { guardAi } from "../shared/limits.mjs";
 import { guardKazusPlan } from "../shared/plans.mjs";
 import { searchBooks, booksBlock, cite, tsul } from "../shared/books.mjs";
@@ -107,7 +108,8 @@ export default async (req, context) => {
   // Talaba uchun bosqichma-bosqich maslahat: tayyor yechim emas, masala → norma → dalillar bo'yicha yo'naltiruvchi savollar
   const hint = body?.task === 'hint';
   if (review && studentAnswer.length < 40) return jsonError('Tekshirish uchun javobingizni kiriting (kamida 40 belgi).', 400);
-  const eventDate = /^\d{4}-\d{2}-\d{2}$/.test(body?.eventDate || '') ? body.eventDate : 'ko‘rsatilmagan';
+  if (body?.eventDate && !validLegalDate(body.eventDate)) return jsonError('Voqea sanasi noto‘g‘ri.',400);
+  const eventDate = body?.eventDate || null;
   if (kazus.length < 40) return jsonError("Kazus shartini to'liq yozing (kamida 40 belgi).", 400);
   if (kazus.length > MAX_KAZUS) return jsonError(`Kazus juda uzun (maksimal ${MAX_KAZUS} belgi).`, 400);
 
@@ -145,7 +147,7 @@ export default async (req, context) => {
 
   const contents = [
     ...fewShot,
-    { role: "user", parts: [{ text: `Fan: ${FANLAR[fan]}\nVoqea sanasi: ${eventDate}\nVazifa: ${review ? "Talaba javobini baholang: to‘g‘ri jihatlar, xato normalar, yetishmagan dalillar, asoslangan yaxshilangan yechim. Ball yoki bahoni o‘qituvchi yoki universitet bahosi deb bermang — bu AI fikri ekanini ayting. Talaba javobi: " + studentAnswer : hint ? HINT_TASK : "Kazusni asoslantirib tahlil qiling"}\n\n${hint ? "" : formatBlock}\n\nYechilishi kerak bo'lgan kazus:\n"""\n${kazus}\n"""` }] },
+    { role: "user", parts: [{ text: `Fan: ${FANLAR[fan]}\nVoqea sanasi: ${eventDate || "ko‘rsatilmagan"}\nVazifa: ${review ? "Talaba javobini baholang: to‘g‘ri jihatlar, xato normalar, yetishmagan dalillar, asoslangan yaxshilangan yechim. Ball yoki bahoni o‘qituvchi yoki universitet bahosi deb bermang — bu AI fikri ekanini ayting. Talaba javobi: " + studentAnswer : hint ? HINT_TASK : "Kazusni asoslantirib tahlil qiling"}\n\n${hint ? "" : formatBlock}\n\nYechilishi kerak bo'lgan kazus:\n"""\n${kazus}\n"""` }] },
   ];
   if (cont) contents.push(
     { role: "model", parts: [{ text: partial }] },
@@ -185,8 +187,8 @@ export default async (req, context) => {
       continuable: true,
       canContinue: round < MAX_ROUNDS - 1,
       deadlineAt: startedAt + deadlineMs(),
-      prefix: r.searchDropped ? SEARCH_OFF_NOTE : "",
-      onEnd: (sources, text) => sourceTail(dedupeSources([...priorSources, ...sources])) + citationReport(partial + text, rag.provided, { bands: rag.bands, bandsBy: rag.bandsBy, eventDate }) + (booksNote ? `\n\n**Kitob manbalari:** ${booksNote}` : "") + `\n\n**TSUL manbasi:** ${TSUL_STATUS.message}` + "\n\n*O‘quv tahlili. Topshirishdan oldin manbalar va topshiriq talablarini tekshiring.*" + sourcesMarker(partial + text, rag, { eventDate, books }),
+      prefix: retrievalNotice(rag) + (r.searchDropped ? SEARCH_OFF_NOTE : ""),
+      onEnd: (sources, text) => sourceTail(dedupeSources([...priorSources, ...sources])) + citationReport(partial + text, rag.provided, { bands: rag.bands, bandsBy: rag.bandsBy, eventDate }) + (booksNote ? `\n\n**Kitob manbalari:** ${booksNote}` : "") + `\n\n**TSUL manbasi:** ${TSUL_STATUS.message}` + "\n\n*O‘quv tahlili. Topshirishdan oldin manbalar va topshiriq talablarini tekshiring.*" + sourcesMarker(partial + text, rag, { eventDate, books, externalSources: dedupeSources([...priorSources, ...sources]) }),
     });
   } catch (e) {
     console.error("Kazus backend error:", e?.name || "unknown");

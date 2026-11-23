@@ -25,6 +25,7 @@ function memoryStore(name) {
       return true;
     },
     async delete(key) { m.delete(key); },
+    async list(prefix = "") { return [...m.keys()].filter((k) => k.startsWith(prefix)).sort(); },
   };
 }
 
@@ -62,6 +63,8 @@ export function blobsStore(blobs, name) {
       throw notAtomic("setJSON natijasida modified yo'q");
     },
     async delete(key) { await s.delete(key); },
+    // Faqat administrator skriptlari va o‘chirish oqimlari uchun (kalitlar ro‘yxati, qiymatsiz).
+    async list(prefix = "") { const r = await s.list({ prefix }); return (r?.blobs || []).map((b) => b.key).sort(); },
   };
 }
 

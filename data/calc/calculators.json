@@ -1,0 +1,66 @@
+[
+ {
+  "id": "aliment-bir-bola",
+  "title": "Aliment: bir bola uchun (OK 99-modda; sud miqdorni o‘zgartirishi mumkin)",
+  "inputs": [
+   {"key": "daromad", "label": "To‘lovchining oylik ish haqi va boshqa daromadi (so‘m)", "type": "money", "min": 0},
+   {"key": "eng_kam", "label": "Mehnatga haq to‘lashning amaldagi eng kam miqdori (so‘m)", "type": "money", "min": 0}
+  ],
+  "formula": "max(daromad / 4, eng_kam * 0.265)",
+  "rounding": {"decimals": 2, "mode": "half_up"},
+  "unit": "so‘m",
+  "sourceRef": "ok:99",
+  "lawyerReview": "tasdiqlangan"
+ },
+ {
+  "id": "aliment-ikki-bola",
+  "title": "Aliment: ikki bola uchun (OK 99-modda; sud miqdorni o‘zgartirishi mumkin)",
+  "inputs": [
+   {"key": "daromad", "label": "To‘lovchining oylik ish haqi va boshqa daromadi (so‘m)", "type": "money", "min": 0},
+   {"key": "eng_kam", "label": "Mehnatga haq to‘lashning amaldagi eng kam miqdori (so‘m)", "type": "money", "min": 0}
+  ],
+  "formula": "max(daromad / 3, 2 * eng_kam * 0.265)",
+  "rounding": {"decimals": 2, "mode": "half_up"},
+  "unit": "so‘m",
+  "sourceRef": "ok:99",
+  "lawyerReview": "tasdiqlangan"
+ },
+ {
+  "id": "aliment-uch-va-kop-bola",
+  "title": "Aliment: uch va undan ortiq bola uchun (OK 99-modda; sud miqdorni o‘zgartirishi mumkin)",
+  "inputs": [
+   {"key": "daromad", "label": "To‘lovchining oylik ish haqi va boshqa daromadi (so‘m)", "type": "money", "min": 0},
+   {"key": "eng_kam", "label": "Mehnatga haq to‘lashning amaldagi eng kam miqdori (so‘m)", "type": "money", "min": 0},
+   {"key": "bolalar", "label": "Bolalar soni", "type": "integer", "min": 3, "max": 20}
+  ],
+  "formula": "max(daromad / 2, bolalar * eng_kam * 0.265)",
+  "rounding": {"decimals": 2, "mode": "half_up"},
+  "unit": "so‘m",
+  "sourceRef": "ok:99",
+  "lawyerReview": "tasdiqlangan"
+ },
+ {
+  "id": "jarima-15-kun",
+  "title": "Jarimani 15 kun ichida to‘lash: 50 foiz (MJtK 332¹; istisnolar 2-qismda)",
+  "inputs": [
+   {"key": "jarima", "label": "Qarordagi jarima miqdori (so‘m)", "type": "money", "min": 0}
+  ],
+  "formula": "jarima * 50 / 100",
+  "rounding": {"decimals": 2, "mode": "half_up"},
+  "unit": "so‘m",
+  "sourceRef": "mjtk:332-1",
+  "lawyerReview": "tasdiqlangan"
+ },
+ {
+  "id": "jarima-30-kun",
+  "title": "Jarimani 30 kun ichida to‘lash: 70 foiz (MJtK 332¹; istisnolar 2-qismda)",
+  "inputs": [
+   {"key": "jarima", "label": "Qarordagi jarima miqdori (so‘m)", "type": "money", "min": 0}
+  ],
+  "formula": "jarima * 70 / 100",
+  "rounding": {"decimals": 2, "mode": "half_up"},
+  "unit": "so‘m",
+  "sourceRef": "mjtk:332-1",
+  "lawyerReview": "tasdiqlangan"
+ }
+]

@@ -45,7 +45,7 @@ test('event date before the stored edition: prompt forbids applying current text
   assert.ok(art, 'o‘zgartish izohi bor modda topilsin');
   const r = rag.retrieve(`MK ${art.art}-modda`, { k: 1, eventDate: '2024-01-01' });
   assert.match(r.block, /VOQEA SANASI \(2024-01-01\)[^\n]*Voqea paytidagi tahrir matni bazada YO‘Q/);
-  assert.match(r.block, /⚠️ VOQEA SANASIDAN \(2024-01-01\) KEYIN O‘ZGARTIRILGAN/);
+  assert.equal(r.passages.length, 0); assert.equal(r.provided.mk.size, 0); assert.ok(r.withheld.some(w=>w.reason==='historical-text-unavailable'));
   const { claims } = rag.claimChecks(`Bu holatga MK ${art.art}-modda qo‘llanadi va xodim huquqlari himoya qilinadi.`, r.provided, { eventDate: '2024-01-01' });
   assert.ok(claims[0].later.length, 'voqeadan keyingi o‘zgartish sanasi ko‘rsatiladi');
   assert.ok(!/VOQEA SANASI/.test(rag.retrieve(`MK ${art.art}-modda`, { k: 1, eventDate: '2026-10-30' }).block), 'tahrirdan keyingi voqeada ogohlantirish yo‘q');

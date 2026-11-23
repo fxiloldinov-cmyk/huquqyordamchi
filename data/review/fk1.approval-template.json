@@ -1,0 +1,40 @@
+{
+  "doc": "fk1",
+  "candidateFile": "fk1.json",
+  "candidateSha256": "5c2132180af76f6b22852c7567a8f2df61ff023b0a39e78f644f66b352408fe1",
+  "sourceUrl": "https://lex.uz/docs/-111189",
+  "sourceSha256": "6211cbe1e563eb8cd5692c449f3d24c612281735b505b81d02cae118b9e3d022",
+  "status": "pending",
+  "reviewer": null,
+  "reviewedAt": null,
+  "effectiveFrom": null,
+  "effectiveTo": null,
+  "effectiveDateVerified": false,
+  "amendments": [
+    {
+      "art": "288",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "reviewed": false
+    },
+    {
+      "art": "360",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "reviewed": false
+    },
+    {
+      "art": "382",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "reviewed": false
+    }
+  ],
+  "changedArticles": [
+    "288",
+    "360",
+    "382"
+  ],
+  "lawyerNotes": null,
+  "removedArticles": []
+}

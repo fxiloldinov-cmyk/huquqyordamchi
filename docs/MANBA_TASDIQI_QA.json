@@ -1,0 +1,35 @@
+{
+  "checkedAt": "2026-11-07T20:32:32.589342+00:00",
+  "scope": "user-confirmed-source-text-activation",
+  "evidence": "data/review/approvals/user-text-attestation.json",
+  "activeSources": {
+    "fk1": "2026-09-12",
+    "jk": "2026-11-04"
+  },
+  "previousCopiesArchived": true,
+  "tests": {
+    "total": 204,
+    "passed": 204,
+    "failed": 0
+  },
+  "build": "passed",
+  "browser": [
+    {
+      "width": 1280,
+      "approvedTextVisible": true,
+      "newEditionVisible": true,
+      "dateUncertaintyVisible": true,
+      "pageErrors": []
+    },
+    {
+      "width": 390,
+      "approvedTextVisible": true,
+      "newEditionVisible": true,
+      "dateUncertaintyVisible": true,
+      "pageErrors": []
+    }
+  ],
+  "effectiveDatesInvented": false,
+  "aiConclusionsAutomaticallyApproved": false,
+  "productionDeployed": false
+}

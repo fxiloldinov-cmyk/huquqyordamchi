@@ -3,13 +3,25 @@
     "file": "fk1.json",
     "name": "Oʻzbekiston Respublikasining Fuqarolik kodeksi (1-qism)",
     "publishedAt": "2026-09-12",
-    "importedAt": "2026-10-31",
+    "importedAt": "2026-11-07",
     "articles": 386,
     "repealed": 9,
-    "sha256": "03123147732a5970",
+    "sha256": "d491becc96643de3",
     "pendingEffective": 0,
     "autoUpdate": true,
-    "problems": []
+    "problems": [],
+    "status": "text-reviewed",
+    "effectiveFrom": null,
+    "effectiveDateVerified": false,
+    "legalReview": {
+      "status": "approved",
+      "scope": "source-text",
+      "evidenceType": "user-attestation",
+      "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+      "reviewer": null,
+      "reviewedAt": null,
+      "sourceSha256": "6211cbe1e563eb8cd5692c449f3d24c612281735b505b81d02cae118b9e3d022"
+    }
   },
   "fk2": {
     "file": "fk2.json",
@@ -74,14 +86,26 @@
   "jk": {
     "file": "jk.json",
     "name": "Oʻzbekiston Respublikasining Jinoyat kodeksi",
-    "publishedAt": "2026-10-15",
-    "importedAt": "2026-10-31",
+    "publishedAt": "2026-11-04",
+    "importedAt": "2026-11-07",
     "articles": 406,
     "repealed": 15,
-    "sha256": "b4c67ecc473aeb69",
+    "sha256": "824bcb09e843a596",
     "pendingEffective": 0,
     "autoUpdate": true,
-    "problems": []
+    "problems": [],
+    "status": "text-reviewed",
+    "effectiveFrom": null,
+    "effectiveDateVerified": false,
+    "legalReview": {
+      "status": "approved",
+      "scope": "source-text",
+      "evidenceType": "user-attestation",
+      "attestedAt": "2026-11-07T20:29:30.131279+00:00",
+      "reviewer": null,
+      "reviewedAt": null,
+      "sourceSha256": "091fe27cbe92b4d6f94e3f0cc73edf1ae04426e919bef9cef455cd15bded9b36"
+    }
   },
   "jpk": {
     "file": "jpk.json",
@@ -174,7 +198,7 @@
     "importedAt": "2026-10-30",
     "articles": 75,
     "repealed": 0,
-    "sha256": "f8eb93c74fc4e676",
+    "sha256": "9465c9470e8edcd4",
     "pendingEffective": 0,
     "autoUpdate": false,
     "problems": []
@@ -198,7 +222,7 @@
     "importedAt": "2026-10-31",
     "articles": 141,
     "repealed": 1,
-    "sha256": "60cc7595333165c6",
+    "sha256": "c5ed1a221380edcf",
     "pendingEffective": 0,
     "autoUpdate": true,
     "problems": []
@@ -224,5 +248,20 @@
     "importedAt": "2026-11-05",
     "autoUpdate": false,
     "lexId": "-4089917"
+  },
+  "iiv502": {
+    "file": "../pending/iiv502.json",
+    "name": "YHQ buzilishiga doir maʼmuriy ishlarni rasmiylashtirish va koʻrib chiqish tartibi toʻgʻrisidagi yoʻriqnoma (IIV 502-son buyrugʻi, roʻyxat raqami 3969)",
+    "kind": "band",
+    "status": "pending-lex",
+    "articles": 118,
+    "publishedAt": "2026-11-06",
+    "importedAt": "2026-11-07",
+    "autoUpdate": false,
+    "lexId": null,
+    "note": "Egasi PDF nusxasini berdi; 2026-11-07 holatiga lex.uz qidiruvida topilmadi. lex.uz ID qo‘shilib data/laws/ ga ko‘chirilgach javoblarda ishlatiladi. Kuchga kirish sanasi 06.11.2026 e’lon + 2 oy deb hisoblangan, lex.uz bilan tasdiqlansin.",
+    "proposedEffectiveFrom": "2027-01-07",
+    "effectiveFrom": null,
+    "effectiveDateVerified": false
   }
 }

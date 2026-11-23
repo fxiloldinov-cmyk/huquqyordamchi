@@ -8,7 +8,7 @@
 
 [functions]
   node_bundler = "esbuild"
-  included_files = ["data/laws/yhq*.json", "data/laws/ypx975.json"]
+  included_files = ["data/laws/yhq*.json", "data/laws/ypx975.json", "data/laws/iiv502.json"]
 
 # /api/chat, /api/search, /api/kazus yo'llari funksiyalarning o'zida (config.path) belgilangan.
 

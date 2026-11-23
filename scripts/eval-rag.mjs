@@ -1,3 +1,4 @@
+import {todayLegalDate} from '../netlify/shared/source-integrity.mjs';
 // Huquqiy sifatni o'lchash (eval/cases.json, 33 ta kazus).
 //
 //   node scripts/eval-rag.mjs            — OFLAYN: faqat RAG (manba topish). Tarmoq va AI kerak emas.
@@ -21,11 +22,15 @@ export function evalRetrieval(c, { force = false } = {}) {
   const r = retrieve(c.question, { k: 8, force: force ? FAN_CODE[c.fan] : false, eventDate: c.eventDate || null });
   const ms = Date.now() - t;
   const exp = c.expectSources.map(parseSource);
-  const found = exp.filter((e) => r.provided[e.code]?.has(e.art));
+  const candidates = retrieve(c.question,{k:8,force:force?FAN_CODE[c.fan]:false,eventDate:c.eventDate||null,auditCandidates:true});
+  const found = exp.filter((e) => candidates.provided[e.code]?.has(e.art));
+  const eligible = exp.filter((e) => r.provided[e.code]?.has(e.art));
   return {
-    id: c.id, kind: c.kind, ms, codes: r.codes,
+    id: c.id, kind: c.kind, ms, codes: r.codes, withheld:r.withheld||[], lawyerReview:c.lawyerReview, legalConclusionReviewed:false,
     expected: c.expectSources.length, found: found.length,
-    missing: exp.filter((e) => !r.provided[e.code]?.has(e.art)).map((e) => `${e.code}:${e.art}`),
+    eligibleFound:eligible.length, eligibleRecall:exp.length?eligible.length/exp.length:1,
+    candidateMetricNote:'Manba nomzodini topish; javobda foydalanishga ruxsat yoki huquqiy tasdiq emas',
+    missing: exp.filter((e) => !candidates.provided[e.code]?.has(e.art)).map((e) => `${e.code}:${e.art}`),
     recall: exp.length ? found.length / exp.length : (r.codes.length ? 0 : 1), // ma'lumot yetishmasa — bo'sh qaytishi to'g'ri
     editionWarning: Boolean(c.eventDate) ? /VOQEA SANASI/.test(r.block) : null,
     rag: r,
@@ -93,7 +98,9 @@ async function main() {
     citationAccuracy: live ? null : 'o‘lchanmadi (oflayn rejimda AI javobi yo‘q)',
     // 3) Huquqiy xulosa bahosi — avtomatik o'lchanmaydi
     legalConclusion: 'baholanmagan — kutilgan natijalar yurist tomonidan tasdiqlanmagan (lawyerReview: kutilmoqda)',
-    lawyerReviewed: rows.length ? cases.slice(0, rows.length).filter((c) => c.lawyerReview !== 'kutilmoqda').length : 0,
+    withheldCases: rows.filter(r=>r.withheld?.length).length,
+    eligibleRecall:avg(r=>r.eligibleRecall),
+    lawyerReviewed: rows.length ? cases.slice(0, rows.length).filter((c) => c.lawyerReview === 'tasdiqlangan').length : 0,
   };
   if (live) {
     const inT = rows.reduce((s, r) => s + (r.inTok || 0), 0), outT = rows.reduce((s, r) => s + (r.outTok || 0), 0);
@@ -109,7 +116,7 @@ async function main() {
     if (summary.errors === rows.length) { summary.aiCalled = false; summary.liveNote = 'Jonli AI ishlamadi (barcha so‘rovlar xato) — natija AI sifati haqida hech narsa demaydi.'; }
   }
   fs.mkdirSync(new URL('eval/', ROOT), { recursive: true });
-  const file = new URL(`eval/results-${summary.mode}-${summary.at.slice(0, 10)}.json`, ROOT);
+  const file = new URL(`eval/results-${summary.mode}-${todayLegalDate()}.json`, ROOT);
   fs.writeFileSync(file, JSON.stringify({ summary, rows }, null, 1));
   console.log(JSON.stringify(summary, null, 1));
   for (const r of rows) if (r.recall < 1) console.log(`  ${r.id} (${r.kind}): topilmadi ${r.missing.join(', ') || '(bo‘sh bo‘lishi kerak edi)'}; olindi: ${r.codes.join(',') || '—'}`);

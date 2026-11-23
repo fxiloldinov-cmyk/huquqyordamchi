@@ -12,3 +12,8 @@ tests/out/
 *.zip
 
 .work-v119/
+# Manba auditining og‘ir ishchi fayllari (lex.uz suratlari, tarix) — lokal qoladi
+data/review/snapshots/
+data/review/candidate-history/
+data/review/comparison-history/
+data/review/yhq-assets/

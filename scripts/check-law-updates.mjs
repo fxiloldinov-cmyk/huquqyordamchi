@@ -1,3 +1,5 @@
+import {todayLegalDate} from '../netlify/shared/source-integrity.mjs';
+import {publicationDate, runAudit} from './source-audit.mjs';
 // Qonunlar bazasini yangilash: har bir kodeksning lex.uz sahifasidagi eng so'nggi tahrir sanasini bazadagi
 // "asOf" bilan solishtiradi. Yangi tahrir bo'lsa:
 //   - LEX_WORD_URL_TEMPLATE berilgan bo'lsa, Word eksportini yuklab, scripts/import_lexuz.py bilan import qiladi;
@@ -12,7 +14,7 @@ import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { tmpdir, homedir } from 'node:os';
 import { join } from 'node:path';
-import { pathToFileURL } from 'node:url';
+import { pathToFileURL, fileURLToPath } from 'node:url';
 
 const ROOT = new URL('../', import.meta.url);
 const LAWS = [
@@ -35,7 +37,7 @@ const LAWS = [
 
 // Avtomatik kuzatilmaydigan manbalar (lex.uz ID yo'q yoki Word eksporti boshqacha) — hisobotda ochiq aytiladi.
 const MANUAL_ONLY = [{ file: 'plenum-26-2023.json', name: 'Oliy sud Plenumining 26-son qarori (2023)' }, { file: 'plenum05.json', name: 'Oliy sud Plenumining 5-son qarori (2011, meros)' }];
-const ARCHIVE_KEEP = 3;
+// Historical backups are retained; no automatic deletion.
 
 const args = process.argv.slice(2);
 const rollbackDoc = (args.find(a => a.startsWith('--rollback=')) || '').split('=')[1] || (args.includes('--rollback') ? args[args.indexOf('--rollback') + 1] : null);
@@ -47,12 +49,7 @@ const TEMPLATE = (process.env.LEX_WORD_URL_TEMPLATE || '').trim();
 
 // lex.uz sahifasidagi "Qonunchilik maʼlumotlari milliy bazasi, 12.09.2026-y." ko'rinishidagi sanalarning eng kechi —
 // importer ham asOf ni shu usulda (PUBLICATION_ORIGIN dagi eng kech sana) hisoblaydi.
-export function latestEdition(html) {
-  // Lotin ("12.09.2026-y.") va kirill ("15.10.2026 й.") sahifalar
-  const dates = [...String(html).matchAll(/(\d{2})\.(\d{2})\.(\d{4})\s*-?\s*[yй]\./g)].map(([, d, m, y]) => `${y}-${m}-${d}`);
-  const today = new Date(Date.now() + 86400000).toISOString().slice(0, 10);
-  return dates.filter(x => x <= today).sort().at(-1) || null;
-}
+export function latestEdition(html) { return publicationDate(html); }
 
 async function get(url, asText = true) {
   let last;
@@ -99,7 +96,7 @@ export function validateLaw(law, old = null) {
 }
 // Kelajakda kuchga kiradigan o'zgartishlar (izohdagi "2027-yil 1-yanvardan kuchga kiradi")
 const MONTHS = { yanvar: 1, fevral: 2, mart: 3, aprel: 4, may: 5, iyun: 6, iyul: 7, avgust: 8, sentabr: 9, oktabr: 10, noyabr: 11, dekabr: 12 };
-export function pendingEffective(law, today = new Date().toISOString().slice(0, 10)) {
+export function pendingEffective(law, today = todayLegalDate()) {
   const out = [];
   for (const a of law.articles) for (const c of a.changes || []) for (const m of c.matchAll(/(\d{4})-yil (\d{1,2})-(\w+?)dan (?:eʼtiboran |e'tiboran )?kuchga kir/g)) {
     const mo = MONTHS[m[3]]; if (!mo) continue;
@@ -114,7 +111,6 @@ async function archiveCurrent(doc, raw, asOf) {
   const dir = archiveDir(doc); await mkdir(dir, { recursive: true });
   await writeFile(new URL(`${asOf}.json.gz`, dir), gzipSync(raw));
   const files = (await readdir(dir)).filter(f => f.endsWith('.json.gz')).sort();
-  for (const f of files.slice(0, Math.max(0, files.length - ARCHIVE_KEEP))) await rm(new URL(f, dir));
   return `data/laws/archive/${doc}/${asOf}.json.gz`;
 }
 async function updateManifest(doc, file, law, extra = {}) {
@@ -136,66 +132,33 @@ export async function rollback(doc) {
 }
 
 function importDoc(law, src, outPath) {
-  const out = execFileSync('python3', [new URL('import_lexuz.py', import.meta.url).pathname, src, outPath, '--doc', law.doc, '--lex-id', law.lexId, '--name', law.name], { encoding: 'utf8' });
+  const out = execFileSync('python3', [fileURLToPath(new URL('import_lexuz.py', import.meta.url)), src, outPath, '--doc', law.doc, '--lex-id', law.lexId, '--name', law.name], { encoding: 'utf8' });
   if (/muammolar: [1-9]/.test(out)) throw new Error('Import muammolari:\n' + out);
   return out.trim();
 }
 
 export async function main() {
-const report = [], summary = [];
-let changed = false, pending = false, failed = false;
-const tmp = await mkdtemp(join(tmpdir(), 'lex-'));
-try {
-  // --file berilsa, faqat shu hujjatlar import qilinadi (lex.uz sahifasi ochilmaydi).
-  for (const spec of Object.keys(manual).length ? LAWS.filter(l => manual[l.doc]) : LAWS) {
-    const path = new URL(`data/laws/${spec.file}`, ROOT);
-    const old = JSON.parse(await readFile(path, 'utf8'));
-    const law = { ...spec, lexId: old.lexId };
-    let latest = null;
-    if (!manual[law.doc]) {
-      try { latest = latestEdition(await get(`https://lex.uz/docs/${law.lexId}`)); }
-      catch (e) { failed = true; report.push(`- ❗ **${law.name}**: lex.uz sahifasini o‘qib bo‘lmadi (${e.message}).`); continue; }
-      if (!latest) { failed = true; report.push(`- ❗ **${law.name}**: sahifada tahrir sanasi topilmadi — lex.uz tuzilishi o‘zgargan bo‘lishi mumkin.`); continue; }
-      if (latest <= old.asOf) { report.push(`- ✓ ${law.name}: o‘zgarish yo‘q (bazada ${old.asOf}).`); continue; }
-      if (checkOnly || !TEMPLATE) {
-        pending = true; summary.push(`${law.doc.toUpperCase()} ${latest}`);
-        report.push(`- 🔔 **${law.name}**: lex.uz’da yangi tahrir — ${latest} (bazada ${old.asOf}). Word faylni yuklab, \`node scripts/check-law-updates.mjs --file ${law.doc}=<fayl.doc>\` bilan import qiling. ${old.url}`);
-        continue;
-      }
-    }
-    try {
-      let src = manual[law.doc];
-      if (!src) {
-        const url = TEMPLATE.replaceAll('{id}', law.lexId).replaceAll('{num}', law.lexId.replace(/^-/, ''));
-        src = join(tmp, law.doc + '.doc'); await writeFile(src, await get(url, false));
-      }
-      const outPath = join(tmp, law.file), log = importDoc(law, src, outPath);
-      // Yangi tahrir avval vaqtinchalik papkaga import qilinadi va tekshiriladi; xato bo'lsa amaldagi baza o'zgarmaydi.
-      const fresh = JSON.parse(await readFile(outPath, 'utf8'));
+  const manualEntries = Object.entries(manual);
+  if (manualEntries.length) {
+    for (const [doc, src] of manualEntries) {
+      const spec = LAWS.find(l => l.doc === doc);
+      if (!spec) throw new Error('Noma’lum hujjat: ' + doc);
+      const old = JSON.parse(await readFile(new URL(`data/laws/${spec.file}`, ROOT), 'utf8'));
+      const dir = new URL('data/review/candidates/', ROOT); await mkdir(dir, {recursive:true});
+      const target = new URL(spec.file, dir);
+      importDoc({...spec, lexId:old.lexId}, src, fileURLToPath(target));
+      const fresh = JSON.parse(await readFile(target,'utf8'));
       const problems = validateLaw(fresh, old);
-      if (problems.length) throw new Error('tekshiruvdan o‘tmadi — ' + problems.join('; '));
-      const d = diff(old, fresh);
-      if (fresh.asOf === old.asOf && !d.added.length && !d.removed.length && !d.changed.length) { report.push(`- ✓ ${law.name}: fayl bazadagi bilan bir xil (e’lon ${old.asOf}).`); continue; }
-      const arch = await archiveCurrent(law.doc, await readFile(path), old.asOf);
-      await writeFile(path, JSON.stringify(fresh));
-      await updateManifest(law.doc, law.file, fresh, { previous: { publishedAt: old.asOf, archive: arch } });
-      changed = true; summary.push(`${law.doc.toUpperCase()} ${fresh.asOf}`);
-      const L = a => a.length ? a.slice(0, 40).join(', ') + (a.length > 40 ? ` va yana ${a.length - 40} ta` : '') : '—';
-      const pend = pendingEffective(fresh);
-      report.push(`- 🆕 **${law.name}**: so‘nggi o‘zgartish e’lon qilingan sana ${old.asOf} → ${fresh.asOf}; bazaga import ${fresh.importedAt}. ${log}\n  - o‘zgargan moddalar: ${L(d.changed)}\n  - yangi moddalar: ${L(d.added)}\n  - olib tashlangan moddalar: ${L(d.removed)}\n  - hali kuchga kirmagan o‘zgartishlar: ${pend.length ? pend.slice(0, 15).map(x => `${x.art}-modda (${x.date})`).join(', ') : '—'}\n  - oldingi tahrir arxivi: ${arch} (qaytarish: \`node scripts/check-law-updates.mjs --rollback ${law.doc}\`)`);
-    } catch (e) { failed = true; report.push(`- ❗ **${law.name}**: yangi tahrirni import qilib bo‘lmadi — ${e.message}`); }
+      await writeFile(new URL(doc + '.review.json',dir), JSON.stringify({doc,status:'pending',lawyerReview:'kutilmoqda',candidate:spec.file,localAsOf:old.asOf,candidateAsOf:fresh.asOf,problems,diff:diff(old,fresh),effectiveDateVerified:false},null,2)+'\n');
+      console.log(doc + ': yangi matn tekshiruv navbatida; amaldagi baza o‘zgarmadi.');
+    }
   }
-} finally { await rm(tmp, { recursive: true, force: true }); }
-if (!Object.keys(manual).length) for (const m of MANUAL_ONLY) report.push(`- ℹ️ ${m.name} (${m.file}): avtomatik kuzatilmaydi — yangi tahrir yoki yangi Plenum qarorlari qo‘lda import qilinadi.`);
-
-const text = `## Qonunlar bazasini tekshirish — ${new Date().toISOString().slice(0, 10)}\n\n${report.join('\n')}\n\n` +
-  (changed ? 'Keyingi qadam: PR’dagi o‘zgarishlarni ko‘rib chiqing. O‘zgargan moddalarga tayangan yo‘riqnomalarni (data/legal.json) rasmiy matn bilan qayta tekshiring, keyin birlashtiring (merge).\n' : '') +
-  (pending ? 'Yangi tahrir bor, lekin avtomatik yuklash sozlanmagan (LEX_WORD_URL_TEMPLATE). Word faylni lex.uz’dan yuklab, yuqoridagi buyruq bilan import qiling.\n' : '');
-await writeFile(new URL('law-update-report.md', ROOT), text);
-console.log(text);
-if (process.env.GITHUB_OUTPUT) await appendFile(process.env.GITHUB_OUTPUT, `changed=${changed}\npending=${pending}\nfailed=${failed}\nsummary=${summary.join(', ') || 'o‘zgarish yo‘q'}\n`);
-return { changed, pending, failed, report: text };
+  const {queue} = await runAudit();
+  const failed = queue.some(x => ['http-error','fetch-error','identity-unverified','date-conflict'].includes(x.reason));
+  if (process.env.GITHUB_OUTPUT) await appendFile(process.env.GITHUB_OUTPUT, `changed=false\npending=${queue.length>0||manualEntries.length>0}\nfailed=${failed}\nsummary=${queue.map(x=>x.doc+': '+x.reason).join(', ')||'nashr sanalari teng; yuridik tasdiq emas'}\n`);
+  return {changed:false,pending:queue.length>0,failed};
 }
+
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const unknown = Object.keys(manual).filter(d => !LAWS.some(l => l.doc === d));
   if (unknown.length) { console.error(`Noma’lum hujjat: ${unknown.join(', ')}. Mumkin: ${LAWS.map(l => l.doc).join(', ')}`); process.exit(2); }

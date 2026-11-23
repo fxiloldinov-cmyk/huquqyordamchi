@@ -279,7 +279,7 @@ test('retrieval finds the key provisions for a multi-issue labour kazus and stay
  assert.deepEqual([...rag.retrieve('Kasal bo‘lib yotganimda ishdan bo‘shatishdi', {k: 5}).provided.mk][0], '163');
  const al = rag.retrieve('Aliment miqdori qancha?');
  assert.deepEqual(al.codes, ['ok']); assert.ok(al.provided.ok.has('99')); assert.ok(!al.block.includes('[MK '));
- assert.equal(rag.retrieve('Ob-havo bugun qanday?').block, '');
+ assert.match(rag.retrieve('Ob-havo bugun qanday?').block, /mos manba topilmasa/);
 });
 
 test('citation report confirms given articles and flags unknown or unsupplied ones', () => {
@@ -293,9 +293,9 @@ test('citation report confirms given articles and flags unknown or unsupplied on
 test('kazus sends official passages to the AI and appends the citation check', async () => withKey(async () => {
  let sys = '';
  globalThis.fetch = async (url, options) => { sys = JSON.parse(options.body).system_instruction.parts[0].text; return sse(['data: ' + JSON.stringify(packet('Bo‘shatish MK 163-modda 1-qism 3-bandiga zid. MK 999 ham bor.', 'STOP'))]); };
- const res = await kazus(req({kazus: AZIZA, fan: 'mehnat', eventDate: '2026-10-12'}), {ip: 'test-' + sequence++});
+ const res = await kazus(req({kazus: AZIZA, fan: 'mehnat', eventDate: '2026-10-16'}), {ip: 'test-' + sequence++});
  assert.equal(res.status, 200); const out = await res.text();
- assert.match(sys, /TASDIQLANGAN MANBA PARCHALARI/); assert.match(sys, /\[MK 163-modda\. Mehnat shartnomasini ish beruvchining tashabbusiga ko/);
+ assert.match(sys, /LOKAL BAZADAN TOPILGAN MANBA PARCHALARI/); assert.match(sys, /\[MK 163-modda\. Mehnat shartnomasini ish beruvchining tashabbusiga ko/);
  assert.match(out, /Manba tekshiruvi[\s\S]*📄[^\n]*MK 163[\s\S]*❌[^\n]*MK 999/);
 }));
 
@@ -304,7 +304,7 @@ test('chat on a family topic gets Oila kodeksi passages, not labour ones; search
  globalThis.fetch = async (url, options) => { sys = JSON.parse(options.body).system_instruction.parts[0].text; return sse(['data: ' + JSON.stringify(packet('Aliment OK 99-modda bo‘yicha belgilanadi. OK 176 ham bor.', 'STOP'))]); };
  const res = await chat(req({messages: [{role: 'user', content: 'Aliment miqdori qancha bo‘ladi?'}]}), {ip: 'test-' + sequence++});
  const text = await res.text();
- assert.match(sys, /TASDIQLANGAN MANBA PARCHALARI/); assert.match(sys, /\[OK 99-modda\. Ota-onaning voyaga yetmagan bolalariga toʻlaydigan aliment miqdori\]/); assert.ok(!sys.includes('[MK '));
+ assert.match(sys, /LOKAL BAZADAN TOPILGAN MANBA PARCHALARI/); assert.match(sys, /\[OK 99-modda\. Ota-onaning voyaga yetmagan bolalariga toʻlaydigan aliment miqdori\]/); assert.ok(!sys.includes('[MK '));
  assert.match(text, /📄 Oila kodeksi[^\n]*OK 99/); assert.match(text, /🚫 Oila kodeksida kuchini yo‘qotgan[^\n]*OK 176/);
  const out = normalizeResult({natijalar: [{hujjat: 'Mehnat kodeksi', modda: '163', modda_nomi: 'noto‘g‘ri nom'}, {hujjat: 'Mehnat kodeksi', modda: '999'}]}, [], rag.retrieve('Kasallik davrida bo‘shatish', {k: 4}));
  assert.equal(out.natijalar[0].rasmiyMatn, 'berilgan'); assert.match(out.natijalar[0].moddaNomi, /taqiqlash/);
@@ -464,7 +464,8 @@ test('v11: Hidoya logo, Kazus ustaxonasi menu, language switcher, motion and pub
  const html = read('public/index.html');
  assert.ok(!html.includes('<span class="brand-icon">§</span>'), 'eski § logotipi qolmasin');
  assert.match(html, /class="hidoya"/); assert.match(read('public/assets/favicon.svg'), /M17 59V33C17 22 25 15 32 11/);
- assert.match(html, /data-view="kazus">Kazus ustaxonasi<\/a><a href="#ish" data-view="ish">Ishlarim<\/a><\/nav>/);
+ // v11.13: menyu oxirida flag bilan yashirilgan havolalar (Travel, Business, Kalkulyator) bo‘lishi mumkin.
+ assert.match(html, /data-view="kazus">Kazus ustaxonasi<\/a><a href="#ish" data-view="ish">Ishlarim<\/a>(?:<a [^>]*\bhidden>[^<]*<\/a>)*<\/nav>/);
  for (const l of ['uz', 'cy', 'ru', 'en']) assert.match(html, new RegExp(`data-lang="${l}"`));
  assert.match(html, /<script src="motion\.js"><\/script><script src="consent\.js"><\/script><script src="workspace\.js"><\/script><script src="coverage\.js"><\/script><script src="accounts\.js"><\/script><script src="i18n\.js"><\/script><script src="pwa\.js"><\/script>/);
  assert.match(html, /href="\/oferta\/">Ommaviy oferta<\/a>/);
@@ -541,7 +542,7 @@ test('v11.1: cookie consent gates remembered language and theme; banner and acco
 
 test('v11.2: law-update check reads the newest edition date from a lex.uz page and the workflow is wired', async () => {
  const {latestEdition} = await import('../scripts/check-law-updates.mjs');
- assert.equal(latestEdition('... Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son ... milliy bazasi, 12.09.2026-y., 03/26/1174/0801-son; 01.01.2099-y. kelajak'), '2026-09-12');
+ assert.equal(latestEdition('<div class="PUBLICATION_ORIGIN">Qonunchilik maʼlumotlari milliy bazasi, 21.04.2021-y., 03/21/683/0375-son ... milliy bazasi, 12.09.2026-y., 03/26/1174/0801-son; 01.01.2099-y. kelajak</div>'), '2026-09-12');
  assert.equal(latestEdition('<html>sana yo‘q</html>'), null);
  const wf = read('.github/workflows/law-update.yml');
  assert.match(wf, /schedule:[\s\S]*cron:/); assert.match(wf, /workflow_dispatch/); assert.match(wf, /check-law-updates\.mjs/);
@@ -551,12 +552,12 @@ test('v11.2: law-update check reads the newest edition date from a lex.uz page a
 
 test('v11.3: criminal, procedural and administrative questions reach JK, JPK, MJtK and FPK', () => {
  const has = (r, code, arts) => { for (const n of arts) assert.ok(r.provided[code].has(n), `${code.toUpperCase()} ${n}: ${r.passages.map(p => p.doc + ':' + p.art).join(' ')}`); };
- has(rag.retrieve('Telefonimni o‘g‘irlab ketishdi, qanday jazo beriladi?'), 'jk', ['169']);
+ has(rag.retrieve('Telefonimni o‘g‘irlab ketishdi, qanday jazo beriladi?'),'jk',['169']);
  has(rag.retrieve('Meni militsiya ushlab oldi, advokat chaqirishga haqqim bormi? Necha soat ushlab turishadi?'), 'jpk', ['221', '226', '49']);
  has(rag.retrieve('Svetoforning qizil chirog‘ida o‘tib ketdim, kamera jarima yozdi. Qanday shikoyat qilsam bo‘ladi?'), 'mjtk', ['128-4', '17-1', '315', '316']);
  has(rag.retrieve('Qarzni undirish uchun sudga da’vo arizasi qanday yoziladi, davlat boji qancha?'), 'fpk', ['188', '189', '128']);
  const h = rag.retrieve('Qo‘shnim meni haqorat qildi va kaltakladi');
- has(h, 'jk', ['140']); has(h, 'mjtk', ['41']);
+ has(h,'jk',['140']); has(h, 'mjtk', ['41']);
  // Mavjud sohalar o'zgarmadi
  assert.deepEqual(rag.retrieve('Aliment miqdori qancha?').codes, ['ok']);
  assert.deepEqual(rag.retrieve('Qo‘shnimga 20 million so‘m qarz berdim, tilxat bor, qaytarmayapti').codes, ['fk']);
@@ -575,7 +576,7 @@ test('v11.3: kazus in criminal law forces Jinoyat kodeksi; search verifies JPK/M
  globalThis.fetch = async (url, options) => { sys = JSON.parse(options.body).system_instruction.parts[0].text; return sse(['data: ' + JSON.stringify(packet('Qilmish JK 169-modda bilan kvalifikatsiya qilinadi.', 'STOP'))]); };
  const res = await kazus(req({kazus: 'A. B. ning uyidan uning roziligisiz qimmatbaho buyumlarni olib chiqib ketdi va sotdi. Qilmishga huquqiy baho bering.', fan: 'jinoyat'}), {ip: 'test-' + sequence++});
  const out = await res.text();
- assert.match(sys, /\[JK \d+(-\d+)?-modda\./); assert.match(out, /📄 Jinoyat kodeksi[^\n]*JK 169/);
+ assert.match(sys,/\[JK \d+(-\d+)?-modda\./);assert.match(out,/📄 Jinoyat kodeksi[^\n]*JK 169/);
  const r = normalizeResult({natijalar: [{hujjat: 'Jinoyat-protsessual kodeksi', modda: '221'}, {hujjat: 'Ma’muriy javobgarlik to‘g‘risidagi kodeks', modda: '184'}]}, [], rag.retrieve('ushlab turish'));
  assert.equal(r.natijalar[0].kodeks, 'JPK'); assert.equal(r.natijalar[0].moddaNomi, 'Ushlab turish asoslari'); assert.equal(r.natijalar[0].rasmiyMatn, 'berilgan');
  assert.equal(r.natijalar[1].rasmiyMatn, 'bekor');

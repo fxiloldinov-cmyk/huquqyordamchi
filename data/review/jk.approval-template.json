@@ -1,0 +1,40 @@
+{
+  "doc": "jk",
+  "candidateFile": "jk.json",
+  "candidateSha256": "a7cbfab6cd56c198c779200c1a0da9584ca0257dae39cf3057cf66c3ca7f481b",
+  "sourceUrl": "https://lex.uz/docs/-111453",
+  "sourceSha256": "091fe27cbe92b4d6f94e3f0cc73edf1ae04426e919bef9cef455cd15bded9b36",
+  "status": "pending",
+  "reviewer": null,
+  "reviewedAt": null,
+  "effectiveFrom": null,
+  "effectiveTo": null,
+  "effectiveDateVerified": false,
+  "amendments": [
+    {
+      "art": "244-1",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "reviewed": false
+    },
+    {
+      "art": "244-2",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "reviewed": false
+    },
+    {
+      "art": "246",
+      "publishedAt": null,
+      "effectiveFrom": null,
+      "reviewed": false
+    }
+  ],
+  "changedArticles": [
+    "244-1",
+    "244-2",
+    "246"
+  ],
+  "lawyerNotes": null,
+  "removedArticles": []
+}

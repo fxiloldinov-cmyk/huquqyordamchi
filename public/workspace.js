@@ -7,6 +7,7 @@
   const root = $("#view-ish");
   if (!root) return;
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const restrictionLabel = reason => ({'historical-text-unavailable':'voqea sanasidagi tarixiy matn yo‘q','newer-publication':'yangi nashr bor; mahalliy nusxa tekshiruvda','source-date-conflict':'rasmiy va lokal sanalar mos emas','local-content-changed':'lokal nusxa tekshiruvdan keyin o‘zgargan','indexed-text-differs':'modda matnida farq bor; tekshiruvda','not-yet-effective':'bu sanada hali kuchga kirmagan','expired':'bu sanada amal qilish oralig‘idan tashqarida','amendment-date-unresolved':'o‘zgartirish sanasi aniqlashtirilishi kerak','invalid-event-date':'voqea sanasi noto‘g‘ri'}[reason] || 'manba tekshirilishi kerak');
   const render = (t) => (typeof md === "function" ? md(t) : `<p>${esc(t)}</p>`);
   const SRC_RE = /⁣HK:SRC:([^⁣]*)⁣/g;
   const LOCAL_KEY = "hk-ws-local";
@@ -109,16 +110,16 @@
     const box = $("#ws-sources");
     activeSources = src;
     if (!src || (!src.passages?.length && !src.claims?.length)) {
-      box.innerHTML = `<p class="ws-muted">Javob olingach, unda ishlatilgan rasmiy parchalar shu yerda chiqadi.</p>${src?.clarify?.length ? `<div class="ws-clarify"><b>Manba yetishmadi. Aniqlashtiring:</b><ul>${src.clarify.map((q) => `<li>${esc(q)}</li>`).join("")}</ul></div>` : ""}`;
+      box.innerHTML = `<p class="ws-muted">Javob olingach, unda ishlatilgan parchalar shu yerda chiqadi.</p>${src?.withheld?.length ? `<p>Manba cheklovi: ${src.withheld.map(w=>esc(w.name)+": "+esc(restrictionLabel(w.reason))).join("; ")}</p>` : ""}${src?.clarify?.length ? `<div class="ws-clarify"><b>Manba yetishmadi. Aniqlashtiring:</b><ul>${src.clarify.map((q) => `<li>${esc(q)}</li>`).join("")}</ul></div>` : ""}`;
       $("#ws-src-count").textContent = "";
       return;
     }
     const claims = (src.claims || []).map((c) => `<li class="ws-claim lv-${esc(c.level?.replace(/\s/g, "-"))}"><button type="button" data-open-src="${esc(c.sourceId)}"><span class="ico">${esc(c.icon || "•")}</span><span><b>${esc(c.where)}</b><small>«${esc(c.snippet)}»</small><small>${esc(c.status)}</small>
       <span class="ws-tags"><em class="ws-tag">manba mavjud: ${c.exists ? "ha" : "yo‘q"}</em>${c.overlap ? `<em class="ws-tag">so‘zlar mosligi: ${esc(c.overlap.level)}</em>` : ""}${c.quote ? `<em class="ws-tag">iqtibos: ${c.quote.found ? "manbada bor" : "topilmadi"}</em>` : ""}<em class="ws-tag">yurist tekshirgan: yo‘q</em>${c.model ? `<em class="ws-tag">${esc(c.model.label)}: ${esc(c.model.verdict)}</em>` : ""}</span></span></button></li>`).join("");
     const passages = (src.passages || []).map((p) => `<details class="ws-passage kind-${esc(p.kind)}" id="src-${esc(p.sourceId).replace(/[^\w-]/g, "_")}" ${p.sourceId === focusId ? "open" : ""}>
-      <summary><b>${esc(p.label || p.sourceId)}</b><small>${p.kind === "kitob" ? "Foydalanuvchi yuklagan kitob · rasmiy tekshirilmagan" : p.kind === "plenum" ? "Plenum tushuntirishi (qonun emas)" : "Qonun · rasmiy matn (lex.uz)"}${p.asOf ? " · tahrir " + esc(p.asOf) : ""}${p.origin ? " · " + esc(p.origin) : ""}</small></summary>
+      <summary><b>${esc(p.label || p.sourceId)}</b><small>${p.kind === "kitob" ? "Foydalanuvchi yuklagan kitob · rasmiy tekshirilmagan" : p.kind === "plenum" ? "Plenum tushuntirishi (qonun emas)" : "Lokal bazadagi huquqiy matn"}${p.asOf ? " · tahrir " + esc(p.asOf) : ""}${p.origin && p.kind === "kitob" ? " · " + esc(p.origin) : ""}${p.integrityNote ? " · " + esc(p.integrityNote) : ""}</small></summary>
       <pre class="ws-excerpt">${esc(p.text)}</pre>${p.url ? `<a href="${esc(p.url)}" target="_blank" rel="noopener noreferrer">Lex.uz’da ochish ↗</a>` : ""}</details>`).join("");
-    box.innerHTML = `${claims ? `<h4>Javobdagi da’volar</h4><ul class="ws-claims">${claims}</ul>` : ""}${src.unsupported?.length ? `<h4>Manba ko‘rsatilmagan da’volar</h4><ul class="ws-unsup">${src.unsupported.map((u) => `<li>❔ ${esc(u)}</li>`).join("")}</ul>` : ""}${src.clarify?.length ? `<div class="ws-clarify"><b>Aniqlashtiruvchi savollar</b><ul>${src.clarify.map((q) => `<li>${esc(q)}</li>`).join("")}</ul></div>` : ""}<h4>Tahlilga berilgan parchalar</h4>${passages || '<p class="ws-muted">Parcha berilmagan.</p>'}<p class="ws-legend">${esc(CLAIM_HELP)}</p>`;
+    box.innerHTML = `${src.withheld?.length ? `<p class="ws-muted">Berilmagan manbalar: ${src.withheld.map(w => esc(w.name) + ": " + esc(restrictionLabel(w.reason))).join("; ")}</p>` : ""}${src.externalSources?.length ? `<p class="ws-muted">Tashqi qidiruv: ${src.externalSources.map(s => esc(s.title)).join("; ")}. Mazmuni tekshirilmagan.</p>` : ""}${claims ? `<h4>Javobdagi da’volar</h4><ul class="ws-claims">${claims}</ul>` : ""}${src.unsupported?.length ? `<h4>Manba ko‘rsatilmagan da’volar</h4><ul class="ws-unsup">${src.unsupported.map((u) => `<li>❔ ${esc(u)}</li>`).join("")}</ul>` : ""}${src.clarify?.length ? `<div class="ws-clarify"><b>Aniqlashtiruvchi savollar</b><ul>${src.clarify.map((q) => `<li>${esc(q)}</li>`).join("")}</ul></div>` : ""}<h4>Tahlilga berilgan parchalar</h4>${passages || '<p class="ws-muted">Parcha berilmagan.</p>'}<p class="ws-legend">${esc(CLAIM_HELP)}</p>`;
     $("#ws-src-count").textContent = src.passages?.length ? `(${src.passages.length})` : "";
     if (focusId) openSource(focusId);
   }
@@ -199,7 +200,7 @@
       if (TASKS[task].api === "chat") {
         const prior = current.entries.slice(0, -1).filter((x) => x.task === "chat").slice(-3).flatMap((x) => [{ role: "user", content: x.question.slice(0, 3000) }, { role: "assistant", content: (x.answer || "").slice(0, 6000) }]).filter((m) => m.content.trim());
         timer = setTimeout(() => controller?.abort(), 70000);
-        const res = await fetch("/api/chat", { method: "POST", signal: controller.signal, headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages: [...prior, { role: "user", content: question }], mode: current.kind === "kazus" ? "student" : "citizen", lang: globalThis.HK_I18N?.lang || "uz" }) });
+        const res = await fetch("/api/chat", { method: "POST", signal: controller.signal, headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages: [...prior, { role: "user", content: question }], eventDate: current.eventDate, mode: current.kind === "kazus" ? "student" : "citizen", lang: globalThis.HK_I18N?.lang || "uz" }) });
         if (!res.ok || !res.body) throw new Error((await errorOf(res)) || `Server xatosi (${res.status})`);
         const raw = await streamInto(res, (t) => { box().innerHTML = render(splitSources(t).text); });
         Object.assign(entry, { answer: splitSources(raw).text, sources: splitSources(raw).payload });

@@ -508,6 +508,18 @@
     "Sozlash": ["Настроить", "Customise"],
     "Tanlovni saqlash": ["Сохранить выбор", "Save choice"],
     "Cookie sozlamalari": ["Настройки cookie", "Cookie settings"],
+    "Kalkulyator": ["Калькулятор", "Calculator"],
+    "Javob foydali bo‘ldimi?": ["Был ли ответ полезен?", "Was this answer helpful?"],
+    "Foydali": ["Полезно", "Helpful"],
+    "Xato bor": ["Есть ошибка", "Something is wrong"],
+    "Sabab": ["Причина", "Reason"],
+    "Noto‘g‘ri modda": ["Неверная статья", "Wrong article"],
+    "Eskirgan ma’lumot": ["Устаревшие сведения", "Outdated information"],
+    "Tushunarsiz": ["Непонятно", "Unclear"],
+    "Izoh (ixtiyoriy)": ["Комментарий (необязательно)", "Comment (optional)"],
+    "Shaxsiy ma’lumot yozmang": ["Не указывайте личные данные", "Do not include personal data"],
+    "Yuborilmoqda…": ["Отправка…", "Sending…"],
+    "Rahmat, bahoingiz saqlandi.": ["Спасибо, ваша оценка сохранена.", "Thank you, your rating was saved."],
     "Hisobsiz foydalansangiz, savol va hujjatlaringiz saqlanmaydi. Hisob ochsangiz, faqat email, ismingiz va siz “Saqlash” tugmasi bilan saqlagan materiallar saqlanadi; hisobni o‘chirsangiz, ular butunlay o‘chiriladi. AI savollari Google Gemini xizmatiga yuboriladi. Shaxsiy ma’lumotlarni olib tashlang.": ["Если вы пользуетесь сайтом без аккаунта, вопросы и документы не сохраняются. Если вы создадите аккаунт, сохраняются только email, имя и материалы, которые вы сами сохранили кнопкой «Сохранить»; при удалении аккаунта они удаляются безвозвратно. Вопросы для AI отправляются в Google Gemini. Удаляйте личные данные.", "If you use the site without an account, your questions and documents are not stored. With an account, only your email, name and the items you save with the “Save” button are stored; deleting the account removes them permanently. AI questions are sent to Google Gemini. Remove personal data."],
   };
   const NOTE = {

@@ -1,0 +1,20 @@
+{
+  "doc": "plenum05",
+  "status": "pending",
+  "lawyerReview": "kutilmoqda",
+  "source": "https://lex.uz/docs/-2414320",
+  "sourceSha256": "9d73a81e3c5981eb2ecc87f8ae7310d7f663d2bcfc69ab28a8d48d05707b9190",
+  "checkedAt": "2026-11-08T06:47:26.953640+00:00",
+  "localAsOf": "2011-07-20",
+  "textCompared": true,
+  "effectiveDateVerified": false,
+  "candidateSha256": "1527c748277d41340739bd069b4a371b67730e4b071def80c5f9a644ed1b7911",
+  "result": "indexed-text-matches",
+  "candidateAsOf": "2011-07-20",
+  "added": [],
+  "removed": [],
+  "changed": [],
+  "problems": [],
+  "candidate": null,
+  "amendments": []
+}

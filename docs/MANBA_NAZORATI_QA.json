@@ -1,0 +1,54 @@
+{
+  "checkedAt": "2026-11-07T20:27:18.450955+00:00",
+  "tests": {
+    "total": 202,
+    "passed": 202,
+    "failed": 0
+  },
+  "build": "passed",
+  "browser": [
+    {
+      "width": 1280,
+      "rows": 19,
+      "eventDatePropagated": true,
+      "integrityVisible": true,
+      "externalOriginVisible": true,
+      "pageErrors": [],
+      "documentOverflow": false
+    },
+    {
+      "width": 390,
+      "rows": 19,
+      "eventDatePropagated": true,
+      "integrityVisible": true,
+      "externalOriginVisible": true,
+      "pageErrors": [],
+      "documentOverflow": false
+    }
+  ],
+  "historicalMobileScenario": "passed: no current text supplied for 2024 event",
+  "liveAiTested": false,
+  "productionDeployed": false,
+  "lawyerReview": "kutilmoqda",
+  "documentsInventoried": 20,
+  "indexedDocumentsCompared": 19,
+  "indexedTextMatches": 17,
+  "indexedTextDifferences": {
+    "fk1": [
+      "288",
+      "360",
+      "382"
+    ],
+    "jk": [
+      "244-1",
+      "244-2",
+      "246"
+    ]
+  },
+  "yhqReviewAssets": {
+    "images": 18,
+    "tables": 3,
+    "downloadedImages": 18,
+    "interpreted": false
+  }
+}

@@ -1,6 +1,6 @@
 import {trafficCoverageNotice} from '../shared/traffic.mjs';
 import { guardJsonPost, jsonError, jsonResponse, isAllowedOrigin, geminiConfig, callGeminiResilient, providerError, pipeGeminiStream, LEGAL_RULES } from '../shared/common.mjs';
-import { retrieve, citationReport, sourcesMarker } from '../shared/rag.mjs';
+import { retrieve, citationReport, sourcesMarker, retrievalNotice } from '../shared/rag.mjs';
 import { internationalEnabled } from '../shared/features.mjs';
 import { guardAi } from '../shared/limits.mjs';
 import { INTERNATIONAL_TOPICS, internationalInput, internationalPrompt } from '../shared/international.mjs';
@@ -34,6 +34,6 @@ export default async (req, ctx) => {
   const r = await callGeminiResilient({apiKey,models,thinkingLevel,stream:true,signal:req.signal,timeoutMs:58000,body:{system_instruction:{parts:[{text:LEGAL_RULES+'\n'+internationalPrompt(input)+rag.block}]},contents:[{role:'user',parts:[{text:JSON.stringify(input)}]}],generationConfig:{temperature:0.1,maxOutputTokens:6000}}});
   if (!r.ok) return providerError(r);
   if (!r.upstream.body) return jsonError('AI javobi kelmadi.',502);
-  return pipeGeminiStream(r.upstream,{deadlineAt:started+48000,onEnd:(sources,text)=>citationReport(text,rag.provided,{bands:rag.bands,bandsBy:rag.bandsBy,eventDate:input.eventDate})+sourcesMarker(text,rag,{eventDate:input.eventDate})});
+  return pipeGeminiStream(r.upstream,{deadlineAt:started+48000,prefix:retrievalNotice(rag),onEnd:(sources,text)=>citationReport(text,rag.provided,{bands:rag.bands,bandsBy:rag.bandsBy,eventDate:input.eventDate})+sourcesMarker(text,rag,{eventDate:input.eventDate,externalSources:sources})});
  } catch { return jsonError('AI bilan ulanish uzildi. / AI connection interrupted.',502); }
 };

@@ -96,7 +96,7 @@ function renderLocalBlock(query, exclude = new Set()) {
             <span class="chip ${a.reviewedAt ? "ok" : "mid"}">${a.reviewedAt ? "Raqam va nom tekshirildi: "+a.reviewedAt : "Katalog yozuvi — manbani tekshiring"}</span>
           </div>
           <div class="article-title">${escapeHtml(a.title)}</div>
-          <a class="article-link" href="${docUrl(a.doc)}" target="_blank" rel="noopener">Hujjatni lex.uz da ochish ↗</a>
+          ${r.integrityNote ? `<p class="small">${escapeHtml(r.integrityNote)}</p>` : ""}${r.iqtibosTekshiruvi ? `<p class="small">Iqtibos: ${r.iqtibosTekshiruvi.found ? "lokal matnda bor" : "lokal matnda topilmadi"}. Xulosa tasdiqlanmagan.</p>` : ""}<a class="article-link" href="${docUrl(a.doc)}" target="_blank" rel="noopener">Hujjatni lex.uz da ochish ↗</a>
         </li>`).join("")}</ul>
     </div>`;
   }
@@ -122,12 +122,12 @@ function renderAiBlock(data) {
       <div class="article-top">
         ${r.modda ? `<span class="article-badge">${escapeHtml(r.modda)}-modda</span>` : ""}
         <span class="article-doc">${escapeHtml(r.hujjat)}</span>
-        ${r.rasmiyMatn === 'berilgan' ? `<span class="chip ok">Rasmiy matn bilan tekshirildi</span>` : r.rasmiyMatn === 'kodeksda' ? `<span class="chip mid">Kodeksda bor — matnini tekshiring</span>` : r.rasmiyMatn === 'bekor' ? `<span class="chip low">Modda kuchini yo‘qotgan</span>` : r.rasmiyMatn === 'yoq' ? `<span class="chip low">Kodeksda bunday modda yo‘q</span>` : verified ? `<span class="chip ok">Hujjat va modda raqami katalogga mos</span>` : `<span class="chip mid">AI taklifi — norma tekshirilsin</span>`}
+        ${r.rasmiyMatn === 'berilgan' ? `<span class="chip ok">Lokal matn parchasi tahlilga berilgan</span>` : r.rasmiyMatn === 'kodeksda' ? `<span class="chip mid">Kodeksda bor — matnini tekshiring</span>` : r.rasmiyMatn === 'bekor' ? `<span class="chip low">Modda kuchini yo‘qotgan</span>` : r.rasmiyMatn === 'yoq' ? `<span class="chip low">Kodeksda bunday modda yo‘q</span>` : verified ? `<span class="chip ok">Hujjat havolasi katalogga mos; modda tekshirilsin</span>` : `<span class="chip mid">AI taklifi — norma tekshirilsin</span>`}
       </div>
       ${r.moddaNomi ? `<div class="article-title">${escapeHtml(r.moddaNomi)}</div>` : ""}
       ${r.asos ? `<div class="article-basis">${r.asos === 'mos' ? '<span class="chip ok">Izoh modda matni bilan mos (so‘z mosligi)</span>' : '<span class="chip low">Izoh modda matni bilan kam mos — tekshiring</span>'}${r.tahrir ? ` <span class="chip">Tahrir: ${escapeHtml(r.tahrir)}</span>` : ''}</div>` : ""}
       ${r.nimaUchun ? `<p class="article-why">${escapeHtml(r.nimaUchun)}</p>` : ""}
-      <a class="article-link" href="${escapeHtml(r.url)}" target="_blank" rel="noopener">${r.hujjatTasdiqlangan ? "Hujjatni lex.uz da ochish ↗" : "lex.uz da qidirish ↗"}</a>
+      ${r.integrityNote ? `<p class="small">${escapeHtml(r.integrityNote)}</p>` : ""}${r.iqtibosTekshiruvi ? `<p class="small">Iqtibos: ${r.iqtibosTekshiruvi.found ? "lokal matnda bor" : "lokal matnda topilmadi"}. Xulosa tasdiqlanmagan.</p>` : ""}<a class="article-link" href="${escapeHtml(r.url)}" target="_blank" rel="noopener">${r.hujjatTasdiqlangan ? "Hujjatni lex.uz da ochish ↗" : "lex.uz da qidirish ↗"}</a>
     </li>`;
   }).join("");
   const sources = data.manbalar?.length

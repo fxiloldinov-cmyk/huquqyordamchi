@@ -1,9 +1,10 @@
+import {publicSourceMetadata,sourceOrigin,lawContentHash} from '../netlify/shared/source-integrity.mjs';
 import {internationalEnabled} from '../netlify/shared/features.mjs';
 import {readFile,writeFile,mkdir,rm} from 'node:fs/promises';
 const data=JSON.parse(await readFile(new URL('../data/legal.json',import.meta.url),'utf8'));
 // Bazadagi rasmiy matn holati (lex.uz ID → tahrir sanasi): kodeks kartochkalarida ko'rsatiladi.
 const lawBase={};
-for(const f of ['kon','mk','ok','fk1','fk2','fpk','jk','jpk','mjtk','sk','ujk','ipk','ist','jik','msk','plenum05','yhq','ypx975']){try{const l=JSON.parse(await readFile(new URL(`../data/laws/${f}.json`,import.meta.url),'utf8'));if(l.lexId&&l.asOf)lawBase[l.lexId]=l.asOf;}catch{}}
+for(const f of ['kon','mk','ok','fk1','fk2','fpk','jk','jpk','mjtk','sk','ujk','ipk','ist','jik','msk','plenum05','yhq','ypx975','iiv502']){try{const l=JSON.parse(await readFile(new URL(`../data/laws/${f}.json`,import.meta.url),'utf8'));if(l.lexId&&l.asOf)lawBase[l.lexId]=l.asOf;}catch{}}
 await writeFile(new URL('../public/legal-data.js',import.meta.url),'// Generated from data/legal.json — run npm run build after edits.\nglobalThis.HK_LEGAL = '+JSON.stringify(data)+';\nglobalThis.HK_LAWBASE = '+JSON.stringify(lawBase)+';\n');
 
 // ---- SEO: har bir vaziyat uchun statik sahifa, ro'yxat sahifasi, sitemap.xml va robots.txt ----
@@ -101,7 +102,8 @@ ${oferta.sections.map(s=>`<section><h2>${esc(s.h)}</h2>${s.p.map(t=>`<p>${esc(t)
 await mkdir(new URL('../public/oferta/',import.meta.url),{recursive:true});
 await writeFile(new URL('../public/oferta/index.html',import.meta.url),page({path:'/oferta/',title:'Ommaviy oferta — HuquqYordamchi xizmatlaridan foydalanish shartlari',description:'HuquqYordamchi veb-sayti va xizmatlaridan foydalanish shartlari: shartnoma predmeti, taraflarning majburiyatlari, javobgarlik, shaxsga doir ma’lumotlar va nizolarni hal qilish.',body:ofertaBody,jsonld:[crumbs([['Bosh sahifa','/'],[oferta.title,'/oferta/']])]}));
 
-const urls=['/','/alphabet.html','/vaziyat/',...pages,'/oferta/',...(internationalEnabled()?['/international.html']:[])];
+const germaniya=['/germaniya/',...['anmeldung','yashash-ruxsati','talaba-ishi','ijara'].map(s=>`/germaniya/${s}.html`)];
+const urls=['/','/alphabet.html','/vaziyat/',...pages,'/oferta/',...germaniya,...(internationalEnabled()?['/international.html']:[])];
 await writeFile(new URL('../public/sitemap.xml',import.meta.url),`<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map(u=>`  <url><loc>${SITE}${u}</loc><lastmod>${today}</lastmod></url>`).join('\n')}
@@ -120,6 +122,38 @@ const oldOrigin=(/<link rel="canonical" href="(https?:\/\/[^"/]+)\//.exec(indexH
 if(oldOrigin&&oldOrigin!==SITE)await writeFile(indexUrl,indexHtml.replaceAll(oldOrigin+'/',SITE+'/'));
 console.log(`SEO: ${pages.length} ta vaziyat sahifasi, sitemap (${urls.length} URL), robots.txt — ${SITE}`);
 
+// ---- Manba holati: data/laws dagi matn data/source-status.json dagi tekshirilgan xeshga mos bo‘lishi shart ----
+// Aks holda runtime butun hujjatni "local-content-changed" deb javobdan chiqaradi — buni deploy’dan oldin, buildda aytamiz.
+{
+  const { readdir } = await import('node:fs/promises');
+  const status = JSON.parse(await readFile(new URL('../data/source-status.json', import.meta.url), 'utf8'));
+  const lawDir = new URL('../data/laws/', import.meta.url), stale = [];
+  for (const f of (await readdir(lawDir)).filter(f => f.endsWith('.json') && f !== 'manifest.json')) {
+    const law = JSON.parse(await readFile(new URL(f, lawDir), 'utf8')), audit = status.documents?.[law.doc];
+    if (audit && (audit.localAsOf !== law.asOf || audit.localContentSha256 !== lawContentHash(law))) stale.push(law.doc);
+  }
+  if (stale.length) { console.error(`Manba holati eskirgan: ${stale.join(', ')}. Matn o‘zgargan, lekin data/source-status.json yangilanmagan — "npm run audit:sources" ni ishga tushiring yoki review:approve orqali tasdiqlang.`); process.exit(1); }
+}
+
+// ---- Kalkulyatorlar (v11.13): data/calc tekshiriladi, faqat lawyerReview="tasdiqlangan" yozuvlar funksiyaga o‘tadi ----
+// Xato bo‘lsa build to‘xtaydi. Natija netlify/shared/calc-approved.json (qo‘lda tahrirlanmaydi; public/ va SW keshiga tushmaydi).
+{
+  const { readdir } = await import('node:fs/promises');
+  const { validateAll } = await import('../netlify/shared/calc.mjs');
+  const lawDir = new URL('../data/laws/', import.meta.url), articles = new Set(), meta = {};
+  for (const f of (await readdir(lawDir)).filter(f => f.endsWith('.json') && f !== 'manifest.json')) {
+    const law = JSON.parse(await readFile(new URL(f, lawDir), 'utf8')), doc = f.replace(/\.json$/, '');
+    for (const a of law.articles || []) { articles.add(`${doc}:${a.art}`); meta[`${doc}:${a.art}`] = { url: law.url || null, doc: law.name, title: a.title || '' }; }
+  }
+  const calcs = JSON.parse(await readFile(new URL('../data/calc/calculators.json', import.meta.url), 'utf8'));
+  const holidays = JSON.parse(await readFile(new URL('../data/calc/holidays.json', import.meta.url), 'utf8'));
+  let approved;
+  try { approved = validateAll(calcs, { articles, holidays }); } catch (e) { console.error('data/calc xatosi:', e.message); process.exit(1); }
+  const out = { _generated: 'scripts/build-data.mjs — qo‘lda tahrirlamang; manba: data/calc/', calculators: approved.map(c => ({ ...c, source: meta[c.sourceRef] })), holidays: holidays.lawyerReview === 'tasdiqlangan' ? holidays : null };
+  await writeFile(new URL('../netlify/shared/calc-approved.json', import.meta.url), JSON.stringify(out, null, 1) + '\n');
+  console.log(`Kalkulyatorlar: ${calcs.length} ta yozuv, ${approved.length} ta tasdiqlangan`);
+}
+
 // ---- Baza qamrovi: raqamlar data/ dagi haqiqiy fayllardan hisoblanadi (public/coverage.json, #qamrov) ----
 {
   const { readdir } = await import('node:fs/promises');
@@ -133,11 +167,14 @@ console.log(`SEO: ${pages.length} ta vaziyat sahifasi, sitemap (${urls.length} U
     const law = JSON.parse(await readFile(new URL(f, lawDir), 'utf8'));
     const key = Object.keys(manifest).find(k => manifest[k].file === f);
     const m = manifest[key] || {};
-    docs.push({ doc: key || f.replace('.json', ''), name: law.name, kind: ['yhq','ypx975'].includes(key)?'qoida':law.kind === 'band' ? 'plenum' : 'qonun', unit: law.kind === 'band' ? 'band' : 'modda',
-      units: law.articles.length, repealed: (law.repealed || []).length, asOf: law.asOf, importedAt: law.importedAt || m.importedAt || null,
-      autoUpdate: m.autoUpdate !== false && law.kind !== 'band', url: law.url, archivedEditions: archive.filter(a => a.startsWith((key || '') + '-') || a.startsWith((key || '') + '_')).length });
+    docs.push({ doc: key || f.replace('.json', ''), name: law.name, kind: ['yhq','ypx975','iiv502'].includes(key)?'qoida':law.kind === 'band' ? 'plenum' : 'qonun', unit: law.kind === 'band' ? 'band' : 'modda',
+      units: law.articles.length, repealed: (law.repealed || []).length, asOf: law.asOf, publishedAt:law.publishedAt||null, effectiveFrom:law.effectiveFrom||null, ...publicSourceMetadata(law), scope:law.provenance?.scope||'indexed-text', importedAt: law.importedAt || m.importedAt || null,
+      monitoring:sourceOrigin(law.url)==='lex-document-link'?'weekly-page-audit':'manual',contentUpdate:'legal-review-required', autoUpdate: m.autoUpdate !== false && law.kind !== 'band', url: law.url, archivedEditions: await readdir(new URL(`archive/${key}/`,lawDir)).then(a=>a.filter(f=>f.endsWith('.json.gz')).length).catch(()=>0) });
   }
   const court = courtStatus();
+  // data/pending: egasi bergan, lekin lex.uz havolasi hali yo‘q hujjatlar — AI ularga tayanmaydi.
+  const pending = [];
+  try { for (const f of (await readdir(new URL('../data/pending/', import.meta.url))).filter(f => f.endsWith('.json'))) { const p = JSON.parse(await readFile(new URL('../data/pending/' + f, import.meta.url), 'utf8')); pending.push({ name: p.name, why: `Egasi nusxasi bor (${p.articles.length} band), lekin lex.uz havolasi hali yo‘q — tekshirilmaguncha javoblarda ishlatilmaydi.${p.proposedEffectiveFrom ? ` Taklif qilingan sana: ${p.proposedEffectiveFrom}; rasmiy tasdiqlanmagan.` : ''}` }); } } catch {}
   const coverage = {
     generatedAt: today, site: SITE,
     totals: { documents: docs.length, laws: docs.filter(d => d.kind === 'qonun').length, plenums: docs.filter(d => d.kind === 'plenum').length,
@@ -147,12 +184,14 @@ console.log(`SEO: ${pages.length} ta vaziyat sahifasi, sitemap (${urls.length} U
     docs,
     notConnected: [
       ...(!docs.some(d=>d.doc==='yhq')?[{name:'Yo‘l harakati qoidalari',why:'YHQ matni bazaga kiritilmagan. Egasi Word/HTML eksportini beradi.'}]:[]),
+      ...pending,
+      {name:'YHQ ilovalari',why:'Yo‘l belgisi va chiziq rasmlari, jadvallar hamda barcha ilovalar to‘liq indekslanmagan. Ular bo‘yicha xulosa chiqarilmaydi.'},
       ...court.notConnected.map(s => ({ name: s.name, why: s.note })),
       { name: 'TSUL elektron kutubxonasi', why: 'Rasmiy API va ruxsat yo‘q; kitob matni avtomatik olinmaydi.' },
-      { name: 'Qonunlarning tarixiy tahrirlari', why: 'Bazada amaldagi tahrir saqlanadi; voqea sanasidagi eski tahrir matni yo‘q (faqat o‘zgartish izohlari va importdagi so‘nggi 3 arxiv nusxa).' },
+      { name: 'Qonunlarning tarixiy tahrirlari', why: 'Bazada import qilingan nusxa saqlanadi; uning bugun amalda ekanligi alohida tekshiriladi; voqea sanasidagi eski tahrir matni yo‘q (faqat o‘zgartish izohlari va importda saqlangan arxiv nusxalar; ular avtomatik ravishda tarixiy amaldagi matn deb olinmaydi).' },
       { name: 'Boshqa qonun va qarorlar', why: 'Bazada yuqoridagi hujjatlar bor; qolgan normativ hujjatlar faqat lex.uz havolasi orqali.' },
     ],
-    note: 'Sana — bazadagi tahrir (lex.uz e’lon sanasi) va import sanasi. Haftalik avtomatik tekshiruv natijasi GitHub Actions jurnalida; bazaga faqat yangi tahrir topilganda yoziladi.',
+    note: 'Nashr, kuchga kirish, import va tekshiruv sanalari alohida. Nashr sanasi tengligi matn yoki huquqiy xulosani tasdiqlamaydi. Haftalik kuzatuv kodi mavjud; bajarilish holati GitHub Actions jurnalidan tekshiriladi. Yangilanishlar tekshiruv navbatiga tushadi.',
   };
   await writeFile(new URL('../public/coverage.json', import.meta.url), JSON.stringify(coverage, null, 1));
   console.log(`Qamrov: ${coverage.totals.documents} hujjat, ${coverage.totals.articles} modda, ${coverage.totals.bands} band, ${court.decisions} sud qarori`);

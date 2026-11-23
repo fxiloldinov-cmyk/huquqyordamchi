@@ -539,6 +539,7 @@ async function ask(text) {
       throw new Error(detail || `AI server xatosi (${res.status})`);
     }
 
+    const responseId = res.headers.get("X-HK-Response-Id");
     const reader = res.body.getReader();
     const dec = new TextDecoder();
     // Oxiridagi yashirin manbalar belgisi (HK:SRC) matnda ko'rsatilmaydi
@@ -554,6 +555,7 @@ async function ask(text) {
     if (!answer.trim()) throw new Error("AI bo'sh javob qaytardi.");
     bubble.innerHTML = md(answer);
     history.push({ role: "assistant", content: answer });
+    globalThis.HKFeedback?.attach(bubble, responseId);
   } catch (err) {
     const safeMessage = err?.name==='AbortError'?'So‘rov to‘xtatildi yoki kutish vaqti tugadi.':(err instanceof Error ? err.message : "Noma'lum xatolik");
     bubble.innerHTML = md(

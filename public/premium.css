@@ -12,7 +12,7 @@
 @media(max-width:800px){.suite-grid{grid-template-columns:1fr}.suite-heading{display:block}.product-suite{padding:18px}.hero-question{flex-wrap:wrap}.hero-question input{flex-basis:65%}.plans-top{flex-wrap:wrap}}
 @media(prefers-reduced-motion:reduce){.suite-card{transition:none}.suite-card:hover{transform:none}}
 
-[data-international][hidden],[data-plans][hidden]{display:none!important}
+[data-international][hidden],[data-plans][hidden],[data-classroom][hidden],[data-calc][hidden]{display:none!important}
 
 /* v12: 60/30/10 rang qoidasi — krem fon (60%), to‘q ko‘k bloklar (30%), oltin urg‘u (10%) */
 :root{--serif:Georgia,"Times New Roman",serif;--navy-2:#0a1d35}
@@ -44,3 +44,5 @@ body,main{overflow-x:clip}
 .ws-tabs button[aria-selected=true]{color:var(--card)}
 footer{background:var(--navy-2);border-top:0;color:#d8dee6}footer .brand,footer a{color:#f4efe6}footer .brand small,.footer-main p,.footer-bottom{color:#93a2b4}.footer-main p a{color:var(--gold)}.footer-bottom{border-color:#ffffff1a}
 @media(max-width:700px){.hero{padding:60px 0 116px}.hero-photo{height:auto}.photo-caption{bottom:22px;left:0;right:0}.hero-copy>p{font-size:15px}.hero-question{border-radius:20px}.hero-question input{padding-left:10px}.hero-facts{flex-wrap:wrap;justify-content:center;gap:14px}.hero-facts span{border:0;padding:0;text-align:center;flex:1 1 40%}.section-head h2,.faq h2{font-size:27px}.student-banner h2{font-size:28px}}
+/* v11.13: javobga baho (faqat HK_FEEDBACK_ENABLED=1) */
+.fb-box{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:6px 0 14px;font-size:14px;color:var(--muted)}.fb-btn{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:999px;padding:4px 12px;font:inherit;cursor:pointer}.fb-btn:hover{border-color:var(--accent)}.fb-btn:disabled{opacity:.6;cursor:default}.fb-form{display:flex;flex-wrap:wrap;gap:8px;width:100%}.fb-form label{display:flex;flex-direction:column;gap:4px;flex:1 1 220px}.fb-form textarea,.fb-form select{font:inherit;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--text);padding:6px}.fb-status{width:100%}
