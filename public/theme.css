@@ -1,17 +1,17 @@
 /* Dizayn tokenlari — DESIGN.md. Oxirgi yuklanadi: eski o'zgaruvchi nomlari (--bg, --text, ...) ham shu qiymatlarga bog'langan. */
-/* Ranglar tamg'a logosidan: siyoh (asosiy), bronza (urg'u, faqat bezak va to'q varianti matnda), qog'oz (tungi rejimda asosiy). */
+/* Fon toza oq, neytrallar sovuq kulrang. Logodan: siyoh (asosiy) va bronza (urg'u). Qaymoq/qog'oz rangi interfeysda yo'q. */
 :root{
-  --c-bg:#fbfaf7;--c-surface:#f3f1ec;--c-border:#e6e2d9;--c-border-strong:#cfc8ba;
-  --c-text:#1a1f26;--c-muted:#4d525a;--c-subtle:#666a71;
-  --c-primary:#1d2b3a;--c-primary-hover:#121c27;--c-on-primary:#ffffff;--c-link:#6e5220;--c-primary-soft:#efe9dc;
-  --c-accent:#b48c49;--c-ink:#1d2b3a;--c-paper:#e8dcc0;
+  --c-bg:#ffffff;--c-surface:#f5f6f8;--c-border:#e3e6ea;--c-border-strong:#c8cdd4;
+  --c-text:#161c24;--c-muted:#4a515b;--c-subtle:#646b75;
+  --c-primary:#1d2b3a;--c-primary-hover:#121c27;--c-on-primary:#ffffff;--c-link:#6e5220;--c-primary-soft:#eceff3;
+  --c-accent:#b48c49;--c-ink:#1d2b3a;--c-on-ink:#ffffff;
   --c-success:#1a7f4b;--c-warning:#9a5b06;--c-danger:#b42318;--c-focus:#9a7536;
   --font:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans",Arial,sans-serif;
   --t-display:60px;--t-h1:40px;--t-h2:36px;--t-h3:19px;--t-body-lg:18px;--t-body:16px;--t-small:14px;
   --s-1:4px;--s-2:8px;--s-3:12px;--s-4:16px;--s-5:24px;--s-6:32px;--s-7:48px;--s-8:80px;--s-9:120px;
   --w-page:1200px;--w-read:680px;
   --r-sm:6px;--r-md:10px;--r-lg:14px;--r-pill:999px;
-  --shadow-1:0 1px 2px rgb(26 31 38 / .06),0 1px 3px rgb(26 31 38 / .04);
+  --shadow-1:0 1px 2px rgb(22 28 36 / .06),0 1px 3px rgb(22 28 36 / .04);
   /* eski nomlar */
   --bg:var(--c-bg);--card:var(--c-bg);--text:var(--c-text);--muted:var(--c-muted);--line:var(--c-border);--soft:var(--c-surface);
   --blue:var(--c-primary);--deep:var(--c-text);--accent:var(--c-link);--navy:var(--c-primary);--navy-ui:var(--c-primary);--gold:var(--c-accent);
@@ -20,8 +20,8 @@
 }
 :root[data-theme=dark]{
   --c-bg:#111519;--c-surface:#171c22;--c-border:#29303a;--c-border-strong:#3b4350;
-  --c-text:#ece8df;--c-muted:#b3b0a8;--c-subtle:#95928b;
-  --c-primary:#e8dcc0;--c-primary-hover:#f3ead6;--c-on-primary:#111519;--c-link:#d6b77c;--c-primary-soft:#262117;
+  --c-text:#eceef1;--c-muted:#b0b6bf;--c-subtle:#8f96a0;
+  --c-primary:#eef1f4;--c-primary-hover:#ffffff;--c-on-primary:#111519;--c-link:#d6b77c;--c-primary-soft:#1f2630;
   --c-accent:#c9a465;
   --c-success:#5fc58f;--c-warning:#e3a94c;--c-danger:#f08a80;--c-focus:#d6b77c;
   --shadow-1:0 1px 2px rgb(0 0 0 / .4);
@@ -29,8 +29,8 @@
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme=light]){
   --c-bg:#111519;--c-surface:#171c22;--c-border:#29303a;--c-border-strong:#3b4350;
-  --c-text:#ece8df;--c-muted:#b3b0a8;--c-subtle:#95928b;
-  --c-primary:#e8dcc0;--c-primary-hover:#f3ead6;--c-on-primary:#111519;--c-link:#d6b77c;--c-primary-soft:#262117;
+  --c-text:#eceef1;--c-muted:#b0b6bf;--c-subtle:#8f96a0;
+  --c-primary:#eef1f4;--c-primary-hover:#ffffff;--c-on-primary:#111519;--c-link:#d6b77c;--c-primary-soft:#1f2630;
   --c-accent:#c9a465;
   --c-success:#5fc58f;--c-warning:#e3a94c;--c-danger:#f08a80;--c-focus:#d6b77c;
   --shadow-1:0 1px 2px rgb(0 0 0 / .4);

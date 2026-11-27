@@ -1,10 +1,10 @@
 # HuquqYordamchi — dizayn tizimi
 
-Yo‘nalish: **kino-kadrli, tahririy, sokin.** Bosh sahifa tepasida butun ekranli haqiqiy video (Toshkent), uning ustida katta ingichka sarlavha va qidiruv; pastda iliq oq fonli keng bo‘limlar va bitta siyoh rangli tasma. Sayt baribir matn va qidiruvdan iborat: foydalanuvchi muammo bilan keladi, unga tez javob va manba kerak.
+Yo‘nalish: **kino-kadrli, tahririy, sokin.** Bosh sahifa tepasida butun ekranli haqiqiy video (Toshkent), uning ustida katta ingichka sarlavha va qidiruv; pastda toza oq fonli keng bo‘limlar va bitta siyoh rangli tasma. Sayt baribir matn va qidiruvdan iborat: foydalanuvchi muammo bilan keladi, unga tez javob va manba kerak.
 
 Nimadan qochamiz (avvalgi versiyani "AI yasagan" qilib ko‘rsatgan narsalar): AI chizgan yoki xira stok rasm, serif + oltin kursiv sarlavha, karta ichida karta, mayda kulrang matn, bir xil kartalar qatori, emoji ikonalar, gradient fonlar.
 
-Manba: legora.com bosh sahifasi ko‘rib chiqildi (2026-11-27): butun ekranli haqiqiy video, 400 og‘irlikdagi katta sarlavha, iliq oq fon, yorug‘/to‘q bo‘limlar almashinuvi, pill CTA. Ularning brendi, yashil rangi, matni va videolari ishlatilmaydi; ranglar o‘zimizning tamg‘a logosidan (egasining tanlovi).
+Manba: legora.com bosh sahifasi ko‘rib chiqildi (2026-11-27): butun ekranli haqiqiy video, 400 og‘irlikdagi katta sarlavha, och fon, yorug‘/to‘q bo‘limlar almashinuvi, pill CTA. Ularning brendi, yashil rangi, matni va videolari ishlatilmaydi; ranglar o‘zimizning tamg‘a logosidan (egasining tanlovi).
 
 ## Hero
 
@@ -26,7 +26,7 @@ Qadimiy turkiy tamg‘a uslubidagi belgi: muhr doirasi ichida **H** va uning ost
 | H va oyoqlar | `#e8dcc0` | eski qog‘oz rangi, chiziq 3.8/64, uchlari yumaloq |
 
 - Manba: `public/assets/favicon.svg` (kichik o‘lcham, halqasiz). Sahifalarda inline SVG `class="hidoya"` (halqa bilan). PNG ikonkalar: `scripts/make-icons.ps1`.
-- Logo ranglari interfeysga ham o‘tdi (egasining tanlovi, 2026-11-27): siyoh — asosiy, bronza — urg‘u, qog‘oz — tungi rejimdagi asosiy rang.
+- Logo ranglari interfeysga ham o‘tdi (egasining tanlovi, 2026-11-27): siyoh — asosiy, bronza — urg‘u. Qog‘oz (qaymoq) rangi faqat logoda: egasi uni interfeysdan olib tashlatdi, fon toza oq.
 - Yozuv: **Huquq**Yordamchi, tizim shrifti.
 
 ## Rang
@@ -35,24 +35,24 @@ Asosiy rang — tamg‘a siyohi. Bronza `--c-accent` faqat bezak (sarlavha ustid
 
 | Token | Yorug‘ | Tungi | Vazifasi |
 |---|---|---|---|
-| `--c-bg` | `#fbfaf7` | `#111519` | Sahifa foni (iliq oq) |
-| `--c-surface` | `#f3f1ec` | `#171c22` | Ikkinchi darajali yuzalar, footer |
-| `--c-border` | `#e6e2d9` | `#29303a` | Chegaralar, ajratgichlar |
-| `--c-border-strong` | `#cfc8ba` | `#3b4350` | Maydon chegaralari (input) |
-| `--c-text` | `#1a1f26` | `#ece8df` | Asosiy matn, sarlavhalar |
-| `--c-muted` | `#4d525a` | `#b3b0a8` | Ikkinchi darajali matn (7.5:1) |
-| `--c-subtle` | `#666a71` | `#95928b` | Izohlar, faqat 14px+ (surface ustida 4.8:1) |
-| `--c-primary` | `#1d2b3a` | `#e8dcc0` | Asosiy tugma foni, faol holat |
-| `--c-primary-hover` | `#121c27` | `#f3ead6` | Asosiy tugma hover |
+| `--c-bg` | `#ffffff` | `#111519` | Sahifa foni (toza oq) |
+| `--c-surface` | `#f5f6f8` | `#171c22` | Ikkinchi darajali yuzalar, footer (sovuq kulrang) |
+| `--c-border` | `#e3e6ea` | `#29303a` | Chegaralar, ajratgichlar |
+| `--c-border-strong` | `#c8cdd4` | `#3b4350` | Maydon chegaralari (input) |
+| `--c-text` | `#161c24` | `#eceef1` | Asosiy matn, sarlavhalar |
+| `--c-muted` | `#4a515b` | `#b0b6bf` | Ikkinchi darajali matn (8:1) |
+| `--c-subtle` | `#646b75` | `#8f96a0` | Izohlar, faqat 14px+ (surface ustida 5:1) |
+| `--c-primary` | `#1d2b3a` | `#eef1f4` | Asosiy tugma foni, faol holat |
+| `--c-primary-hover` | `#121c27` | `#ffffff` | Asosiy tugma hover |
 | `--c-on-primary` | `#ffffff` | `#111519` | Asosiy tugma ustidagi matn |
 | `--c-link` | `#6e5220` | `#d6b77c` | Havolalar (to‘q bronza, 7:1) |
-| `--c-primary-soft` | `#efe9dc` | `#262117` | Tanlangan chip, belgilangan qator foni |
+| `--c-primary-soft` | `#eceff3` | `#1f2630` | Tanlangan chip, belgilangan qator foni |
 | `--c-accent` | `#b48c49` | `#c9a465` | Bezak: chiziqlar, fokusdagi qidiruv chegarasi. Matnda emas |
-| `--c-ink` / `--c-paper` | `#1d2b3a` / `#e8dcc0` | xuddi shu | Hero, yuqori qator, manba tasmasi foni / ular ustidagi urg‘u |
+| `--c-ink` / `--c-on-ink` | `#1d2b3a` / `#ffffff` | xuddi shu | Hero, yuqori qator, manba tasmasi foni / ular ustidagi havola, fokus va tugma |
 | `--c-success` | `#1a7f4b` | `#5fc58f` | Muvaffaqiyat |
 | `--c-warning` | `#9a5b06` | `#e3a94c` | Ogohlantirish (manba ⚠️) |
 | `--c-danger` | `#b42318` | `#f08a80` | Xato |
-| `--c-focus` | `#9a7536` | `#d6b77c` | Fokus halqasi (3px, 4:1); siyoh fon ustida `--c-paper` |
+| `--c-focus` | `#9a7536` | `#d6b77c` | Fokus halqasi (3px, 4:1); siyoh fon ustida `--c-on-ink` |
 
 Kontrast: matn ≥ 4.5:1, katta matn ≥ 3:1 (ikkala rejimda tekshirilgan qiymatlar).
 

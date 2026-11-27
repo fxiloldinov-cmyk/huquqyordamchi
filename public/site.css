@@ -203,7 +203,7 @@ body:has(#view-home.active) .header:not(.scrolled) .brand small{color:rgb(255 25
 body:has(#view-home.active) .header:not(.scrolled) .icon-btn{border-color:rgb(255 255 255 / .3)}
 body:has(#view-home.active) .header:not(.scrolled) :is(.icon-btn,.account-btn):hover{background:rgb(255 255 255 / .12)}
 body:has(#view-home.active) .header:not(.scrolled) .account-btn{background:transparent;border-color:rgb(255 255 255 / .4)}
-body:has(#view-home.active) .header:not(.scrolled) .btn-primary{background:var(--c-paper);border-color:var(--c-paper);color:var(--c-ink)}
+body:has(#view-home.active) .header:not(.scrolled) .btn-primary{background:var(--c-on-ink);border-color:var(--c-on-ink);color:var(--c-ink)}
 @media (min-width:861px){
   body:has(#view-home.active) .header:not(.scrolled) #main-nav a{color:rgb(255 255 255 / .85)}
   body:has(#view-home.active) .header:not(.scrolled) #main-nav a:hover{color:#fff;background:rgb(255 255 255 / .12)}
@@ -211,7 +211,7 @@ body:has(#view-home.active) .header:not(.scrolled) .btn-primary{background:var(-
 .header .btn-primary{border-radius:var(--r-pill)}
 /* Yuqori qator: siyoh fonli ingichka chiziq */
 .utility{background:var(--c-ink);color:rgb(255 255 255 / .8);border-bottom:0}
-.utility a{color:var(--c-paper)}
+.utility a{color:var(--c-on-ink)}
 .utility .lang-switch{border-color:rgb(255 255 255 / .22)}
 .utility .lang-switch button{color:rgb(255 255 255 / .75)}
 .utility .lang-switch button[aria-pressed=true]{background:rgb(255 255 255 / .14);color:#fff;box-shadow:none}
@@ -230,11 +230,11 @@ body:has(#view-home.active) .header:not(.scrolled) .btn-primary{background:var(-
 .hero .privacy-line{color:rgb(255 255 255 / .72);font-size:12.5px;margin-top:var(--s-4)}
 .hero .chips{margin-top:var(--s-3)}
 .hero .hero-meta{margin-top:var(--s-4)}
-.hero .privacy-line a{color:var(--c-paper)}
+.hero .privacy-line a{color:var(--c-on-ink)}
 .hero .hero-meta{color:rgb(255 255 255 / .8)}
 .hero #smart-search,.hero #hero-ask{border-color:transparent;box-shadow:0 10px 40px rgb(0 0 0 / .25)}
 .hero #smart-search:focus-within,.hero #hero-ask:focus-within{border-color:var(--c-accent);box-shadow:0 0 0 3px rgb(201 164 101 / .45),0 10px 40px rgb(0 0 0 / .25)}
-.hero :focus-visible{outline-color:var(--c-paper)}
+.hero :focus-visible{outline-color:var(--c-on-ink)}
 .hero #smart-results{background:var(--c-bg);color:var(--c-text);border-radius:var(--r-lg);padding:var(--s-5);margin-top:var(--s-4)}
 #view-home .start-paths{margin-top:var(--s-8)}
 /* Manba bloki: butun kenglikdagi siyoh tasma */
@@ -242,11 +242,11 @@ body:has(#view-home.active) .header:not(.scrolled) .btn-primary{background:var(-
 .trust h2{color:#fff}
 .trust .trust-copy p{color:rgb(255 255 255 / .75)}
 .trust .trust-note{background:rgb(255 255 255 / .06);border-left-color:var(--c-accent);color:#fff!important}
-.trust a{color:var(--c-paper)}
+.trust a{color:var(--c-on-ink)}
 .trust .trust-legend,.trust .trust-legend>div{border-color:rgb(255 255 255 / .14)}
 .trust .trust-legend dt{color:#fff}
 .trust .trust-legend dd{color:rgb(255 255 255 / .72)}
-.trust :focus-visible{outline-color:var(--c-paper)}
+.trust :focus-visible{outline-color:var(--c-on-ink)}
 #view-home .trust+.section{padding-top:var(--s-8)}
 #view-home .student-banner{background:var(--c-surface);background-image:none}
 @media (max-width:860px){
