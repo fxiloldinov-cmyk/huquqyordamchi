@@ -10,7 +10,8 @@ Manba: legora.com bosh sahifasi ko‘rib chiqildi (2026-11-27): butun ekranli ha
 
 - Video: `public/assets/hero/hazrati-imom.mp4` (Hazrati Imom majmuasi, quyosh botishi; Pexels 17874608, Pexels litsenziyasi, 1920×1080, 2,3 MB). Poster: `hazrati-imom.jpg`.
 - Video faqat kompyuterda (≥701px), "harakatni kamaytirish" va trafik tejash o‘chiq bo‘lsa yuklanadi va ko‘rinib turganda o‘ynaydi (`motion.js`). Telefonda faqat poster. SW keshiga kirmaydi.
-- Ustida qorong‘i gradient (yuqori 60%, o‘rta 20%, past 88%) — oq matn har doim o‘qiladi.
+- Matn, qidiruv va misollar **chapga tekislangan** (markazdagi hero — AI shablonining belgisi). Qoraytirish chapdan o‘ngga (90% → 5%): matn ostida to‘q, video o‘ng tomonda ochiq ko‘rinadi. Telefonda (≤860px) qoraytirish yuqoridan pastga.
+- AI shabloniga xos narsalar ishlatilmaydi (egasining talabi, 2026-11-27): markazdagi hero, sarlavha ustidagi rangli chiziq, bir xil kartalar qatori. "Ikki yo‘l" kartalar emas, ustida to‘q chiziq bo‘lgan ikki ustunli havola qatori.
 - Bosh sahifa tepasida sarlavha (header) shaffof, oq matnli; aylantirilganda oddiy holatga qaytadi.
 
 Kod: tokenlar `public/theme.css` da (oxirgi yuklanadi). Sahifalarda faqat token nomlari ishlatiladi.
@@ -31,7 +32,7 @@ Qadimiy turkiy tamg‘a uslubidagi belgi: muhr doirasi ichida **H** va uning ost
 
 ## Rang
 
-Asosiy rang — tamg‘a siyohi. Bronza `--c-accent` faqat bezak (sarlavha ustidagi chiziq, faol chegara); matnda uning to‘q varianti `--c-link`.
+Asosiy rang — tamg‘a siyohi. Bronza `--c-accent` faqat bezak (fokusdagi qidiruv chegarasi, manba tasmasidagi eslatma chizig‘i); matnda uning to‘q varianti `--c-link`.
 
 | Token | Yorug‘ | Tungi | Vazifasi |
 |---|---|---|---|
@@ -67,7 +68,7 @@ Sabab: o‘zbek lotin (o‘ g‘) va kirill (ў қ ғ ҳ) harflari hamma joyda t
 |---|---|---|---|
 | `--t-display` | 60px / 1.05 (mobil 36px) | 400 | Faqat bosh sahifa sarlavhasi, oq, video ustida |
 | `--t-h1` | 40px / 1.2 (mobil 30px) | 700 | Sahifa sarlavhasi |
-| `--t-h2` | 36px / 1.15 (mobil 28px) | 450 | Bo‘lim sarlavhasi; ustida 32×2px bronza chiziq |
+| `--t-h2` | 36px / 1.15 (mobil 28px) | 450 | Bo‘lim sarlavhasi, bezaksiz |
 | `--t-h3` | 19px / 1.35 | 600 | Karta/blok sarlavhasi |
 | `--t-body-lg` | 18px / 1.6 | 400 | Kirish matni, qidiruv maydoni |
 | `--t-body` | 16px / 1.6 | 400 | Asosiy matn (minimal) |

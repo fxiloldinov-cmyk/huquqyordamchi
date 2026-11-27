@@ -194,7 +194,6 @@ footer a:hover{color:var(--c-text)}
 html,body{overflow-x:clip}
 h2,.section-head h2,.faq h2,.student-banner h2{font-weight:450;letter-spacing:-.025em;line-height:1.15}
 .suite-heading h2{font-weight:600}
-.section-head h2::before{content:"";display:block;width:32px;height:2px;background:var(--c-accent);margin-bottom:var(--s-4)}
 /* Bosh sahifa tepasida sarlavha shaffof, video ustida turadi */
 .header{transition:background-color .2s ease-out,border-color .2s ease-out}
 body:has(#view-home.active) .header:not(.scrolled){background:transparent;border-bottom-color:transparent}
@@ -218,9 +217,17 @@ body:has(#view-home.active) .header:not(.scrolled) .btn-primary{background:var(-
 .hero{position:relative;isolation:isolate;display:flex;flex-direction:column;justify-content:flex-end;min-height:min(calc(100svh - 40px),900px);margin:-65px calc(50% - 50vw) 0;padding:calc(65px + var(--s-7)) max(var(--s-5),calc(50vw - var(--w-page)/2 + var(--s-5))) var(--s-7);overflow:hidden;color:#fff;background:var(--c-ink)}
 .hero-media{position:absolute;inset:0;z-index:-1;background:var(--c-ink) url(/assets/hero/hazrati-imom.jpg) center/cover no-repeat}
 .hero-video{display:block;width:100%;height:100%;object-fit:cover}
-.hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgb(17 21 25 / .6) 0%,rgb(17 21 25 / .2) 30%,rgb(17 21 25 / .55) 60%,rgb(17 21 25 / .88) 100%)}
-.hero h1{font-size:var(--t-display);font-weight:400;line-height:1.05;letter-spacing:-.035em;max-width:16ch;color:#fff;margin-bottom:var(--s-4)}
-.hero-lead{color:rgb(255 255 255 / .85);margin-bottom:var(--s-6)}
+/* Matn chapda: qoraytirish ham chapdan, video o'ng tomonda ochiq ko'rinadi */
+.hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgb(17 21 25 / .9) 0%,rgb(17 21 25 / .78) 38%,rgb(17 21 25 / .25) 70%,rgb(17 21 25 / .05) 100%),linear-gradient(180deg,rgb(17 21 25 / .45) 0%,transparent 22%)}
+.hero{text-align:left;align-items:flex-start}
+.hero>:not(.hero-media){max-width:720px;width:100%}
+.hero>h1#hero-title{max-width:20ch}
+.hero h1{font-size:var(--t-display);font-weight:400;line-height:1.05;letter-spacing:-.035em;max-width:14ch;color:#fff;margin:0 0 var(--s-4);text-wrap:balance}
+.hero-lead{color:rgb(255 255 255 / .85);margin:0 0 var(--s-6);max-width:52ch}
+.hero .search-console{margin:0;max-width:720px}
+.hero .console-top{justify-content:flex-start}
+.hero .chips{justify-content:flex-start}
+.hero .privacy-line{text-align:left;margin-left:0;margin-right:0}
 .hero .console-tabs{background:rgb(255 255 255 / .1);border-color:rgb(255 255 255 / .22)}
 .hero .console-tab{color:rgb(255 255 255 / .85)}
 .hero .console-tab.active{background:#fff;color:var(--c-ink)}
@@ -237,6 +244,16 @@ body:has(#view-home.active) .header:not(.scrolled) .btn-primary{background:var(-
 .hero :focus-visible{outline-color:var(--c-on-ink)}
 .hero #smart-results{background:var(--c-bg);color:var(--c-text);border-radius:var(--r-lg);padding:var(--s-5);margin-top:var(--s-4)}
 #view-home .start-paths{margin-top:var(--s-8)}
+/* Ikki yo'l: karta emas, chiziqlar orasidagi ikki ustunli havola qatori */
+#view-home .start-paths{gap:0;border-top:1px solid var(--c-text);border-bottom:1px solid var(--c-border)}
+#view-home .start-card{flex-direction:row;flex-wrap:wrap;align-items:baseline;column-gap:var(--s-3);padding:var(--s-5) var(--s-5) var(--s-5) 0;border:0;border-radius:0;background:none}
+#view-home .start-card+.start-card{border-left:1px solid var(--c-border);padding-left:var(--s-5)}
+#view-home .start-card:hover{background:var(--c-surface)}
+#view-home .start-card .path-label{flex-basis:100%}
+#view-home .start-card b{font-size:22px;font-weight:500;letter-spacing:-.015em}
+#view-home .start-card span:not(.path-label){flex-basis:100%;order:3}
+#view-home .start-card em{order:2;margin:0}
+#view-home .start-card:hover b{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
 /* Manba bloki: butun kenglikdagi siyoh tasma */
 #view-home .section.trust{margin:var(--s-8) calc(50% - 50vw) 0;padding:var(--s-8) max(var(--s-5),calc(50vw - var(--w-page)/2 + var(--s-5)));background:var(--c-ink);color:#fff}
 .trust h2{color:#fff}
@@ -251,6 +268,8 @@ body:has(#view-home.active) .header:not(.scrolled) .btn-primary{background:var(-
 #view-home .student-banner{background:var(--c-surface);background-image:none}
 @media (max-width:860px){
   .hero{margin-top:-57px;padding-top:calc(57px + var(--s-7));padding-bottom:var(--s-6);min-height:min(100svh,760px)}
+  .hero-media::after{background:linear-gradient(180deg,rgb(17 21 25 / .55) 0%,rgb(17 21 25 / .35) 30%,rgb(17 21 25 / .75) 60%,rgb(17 21 25 / .9) 100%)}
+  #view-home .start-card+.start-card{border-left:0;border-top:1px solid var(--c-border);padding-left:0}
 }
 @media (max-width:640px){
   .hero{padding-left:var(--s-4);padding-right:var(--s-4)}
