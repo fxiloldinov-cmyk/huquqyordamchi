@@ -15,6 +15,14 @@ Live site: https://huquqyordamchiuz.netlify.app/ (Netlify). Current version: **v
 - **Status:** the site is currently in a **test phase**; the oferta requisites intentionally remain placeholders until launch — don't fill them with invented data.
 - **Open business TODOs:** fill real requisites (name, STIR/TIN, address, email, phone) in `data/oferta.json` → `requisites`; lawyer review of the oferta and of `eval/cases.json` expectations; email (Resend) not yet configured; TSUL library integration not connected; Telegram bot has no RAG yet; personal-data storage abroad (Netlify) needs legal check.
 
+## Design (2026-11-27 redesign)
+
+- **`DESIGN.md` at the repo root is the source of truth** for color, type, spacing, components. Tokens live in `public/theme.css`; home components in `public/site.css`. Both load last (after `styles.css`, `premium.css`), and `theme.css` maps the legacy names (`--bg`, `--text`, `--gold`…) onto the new tokens.
+- Direction: white background, one navy primary (`#123a66`), system font, no serif/gold/cream, no stock hero photo, no entrance animations, no uppercase eyebrows on home. The owner rejected the old look as "obviously AI-made" — don't reintroduce it.
+- Home order: hero (title + the single `#qidiruv` search console) → two paths → situations (list rows) → templates → "Manba qanday tekshiriladi" (`#manba`) → codes → students → news → FAQ → "Boshqa bo‘limlar" (`.product-suite`, beta areas). Hero numbers come from `coverage.json` via `suite.js` — never hard-code them.
+- New UI strings need ru/en entries in `public/i18n.js` (`D` dictionary); Cyrillic is automatic.
+- The Brand section below describes the older palette; the logo itself is unchanged.
+
 ## Brand
 
 - **Logo — "Hidoya" mark:** an arched portal/niche (off-white `#f5f7fa`) with a gold four-point star (`#c9a24b`) on a rounded navy square (`#123a66`). Source: `public/assets/favicon.svg`. Used in header, footer, hero caption, favicon and all static pages. Wordmark: **Huquq**Yordamchi.

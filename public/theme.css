@@ -1,0 +1,35 @@
+/* Dizayn tokenlari — DESIGN.md. Oxirgi yuklanadi: eski o'zgaruvchi nomlari (--bg, --text, ...) ham shu qiymatlarga bog'langan. */
+:root{
+  --c-bg:#ffffff;--c-surface:#f5f7fa;--c-border:#e2e6eb;--c-border-strong:#c9d0d8;
+  --c-text:#16202c;--c-muted:#4a5563;--c-subtle:#667180;
+  --c-primary:#123a66;--c-primary-hover:#0d2c4f;--c-on-primary:#ffffff;--c-link:#1b5aa6;--c-primary-soft:#eaf1f9;
+  --c-success:#1a7f4b;--c-warning:#9a5b06;--c-danger:#b42318;--c-focus:#1b5aa6;
+  --font:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans",Arial,sans-serif;
+  --t-display:44px;--t-h1:32px;--t-h2:24px;--t-h3:18px;--t-body-lg:18px;--t-body:16px;--t-small:14px;
+  --s-1:4px;--s-2:8px;--s-3:12px;--s-4:16px;--s-5:24px;--s-6:32px;--s-7:48px;--s-8:64px;--s-9:96px;
+  --w-page:1120px;--w-read:680px;
+  --r-sm:6px;--r-md:10px;--r-lg:14px;
+  --shadow-1:0 1px 2px rgb(16 24 40 / .06),0 1px 3px rgb(16 24 40 / .04);
+  /* eski nomlar */
+  --bg:var(--c-bg);--card:var(--c-bg);--text:var(--c-text);--muted:var(--c-muted);--line:var(--c-border);--soft:var(--c-surface);
+  --blue:var(--c-primary);--deep:var(--c-text);--accent:var(--c-link);--navy:var(--c-primary);--navy-ui:var(--c-primary);--gold:var(--c-primary);
+  --radius:var(--r-md);--shadow:none;--serif:var(--font);
+  color-scheme:light;
+}
+:root[data-theme=dark]{
+  --c-bg:#0f151c;--c-surface:#151d26;--c-border:#263240;--c-border-strong:#3a4757;
+  --c-text:#e7ecf2;--c-muted:#a9b4c1;--c-subtle:#8794a3;
+  --c-primary:#9cc0ec;--c-primary-hover:#b6d1f2;--c-on-primary:#0f151c;--c-link:#9cc0ec;--c-primary-soft:#18283a;
+  --c-success:#5fc58f;--c-warning:#e3a94c;--c-danger:#f08a80;--c-focus:#9cc0ec;
+  --shadow-1:0 1px 2px rgb(0 0 0 / .4);
+  color-scheme:dark;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){
+  --c-bg:#0f151c;--c-surface:#151d26;--c-border:#263240;--c-border-strong:#3a4757;
+  --c-text:#e7ecf2;--c-muted:#a9b4c1;--c-subtle:#8794a3;
+  --c-primary:#9cc0ec;--c-primary-hover:#b6d1f2;--c-on-primary:#0f151c;--c-link:#9cc0ec;--c-primary-soft:#18283a;
+  --c-success:#5fc58f;--c-warning:#e3a94c;--c-danger:#f08a80;--c-focus:#9cc0ec;
+  --shadow-1:0 1px 2px rgb(0 0 0 / .4);
+  color-scheme:dark;
+}}
+@media (max-width:640px){:root{--t-display:32px;--t-h1:26px;--t-h2:22px}}

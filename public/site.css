@@ -1,0 +1,189 @@
+/* Komponentlar — DESIGN.md. theme.css dagi tokenlardan foydalanadi; eng oxirida yuklanadi. */
+
+/* ---- Asos ---- */
+body{font-family:var(--font);font-size:var(--t-body);line-height:1.6;background:var(--c-bg);color:var(--c-text);-webkit-font-smoothing:antialiased}
+h1,h2,h3,.hero h1,.section-head h2,.faq h2,.student-banner h2,.suite-heading h2,.console-top h2,.workspace-heading h1,.ws-head-row h1,.detail-header h1{font-family:var(--font);font-style:normal;letter-spacing:-.02em;color:var(--c-text)}
+h2,.section-head h2,.faq h2{font-size:var(--t-h2);line-height:1.25;font-weight:650}
+h3{font-size:var(--t-h3);line-height:1.35;font-weight:600}
+a{color:var(--c-link)}
+:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--c-focus);outline-offset:2px}
+#smart-query:focus-visible,#hero-input:focus-visible{outline:none}
+::selection{background:var(--c-primary-soft)}
+.wrap{max-width:var(--w-page);padding-left:var(--s-5);padding-right:var(--s-5)}
+/* Paydo bo'lish animatsiyalari yo'q: hamma narsa darhol ko'rinadi */
+.motion-ready [data-reveal]{opacity:1!important;transform:none!important;transition:none!important}
+/* Bosh sahifada katta harfli "eyebrow" yozuvlar ishlatilmaydi */
+#view-home .eyebrow,#view-home .section-label{display:none}
+
+/* ---- Tugmalar ---- */
+.btn{min-height:44px;padding:0 var(--s-5);border-radius:var(--r-sm);font-size:15px;font-weight:600;border:1px solid transparent;transition:background-color .15s ease-out,border-color .15s ease-out}
+.btn-sm{min-height:40px;padding:0 var(--s-4);font-size:14px}
+.btn-primary{background:var(--c-primary);border-color:var(--c-primary);color:var(--c-on-primary)}
+.btn-primary:hover{background:var(--c-primary-hover);border-color:var(--c-primary-hover);color:var(--c-on-primary);text-decoration:none}
+.btn-ghost,.btn-light,.btn-outline-light{background:var(--c-bg);border-color:var(--c-border-strong);color:var(--c-text)}
+.btn-ghost:hover,.btn-light:hover,.btn-outline-light:hover{background:var(--c-surface);text-decoration:none}
+.btn:disabled{opacity:.5;cursor:default}
+.header .header-actions .btn,.header .btn-sm{font-size:14px;min-height:40px;padding:0 var(--s-4)}
+.link-arrow{font-size:15px}
+.doc-tab-btn{font-size:14px}
+.icon-btn{width:40px;height:40px;border-radius:var(--r-sm);border-color:var(--c-border);color:var(--c-text);background:transparent}
+.icon-btn:hover{background:var(--c-surface)}
+
+/* ---- Yuqori qator va menyu ---- */
+.utility{background:var(--c-surface);color:var(--c-muted);border-bottom:1px solid var(--c-border);font-size:13px;padding:6px 0}
+.utility a{color:var(--c-link)}
+.lang-switch{background:transparent;border:1px solid var(--c-border);border-radius:var(--r-sm)}
+.lang-switch button{color:var(--c-muted);border-radius:4px}
+.lang-switch button[aria-pressed=true]{background:var(--c-bg);color:var(--c-text);box-shadow:var(--shadow-1)}
+.header{background:var(--c-bg);border-bottom:1px solid var(--c-border);backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none}
+.header.scrolled{box-shadow:none}
+.header-inner{min-height:64px;gap:var(--s-6)}
+.brand{font-size:19px;font-weight:700;letter-spacing:-.01em;color:var(--c-text)}
+.brand small{font-size:10px;letter-spacing:.06em;color:var(--c-subtle);font-weight:600}
+.brand-accent{color:var(--c-text);font-weight:500}
+#main-nav{gap:var(--s-1);font-size:15px;font-weight:500}
+#main-nav a{color:var(--c-muted);padding:8px 12px;border-radius:var(--r-sm)}
+#main-nav a:hover{color:var(--c-text);background:var(--c-surface);text-decoration:none}
+
+/* ---- Hero: sarlavha + yagona qidiruv ---- */
+#view-home>.wrap{padding-top:0}
+.hero{display:block;text-align:center;padding:var(--s-9) 0 var(--s-8);margin:0;color:var(--c-text);background:none}
+.hero::before,.hero-photo{display:none}
+.hero h1{font-size:var(--t-display);line-height:1.1;font-weight:700;letter-spacing:-.03em;margin:0 auto var(--s-4);max-width:22ch;text-wrap:balance;color:var(--c-text)}
+.hero-lead{font-size:var(--t-body-lg);line-height:1.6;color:var(--c-muted);max-width:var(--w-read);margin:0 auto var(--s-6)}
+.hero .search-console{max-width:760px;margin:0 auto;text-align:left;padding:0;border:0;border-top:0;background:none;box-shadow:none}
+.console-top,.hero .console-top{display:flex;justify-content:center;margin-bottom:var(--s-3);flex-direction:row}
+.console-tabs{background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--r-md);padding:3px;gap:2px}
+.console-tab{font-size:14px;font-weight:600;color:var(--c-muted);padding:8px 16px;border-radius:7px;min-height:36px}
+.console-tab.active{background:var(--c-bg);color:var(--c-text);box-shadow:var(--shadow-1)}
+#smart-search,#hero-ask{background:var(--c-bg);border:1px solid var(--c-border-strong);border-radius:var(--r-lg);box-shadow:var(--shadow-1);padding:var(--s-2);transition:border-color .15s ease-out}
+#smart-search:focus-within,#hero-ask:focus-within{border-color:var(--c-primary);box-shadow:0 0 0 3px var(--c-primary-soft)}
+#smart-query,#hero-input{width:100%;border:0;background:transparent;color:var(--c-text);font:inherit;font-size:var(--t-body-lg);line-height:1.5;padding:var(--s-3) var(--s-3);resize:vertical;min-height:56px;box-shadow:none}
+#smart-query:focus,#hero-input:focus{outline:none}
+#smart-query::placeholder,#hero-input::placeholder{color:var(--c-subtle);opacity:1}
+.search-actions{margin:0;padding:0 var(--s-2) var(--s-1);gap:var(--s-3)}
+.search-actions>span,.search-actions small{font-size:var(--t-small);color:var(--c-subtle)}
+#hero-ask{display:flex;gap:var(--s-2);align-items:center}
+.chips{margin-top:var(--s-4);gap:var(--s-2);font-size:var(--t-small);color:var(--c-subtle);justify-content:center}
+.chips button{font-size:var(--t-small);min-height:36px;padding:6px 12px;background:var(--c-bg);border:1px solid var(--c-border);border-radius:var(--r-sm);color:var(--c-text);transition:border-color .15s ease-out}
+.chips button:hover{border-color:var(--c-border-strong);background:var(--c-surface)}
+.privacy-line{font-size:13px;line-height:1.6;color:var(--c-subtle);text-align:center;max-width:var(--w-read);margin:var(--s-5) auto 0}
+.hero-meta{margin:var(--s-6) 0 0;font-size:var(--t-small);color:var(--c-muted)}
+#smart-results{text-align:left}
+
+/* ---- Ikki yo'l ---- */
+.start-paths{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-4);margin:0}
+.start-card{display:flex;flex-direction:column;align-items:flex-start;gap:var(--s-1);text-align:left;padding:var(--s-5);background:var(--c-bg);border:1px solid var(--c-border);border-top:1px solid var(--c-border);border-radius:var(--r-md);box-shadow:none;color:var(--c-text);transition:border-color .15s ease-out}
+.start-card:hover{border-color:var(--c-border-strong);transform:none;box-shadow:none}
+.start-card.student{border-top:1px solid var(--c-border)}
+.start-card .path-label{font-size:var(--t-small);color:var(--c-subtle);font-weight:500}
+.start-card b{font-size:20px;font-weight:650;color:var(--c-text)}
+.start-card span:not(.path-label){color:var(--c-muted);font-size:15px}
+.start-card em{font-style:normal;font-weight:600;color:var(--c-link);margin-top:var(--s-2)}
+
+/* ---- Bo'limlar ---- */
+#view-home .section{padding-top:var(--s-8);padding-bottom:0}
+.section-head{align-items:flex-end;margin-bottom:var(--s-5);gap:var(--s-5)}
+.section-head p{font-size:15px;color:var(--c-muted);max-width:var(--w-read)}
+.filter-input input,#sit-search{min-height:44px;border:1px solid var(--c-border-strong);border-radius:var(--r-sm);background:var(--c-bg);color:var(--c-text);font-size:15px}
+.sit-groups{gap:var(--s-2)}
+.sit-group{min-height:36px;border-radius:var(--r-sm);border-color:var(--c-border);background:var(--c-bg);color:var(--c-muted);font-size:14px;font-weight:500}
+.sit-group[aria-pressed=true],.sit-group.active,.sit-group.on{background:var(--c-primary-soft);border-color:var(--c-primary-soft);color:var(--c-primary)}
+/* Vaziyatlar: karta to'ri emas, chegarali ro'yxat qatorlari */
+.situations-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 var(--s-6);border-top:1px solid var(--c-border)}
+.sit-card{min-height:0;padding:var(--s-4) var(--s-1);background:transparent;border:0;border-bottom:1px solid var(--c-border);border-radius:0;box-shadow:none;gap:var(--s-4);transition:background-color .15s ease-out}
+.sit-card:hover{background:var(--c-surface);border-color:var(--c-border);box-shadow:none;transform:none}
+.sit-icon-wrap{width:36px;height:36px;border-radius:var(--r-sm);background:var(--c-surface);color:var(--c-primary);flex:none}
+.sit-tag{font-size:12px;color:var(--c-subtle);letter-spacing:0;text-transform:none;font-weight:500}
+.sit-title{font-size:16px;font-weight:600;color:var(--c-text)}
+.sit-desc{font-size:14px;color:var(--c-muted)}
+.sit-arrow{color:var(--c-subtle)}
+.sit-more,.all-sits-link{margin-top:var(--s-4)}
+.link-arrow{color:var(--c-link);font-weight:600}
+
+/* Kodekslar, namunalar, yangiliklar: yengil chegaralar */
+.codes-grid{gap:var(--s-4)}
+.code-card,.doc-tabs,.news-panel,.doc-preview,.doc-form,.documents-layout>*{border-color:var(--c-border);border-radius:var(--r-md);box-shadow:none;background:var(--c-bg)}
+.code-card:hover{border-color:var(--c-border-strong);transform:none;box-shadow:none}
+.code-info p,.news-panel p{font-size:14px;color:var(--c-muted)}
+.filter-chip{border-radius:var(--r-sm)}
+.filter-chip.active,.filter-chip[aria-pressed=true]{background:var(--c-primary-soft);border-color:var(--c-primary-soft);color:var(--c-primary)}
+
+/* ---- Manba qanday tekshiriladi ---- */
+.trust{display:grid;grid-template-columns:1fr 1.1fr;gap:var(--s-7);align-items:start}
+.trust-copy p{color:var(--c-muted);max-width:52ch}
+.trust-note{border-left:3px solid var(--c-warning);background:var(--c-surface);padding:var(--s-3) var(--s-4);color:var(--c-text)!important;font-size:15px}
+.trust-copy a{font-weight:600}
+.trust-legend{margin:0;border-top:1px solid var(--c-border)}
+.trust-legend>div{display:grid;grid-template-columns:200px 1fr;gap:var(--s-4);padding:var(--s-4) 0;border-bottom:1px solid var(--c-border)}
+.trust-legend dt{font-weight:600}
+.trust-legend dd{margin:0;color:var(--c-muted)}
+
+/* ---- Talabalar ---- */
+.student-banner{background:var(--c-surface);color:var(--c-text);border:1px solid var(--c-border);border-radius:var(--r-md);padding:var(--s-6);margin-top:var(--s-8);gap:var(--s-6)}
+.student-banner h2{font-size:var(--t-h2);color:var(--c-text)}
+.student-banner p{color:var(--c-muted)}
+.analysis-steps span{border-color:var(--c-border);color:var(--c-muted);font-size:15px}
+.analysis-steps b{color:var(--c-text)}
+
+/* ---- Savollar ---- */
+.faq{gap:var(--s-7);padding-bottom:0}
+.faq>div>p{font-size:15px;color:var(--c-muted)}
+.faq details{font-size:16px;border-color:var(--c-border);padding:var(--s-4) 0}
+.faq summary{font-weight:600}
+.faq details p{color:var(--c-muted)}
+
+/* ---- Boshqa bo'limlar (ixcham) ---- */
+.product-suite{margin:var(--s-8) 0 var(--s-8);padding:0;border:0;background:none}
+.suite-heading{margin-bottom:var(--s-4)}
+.suite-heading h2{font-size:var(--t-h3)}
+.suite-heading p{font-size:15px;color:var(--c-muted)}
+.suite-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s-4)}
+.suite-card{padding:var(--s-4) var(--s-5);border-radius:var(--r-md);border-color:var(--c-border);background:var(--c-bg);gap:var(--s-1)}
+.suite-card:hover{border-color:var(--c-border-strong);transform:none}
+.suite-card h3{font-size:16px;margin:0}
+.suite-card p{font-size:14px;color:var(--c-muted);margin:0}
+.suite-card strong{font-size:14px;color:var(--c-link);font-weight:600}
+.suite-tag{font-size:12px;color:var(--c-subtle);text-transform:none;letter-spacing:0}
+
+/* ---- Footer ---- */
+footer{background:var(--c-surface);border-top:1px solid var(--c-border);color:var(--c-muted);display:block;padding:0;font-size:14px;margin-top:var(--s-8)}
+footer .brand{color:var(--c-text)}
+footer a{color:var(--c-muted)}
+footer a:hover{color:var(--c-text)}
+.footer-main{padding-top:var(--s-7);padding-bottom:var(--s-6);gap:var(--s-6)}
+.footer-main p{font-size:14px;color:var(--c-muted)}
+.footer-main p a{color:var(--c-link)}
+.footer-main>div{display:grid;grid-template-columns:repeat(3,minmax(0,auto));gap:var(--s-2) var(--s-6)}
+.footer-bottom{border-top:1px solid var(--c-border);color:var(--c-subtle);font-size:13px;padding-top:var(--s-4);padding-bottom:var(--s-4)}
+
+/* ---- Mobil pastki menyu ---- */
+.bottom-nav{background:var(--c-bg);border-top:1px solid var(--c-border)}
+.bottom-nav a{color:var(--c-muted)}
+
+/* ---- Moslashuvchanlik ---- */
+@media (max-width:960px){
+  .trust{grid-template-columns:1fr;gap:var(--s-5)}
+  .footer-main>div{grid-template-columns:repeat(2,minmax(0,auto))}
+}
+@media (max-width:860px){
+  .header-inner{min-height:56px}
+  #main-nav{background:var(--c-bg);border-bottom:1px solid var(--c-border)}
+  #main-nav a{font-size:16px;padding:12px 16px}
+  .hero{padding:var(--s-7) 0 var(--s-7)}
+  .start-paths{grid-template-columns:1fr}
+  .situations-grid{grid-template-columns:1fr}
+  .suite-grid{grid-template-columns:1fr}
+  #view-home .section{padding-top:var(--s-7)}
+  .student-banner{padding:var(--s-5);margin-top:var(--s-7)}
+  .faq{gap:var(--s-4)}
+}
+@media (max-width:640px){
+  .wrap{padding-left:var(--s-4);padding-right:var(--s-4)}
+  .hero-lead{font-size:16px}
+  .trust-legend>div{grid-template-columns:1fr;gap:var(--s-1)}
+  .footer-main>div{grid-template-columns:1fr 1fr}
+  .search-actions{flex-wrap:wrap}
+  .search-actions>span{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
