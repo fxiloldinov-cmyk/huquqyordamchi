@@ -59,16 +59,20 @@ Kontrast: matn ≥ 4.5:1, katta matn ≥ 3:1 (ikkala rejimda tekshirilgan qiymat
 
 ## Tipografiya
 
-Bitta oila: **tizim shrifti** — Windows’da Segoe UI, Apple’da SF Pro, Android’da Roboto.
+Sarlavhalar: **Unbounded** (Google Fonts, 400/500, kirill-ext bilan: ў қ ғ ҳ tekshirilgan) — faqat bosh sarlavha (iqtibos) va bo‘lim sarlavhalari, `--font-display`. Egasining tanlovi, 2026-11-27. AI saytlariga xos shriftlar (Inter, Geist, Poppins, Space Grotesk, Playfair va h.k.) ishlatilmaydi.
+
+Bosh sarlavha — huquq professori iqtibosi: Ronald Dvorkin, *Taking Rights Seriously* (1977): “Individual rights are political trumps held by individuals.” O‘zbekcha tarjima ostida muallif, kitob va asl inglizcha matn ko‘rsatiladi. Iqtibos almashtirilsa, faqat aniq manbali (kitob, yil, bob) professor gapi; to‘qilgan yoki "nisbat beriladigan" iqtibos qo‘yilmaydi.
+
+Matn: **tizim shrifti** — Windows’da Segoe UI, Apple’da SF Pro, Android’da Roboto.
 Sabab: o‘zbek lotin (o‘ g‘) va kirill (ў қ ғ ҳ) harflari hamma joyda to‘g‘ri chiqadi, tashqi shrift yuklanmaydi (tezlik va maxfiylik), sayt foydalanuvchi qurilmasiga "o‘zinikidek" ko‘rinadi. Serif ishlatilmaydi.
 
 `--font: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", Arial, sans-serif`
 
 | Token | O‘lcham / qator | Og‘irlik | Qayerda |
 |---|---|---|---|
-| `--t-display` | 60px / 1.05 (mobil 36px) | 400 | Faqat bosh sahifa sarlavhasi, oq, video ustida |
+| `--t-display` | clamp(28px, 3.4vw, 44px) / 1.15 | 400 | Bosh sahifa iqtibosi, Unbounded, oq, video ustida |
 | `--t-h1` | 40px / 1.2 (mobil 30px) | 700 | Sahifa sarlavhasi |
-| `--t-h2` | 36px / 1.15 (mobil 28px) | 450 | Bo‘lim sarlavhasi, bezaksiz |
+| `--t-h2` | clamp(24px, 2.6vw, 32px) / 1.15 | 400 | Bo‘lim sarlavhasi, Unbounded, bezaksiz |
 | `--t-h3` | 19px / 1.35 | 600 | Karta/blok sarlavhasi |
 | `--t-body-lg` | 18px / 1.6 | 400 | Kirish matni, qidiruv maydoni |
 | `--t-body` | 16px / 1.6 | 400 | Asosiy matn (minimal) |

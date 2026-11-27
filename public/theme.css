@@ -7,6 +7,7 @@
   --c-accent:#b48c49;--c-ink:#1d2b3a;--c-on-ink:#ffffff;
   --c-success:#1a7f4b;--c-warning:#9a5b06;--c-danger:#b42318;--c-focus:#9a7536;
   --font:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans",Arial,sans-serif;
+  --font-display:"Unbounded",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
   --t-display:60px;--t-h1:40px;--t-h2:36px;--t-h3:19px;--t-body-lg:18px;--t-body:16px;--t-small:14px;
   --s-1:4px;--s-2:8px;--s-3:12px;--s-4:16px;--s-5:24px;--s-6:32px;--s-7:48px;--s-8:80px;--s-9:120px;
   --w-page:1200px;--w-read:680px;

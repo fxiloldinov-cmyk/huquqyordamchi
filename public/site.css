@@ -221,7 +221,15 @@ body:has(#view-home.active) .header:not(.scrolled) .btn-primary{background:var(-
 .hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgb(17 21 25 / .9) 0%,rgb(17 21 25 / .78) 38%,rgb(17 21 25 / .25) 70%,rgb(17 21 25 / .05) 100%),linear-gradient(180deg,rgb(17 21 25 / .45) 0%,transparent 22%)}
 .hero{text-align:left;align-items:flex-start}
 .hero>:not(.hero-media){max-width:720px;width:100%}
-.hero>h1#hero-title{max-width:20ch}
+/* Sarlavha — huquq professori iqtibosi (Unbounded), ostida muallif va asl matn */
+.hero>.hero-quote{max-width:860px;margin:0 0 var(--s-5)}
+.hero-quote blockquote{margin:0;padding:0;border:0}
+.hero-quote h1#hero-title{font-family:var(--font-display);font-size:clamp(28px,3.4vw,44px);font-weight:400;line-height:1.15;letter-spacing:-.02em;max-width:none;margin:0;text-wrap:balance}
+.hero-quote figcaption{margin-top:var(--s-4);font-size:var(--t-small);color:rgb(255 255 255 / .8)}
+.hero-quote cite{font-style:normal}
+.hero-quote-orig{display:block;margin-top:var(--s-1);color:rgb(255 255 255 / .62);font-size:13px}
+:root[lang=en] .hero-quote-orig{display:none}
+.section-head h2,.trust h2,.faq h2,.student-banner h2{font-family:var(--font-display);font-weight:400;font-size:clamp(24px,2.6vw,32px);letter-spacing:-.015em}
 .hero h1{font-size:var(--t-display);font-weight:400;line-height:1.05;letter-spacing:-.035em;max-width:14ch;color:#fff;margin:0 0 var(--s-4);text-wrap:balance}
 .hero-lead{color:rgb(255 255 255 / .85);margin:0 0 var(--s-6);max-width:52ch}
 .hero .search-console{margin:0;max-width:720px}
