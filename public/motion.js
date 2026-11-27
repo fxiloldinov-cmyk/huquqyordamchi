@@ -27,6 +27,13 @@
     update();
   }
 
+  // Bosh video: faqat kompyuterda, trafik tejash o'chiq bo'lsa; ko'rinmaganda to'xtaydi. Aks holda poster rasm qoladi.
+  const vid = document.querySelector(".hero-video");
+  if (vid && !RM && !(navigator.connection && navigator.connection.saveData) && matchMedia("(min-width: 701px)").matches) {
+    vid.preload = "auto";
+    new IntersectionObserver(([e]) => { if (e.isIntersecting) vid.play().catch(() => {}); else vid.pause(); }).observe(vid);
+  }
+
   // Aylantirganda paydo bo'lish: guruh ichida navbat bilan
   const GROUPS = [
     ".search-console", "#view-home .section-head", ".sit-groups", ".news-panel", ".documents-layout",

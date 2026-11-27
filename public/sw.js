@@ -2,7 +2,7 @@
 // HECH QACHON keshlanmaydi: /api/* (AI, hisob, sessiya, ishlar, kitoblar), POST so'rovlar, boshqa domenlar.
 // Shaxsiy kazuslar va AI javoblari faqat foydalanuvchi "qurilmada saqlash"ni tanlasa localStorage'da (workspace.js), SW'da emas.
 // Versiya build paytida yangilanadi (scripts/build-data.mjs → SW_VERSION).
-const SW_VERSION = 'hk-v11.13.0-a242d0e786';
+const SW_VERSION = 'hk-v11.13.0-24e571f6bc';
 const STATIC = `hk-static-${SW_VERSION}`;
 const SHELL = [
   '/', '/index.html', '/offline.html', '/styles.css', '/premium.css', '/theme.css', '/site.css', '/suite.js', '/voice.js', '/voice-core.js', '/voice.css', '/alphabet.html', '/alphabet.js', '/alphabet-core.js', '/alphabet.css', '/manifest.webmanifest',

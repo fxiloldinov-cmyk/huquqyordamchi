@@ -463,7 +463,7 @@ test('Homepage shows 12 situations first, group chips filter the list', () => {
 test('v11: Hidoya logo, Kazus ustaxonasi menu, language switcher, motion and public offer are wired in', () => {
  const html = read('public/index.html');
  assert.ok(!html.includes('<span class="brand-icon">§</span>'), 'eski § logotipi qolmasin');
- assert.match(html, /class="hidoya"/); assert.match(read('public/assets/favicon.svg'), /M17 59V33C17 22 25 15 32 11/);
+ assert.match(html, /class="hidoya"/); assert.match(read('public/assets/favicon.svg'), /M21 17v30M43 17v30M21 32h22/); // tamg'a (DESIGN.md → Logo)
  // v11.13: menyu oxirida flag bilan yashirilgan havolalar (Travel, Business, Kalkulyator) bo‘lishi mumkin.
  assert.match(html, /data-view="kazus">Kazus ustaxonasi<\/a><a href="#ish" data-view="ish">Ishlarim<\/a>(?:<a [^>]*\bhidden>[^<]*<\/a>)*<\/nav>/);
  for (const l of ['uz', 'cy', 'ru', 'en']) assert.match(html, new RegExp(`data-lang="${l}"`));
