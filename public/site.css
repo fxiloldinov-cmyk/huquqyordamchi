@@ -214,6 +214,12 @@ body:has(#view-home.active) .header:not(.scrolled) .btn-primary{background:var(-
 .utility .lang-switch{border-color:rgb(255 255 255 / .22)}
 .utility .lang-switch button{color:rgb(255 255 255 / .75)}
 .utility .lang-switch button[aria-pressed=true]{background:rgb(255 255 255 / .14);color:#fff;box-shadow:none}
+/* Til tanlash: yopiq holatda faqat joriy til va ▾; bosilganda qolgan tillar yonida ochiladi */
+.lang-switch:not(.open) button[aria-pressed=false]{display:none}
+.lang-switch:not(.open) button[aria-pressed=true]::after{content:"▾";margin-left:6px;font-size:.85em;opacity:.8}
+.lang-switch:not(.open){border-color:transparent}
+.utility .lang-switch:not(.open) button[aria-pressed=true]{background:transparent}
+.utility .lang-switch:not(.open) button[aria-pressed=true]:hover{background:rgb(255 255 255 / .14)}
 .hero{position:relative;isolation:isolate;display:flex;flex-direction:column;justify-content:flex-end;min-height:min(calc(100svh - 40px),900px);margin:-65px calc(50% - 50vw) 0;padding:calc(65px + var(--s-7)) max(var(--s-5),calc(50vw - var(--w-page)/2 + var(--s-5))) var(--s-7);overflow:hidden;color:#fff;background:var(--c-ink)}
 .hero-media{position:absolute;inset:0;z-index:-1;background:var(--c-ink) url(/assets/hero/hazrati-imom.jpg) center/cover no-repeat}
 .hero-video{display:block;width:100%;height:100%;object-fit:cover}

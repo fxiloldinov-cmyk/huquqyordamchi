@@ -657,9 +657,24 @@
     try { if (globalThis.HK_CONSENT ? HK_CONSENT.allowed("prefs") : true) localStorage.setItem("hk-lang", v); } catch {}
     applyAll();
   }
+  // Til tanlash: yopiq holatda faqat joriy til ko'rinadi; bosilsa qolganlari ochiladi
+  function openSwitch(sw, on) {
+    sw.classList.toggle("open", on);
+    sw.querySelectorAll("[data-lang]").forEach((x) => x.setAttribute("aria-expanded", String(on)));
+  }
   document.addEventListener("click", (e) => {
     const b = e.target.closest(".lang-switch [data-lang]");
-    if (b) { e.preventDefault(); setLang(b.dataset.lang); }
+    if (b) {
+      e.preventDefault();
+      const sw = b.closest(".lang-switch");
+      if (!sw.classList.contains("open") && b.dataset.lang === lang) { openSwitch(sw, true); return; }
+      setLang(b.dataset.lang);
+    }
+    document.querySelectorAll(".lang-switch.open").forEach((sw) => openSwitch(sw, false));
+  });
+  document.addEventListener("keydown", (e) => {
+    const sw = e.key === "Escape" && document.querySelector(".lang-switch.open");
+    if (sw) { openSwitch(sw, false); sw.querySelector('[aria-pressed="true"]')?.focus(); }
   });
 
   globalThis.HK_I18N = { get lang() { return lang; }, setLang, translate, toCyr };
