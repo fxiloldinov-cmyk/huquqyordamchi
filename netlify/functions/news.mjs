@@ -6,7 +6,9 @@
 
 export const config = { path: "/api/news" };
 
-const RSS_URLS = ["https://lex.uz/rss", "https://lex.uz/uz/rss"];
+// Avval lotin yozuvidagi lenta: sarlavhalar sayt yozuvida chiqadi va tavsifdagi sanalar ("Qabul qilingan sana") ajratiladi.
+// Kirill lentasi — zaxira; uning sarlavhalarini frontend HKCore.toLatin bilan lotinga o'giradi.
+const RSS_URLS = ["https://lex.uz/uz/rss", "https://lex.uz/rss"];
 const MAX_ITEMS = 150;
 
 function decode(s) {

@@ -9,7 +9,6 @@ echo.
 if not exist .env (
     echo [!] .env fayli topilmadi. Yaratilmoqda...
     echo TELEGRAM_BOT_TOKEN=> .env
-    echo GEMINI_API_KEY=>> .env
 )
 
 echo Kutubxonalar tekshirilmoqda...

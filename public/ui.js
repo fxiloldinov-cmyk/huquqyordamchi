@@ -115,6 +115,9 @@ function wireTabs(tabs, panels, onChange) {
       .trim();
   }
 
+  // Kirill lentasidan kelgan sarlavha lotinga o'giriladi (lotin matn o'zgarmaydi)
+  const lat = (s) => (globalThis.HKCore?.toLatin ? HKCore.toLatin(s) : s);
+
   function render() {
     const filtered = items.filter((it) => filter === "all" || it.type === filter);
     if (!filtered.length) {
@@ -130,8 +133,8 @@ function wireTabs(tabs, panels, onChange) {
         </div>
         <div class="news-body">
           <span class="news-type t-${it.type}">${TYPE_LABEL[it.type]}</span>
-          <a class="news-title" href="${escapeHtml(it.url)}" target="_blank" rel="noopener">${escapeHtml(it.title)}</a>
-          <p class="news-organ">${escapeHtml(organName(it.organ))}${it.reg ? ` · ${escapeHtml(it.reg)}` : ""}</p>
+          <a class="news-title" href="${escapeHtml(it.url)}" target="_blank" rel="noopener">${escapeHtml(lat(it.title))}</a>
+          <p class="news-organ">${escapeHtml(organName(lat(it.organ)))}${it.reg ? ` · ${escapeHtml(it.reg)}` : ""}</p>
         </div>
         <div class="news-eff">
           <span class="news-date-label">Kuchga kiradi</span>

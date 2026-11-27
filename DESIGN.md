@@ -59,7 +59,7 @@ Kontrast: matn ≥ 4.5:1, katta matn ≥ 3:1 (ikkala rejimda tekshirilgan qiymat
 
 ## Tipografiya
 
-Sarlavhalar: **Unbounded** (Google Fonts, 400/500, kirill-ext bilan: ў қ ғ ҳ tekshirilgan) — faqat bosh sarlavha (iqtibos) va bo‘lim sarlavhalari, `--font-display`. Egasining tanlovi, 2026-11-27. AI saytlariga xos shriftlar (Inter, Geist, Poppins, Space Grotesk, Playfair va h.k.) ishlatilmaydi.
+Sarlavhalar: **Unbounded** (SIL OFL, 400; saytning o‘zida — `public/assets/fonts/`, Google Fonts'ga so‘rov yo‘q; kirill-ext bilan: ў қ ғ ҳ tekshirilgan) — faqat bosh sarlavha (iqtibos) va bo‘lim sarlavhalari, `--font-display`. Egasining tanlovi, 2026-11-27. AI saytlariga xos shriftlar (Inter, Geist, Poppins, Space Grotesk, Playfair va h.k.) ishlatilmaydi.
 
 Bosh sarlavha — huquq professori iqtibosi: Ronald Dvorkin, *Taking Rights Seriously* (1977): “Individual rights are political trumps held by individuals.” O‘zbekcha tarjima ostida muallif, kitob va asl inglizcha matn ko‘rsatiladi. Iqtibos almashtirilsa, faqat aniq manbali (kitob, yil, bob) professor gapi; to‘qilgan yoki "nisbat beriladigan" iqtibos qo‘yilmaydi.
 

@@ -29,8 +29,10 @@ from telegram.ext import (
 load_dotenv(Path(__file__).with_name(".env"))
 
 BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
-GEMINI_KEY = os.getenv("GEMINI_API_KEY", "")
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+# AI javobi saytning /api/chat funksiyasidan olinadi: o'sha RAG (lex.uz rasmiy matni), manba tekshiruvi,
+# shaxsiy ma'lumot filtri va limitlar. Gemini kaliti botda saqlanmaydi — faqat Netlify muhitida.
+SITE_URL = os.getenv("HK_SITE_URL", "https://huquqyordamchiuz.netlify.app").rstrip("/")
+CHAT_TIMEOUT = 65  # sayt javobni 50 soniyada yakunlaydi
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
@@ -42,18 +44,10 @@ logging.getLogger("httpx").setLevel(logging.WARNING)
 TELEGRAM_LIMIT = 4000  # Telegram limiti 4096 belgi; zaxira bilan
 MAX_QUESTION_CHARS = 4000
 
-SYSTEM_INSTRUCTION = (
-    "Siz O'zbekiston Respublikasi qonunchiligi bo'yicha ehtiyotkor AI axborot yordamchisiz. "
-    "O'zbek tilida sodda va amaliy javob bering. Tekshirilmagan modda raqami, muddat, jarima "
-    "yoki URLni o'ylab topmang. Rasmiy qonun matni bilan https://lex.uz orqali tekshirishni "
-    "eslating. Yetarli ma'lumot bo'lmasa, aniqlashtiruvchi savol bering. "
-    "Murakkab yoki yuqori xavfli holatda malakali yuristga murojaat qilishni tavsiya qiling. "
-    "Javob 3000 belgidan oshmasin."
-)
-
 VERIFY_NOTE = "\n\n_⚠️ Umumiy ma'lumot. Modda, muddat va raqamlarni lex.uz da tekshiring._"
 
-_gemini_client = None
+# Sayt javobidagi yashirin belgilar (manbalar paneli uchun \u2063HK:SRC:...\u2063) Telegramda ko'rsatilmaydi
+_HIDDEN_MARKERS = re.compile("\u2063HK:[A-Z]+:[^\u2063]*\u2063?")
 
 
 # Shaxsiy ma'lumotlarni Gemini'ga yuborishdan oldin yashirish (sayt bilan bir xil qoidalar:
@@ -77,13 +71,24 @@ def redact_pii(text: str) -> str:
     return text
 
 
-def get_gemini_client():
-    """Gemini klientini bir marta yaratib, qayta ishlatadi."""
-    global _gemini_client
-    if _gemini_client is None:
-        from google import genai
-        _gemini_client = genai.Client(api_key=GEMINI_KEY)
-    return _gemini_client
+async def ask_site(question: str) -> str:
+    """Savolni saytning /api/chat funksiyasiga yuboradi va manba tekshiruvi bilan to'liq javobni qaytaradi."""
+    import httpx
+    async with httpx.AsyncClient(timeout=CHAT_TIMEOUT) as client:
+        res = await client.post(
+            SITE_URL + "/api/chat",
+            json={"messages": [{"role": "user", "content": redact_pii(question)}], "lang": "uz"},
+            headers={"Origin": SITE_URL, "User-Agent": "HuquqYordamchi-TelegramBot"},
+        )
+    if res.status_code != 200:
+        try:
+            message = res.json().get("error") or ""
+        except ValueError:
+            message = ""
+        if res.status_code == 429:
+            return "So‘rovlar limiti tugadi. Birozdan keyin qayta urinib ko‘ring."
+        return "⚠️ " + (message or "AI xizmatidan javob olinmadi.") + "\n\nQonunlarning rasmiy matni: https://lex.uz"
+    return _HIDDEN_MARKERS.sub("", res.text).strip() or "AI javobi bo'sh qaytdi. Savolni boshqacha yozib ko'ring."
 
 
 def markdown_to_telegram_html(text: str) -> str:
@@ -274,14 +279,6 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
         )
         return
 
-    if not GEMINI_KEY:
-        await update.message.reply_text(
-            "⚠️ AI xizmati hozir sozlanmagan. Bu savolga umumiy yoki taxminiy huquqiy javob bermayman.\n\n"
-            "Qonunlarning amaldagi tahririni https://lex.uz orqali tekshiring.",
-            disable_web_page_preview=True,
-        )
-        return
-
     if not allow_question(update.effective_user.id):
         await update.message.reply_text('So‘rovlar limiti tugadi. Keyinroq qayta urinib ko‘ring.')
         return
@@ -289,19 +286,11 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
     await update.message.chat.send_action(ChatAction.TYPING)
 
     try:
-        from google.genai import types
-        client = get_gemini_client()
         # Asinxron chaqiruv: bitta javob kutilayotganda bot boshqa foydalanuvchilarga ham javob beradi.
         async with _ai_slots:
-            response = await asyncio.wait_for(client.aio.models.generate_content(
-                model=GEMINI_MODEL, contents=redact_pii(user_text),
-                config=types.GenerateContentConfig(system_instruction=SYSTEM_INSTRUCTION,
-                    temperature=0.1, max_output_tokens=3000,
-                    tools=[types.Tool(google_search=types.GoogleSearch())]),
-            ), timeout=50)
-        answer = (response.text or "").strip() or "AI javobi bo'sh qaytdi. Iltimos, savolni boshqacha yozib ko'ring."
+            answer = await ask_site(user_text)
     except Exception as e:
-        logger.error("Gemini API xatosi: %s", type(e).__name__)
+        logger.error("Sayt AI xatosi: %s", type(e).__name__)
         answer = (
             "⚠️ Sun'iy intellekt javob berishda texnik xatolik yuz berdi. Birozdan keyin qayta urinib ko'ring.\n\n"
             "Qonunlarning rasmiy matni: https://lex.uz"

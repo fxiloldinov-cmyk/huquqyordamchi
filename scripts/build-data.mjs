@@ -27,7 +27,7 @@ function page({path,title,description,body,jsonld=[]}){
 <meta property="og:type" content="article"><meta property="og:site_name" content="HuquqYordamchi"><meta property="og:locale" content="uz_UZ">
 <meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${esc(url)}"><meta property="og:image" content="${SITE}/assets/legal-hero.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="/assets/favicon.svg"><link rel="stylesheet" href="/styles.css">
+<link rel="icon" href="/assets/favicon.svg"><link rel="stylesheet" href="/assets/fonts/unbounded.css"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/theme.css"><link rel="stylesheet" href="/site.css">
 <script>try{const t=localStorage.getItem('hk-theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch{}</script>
 ${jsonld.map(ld).join('\n')}
 </head>
